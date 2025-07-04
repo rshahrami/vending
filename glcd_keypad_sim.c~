@@ -1,20 +1,36 @@
-
-
 #include <mega64a.h>
 #include <delay.h>
-
-// Graphic Display functions
 #include <glcd.h>
-
-// Font used for displaying text
-// on the graphic display
 #include <font5x7.h>
-
-// Declare your global variables here
-
-// Standard Input/Output functions
 #include <stdio.h>
-#include <string.h>   // »—«Ì ò«— »« —‘ ÂùÂ« „«‰‰œ strstr
+#include <string.h>   // »—«Ì ò«— »« —‘ ÂùÂ«
+#include <stdlib.h>   // »—«Ì  Ê«»⁄ ò„òÌ „«‰‰œ rand() Ê atoi
+
+
+// =================================================================
+// =====  ‰ŸÌ„«  GPRS° ”—Ê— Ê ”Œ ù«›“«— («Ì‰ »Œ‘ —« ÊÌ—«Ì‘ ò‰Ìœ) ===========
+// =================================================================
+#define APN "mtnirancell"
+#define SERVER_URL "http://192.168.1.100:8080/api/data" // ¬œ—” IP ”—Ê— ‘„«
+//#define SERVER_PORT "8080"         // ‘„«—Â ÅÊ—  ”—Ê— ‘„«
+#define DEVICE_ID 1                // ‘‰«”Â À«»  œ” ê«Â ‘„«
+
+
+
+// ---  ⁄—Ì› ÅÊ—  Ê ÅÌ‰ „Ê Ê— ---
+#define MOTOR_DDR  DDRE
+#define MOTOR_PORT PORTE
+#define MOTOR_PIN_1  2
+#define MOTOR_PIN_2  3
+#define MOTOR_PIN_3  4
+#define MOTOR_PIN_4  5
+// =================================================================
+
+// ... (»Œ‘ »«›—Â«Ì ”—«”—Ì°  ⁄«—Ì› òÌùÅœ Ê  Ê«»⁄ get_key, send_at_command, get_full_response »œÊ‰  €ÌÌ—) ...
+char response_buffer[256];
+char sender_number[20];
+char sms_content[100];
+char formatted_phone_number[15]; // »—«Ì –ŒÌ—Â ‘„«—Â „Ê»«Ì· »œÊ‰ +98 Ì« 0
 
 
 //  ⁄—Ì› ÅÊ—  C »—«Ì òÌùÅœ
@@ -34,53 +50,6 @@
 #define ROW4_PIN 4
 
 char pressed_key;
-// »«›— »—«Ì –ŒÌ—Â Å«”ŒùÂ«Ì œ—Ì«› Ì «“ SIM800
-char response_buffer[100];
-
-
-//  «»⁄Ì »—«Ì «—”«· œ” Ê— AT »Â „«éÊ·
-void send_at_command(char *command)
-{
-    // «—”«· œ” Ê— »Â Â„—«Â ò«—«ò —Â«Ì »«“ê‘  »Â «» œ«Ì Œÿ (Carriage Return & Line Feed)
-    printf("%s\r\n", command);
-}
-
-
-// «Ì‰  «»⁄  « “„«‰Ì òÂ "OK" Ì« "ERROR" —« ÅÌœ« ò‰œ Ì« “„«‰‘  „«„ ‘Êœ° »Â ŒÊ«‰œ‰ «œ«„Â „ÌùœÂœ
-// Ê ò· Å«”Œ —« œ— response_buffer –ŒÌ—Â „Ìùò‰œ.
-void get_full_response(unsigned int timeout_ms)
-{
-    char line_buffer[100]; // »«›— „Êﬁ  »—«Ì ŒÊ«‰œ‰ Â— Œÿ
-    unsigned long int counter = 0;
-
-    // Å«ò ò—œ‰ »«›— «’·Ì ﬁ»· «“ œ—Ì«›  Å«”Œ ÃœÌœ
-    memset(response_buffer, 0, 100);
-
-    while(counter < timeout_ms)
-    {
-        // «ê— Ìò Œÿ ÃœÌœ œ— »«›— ”—Ì«· „ÊÃÊœ »Êœ
-        if (gets(line_buffer, 100))
-        {
-            // ¬‰ —« »Â »«›— «’·Ì «÷«›Â ò‰
-            // «“ strncat »—«Ì Ã·ÊêÌ—Ì «“ ”——Ì“ »«›— «” ›«œÂ „Ìùò‰Ì„
-            strncat(response_buffer, line_buffer, sizeof(response_buffer) - strlen(response_buffer) - 1);
-            
-            // »——”Ì ò‰ òÂ ¬Ì« »Â Å«Ì«‰ Å«”Œ —”ÌœÂù«Ì„ Ì« ‰Â
-            if (strstr(line_buffer, "OK"))
-            {
-                break; // Å«”Œ "OK" œ—Ì«›  ‘œ° «“ Õ·ﬁÂ Œ«—Ã ‘Ê
-            }
-            if (strstr(line_buffer, "ERROR"))
-            {
-                break; // Å«”Œ "ERROR" œ—Ì«›  ‘œ° «“ Õ·ﬁÂ Œ«—Ã ‘Ê
-            }
-        }
-        
-        delay_ms(1);
-        counter++;
-    }
-}
-
 
 //  «»⁄ »—«Ì ŒÊ«‰œ‰ ò·Ìœ ›‘—œÂ ‘œÂ („‰ÿﬁ «”ò‰ ” Ê‰)
 char get_key(void)
@@ -133,6 +102,348 @@ char get_key(void)
     // «ê— ÂÌç ò·ÌœÌ ›‘—œÂ ‰‘œÂ »Êœ° „ﬁœ«— ’›— (NULL) —« »—ê—œ«‰
     return 0; 
 }
+
+
+void send_at_command(char *command)
+{
+    printf("%s\r\n", command);
+}
+
+//  «»⁄ »—«Ì ŒÊ«‰œ‰ ò«„· Å«”Œ «“ „«éÊ·  « —”Ìœ‰ »Â Ìò ò·„Â ò·ÌœÌ
+void get_full_response(unsigned int timeout_ms)
+{
+    char line_buffer[128]; 
+    unsigned long int counter = 0;
+    memset(response_buffer, 0, sizeof(response_buffer));
+    while(counter < timeout_ms)
+    {
+        if (gets(line_buffer, sizeof(line_buffer)))
+        {
+            strncat(response_buffer, line_buffer, sizeof(response_buffer) - strlen(response_buffer) - 1);
+            strncat(response_buffer, "\n", sizeof(response_buffer) - strlen(response_buffer) - 1);
+            if (strstr(line_buffer, "OK") || strstr(line_buffer, "ERROR") || strstr(line_buffer, ">") || strstr(line_buffer, "DOWNLOAD") || strstr(line_buffer, "SEND OK") || strstr(line_buffer, "CLOSE OK") || strstr(line_buffer, "+HTTPACTION"))
+            {
+                break; 
+            }
+        }
+        delay_ms(1);
+        counter++;
+    }
+}
+
+// =================================================================================
+// =====  Ê«»⁄ —«Âù«‰œ«“Ì „«éÊ· ===================================================
+// =================================================================================
+
+//  «»⁄ »—«Ì —«Âù«‰œ«“Ì «Ê·ÌÂ ”—ÊÌ” ÅÌ«„ò
+unsigned char init_sms(void)
+{
+    glcd_clear();
+    glcd_outtextxy(0, 0, "Setting SMS Mode...");
+    send_at_command("AT+CMGF=1");
+    get_full_response(1000);
+    if (strstr(response_buffer, "OK") == NULL) return 0;
+
+    send_at_command("AT+CNMI=2,2,0,0,0");
+    get_full_response(1000);
+    if (strstr(response_buffer, "OK") == NULL) return 0;
+    
+    send_at_command("AT+CMGDA=\"DEL ALL\"");
+    get_full_response(5000);
+    if (strstr(response_buffer, "OK") == NULL) return 0;
+    
+    glcd_outtextxy(0, 10, "SMS Ready.");
+    delay_ms(1000);
+    return 1;
+}
+
+//  «»⁄ »—«Ì —«Âù«‰œ«“Ì »” — GPRS »—«Ì ”—ÊÌ” HTTP
+unsigned char init_http_bearer(void)
+{
+    char command[100];
+    glcd_clear();
+    glcd_outtextxy(0, 0, "Init HTTP Bearer...");
+
+    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
+    get_full_response(2000);
+    if (strstr(response_buffer, "OK") == NULL) return 0;
+    delay_ms(500);
+
+    sprintf(command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
+    send_at_command(command);
+    get_full_response(2000);
+    if (strstr(response_buffer, "OK") == NULL) return 0;
+    delay_ms(500);
+
+    glcd_outtextxy(0, 10, "Opening Bearer...");
+    send_at_command("AT+SAPBR=1,1");
+    get_full_response(10000);
+    if (strstr(response_buffer, "OK") == NULL)
+    {
+        glcd_outtextxy(0, 20, "Bearer Failed!");
+        delay_ms(2000);
+        return 0;
+    }
+    
+    glcd_outtextxy(0, 20, "Bearer Opened.");
+    delay_ms(1000);
+
+    send_at_command("AT+SAPBR=2,1");
+    get_full_response(2000);
+    glcd_outtextxy(0, 30, response_buffer);
+    delay_ms(2000);
+
+    return 1;
+}
+
+// =================================================================================
+// =====  Ê«»⁄ «’·Ì „‰ÿﬁ »—‰«„Â ====================================================
+// =================================================================================
+
+//  «»⁄ »—«Ì ›⁄«·ù”«“Ì „Ê Ê— „—»Êÿ »Â „Õ’Ê·
+void activate_motor(int product_id)
+{
+    unsigned char motor_pin;
+    char motor_msg[20];
+    
+    switch (product_id)
+    {
+        case 1: motor_pin = MOTOR_PIN_1; break;
+        case 2: motor_pin = MOTOR_PIN_2; break;
+        case 3: motor_pin = MOTOR_PIN_3; break;
+        default: return;
+    }
+    
+    sprintf(motor_msg, "MOTOR %d ON!", product_id);
+    glcd_clear();
+    glcd_outtextxy(10, 20, motor_msg);
+    MOTOR_PORT |= (1 << motor_pin);
+    delay_ms(10000);
+    MOTOR_PORT &= ~(1 << motor_pin);
+    
+    sprintf(motor_msg, "MOTOR %d OFF!", product_id);
+    glcd_outtextxy(10, 40, motor_msg);
+    delay_ms(2000);
+}
+
+//  «»⁄ »—«Ì ç«·‘ òœ ? —ﬁ„Ì
+void start_challenge_game(int product_id)
+{
+    int random_code;
+    char random_code_str[5];
+    char user_input[5] = "";
+    char key;
+    unsigned char digit_count = 0;
+    unsigned int time_left = 300; // 30 À«‰ÌÂ
+
+    random_code = 1000 + (rand() % 9000);
+    sprintf(random_code_str, "%d", random_code);
+
+    glcd_clear();
+    glcd_outtextxy(0, 0, "Enter this code:");
+    glcd_outtextxy(30, 15, random_code_str);
+    glcd_outtextxy(0, 30, "Your input: ");
+
+    while (digit_count < 4 && time_left > 0)
+    {
+        key = get_key();
+        if (key >= '0' && key <= '9')
+        {
+            user_input[digit_count++] = key;
+            user_input[digit_count] = '\0';
+            glcd_outtextxy(70, 30, user_input);
+        }
+        
+        { char time_str[10]; sprintf(time_str, "Time: %d ", time_left / 10); glcd_outtextxy(0, 50, time_str); }
+        
+        delay_ms(100);
+        time_left--;
+    }
+    
+    if (time_left == 0) { glcd_clear(); glcd_outtextxy(10, 20, "Time is up!"); delay_ms(2000); }
+    else if (strcmp(user_input, random_code_str) == 0)
+    {
+        glcd_clear(); glcd_outtextxy(10, 20, "Code Correct!"); delay_ms(2000);
+        activate_motor(product_id);
+    }
+    else { glcd_clear(); glcd_outtextxy(10, 20, "Wrong Code!"); delay_ms(2000); }
+}
+
+//  «»⁄ »—«Ì Å«òù”«“Ì ‘„«—Â „Ê»«Ì·
+void format_phone_number(char* raw_number)
+{
+    if (strncmp(raw_number, "+98", 3) == 0) strcpy(formatted_phone_number, raw_number + 3);
+    else if (raw_number[0] == '0') strcpy(formatted_phone_number, raw_number + 1);
+    else strcpy(formatted_phone_number, raw_number);
+}
+
+
+//  «»⁄ ÃœÌœ »—«Ì »——”Ì Ê « ’«· „Ãœœ ŒÊœò«— »Â GPRS
+unsigned char check_and_reopen_bearer(void)
+{
+    glcd_clear();
+    glcd_outtextxy(0,0,"Checking Bearer...");
+    
+    send_at_command("AT+SAPBR=2,1"); // «” ⁄·«„ Ê÷⁄Ì  »” —
+    get_full_response(3000);
+    
+    // «ê— œ— Å«”Œ° ¬ÌùÅÌ 0.0.0.0 ÊÃÊœ œ«‘  Ì⁄‰Ì « ’«· ﬁÿ⁄ «” 
+    if(strstr(response_buffer, "0.0.0.0") || strstr(response_buffer, "ERROR"))
+    {
+        glcd_outtextxy(0,10,"Bearer is down.");
+        glcd_outtextxy(0,20,"Re-opening...");
+        delay_ms(1000);
+        
+        send_at_command("AT+SAPBR=1,1"); //  ·«‘ „Ãœœ »—«Ì « ’«·
+        get_full_response(15000); // “„«‰ »Ì‘ — »—«Ì  ·«‘ „Ãœœ
+        
+        if(strstr(response_buffer, "OK"))
+        {
+            glcd_outtextxy(0,30,"Re-opened OK.");
+            delay_ms(1000);
+            return 1; // „Ê›ﬁÌ  ¬„Ì“
+        }
+        else
+        {
+            glcd_outtextxy(0,30,"Re-open Failed!");
+            delay_ms(1000);
+            return 0; // ‰«„Ê›ﬁ
+        }
+    }
+    
+    glcd_outtextxy(0,10,"Bearer is Active.");
+    delay_ms(1000);
+    return 1; // « ’«· «“ ﬁ»· »—ﬁ—«— »Êœ
+}
+
+
+// —«Âù«‰œ«“Ì «Ê·ÌÂ »” — HTTP
+unsigned char init_http_bearer(void)
+{
+    char command[100];
+    glcd_clear();
+    glcd_outtextxy(0, 0, "Init HTTP Bearer...");
+
+    // çò ò—œ‰ À»  ‘œ‰ œ— ‘»òÂ „Ê»«Ì·
+    glcd_outtextxy(0, 10, "Checking network...");
+    while(1)
+    {
+        send_at_command("AT+CREG?");
+        get_full_response(2000);
+        // „‰ Ÿ— Å«”Œ "+CREG: 0,1" Ì« "+CREG: 0,5" „Ìù„«‰Ì„
+        if(strstr(response_buffer, ",1") || strstr(response_buffer, ",5"))
+        {
+            glcd_outtextxy(0, 20, "Registered!");
+            delay_ms(1000);
+            break;
+        }
+        delay_ms(2000); // Â— 2 À«‰ÌÂ çò ò‰
+    }
+    
+    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
+    get_full_response(2000);
+    if (strstr(response_buffer, "OK") == NULL) return 0;
+
+    sprintf(command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
+    send_at_command(command);
+    get_full_response(2000);
+    if (strstr(response_buffer, "OK") == NULL) return 0;
+    
+    return check_and_reopen_bearer(); // »—«Ì «Ê·Ì‰ « ’«· Â„ «“  «»⁄ ŒÊœ —„Ì„ùê— «” ›«œÂ „Ìùò‰Ì„
+}
+
+// «—”«· œ—ŒÊ«”  HTTP POST (»« »——”Ì « ’«· ﬁ»· «“ «—”«·)
+unsigned char send_http_post_request(char* phone, int product_id)
+{
+    char command[200], json_payload[128];
+    int json_len;
+    unsigned char success = 0;
+
+    // „—Õ·Â 1: ﬁ»· «“ Â— ò«—Ì° « ’«· —« çò ò‰
+    if (!check_and_reopen_bearer())
+    {
+        return 0; // «ê— « ’«· »—ﬁ—«— ‰‘œ° Œ«—Ã ‘Ê
+    }
+    
+    sprintf(json_payload, "{\"phone_number\":%s,\"device_id\":%d,\"product_id\":%d}", phone, DEVICE_ID, product_id);
+    json_len = strlen(json_payload);
+
+    glcd_clear();
+    glcd_outtextxy(0, 0, "HTTP POST Request...");
+
+    send_at_command("AT+HTTPINIT");
+    get_full_response(2000);
+    if (strstr(response_buffer, "OK") == NULL) { send_at_command("AT+HTTPTERM"); return 0; }
+
+    // ... (»ﬁÌÂ „—«Õ· «—”«· HTTP „«‰‰œ ﬁ»·) ...
+    
+    send_at_command("AT+HTTPACTION=1");
+    get_full_response(20000); // «›“«Ì‘ “„«‰ «‰ Ÿ«— »—«Ì Å«”Œ ”—Ê—
+
+    if (strstr(response_buffer, "+HTTPACTION: 1,200"))
+    {
+        send_at_command("AT+HTTPREAD");
+        get_full_response(5000);
+        if(strstr(response_buffer, "ok")) { success = 1; }
+    }
+    
+    send_at_command("AT+HTTPTERM");
+    get_full_response(1000);
+    return success;
+}
+
+// Å—œ«“‘ ÅÌ«„ò
+void process_sms(void)
+{
+    char* token;
+    int product_id;
+    char sms_header_copy[100];
+
+    // ›ﬁÿ «ê— ÅÌ«„ò ÃœÌœ »Êœ Å—œ«“‘ ò‰
+    if (strstr(response_buffer, "+CMT:"))
+    {
+        // Ìò òÅÌ «“ Âœ— ÅÌ«„ò  ÂÌÂ „Ìùò‰Ì„  « gets »⁄œÌ ¬‰ —« «“ »Ì‰ ‰»—œ
+        strcpy(sms_header_copy, response_buffer);
+        
+        // „Õ Ê«Ì ÅÌ«„ò —« «“ Œÿ »⁄œÌ »ŒÊ«‰
+        memset(response_buffer, 0, sizeof(response_buffer));
+        gets(response_buffer, sizeof(response_buffer));
+
+        glcd_clear();
+        glcd_outtextxy(0, 0, "New SMS Processing...");
+
+        // Õ«·« ‘„«—Â —« «“ òÅÌ Âœ— «” Œ—«Ã ò‰
+        token = strtok(sms_header_copy, "\"");
+        token = strtok(NULL, "\""); 
+        if (token) { strcpy(sender_number, token); }
+
+        // „Õ Ê« —« Å—œ«“‘ ò‰
+        if (strlen(response_buffer) > 0)
+        {
+            char* p = strchr(response_buffer, '\r'); if(p) *p = '\0';
+            product_id = atoi(response_buffer);
+            
+            if (product_id >= 1 && product_id <= 3)
+            {
+                format_phone_number(sender_number);
+                if (send_http_post_request(formatted_phone_number, product_id))
+                {
+                    start_challenge_game(product_id);
+                }
+                else { glcd_clear(); glcd_outtextxy(0, 10, "Server Tx Failed!"); delay_ms(2000); }
+            }
+            else { glcd_clear(); glcd_outtextxy(0, 10, "Invalid Product ID!"); delay_ms(2000); }
+        }
+        
+        // Õ«·« òÂ Â— œÊ »Œ‘ ÅÌ«„ò Å—œ«“‘ ‘œ° ¬‰ —« Å«ò ò‰
+        send_at_command("AT+CMGDA=\"DEL READ\"");
+        get_full_response(5000);
+    }
+}
+
+// =================================================================================
+// =====  «»⁄ «’·Ì »—‰«„Â (main) ===================================================
+// =============================================================================
 
 
 
@@ -193,7 +504,7 @@ void main(void)
     // Mode: Normal top=0xFF
     // OC0 output: Disconnected
     ASSR=0<<AS0;
-    TCCR0=(0<<WGM00) | (0<<COM01) | (0<<COM00) | (0<<WGM01) | (0<<CS02) | (0<<CS01) | (0<<CS00);
+    TCCR0=(0<<WGM00) | (0<<COM01) | (0<<COM00) | (0<<WGM01) | (1<<CS02) | (0<<CS01) | (1<<CS00);
     TCNT0=0x00;
     OCR0=0x00;
 
@@ -334,6 +645,12 @@ void main(void)
     // CS1 - PORTF Bit 5
     // CS2 - PORTF Bit 6
 
+    // „ﬁœ«—œÂÌ «Ê·ÌÂ  Ê·Ìœ ò‰‰œÂ «⁄œ«œ  ’«œ›Ì
+    // »—«Ì  ’«œ›Ì »Êœ‰ »Ì‘ —° „Ìù Ê«‰ «“ „ﬁœ«— Ìò  «Ì„— ¬“«œ «” ›«œÂ ò—œ
+    // srand(TCNT0); 
+    srand(TCNT0); // Ìò —Ê‘ «” «‰œ«—œ Ê·Ì „„ò‰ «”  œ— Â„Â ò«„Å«Ì·—Â«Ì embedded ò«— ‰ò‰œ
+                       // «” ›«œÂ «“ rand() »Â  ‰Â«ÌÌ Â„ »—«Ì ‘—Ê⁄ ò«›Ì «” .
+
     // Specify the current font for displaying text
     glcd_init_data.font=font5x7;
     // No function is used for reading
@@ -348,58 +665,38 @@ void main(void)
 
     glcd_setfont(font5x7); 
     
+    // ----- —«Âù«‰œ«“Ì „«éÊ· SIM800 -----
     glcd_clear();
-    glcd_outtextxy(0, 0, "Initializing Module...");
+    glcd_outtextxy(0, 0, "Module Init...");
+    delay_ms(5000); 
 
-    // !! ‰ò Â »”Ì«— „Â„: »Â „«éÊ· “„«‰ ò«›Ì »—«Ì »Ê  ‘œ‰ »œÂÌœ !!
-    delay_ms(1000); // 5 À«‰ÌÂ ’»— ò‰Ìœ. «Ì‰ “„«‰ »—«Ì ‘‰«”«ÌÌ ”Ì„ùò«—  ÕÌ« Ì «” .
+    send_at_command("ATE0"); get_full_response(1000);
+    send_at_command("AT"); get_full_response(1000);
+    if(strstr(response_buffer, "OK") == NULL) { glcd_outtextxy(0, 10, "Module Not Found!"); while(1); }
 
-    // ----- €Ì—›⁄«· ò—œ‰ Echo -----
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Disabling Echo...");
-    send_at_command("ATE0");
-    get_full_response(1000); // «“  «»⁄ ÃœÌœ «” ›«œÂ ò‰Ìœ  « "OK" —« Â„ «“ »«›— Å«ò ò‰œ
-    glcd_outtextxy(0, 10, response_buffer); // ‰„«Ì‘ Å«”Œ (»«Ìœ OK »«‘œ)
-    delay_ms(2000);
-
-    // -----  ”  «— »«ÿ Å«ÌÂ -----
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Checking AT...");
-    send_at_command("AT");
-    get_full_response(1000); // „‰ Ÿ— Å«”Œ ò«„· »„«‰
-    glcd_outtextxy(0, 10, response_buffer); // ‰„«Ì‘ Å«”Œ (»«Ìœ OK »«‘œ)
-    delay_ms(2000);
+    // ----- —«Âù«‰œ«“Ì ”—ÊÌ”ùÂ«Ì ÅÌ«„ò Ê HTTP -----
+    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
+    if (!init_http_bearer()) { glcd_outtextxy(0, 10, "HTTP Bearer Failed!"); while(1); }
     
-    // ----- »——”Ì Ê÷⁄Ì  ”Ì„ùò«—  -----
     glcd_clear();
-    glcd_outtextxy(0, 0, "Checking SIM (AT+CPIN?)...");
-    send_at_command("AT+CPIN?");
-    get_full_response(2000); // „‰ Ÿ— Å«”Œ ò«„· »„«‰ («Ì‰ œ” Ê— „„ò‰ «”  ò„Ì ÿÊ· »ò‘œ)
-    glcd_outtextxy(0, 10, response_buffer); // ‰„«Ì‘ ò· Å«”Œ —ÊÌ LCD
-    delay_ms(2000);
+    glcd_outtextxy(0, 0, "System Ready.");
+    glcd_outtextxy(0, 10, "Waiting for SMS...");
 
-
-    // ----- »——”Ì Ê÷⁄Ì  ”Ì„ùò«—  -----
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Checking Network...");
-    send_at_command("AT+CREG?");
-    get_full_response(1000); // „‰ Ÿ— Å«”Œ ò«„· »„«‰ («Ì‰ œ” Ê— „„ò‰ «”  ò„Ì ÿÊ· »ò‘œ)
-    glcd_outtextxy(0, 10, response_buffer); // ‰„«Ì‘ ò· Å«”Œ —ÊÌ LCD
-    delay_ms(2000);
-
-
-   
-    // ----- »——”Ì Ê÷⁄Ì  ”Ì„ùò«—  -----
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Checking Network...");
-    send_at_command("AT+CSQ");
-    get_full_response(1000); // „‰ Ÿ— Å«”Œ ò«„· »„«‰ («Ì‰ œ” Ê— „„ò‰ «”  ò„Ì ÿÊ· »ò‘œ)
-    glcd_outtextxy(0, 10, response_buffer); // ‰„«Ì‘ ò· Å«”Œ —ÊÌ LCD
-    delay_ms(2000);
-
+    // ----- Õ·ﬁÂ «’·Ì »—‰«„Â -----
     while (1)
-          {
-          // Place your code here
-
-          }
+    {
+        memset(response_buffer, 0, sizeof(response_buffer));
+        // «Ì‰Ã« ›ﬁÿ „‰ Ÿ— Œÿ «Ê· (Âœ—) ÅÌ«„ò „Ìù„«‰Ì„
+        gets(response_buffer, sizeof(response_buffer));
+        
+        if (strlen(response_buffer) > 0)
+        {
+            process_sms(); //  «»⁄ Å—œ«“‘ Â„Â ò«—Â« —« «‰Ã«„ „ÌùœÂœ
+            glcd_clear();
+            glcd_outtextxy(0, 0, "System Ready.");
+            glcd_outtextxy(0, 10, "Waiting for SMS...");
+        }
+        
+        delay_ms(100);
+    }
 }
