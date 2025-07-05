@@ -10,6 +10,15 @@ char header_buffer[100];
 char content_buffer[100];
 
 
+// --- E???? ???E ? ??? ??E?? ---
+#define MOTOR_DDR DDRE
+#define MOTOR_PORT PORTE
+#define MOTOR_PIN_1 2
+#define MOTOR_PIN_2 3
+#define MOTOR_PIN_3 4
+#define MOTOR_PIN_4 5
+
+
 // E???? ???E C E?C? ????I
 #define KEYPAD_PORT PORTC
 #define KEYPAD_DDR DDRC

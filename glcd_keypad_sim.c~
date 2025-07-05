@@ -159,27 +159,27 @@ unsigned char init_sms(void)
 
 void activate_motor(int product_id)
 {
-unsigned char motor_pin;
-char motor_msg[20];
+    unsigned char motor_pin;
+    char motor_msg[20];
 
-switch (product_id)
-{
-case 1: motor_pin = MOTOR_PIN_1; break;
-case 2: motor_pin = MOTOR_PIN_2; break;
-case 3: motor_pin = MOTOR_PIN_3; break;
-default: return;
-}
+    switch (product_id)
+    {
+        case 1: motor_pin = MOTOR_PIN_1; break;
+        case 2: motor_pin = MOTOR_PIN_2; break;
+        case 3: motor_pin = MOTOR_PIN_3; break;
+        default: return;
+    }
 
-sprintf(motor_msg, "MOTOR %d ON!", product_id);
-glcd_clear();
-glcd_outtextxy(10, 20, motor_msg);
-MOTOR_PORT |= (1 << motor_pin);
-delay_ms(10000);
-MOTOR_PORT &= ~(1 << motor_pin);
+    sprintf(motor_msg, "MOTOR %d ON!", product_id);
+    glcd_clear();
+    glcd_outtextxy(10, 20, motor_msg);
+    MOTOR_PORT |= (1 << motor_pin);
+    delay_ms(10000);
+    MOTOR_PORT &= ~(1 << motor_pin);
 
-sprintf(motor_msg, "MOTOR %d OFF!", product_id);
-glcd_outtextxy(10, 40, motor_msg);
-delay_ms(2000);
+    sprintf(motor_msg, "MOTOR %d OFF!", product_id);
+    glcd_outtextxy(10, 40, motor_msg);
+    delay_ms(2000);
 }
 
 

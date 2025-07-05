@@ -1217,31 +1217,34 @@ _0x0:
 	.DB  0x43,0x4D,0x47,0x44,0x41,0x3D,0x22,0x44
 	.DB  0x45,0x4C,0x20,0x41,0x4C,0x4C,0x22,0x0
 	.DB  0x53,0x4D,0x53,0x20,0x52,0x65,0x61,0x64
-	.DB  0x79,0x2E,0x0,0x4D,0x6F,0x64,0x75,0x6C
-	.DB  0x65,0x20,0x49,0x6E,0x69,0x74,0x2E,0x2E
-	.DB  0x2E,0x0,0x41,0x54,0x45,0x30,0x0,0x41
-	.DB  0x54,0x0,0x53,0x4D,0x53,0x20,0x49,0x6E
-	.DB  0x69,0x74,0x20,0x46,0x61,0x69,0x6C,0x65
-	.DB  0x64,0x21,0x0,0x53,0x79,0x73,0x74,0x65
-	.DB  0x6D,0x20,0x52,0x65,0x61,0x64,0x79,0x2E
-	.DB  0x0,0x57,0x61,0x69,0x74,0x69,0x6E,0x67
-	.DB  0x20,0x66,0x6F,0x72,0x20,0x53,0x4D,0x53
-	.DB  0x2E,0x2E,0x2E,0x0,0x2B,0x43,0x4D,0x54
-	.DB  0x3A,0x0,0x53,0x4D,0x53,0x20,0x43,0x6F
-	.DB  0x64,0x65,0x3A,0x0,0x45,0x6E,0x74,0x65
-	.DB  0x72,0x20,0x63,0x6F,0x64,0x65,0x20,0x6F
-	.DB  0x6E,0x20,0x6B,0x65,0x79,0x70,0x61,0x64
-	.DB  0x3A,0x0,0x59,0x6F,0x75,0x20,0x70,0x72
-	.DB  0x65,0x73,0x73,0x65,0x64,0x3A,0x0,0x43
-	.DB  0x6F,0x64,0x65,0x20,0x69,0x73,0x20,0x43
-	.DB  0x4F,0x52,0x52,0x45,0x43,0x54,0x21,0x0
-	.DB  0x50,0x72,0x6F,0x67,0x72,0x61,0x6D,0x20
-	.DB  0x48,0x61,0x6C,0x74,0x65,0x64,0x2E,0x0
-	.DB  0x45,0x72,0x72,0x6F,0x72,0x20,0x69,0x6E
-	.DB  0x20,0x65,0x6E,0x74,0x72,0x79,0x21,0x0
-	.DB  0x53,0x4D,0x53,0x20,0x63,0x6F,0x64,0x65
-	.DB  0x20,0x69,0x73,0x20,0x69,0x6E,0x76,0x61
-	.DB  0x6C,0x69,0x64,0x21,0x0
+	.DB  0x79,0x2E,0x0,0x4D,0x4F,0x54,0x4F,0x52
+	.DB  0x20,0x25,0x64,0x20,0x4F,0x4E,0x21,0x0
+	.DB  0x4D,0x4F,0x54,0x4F,0x52,0x20,0x25,0x64
+	.DB  0x20,0x4F,0x46,0x46,0x21,0x0,0x4D,0x6F
+	.DB  0x64,0x75,0x6C,0x65,0x20,0x49,0x6E,0x69
+	.DB  0x74,0x2E,0x2E,0x2E,0x0,0x41,0x54,0x45
+	.DB  0x30,0x0,0x41,0x54,0x0,0x53,0x4D,0x53
+	.DB  0x20,0x49,0x6E,0x69,0x74,0x20,0x46,0x61
+	.DB  0x69,0x6C,0x65,0x64,0x21,0x0,0x53,0x79
+	.DB  0x73,0x74,0x65,0x6D,0x20,0x52,0x65,0x61
+	.DB  0x64,0x79,0x2E,0x0,0x57,0x61,0x69,0x74
+	.DB  0x69,0x6E,0x67,0x20,0x66,0x6F,0x72,0x20
+	.DB  0x53,0x4D,0x53,0x2E,0x2E,0x2E,0x0,0x2B
+	.DB  0x43,0x4D,0x54,0x3A,0x0,0x53,0x4D,0x53
+	.DB  0x20,0x43,0x6F,0x64,0x65,0x3A,0x0,0x45
+	.DB  0x6E,0x74,0x65,0x72,0x20,0x63,0x6F,0x64
+	.DB  0x65,0x20,0x6F,0x6E,0x20,0x6B,0x65,0x79
+	.DB  0x70,0x61,0x64,0x3A,0x0,0x59,0x6F,0x75
+	.DB  0x20,0x70,0x72,0x65,0x73,0x73,0x65,0x64
+	.DB  0x3A,0x0,0x43,0x6F,0x64,0x65,0x20,0x69
+	.DB  0x73,0x20,0x43,0x4F,0x52,0x52,0x45,0x43
+	.DB  0x54,0x21,0x0,0x50,0x72,0x6F,0x67,0x72
+	.DB  0x61,0x6D,0x20,0x48,0x61,0x6C,0x74,0x65
+	.DB  0x64,0x2E,0x0,0x45,0x72,0x72,0x6F,0x72
+	.DB  0x20,0x69,0x6E,0x20,0x65,0x6E,0x74,0x72
+	.DB  0x79,0x21,0x0,0x53,0x4D,0x53,0x20,0x63
+	.DB  0x6F,0x64,0x65,0x20,0x69,0x73,0x20,0x69
+	.DB  0x6E,0x76,0x61,0x6C,0x69,0x64,0x21,0x0
 _0x2100060:
 	.DB  0x1
 _0x2100000:
@@ -1270,72 +1273,72 @@ __GLOBAL_INI_TBL:
 	.DW  _0x0*2+72
 
 	.DW  0x0F
-	.DW  _0x10
-	.DW  _0x0*2+83
+	.DW  _0x17
+	.DW  _0x0*2+110
 
 	.DW  0x05
-	.DW  _0x10+15
-	.DW  _0x0*2+98
+	.DW  _0x17+15
+	.DW  _0x0*2+125
 
 	.DW  0x03
-	.DW  _0x10+20
-	.DW  _0x0*2+103
+	.DW  _0x17+20
+	.DW  _0x0*2+130
 
 	.DW  0x11
-	.DW  _0x10+23
-	.DW  _0x0*2+106
+	.DW  _0x17+23
+	.DW  _0x0*2+133
 
 	.DW  0x0E
-	.DW  _0x10+40
-	.DW  _0x0*2+123
+	.DW  _0x17+40
+	.DW  _0x0*2+150
 
 	.DW  0x13
-	.DW  _0x10+54
-	.DW  _0x0*2+137
+	.DW  _0x17+54
+	.DW  _0x0*2+164
 
 	.DW  0x06
-	.DW  _0x10+73
-	.DW  _0x0*2+156
+	.DW  _0x17+73
+	.DW  _0x0*2+183
 
 	.DW  0x0A
-	.DW  _0x10+79
-	.DW  _0x0*2+162
+	.DW  _0x17+79
+	.DW  _0x0*2+189
 
 	.DW  0x16
-	.DW  _0x10+89
-	.DW  _0x0*2+172
+	.DW  _0x17+89
+	.DW  _0x0*2+199
 
 	.DW  0x0D
-	.DW  _0x10+111
-	.DW  _0x0*2+194
+	.DW  _0x17+111
+	.DW  _0x0*2+221
 
 	.DW  0x11
-	.DW  _0x10+124
-	.DW  _0x0*2+207
+	.DW  _0x17+124
+	.DW  _0x0*2+234
 
 	.DW  0x10
-	.DW  _0x10+141
-	.DW  _0x0*2+224
+	.DW  _0x17+141
+	.DW  _0x0*2+251
 
 	.DW  0x10
-	.DW  _0x10+157
-	.DW  _0x0*2+240
+	.DW  _0x17+157
+	.DW  _0x0*2+267
 
 	.DW  0x10
-	.DW  _0x10+173
-	.DW  _0x0*2+224
+	.DW  _0x17+173
+	.DW  _0x0*2+251
 
 	.DW  0x15
-	.DW  _0x10+189
-	.DW  _0x0*2+256
+	.DW  _0x17+189
+	.DW  _0x0*2+283
 
 	.DW  0x0E
-	.DW  _0x10+210
-	.DW  _0x0*2+123
+	.DW  _0x17+210
+	.DW  _0x0*2+150
 
 	.DW  0x13
-	.DW  _0x10+224
-	.DW  _0x0*2+137
+	.DW  _0x17+224
+	.DW  _0x0*2+164
 
 	.DW  0x01
 	.DW  __seed_G108
@@ -1442,6 +1445,15 @@ __GLOBAL_INI_END:
 ;char content_buffer[100];
 ;
 ;
+;// --- E???? ???E ? ??? ??E?? ---
+;#define MOTOR_DDR DDRE
+;#define MOTOR_PORT PORTE
+;#define MOTOR_PIN_1 2
+;#define MOTOR_PIN_2 3
+;#define MOTOR_PIN_3 4
+;#define MOTOR_PIN_4 5
+;
+;
 ;// E???? ???E C E?C? ????I
 ;#define KEYPAD_PORT PORTC
 ;#define KEYPAD_DDR DDRC
@@ -1461,23 +1473,23 @@ __GLOBAL_INI_END:
 ;char pressed_key;
 ;
 ;char get_key(void)
-; 0000 0020 {
+; 0000 0029 {
 
 	.CSEG
 _get_key:
 ; .FSTART _get_key
-; 0000 0021     unsigned char row, col;
-; 0000 0022     const unsigned char column_pins[3] = {COL1_PIN, COL2_PIN, COL3_PIN};
-; 0000 0023     const unsigned char row_pins[4] = {ROW1_PIN, ROW2_PIN, ROW3_PIN, ROW4_PIN};
-; 0000 0024 
-; 0000 0025     const char key_map[4][3] = {
-; 0000 0026         {'1', '2', '3'},
-; 0000 0027         {'4', '5', '6'},
-; 0000 0028         {'7', '8', '9'},
-; 0000 0029         {'*', '0', '#'}
-; 0000 002A     };
-; 0000 002B 
-; 0000 002C     for (col = 0; col < 3; col++)
+; 0000 002A     unsigned char row, col;
+; 0000 002B     const unsigned char column_pins[3] = {COL1_PIN, COL2_PIN, COL3_PIN};
+; 0000 002C     const unsigned char row_pins[4] = {ROW1_PIN, ROW2_PIN, ROW3_PIN, ROW4_PIN};
+; 0000 002D 
+; 0000 002E     const char key_map[4][3] = {
+; 0000 002F         {'1', '2', '3'},
+; 0000 0030         {'4', '5', '6'},
+; 0000 0031         {'7', '8', '9'},
+; 0000 0032         {'*', '0', '#'}
+; 0000 0033     };
+; 0000 0034 
+; 0000 0035     for (col = 0; col < 3; col++)
 	SBIW R28,19
 	LDI  R24,19
 	LDI  R26,LOW(0)
@@ -1496,12 +1508,12 @@ _get_key:
 _0x5:
 	CPI  R16,3
 	BRSH _0x6
-; 0000 002D     {
-; 0000 002E         KEYPAD_PORT |= (1 << COL1_PIN) | (1 << COL2_PIN) | (1 << COL3_PIN);
+; 0000 0036     {
+; 0000 0037         KEYPAD_PORT |= (1 << COL1_PIN) | (1 << COL2_PIN) | (1 << COL3_PIN);
 	IN   R30,0x15
 	ORI  R30,LOW(0x7)
 	OUT  0x15,R30
-; 0000 002F         KEYPAD_PORT &= ~(1 << column_pins[col]);
+; 0000 0038         KEYPAD_PORT &= ~(1 << column_pins[col]);
 	IN   R1,21
 	MOV  R30,R16
 	LDI  R31,0
@@ -1515,31 +1527,31 @@ _0x5:
 	COM  R30
 	AND  R30,R1
 	OUT  0x15,R30
-; 0000 0030 
-; 0000 0031         for (row = 0; row < 4; row++)
+; 0000 0039 
+; 0000 003A         for (row = 0; row < 4; row++)
 	LDI  R17,LOW(0)
 _0x8:
 	CPI  R17,4
 	BRSH _0x9
-; 0000 0032         {
-; 0000 0033             if (!(KEYPAD_PIN & (1 << row_pins[row])))
+; 0000 003B         {
+; 0000 003C             if (!(KEYPAD_PIN & (1 << row_pins[row])))
 	CALL SUBOPT_0x0
 	BRNE _0xA
-; 0000 0034             {
-; 0000 0035                 delay_ms(10);
+; 0000 003D             {
+; 0000 003E                 delay_ms(10);
 	LDI  R26,LOW(10)
 	LDI  R27,0
 	CALL _delay_ms
-; 0000 0036 
-; 0000 0037                 if (!(KEYPAD_PIN & (1 << row_pins[row])))
+; 0000 003F 
+; 0000 0040                 if (!(KEYPAD_PIN & (1 << row_pins[row])))
 	CALL SUBOPT_0x0
 	BRNE _0xB
-; 0000 0038                 {
-; 0000 0039                     while (!(KEYPAD_PIN & (1 << row_pins[row])));
+; 0000 0041                 {
+; 0000 0042                     while (!(KEYPAD_PIN & (1 << row_pins[row])));
 _0xC:
 	CALL SUBOPT_0x0
 	BREQ _0xC
-; 0000 003A                     return key_map[row][col];
+; 0000 0043                     return key_map[row][col];
 	LDI  R26,LOW(3)
 	MUL  R17,R26
 	MOVW R30,R0
@@ -1552,28 +1564,28 @@ _0xC:
 	ADC  R27,R30
 	LD   R30,X
 	RJMP _0x212000A
-; 0000 003B                 }
-; 0000 003C             }
+; 0000 0044                 }
+; 0000 0045             }
 _0xB:
-; 0000 003D         }
+; 0000 0046         }
 _0xA:
 	SUBI R17,-1
 	RJMP _0x8
 _0x9:
-; 0000 003E     }
+; 0000 0047     }
 	SUBI R16,-1
 	RJMP _0x5
 _0x6:
-; 0000 003F 
-; 0000 0040     // C?? ??? ???I? ?O?I? ?OI? E?I? ??IC? ??? (NULL) ?C E???IC?
-; 0000 0041     return 0;
+; 0000 0048 
+; 0000 0049     // C?? ??? ???I? ?O?I? ?OI? E?I? ??IC? ??? (NULL) ?C E???IC?
+; 0000 004A     return 0;
 	LDI  R30,LOW(0)
 _0x212000A:
 	LDD  R17,Y+1
 	LDD  R16,Y+0
 	ADIW R28,21
 	RET
-; 0000 0042 }
+; 0000 004B }
 ; .FEND
 ;
 ;
@@ -1583,10 +1595,10 @@ _0x212000A:
 ;
 ;//  «»⁄ ”«œÂ »—«Ì «—”«· œ” Ê—«  AT
 ;void send_at_command(char *command)
-; 0000 004B {
+; 0000 0054 {
 _send_at_command:
 ; .FSTART _send_at_command
-; 0000 004C     printf("%s\r\n", command);
+; 0000 0055     printf("%s\r\n", command);
 	ST   -Y,R27
 	ST   -Y,R26
 ;	*command -> Y+0
@@ -1601,46 +1613,46 @@ _send_at_command:
 	LDI  R24,4
 	CALL _printf
 	ADIW R28,6
-; 0000 004D }
+; 0000 0056 }
 	RJMP _0x2120009
 ; .FEND
 ;
 ;unsigned char init_sms(void)
-; 0000 0050 {
+; 0000 0059 {
 _init_sms:
 ; .FSTART _init_sms
-; 0000 0051     glcd_clear();
+; 0000 005A     glcd_clear();
 	CALL SUBOPT_0x1
-; 0000 0052     glcd_outtextxy(0, 0, "Setting SMS Mode...");
+; 0000 005B     glcd_outtextxy(0, 0, "Setting SMS Mode...");
 	__POINTW2MN _0xF,0
 	CALL _glcd_outtextxy
-; 0000 0053     send_at_command("AT+CMGF=1");
+; 0000 005C     send_at_command("AT+CMGF=1");
 	__POINTW2MN _0xF,20
 	CALL SUBOPT_0x2
-; 0000 0054     delay_ms(500);
-; 0000 0055 
-; 0000 0056     send_at_command("AT+CNMI=2,2,0,0,0");
+; 0000 005D     delay_ms(500);
+; 0000 005E 
+; 0000 005F     send_at_command("AT+CNMI=2,2,0,0,0");
 	__POINTW2MN _0xF,30
 	CALL SUBOPT_0x2
-; 0000 0057     delay_ms(500);
-; 0000 0058 
-; 0000 0059     send_at_command("AT+CMGDA=\"DEL ALL\"");
+; 0000 0060     delay_ms(500);
+; 0000 0061 
+; 0000 0062     send_at_command("AT+CMGDA=\"DEL ALL\"");
 	__POINTW2MN _0xF,48
 	RCALL _send_at_command
-; 0000 005A     delay_ms(2000);
+; 0000 0063     delay_ms(2000);
 	LDI  R26,LOW(2000)
 	LDI  R27,HIGH(2000)
 	CALL _delay_ms
-; 0000 005B 
-; 0000 005C     glcd_outtextxy(0, 10, "SMS Ready.");
+; 0000 0064 
+; 0000 0065     glcd_outtextxy(0, 10, "SMS Ready.");
 	CALL SUBOPT_0x3
 	__POINTW2MN _0xF,67
 	CALL SUBOPT_0x4
-; 0000 005D     delay_ms(1000);
-; 0000 005E     return 1;
+; 0000 0066     delay_ms(1000);
+; 0000 0067     return 1;
 	LDI  R30,LOW(1)
 	RET
-; 0000 005F }
+; 0000 0068 }
 ; .FEND
 
 	.DSEG
@@ -1648,146 +1660,235 @@ _0xF:
 	.BYTE 0x4E
 ;
 ;
+;//
+;//void process_sms(void)
+;//{
+;//    sms_char = content_buffer[0]; // ›ﬁÿ ò«—«ò — «Ê· „Õ Ê« „Â„ «” 
+;//
+;//    if (sms_char == '1' || sms_char == '2' || sms_char == '3')
+;//    {
+;//        glcd_clear();
+;//        glcd_outtextxy(0, 5, "SMS Code:");
+;//
+;//        // ⁄œœ œ—Ì«›  ‘œÂ «“ ÅÌ«„ò —« ‰„«Ì‘ »œÂ
+;//        display_buffer[0] = sms_char;
+;//        glcd_outtextxy(70, 5, display_buffer);
+;//        glcd_outtextxy(0, 25, "Enter code on keypad:");
+;//
+;//        // „‰ Ÿ— »„«‰  « ò«—»— ò·ÌœÌ —« ›‘«— œÂœ
+;//        do {
+;//            key_pressed = get_key();
+;//        } while (key_pressed == 0); //  « Êﬁ Ì ò·ÌœÌ ›‘—œÂ ‰‘œÂ° œ— Õ·ﬁÂ »„«‰
+;//
+;//        glcd_outtextxy(0, 45, "You pressed:");
+;//
+;//        // ò·Ìœ ›‘—œÂ ‘œÂ —« ‰„«Ì‘ »œÂ
+;//        display_buffer[0] = key_pressed;
+;//        glcd_outtextxy(90, 45, display_buffer);
+;//        delay_ms(2000); // 2 À«‰ÌÂ ’»— ò‰  « ò«—»— Ê—ÊœÌ ŒÊœ —« »»Ì‰œ
+;//
+;//        // ‘—ÿ 2: ¬Ì« Ê—ÊœÌ ò«—»— »« ÅÌ«„ò ÌòÌ «” ø
+;//        if (key_pressed == sms_char)
+;//        {
+;//            // «ê— ÌòÌ »Êœ
+;//            glcd_clear();
+;//            glcd_outtextxy(10, 25, "Code is CORRECT!");
+;//            delay_ms(3000); // 10 À«‰ÌÂ ’»— ò‰
+;//
+;//            glcd_clear();
+;//            glcd_outtextxy(10, 25, "Program Halted.");
+;//            //while(1); // »—‰«„Â —« „ Êﬁ› ò‰
+;//        }
+;//        else
+;//        {
+;//            // «ê— ÌòÌ ‰»Êœ
+;//            glcd_clear();
+;//            glcd_outtextxy(5, 25, "Error in entry!");
+;//            delay_ms(3000);
+;//
+;//            glcd_clear();
+;//            glcd_outtextxy(10, 25, "Program Halted.");
+;//            while(1); // »—‰«„Â —« „ Êﬁ› ò‰
+;//        }
+;//    }
+;//    else
+;//    {
+;//        // «ê— ⁄œœ ÅÌ«„ò ‘œÂ 1° 2 Ì« 3 ‰»Êœ
+;//        glcd_clear();
+;//        glcd_outtextxy(5, 25, "SMS code is invalid!");
+;//        delay_ms(4000); // 4 À«‰ÌÂ ÅÌ«„ Œÿ« —« ‰„«Ì‘ »œÂ
+;//    }
+;//}
+;
+;
+;
+;void activate_motor(int product_id)
+; 0000 00AA {
+
+	.CSEG
+; 0000 00AB     unsigned char motor_pin;
+; 0000 00AC     char motor_msg[20];
+; 0000 00AD 
+; 0000 00AE     switch (product_id)
+;	product_id -> Y+21
+;	motor_pin -> R17
+;	motor_msg -> Y+1
+; 0000 00AF     {
+; 0000 00B0         case 1: motor_pin = MOTOR_PIN_1; break;
+; 0000 00B1         case 2: motor_pin = MOTOR_PIN_2; break;
+; 0000 00B2         case 3: motor_pin = MOTOR_PIN_3; break;
+; 0000 00B3         default: return;
+; 0000 00B4     }
+; 0000 00B5 
+; 0000 00B6     sprintf(motor_msg, "MOTOR %d ON!", product_id);
+; 0000 00B7     glcd_clear();
+; 0000 00B8     glcd_outtextxy(10, 20, motor_msg);
+; 0000 00B9     MOTOR_PORT |= (1 << motor_pin);
+; 0000 00BA     delay_ms(10000);
+; 0000 00BB     MOTOR_PORT &= ~(1 << motor_pin);
+; 0000 00BC 
+; 0000 00BD     sprintf(motor_msg, "MOTOR %d OFF!", product_id);
+; 0000 00BE     glcd_outtextxy(10, 40, motor_msg);
+; 0000 00BF     delay_ms(2000);
+; 0000 00C0 }
 ;
 ;
 ;void main(void)
-; 0000 0065 {
-
-	.CSEG
+; 0000 00C4 {
 _main:
 ; .FSTART _main
-; 0000 0066     GLCDINIT_t glcd_init_data;
-; 0000 0067 
-; 0000 0068     // --- «Ì‰ »Œ‘ „ﬁœ«—œÂÌ «Ê·ÌÂ ÅÊ— ùÂ« Ê USART «”  òÂ «“ òœ ŒÊœ «‰ òÅÌ ‘œÂ ---
-; 0000 0069     // --- Ê ’ÕÌÕ «” . ‰Ì«“Ì »Â  €ÌÌ— ¬‰ ‰Ì” .                             ---
-; 0000 006A     DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (0<<DDA1) | (0<<DDA0);
+; 0000 00C5     GLCDINIT_t glcd_init_data;
+; 0000 00C6 
+; 0000 00C7     // --- «Ì‰ »Œ‘ „ﬁœ«—œÂÌ «Ê·ÌÂ ÅÊ— ùÂ« Ê USART «”  òÂ «“ òœ ŒÊœ «‰ òÅÌ ‘œÂ ---
+; 0000 00C8     // --- Ê ’ÕÌÕ «” . ‰Ì«“Ì »Â  €ÌÌ— ¬‰ ‰Ì” .                             ---
+; 0000 00C9     DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (0<<DDA1) | (0<<DDA0);
 	SBIW R28,6
 ;	glcd_init_data -> Y+0
 	LDI  R30,LOW(0)
 	OUT  0x1A,R30
-; 0000 006B     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
+; 0000 00CA     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
 	OUT  0x1B,R30
-; 0000 006C     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
+; 0000 00CB     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
 	OUT  0x17,R30
-; 0000 006D     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
+; 0000 00CC     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
 	LDI  R30,LOW(240)
 	OUT  0x18,R30
-; 0000 006E     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
+; 0000 00CD     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
 	LDI  R30,LOW(7)
 	OUT  0x14,R30
-; 0000 006F     PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
+; 0000 00CE     PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
 	LDI  R30,LOW(240)
 	OUT  0x15,R30
-; 0000 0070     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
+; 0000 00CF     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
 	LDI  R30,LOW(60)
 	OUT  0x2,R30
-; 0000 0071     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
+; 0000 00D0     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
 	LDI  R30,LOW(0)
 	OUT  0x3,R30
-; 0000 0072     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
+; 0000 00D1     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
 	STS  97,R30
-; 0000 0073     PORTF=(0<<PORTF7) | (0<<PORTF6) | (0<<PORTF5) | (0<<PORTF4) | (0<<PORTF3) | (0<<PORTF2) | (0<<PORTF1) | (0<<PORTF0);
+; 0000 00D2     PORTF=(0<<PORTF7) | (0<<PORTF6) | (0<<PORTF5) | (0<<PORTF4) | (0<<PORTF3) | (0<<PORTF2) | (0<<PORTF1) | (0<<PORTF0);
 	STS  98,R30
-; 0000 0074     UCSR0A=(0<<RXC0) | (0<<TXC0) | (0<<UDRE0) | (0<<FE0) | (0<<DOR0) | (0<<UPE0) | (0<<U2X0) | (0<<MPCM0);
+; 0000 00D3     UCSR0A=(0<<RXC0) | (0<<TXC0) | (0<<UDRE0) | (0<<FE0) | (0<<DOR0) | (0<<UPE0) | (0<<U2X0) | (0<<MPCM0);
 	OUT  0xB,R30
-; 0000 0075     UCSR0B=(0<<RXCIE0) | (0<<TXCIE0) | (0<<UDRIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02) | (0<<RXB80) | (0<<TXB80);
+; 0000 00D4     UCSR0B=(0<<RXCIE0) | (0<<TXCIE0) | (0<<UDRIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02) | (0<<RXB80) | (0<<TXB80);
 	LDI  R30,LOW(24)
 	OUT  0xA,R30
-; 0000 0076     UCSR0C=(0<<UMSEL0) | (0<<UPM01) | (0<<UPM00) | (0<<USBS0) | (1<<UCSZ01) | (1<<UCSZ00) | (0<<UCPOL0);
+; 0000 00D5     UCSR0C=(0<<UMSEL0) | (0<<UPM01) | (0<<UPM00) | (0<<USBS0) | (1<<UCSZ01) | (1<<UCSZ00) | (0<<UCPOL0);
 	LDI  R30,LOW(6)
 	STS  149,R30
-; 0000 0077     UBRR0H=0x00;
+; 0000 00D6     UBRR0H=0x00;
 	LDI  R30,LOW(0)
 	STS  144,R30
-; 0000 0078     UBRR0L=0x33; // 9600 Baud Rate for 8MHz clock
+; 0000 00D7     UBRR0L=0x33; // 9600 Baud Rate for 8MHz clock
 	LDI  R30,LOW(51)
 	OUT  0x9,R30
-; 0000 0079     MCUCSR = (1 << JTD);
+; 0000 00D8     MCUCSR = (1 << JTD);
 	LDI  R30,LOW(128)
 	OUT  0x34,R30
-; 0000 007A     MCUCSR = (1 << JTD);
+; 0000 00D9     MCUCSR = (1 << JTD);
 	OUT  0x34,R30
-; 0000 007B     glcd_init_data.font=font5x7;
+; 0000 00DA     glcd_init_data.font=font5x7;
 	LDI  R30,LOW(_font5x7*2)
 	LDI  R31,HIGH(_font5x7*2)
 	ST   Y,R30
 	STD  Y+1,R31
-; 0000 007C     glcd_init_data.readxmem=NULL;
+; 0000 00DB     glcd_init_data.readxmem=NULL;
 	LDI  R30,LOW(0)
 	STD  Y+2,R30
 	STD  Y+2+1,R30
-; 0000 007D     glcd_init_data.writexmem=NULL;
+; 0000 00DC     glcd_init_data.writexmem=NULL;
 	STD  Y+4,R30
 	STD  Y+4+1,R30
-; 0000 007E     glcd_init(&glcd_init_data);
+; 0000 00DD     glcd_init(&glcd_init_data);
 	MOVW R26,R28
 	RCALL _glcd_init
-; 0000 007F     glcd_setfont(font5x7);
+; 0000 00DE     glcd_setfont(font5x7);
 	LDI  R30,LOW(_font5x7*2)
 	LDI  R31,HIGH(_font5x7*2)
 	CALL SUBOPT_0x5
-; 0000 0080     // --- Å«Ì«‰ »Œ‘ „ﬁœ«—œÂÌ «Ê·ÌÂ ---
-; 0000 0081 
-; 0000 0082     glcd_clear();
+; 0000 00DF     // --- Å«Ì«‰ »Œ‘ „ﬁœ«—œÂÌ «Ê·ÌÂ ---
+; 0000 00E0 
+; 0000 00E1     glcd_clear();
 	CALL SUBOPT_0x1
-; 0000 0083     glcd_outtextxy(0, 0, "Module Init...");
-	__POINTW2MN _0x10,0
+; 0000 00E2     glcd_outtextxy(0, 0, "Module Init...");
+	__POINTW2MN _0x17,0
 	CALL SUBOPT_0x4
-; 0000 0084     delay_ms(1000);
-; 0000 0085 
-; 0000 0086     // 1. Œ«„Ê‘ ò—œ‰ «òÊ
-; 0000 0087     send_at_command("ATE0");
-	__POINTW2MN _0x10,15
+; 0000 00E3     delay_ms(1000);
+; 0000 00E4 
+; 0000 00E5     // 1. Œ«„Ê‘ ò—œ‰ «òÊ
+; 0000 00E6     send_at_command("ATE0");
+	__POINTW2MN _0x17,15
 	CALL SUBOPT_0x2
-; 0000 0088     delay_ms(500);
-; 0000 0089     send_at_command("AT");
-	__POINTW2MN _0x10,20
+; 0000 00E7     delay_ms(500);
+; 0000 00E8     send_at_command("AT");
+	__POINTW2MN _0x17,20
 	CALL SUBOPT_0x2
-; 0000 008A     delay_ms(500);
-; 0000 008B 
-; 0000 008C 
-; 0000 008D     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
+; 0000 00E9     delay_ms(500);
+; 0000 00EA 
+; 0000 00EB 
+; 0000 00EC     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
 	RCALL _init_sms
 	CPI  R30,0
-	BRNE _0x11
+	BRNE _0x18
 	CALL SUBOPT_0x3
-	__POINTW2MN _0x10,23
+	__POINTW2MN _0x17,23
 	CALL _glcd_outtextxy
-_0x12:
-	RJMP _0x12
-; 0000 008E //    // 2.  ‰ŸÌ„ Õ«·  ÅÌ«„ò »Â TEXT
-; 0000 008F //    send_at_command("AT+CMGF=1");
-; 0000 0090 //    delay_ms(500);
-; 0000 0091 //
-; 0000 0092 //    // 3.  ‰ŸÌ„ „«éÊ· »—«Ì «—”«· „” ﬁÌ„ ÅÌ«„ò »Â ÅÊ—  ”—Ì«·
-; 0000 0093 //    send_at_command("AT+CNMI=2,2,0,0,0");
-; 0000 0094 //    delay_ms(500);
-; 0000 0095 //
-; 0000 0096 //    // 4. Õ–›  „«„ ÅÌ«„ò Â«Ì ﬁ»·Ì »—«Ì «ÿ„Ì‰«‰
-; 0000 0097 //    send_at_command("AT+CMGDA=\"DEL ALL\"");
-; 0000 0098 //    delay_ms(2000);
-; 0000 0099 
-; 0000 009A     glcd_clear();
-_0x11:
+_0x19:
+	RJMP _0x19
+; 0000 00ED //    // 2.  ‰ŸÌ„ Õ«·  ÅÌ«„ò »Â TEXT
+; 0000 00EE //    send_at_command("AT+CMGF=1");
+; 0000 00EF //    delay_ms(500);
+; 0000 00F0 //
+; 0000 00F1 //    // 3.  ‰ŸÌ„ „«éÊ· »—«Ì «—”«· „” ﬁÌ„ ÅÌ«„ò »Â ÅÊ—  ”—Ì«·
+; 0000 00F2 //    send_at_command("AT+CNMI=2,2,0,0,0");
+; 0000 00F3 //    delay_ms(500);
+; 0000 00F4 //
+; 0000 00F5 //    // 4. Õ–›  „«„ ÅÌ«„ò Â«Ì ﬁ»·Ì »—«Ì «ÿ„Ì‰«‰
+; 0000 00F6 //    send_at_command("AT+CMGDA=\"DEL ALL\"");
+; 0000 00F7 //    delay_ms(2000);
+; 0000 00F8 
+; 0000 00F9     glcd_clear();
+_0x18:
 	CALL SUBOPT_0x1
-; 0000 009B     glcd_outtextxy(0, 0, "System Ready.");
-	__POINTW2MN _0x10,40
+; 0000 00FA     glcd_outtextxy(0, 0, "System Ready.");
+	__POINTW2MN _0x17,40
 	CALL _glcd_outtextxy
-; 0000 009C     glcd_outtextxy(0, 10, "Waiting for SMS...");
+; 0000 00FB     glcd_outtextxy(0, 10, "Waiting for SMS...");
 	CALL SUBOPT_0x3
-	__POINTW2MN _0x10,54
+	__POINTW2MN _0x17,54
 	CALL _glcd_outtextxy
-; 0000 009D 
-; 0000 009E 
-; 0000 009F     // Õ·ﬁÂ «’·Ì »—‰«„Â
-; 0000 00A0     while (1)
-_0x15:
-; 0000 00A1     {
-; 0000 00A2         char sms_char;
-; 0000 00A3         char key_pressed;
-; 0000 00A4         char display_buffer[2] = {0}; // »«›— òÊçò »—«Ì ‰„«Ì‘ Ìò ò«—«ò —
-; 0000 00A5         // Â„Ì‘Â ¬„«œÂ œ—Ì«›  Œÿ «Ê· (Âœ—) »«‘
-; 0000 00A6         memset(header_buffer, 0, sizeof(header_buffer));
+; 0000 00FC 
+; 0000 00FD 
+; 0000 00FE     // Õ·ﬁÂ «’·Ì »—‰«„Â
+; 0000 00FF     while (1)
+_0x1C:
+; 0000 0100     {
+; 0000 0101         char sms_char;
+; 0000 0102         char key_pressed;
+; 0000 0103         char display_buffer[2] = {0}; // »«›— òÊçò »—«Ì ‰„«Ì‘ Ìò ò«—«ò —
+; 0000 0104         // Â„Ì‘Â ¬„«œÂ œ—Ì«›  Œÿ «Ê· (Âœ—) »«‘
+; 0000 0105         memset(header_buffer, 0, sizeof(header_buffer));
 	SBIW R28,4
 	LDI  R30,LOW(0)
 	ST   Y,R30
@@ -1798,35 +1899,34 @@ _0x15:
 ;	display_buffer -> Y+0
 	CALL SUBOPT_0x6
 	CALL SUBOPT_0x7
-; 0000 00A7 
-; 0000 00A8         // «ê— ŒÿÌ œ—Ì«›  ‘œ...
-; 0000 00A9         if (gets(header_buffer, sizeof(header_buffer)))
+; 0000 0106 
+; 0000 0107         // «ê— ŒÿÌ œ—Ì«›  ‘œ...
+; 0000 0108         if (gets(header_buffer, sizeof(header_buffer)))
 	CALL SUBOPT_0x6
 	LDI  R26,LOW(100)
 	LDI  R27,0
 	CALL _gets
 	SBIW R30,0
 	BRNE PC+2
-	RJMP _0x18
-; 0000 00AA         {
-; 0000 00AB             // ›Ê—« çò ò‰ òÂ ¬Ì« «Ì‰ Œÿ° Â„«‰ Âœ— ÅÌ«„ò «” ø
-; 0000 00AC             if (strstr(header_buffer, "+CMT:") != NULL)
+	RJMP _0x1F
+; 0000 0109         {
+; 0000 010A             // ›Ê—« çò ò‰ òÂ ¬Ì« «Ì‰ Œÿ° Â„«‰ Âœ— ÅÌ«„ò «” ø
+; 0000 010B             if (strstr(header_buffer, "+CMT:") != NULL)
 	CALL SUBOPT_0x6
-	__POINTW2MN _0x10,73
+	__POINTW2MN _0x17,73
 	CALL _strstr
 	SBIW R30,0
 	BRNE PC+2
-	RJMP _0x19
-; 0000 00AD             {
-; 0000 00AE                 // «ê— Âœ— »Êœ° »œÊ‰ ÂÌç ò«— «÷«›Âù«Ì° »·«›«’·Â Œÿ »⁄œÌ („Õ Ê«) —« »ŒÊ«‰
-; 0000 00AF                 // «Ì‰ ò«— «“ ”——Ì“ ‘œ‰ »«›— Ã·ÊêÌ—Ì „Ìùò‰œ
-; 0000 00B0                 memset(content_buffer, 0, sizeof(content_buffer));
+	RJMP _0x20
+; 0000 010C             {
+; 0000 010D 
+; 0000 010E                 memset(content_buffer, 0, sizeof(content_buffer));
 	LDI  R30,LOW(_content_buffer)
 	LDI  R31,HIGH(_content_buffer)
 	ST   -Y,R31
 	ST   -Y,R30
 	CALL SUBOPT_0x7
-; 0000 00B1                 gets(content_buffer, sizeof(content_buffer));
+; 0000 010F                 gets(content_buffer, sizeof(content_buffer));
 	LDI  R30,LOW(_content_buffer)
 	LDI  R31,HIGH(_content_buffer)
 	ST   -Y,R31
@@ -1834,51 +1934,46 @@ _0x15:
 	LDI  R26,LOW(100)
 	LDI  R27,0
 	CALL _gets
-; 0000 00B2 
-; 0000 00B3                 // ==========================================================
-; 0000 00B4                 // ===== ‘—Ê⁄ „‰ÿﬁ ÃœÌœ »—«Ì Å—œ«“‘ „Õ Ê«Ì ÅÌ«„ò Ê òÌÅœ =====
-; 0000 00B5                 // ==========================================================
-; 0000 00B6 
-; 0000 00B7                 // ›ﬁÿ œ— ’Ê— Ì «œ«„Â »œÂ òÂ „Õ Ê«Ì ÅÌ«„ò Œ«·Ì ‰»«‘œ
-; 0000 00B8                 if (strlen(content_buffer) > 0)
+; 0000 0110 
+; 0000 0111                 if (strlen(content_buffer) > 0)
 	LDI  R26,LOW(_content_buffer)
 	LDI  R27,HIGH(_content_buffer)
 	CALL _strlen
 	CALL __CPW01
 	BRLO PC+2
-	RJMP _0x1A
-; 0000 00B9                 {
-; 0000 00BA                     sms_char = content_buffer[0]; // ›ﬁÿ ò«—«ò — «Ê· „Õ Ê« „Â„ «” 
+	RJMP _0x21
+; 0000 0112                 {
+; 0000 0113                     sms_char = content_buffer[0]; // ›ﬁÿ ò«—«ò — «Ê· „Õ Ê« „Â„ «” 
 	LDS  R30,_content_buffer
 	STD  Y+3,R30
-; 0000 00BB 
-; 0000 00BC                     // ‘—ÿ 1: çò ò‰ ¬Ì« „Õ Ê«Ì ÅÌ«„ò 1° 2 Ì« 3 «” ø
-; 0000 00BD                     if (sms_char == '1' || sms_char == '2' || sms_char == '3')
+; 0000 0114 
+; 0000 0115                     // ‘—ÿ 1: çò ò‰ ¬Ì« „Õ Ê«Ì ÅÌ«„ò 1° 2 Ì« 3 «” ø
+; 0000 0116                     if (sms_char == '1' || sms_char == '2' || sms_char == '3')
 	LDD  R26,Y+3
 	CPI  R26,LOW(0x31)
-	BREQ _0x1C
+	BREQ _0x23
 	CPI  R26,LOW(0x32)
-	BREQ _0x1C
+	BREQ _0x23
 	CPI  R26,LOW(0x33)
-	BREQ _0x1C
-	RJMP _0x1B
-_0x1C:
-; 0000 00BE                     {
-; 0000 00BF                         glcd_clear();
+	BREQ _0x23
+	RJMP _0x22
+_0x23:
+; 0000 0117                     {
+; 0000 0118                         glcd_clear();
 	RCALL _glcd_clear
-; 0000 00C0                         glcd_outtextxy(0, 5, "SMS Code:");
+; 0000 0119                         glcd_outtextxy(0, 5, "SMS Code:");
 	LDI  R30,LOW(0)
 	ST   -Y,R30
 	LDI  R30,LOW(5)
 	ST   -Y,R30
-	__POINTW2MN _0x10,79
+	__POINTW2MN _0x17,79
 	CALL _glcd_outtextxy
-; 0000 00C1 
-; 0000 00C2                         // ⁄œœ œ—Ì«›  ‘œÂ «“ ÅÌ«„ò —« ‰„«Ì‘ »œÂ
-; 0000 00C3                         display_buffer[0] = sms_char;
+; 0000 011A 
+; 0000 011B                         // ⁄œœ œ—Ì«›  ‘œÂ «“ ÅÌ«„ò —« ‰„«Ì‘ »œÂ
+; 0000 011C                         display_buffer[0] = sms_char;
 	LDD  R30,Y+3
 	ST   Y,R30
-; 0000 00C4                         glcd_outtextxy(70, 5, display_buffer);
+; 0000 011D                         glcd_outtextxy(70, 5, display_buffer);
 	LDI  R30,LOW(70)
 	ST   -Y,R30
 	LDI  R30,LOW(5)
@@ -1886,38 +1981,37 @@ _0x1C:
 	MOVW R26,R28
 	ADIW R26,2
 	CALL _glcd_outtextxy
-; 0000 00C5 
-; 0000 00C6                         glcd_outtextxy(0, 25, "Enter code on keypad:");
+; 0000 011E                         glcd_outtextxy(0, 25, "Enter code on keypad:");
 	LDI  R30,LOW(0)
 	ST   -Y,R30
 	LDI  R30,LOW(25)
 	ST   -Y,R30
-	__POINTW2MN _0x10,89
+	__POINTW2MN _0x17,89
 	CALL _glcd_outtextxy
-; 0000 00C7 
-; 0000 00C8                         // „‰ Ÿ— »„«‰  « ò«—»— ò·ÌœÌ —« ›‘«— œÂœ
-; 0000 00C9                         do {
-_0x1F:
-; 0000 00CA                             key_pressed = get_key();
+; 0000 011F 
+; 0000 0120                         // „‰ Ÿ— »„«‰  « ò«—»— ò·ÌœÌ —« ›‘«— œÂœ
+; 0000 0121                         do {
+_0x26:
+; 0000 0122                             key_pressed = get_key();
 	RCALL _get_key
 	STD  Y+2,R30
-; 0000 00CB                         } while (key_pressed == 0); //  « Êﬁ Ì ò·ÌœÌ ›‘—œÂ ‰‘œÂ° œ— Õ·ﬁÂ »„«‰
+; 0000 0123                         } while (key_pressed == 0); //  « Êﬁ Ì ò·ÌœÌ ›‘—œÂ ‰‘œÂ° œ— Õ·ﬁÂ »„«‰
 	CPI  R30,0
-	BREQ _0x1F
-; 0000 00CC 
-; 0000 00CD                         glcd_outtextxy(0, 45, "You pressed:");
+	BREQ _0x26
+; 0000 0124 
+; 0000 0125                         glcd_outtextxy(0, 45, "You pressed:");
 	LDI  R30,LOW(0)
 	ST   -Y,R30
 	LDI  R30,LOW(45)
 	ST   -Y,R30
-	__POINTW2MN _0x10,111
+	__POINTW2MN _0x17,111
 	CALL _glcd_outtextxy
-; 0000 00CE 
-; 0000 00CF                         // ò·Ìœ ›‘—œÂ ‘œÂ —« ‰„«Ì‘ »œÂ
-; 0000 00D0                         display_buffer[0] = key_pressed;
+; 0000 0126 
+; 0000 0127                         // ò·Ìœ ›‘—œÂ ‘œÂ —« ‰„«Ì‘ »œÂ
+; 0000 0128                         display_buffer[0] = key_pressed;
 	LDD  R30,Y+2
 	ST   Y,R30
-; 0000 00D1                         glcd_outtextxy(90, 45, display_buffer);
+; 0000 0129                         glcd_outtextxy(90, 45, display_buffer);
 	LDI  R30,LOW(90)
 	ST   -Y,R30
 	LDI  R30,LOW(45)
@@ -1925,102 +2019,102 @@ _0x1F:
 	MOVW R26,R28
 	ADIW R26,2
 	CALL _glcd_outtextxy
-; 0000 00D2                         delay_ms(2000); // 2 À«‰ÌÂ ’»— ò‰  « ò«—»— Ê—ÊœÌ ŒÊœ —« »»Ì‰œ
+; 0000 012A                         delay_ms(2000); // 2 À«‰ÌÂ ’»— ò‰  « ò«—»— Ê—ÊœÌ ŒÊœ —« »»Ì‰œ
 	LDI  R26,LOW(2000)
 	LDI  R27,HIGH(2000)
 	CALL _delay_ms
-; 0000 00D3 
-; 0000 00D4                         // ‘—ÿ 2: ¬Ì« Ê—ÊœÌ ò«—»— »« ÅÌ«„ò ÌòÌ «” ø
-; 0000 00D5                         if (key_pressed == sms_char)
+; 0000 012B 
+; 0000 012C                         // ‘—ÿ 2: ¬Ì« Ê—ÊœÌ ò«—»— »« ÅÌ«„ò ÌòÌ «” ø
+; 0000 012D                         if (key_pressed == sms_char)
 	LDD  R30,Y+3
 	LDD  R26,Y+2
 	CP   R30,R26
-	BRNE _0x21
-; 0000 00D6                         {
-; 0000 00D7                             // «ê— ÌòÌ »Êœ
-; 0000 00D8                             glcd_clear();
+	BRNE _0x28
+; 0000 012E                         {
+; 0000 012F                             // «ê— ÌòÌ »Êœ
+; 0000 0130                             glcd_clear();
 	CALL SUBOPT_0x8
-; 0000 00D9                             glcd_outtextxy(10, 25, "Code is CORRECT!");
-	__POINTW2MN _0x10,124
+; 0000 0131                             glcd_outtextxy(10, 25, "Code is CORRECT!");
+	__POINTW2MN _0x17,124
 	CALL SUBOPT_0x9
-; 0000 00DA                             delay_ms(3000); // 10 À«‰ÌÂ ’»— ò‰
-; 0000 00DB 
-; 0000 00DC                             glcd_clear();
-; 0000 00DD                             glcd_outtextxy(10, 25, "Program Halted.");
-	__POINTW2MN _0x10,141
+; 0000 0132                             delay_ms(3000); // 10 À«‰ÌÂ ’»— ò‰
+; 0000 0133 
+; 0000 0134                             glcd_clear();
+; 0000 0135                             glcd_outtextxy(10, 25, "Program Halted.");
+	__POINTW2MN _0x17,141
 	CALL _glcd_outtextxy
-; 0000 00DE                             //while(1); // »—‰«„Â —« „ Êﬁ› ò‰
-; 0000 00DF                         }
-; 0000 00E0                         else
-	RJMP _0x22
-_0x21:
-; 0000 00E1                         {
-; 0000 00E2                             // «ê— ÌòÌ ‰»Êœ
-; 0000 00E3                             glcd_clear();
+; 0000 0136                             //while(1); // »—‰«„Â —« „ Êﬁ› ò‰
+; 0000 0137                         }
+; 0000 0138                         else
+	RJMP _0x29
+_0x28:
+; 0000 0139                         {
+; 0000 013A                             // «ê— ÌòÌ ‰»Êœ
+; 0000 013B                             glcd_clear();
 	CALL SUBOPT_0xA
-; 0000 00E4                             glcd_outtextxy(5, 25, "Error in entry!");
-	__POINTW2MN _0x10,157
+; 0000 013C                             glcd_outtextxy(5, 25, "Error in entry!");
+	__POINTW2MN _0x17,157
 	CALL SUBOPT_0x9
-; 0000 00E5                             delay_ms(3000);
-; 0000 00E6 
-; 0000 00E7                             glcd_clear();
-; 0000 00E8                             glcd_outtextxy(10, 25, "Program Halted.");
-	__POINTW2MN _0x10,173
+; 0000 013D                             delay_ms(3000);
+; 0000 013E 
+; 0000 013F                             glcd_clear();
+; 0000 0140                             glcd_outtextxy(10, 25, "Program Halted.");
+	__POINTW2MN _0x17,173
 	CALL _glcd_outtextxy
-; 0000 00E9                             while(1); // »—‰«„Â —« „ Êﬁ› ò‰
-_0x23:
-	RJMP _0x23
-; 0000 00EA                         }
+; 0000 0141                             while(1); // »—‰«„Â —« „ Êﬁ› ò‰
+_0x2A:
+	RJMP _0x2A
+; 0000 0142                         }
+_0x29:
+; 0000 0143                     }
+; 0000 0144                     else
+	RJMP _0x2D
 _0x22:
-; 0000 00EB                     }
-; 0000 00EC                     else
-	RJMP _0x26
-_0x1B:
-; 0000 00ED                     {
-; 0000 00EE                         // «ê— ⁄œœ ÅÌ«„ò ‘œÂ 1° 2 Ì« 3 ‰»Êœ
-; 0000 00EF                         glcd_clear();
+; 0000 0145                     {
+; 0000 0146                         // «ê— ⁄œœ ÅÌ«„ò ‘œÂ 1° 2 Ì« 3 ‰»Êœ
+; 0000 0147                         glcd_clear();
 	CALL SUBOPT_0xA
-; 0000 00F0                         glcd_outtextxy(5, 25, "SMS code is invalid!");
-	__POINTW2MN _0x10,189
+; 0000 0148                         glcd_outtextxy(5, 25, "SMS code is invalid!");
+	__POINTW2MN _0x17,189
 	CALL _glcd_outtextxy
-; 0000 00F1                         delay_ms(4000); // 4 À«‰ÌÂ ÅÌ«„ Œÿ« —« ‰„«Ì‘ »œÂ
+; 0000 0149                         delay_ms(4000); // 4 À«‰ÌÂ ÅÌ«„ Œÿ« —« ‰„«Ì‘ »œÂ
 	LDI  R26,LOW(4000)
 	LDI  R27,HIGH(4000)
 	CALL _delay_ms
-; 0000 00F2                     }
-_0x26:
-; 0000 00F3                 }
-; 0000 00F4 
-; 0000 00F5                 // ==========================================================
-; 0000 00F6                 // ========== Å«Ì«‰ „‰ÿﬁ ÃœÌœ Ê »«“ê‘  »Â Õ«·  «‰ Ÿ«— ========
-; 0000 00F7                 // ==========================================================
-; 0000 00F8 
-; 0000 00F9 
-; 0000 00FA                 // ’›ÕÂ —« »—«Ì ÅÌ«„ »⁄œÌ ¬„«œÂ ò‰
-; 0000 00FB                 glcd_clear();
-_0x1A:
+; 0000 014A                     }
+_0x2D:
+; 0000 014B                 }
+; 0000 014C 
+; 0000 014D                 // ==========================================================
+; 0000 014E                 // ========== Å«Ì«‰ „‰ÿﬁ ÃœÌœ Ê »«“ê‘  »Â Õ«·  «‰ Ÿ«— ========
+; 0000 014F                 // ==========================================================
+; 0000 0150 
+; 0000 0151 
+; 0000 0152                 // ’›ÕÂ —« »—«Ì ÅÌ«„ »⁄œÌ ¬„«œÂ ò‰
+; 0000 0153                 glcd_clear();
+_0x21:
 	CALL SUBOPT_0x1
-; 0000 00FC                 glcd_outtextxy(0, 0, "System Ready.");
-	__POINTW2MN _0x10,210
+; 0000 0154                 glcd_outtextxy(0, 0, "System Ready.");
+	__POINTW2MN _0x17,210
 	CALL _glcd_outtextxy
-; 0000 00FD                 glcd_outtextxy(0, 10, "Waiting for SMS...");
+; 0000 0155                 glcd_outtextxy(0, 10, "Waiting for SMS...");
 	CALL SUBOPT_0x3
-	__POINTW2MN _0x10,224
+	__POINTW2MN _0x17,224
 	CALL _glcd_outtextxy
-; 0000 00FE             }
-; 0000 00FF         }
-_0x19:
-; 0000 0100     }
-_0x18:
+; 0000 0156             }
+; 0000 0157         }
+_0x20:
+; 0000 0158     }
+_0x1F:
 	ADIW R28,4
-	RJMP _0x15
-; 0000 0101 }
-_0x27:
-	RJMP _0x27
+	RJMP _0x1C
+; 0000 0159 }
+_0x2E:
+	RJMP _0x2E
 ; .FEND
 
 	.DSEG
-_0x10:
+_0x17:
 	.BYTE 0xF3
 	#ifndef __SLEEP_DEFINED__
 	#define __SLEEP_DEFINED__
