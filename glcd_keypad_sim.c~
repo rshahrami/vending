@@ -6,13 +6,182 @@
 #include <string.h>
 
 // »«›— »—«Ì œ—Ì«›  œ«œÂ «“ „«éÊ·
-char receive_buffer[100];
+char header_buffer[100];
+char content_buffer[100];
+
+
+// E???? ???E C E?C? ????I
+#define KEYPAD_PORT PORTC
+#define KEYPAD_DDR DDRC
+#define KEYPAD_PIN PINC
+
+// E???? ?????C? ?E?? (I????)
+#define COL1_PIN 0
+#define COL2_PIN 1
+#define COL3_PIN 2
+
+// E???? ?????C? ??? (???I?) - E? ???E ?C??EE
+#define ROW1_PIN 7
+#define ROW2_PIN 5
+#define ROW3_PIN 6
+#define ROW4_PIN 4
+
+char pressed_key;
+
+char get_key(void)
+{
+    unsigned char row, col;
+    const unsigned char column_pins[3] = {COL1_PIN, COL2_PIN, COL3_PIN};
+    const unsigned char row_pins[4] = {ROW1_PIN, ROW2_PIN, ROW3_PIN, ROW4_PIN};
+
+    const char key_map[4][3] = {
+        {'1', '2', '3'},
+        {'4', '5', '6'},
+        {'7', '8', '9'},
+        {'*', '0', '#'}
+    };
+
+    for (col = 0; col < 3; col++)
+    {
+        KEYPAD_PORT |= (1 << COL1_PIN) | (1 << COL2_PIN) | (1 << COL3_PIN);
+        KEYPAD_PORT &= ~(1 << column_pins[col]);
+
+        for (row = 0; row < 4; row++)
+        {
+            if (!(KEYPAD_PIN & (1 << row_pins[row])))
+            {
+                delay_ms(10);
+
+                if (!(KEYPAD_PIN & (1 << row_pins[row])))
+                {
+                    while (!(KEYPAD_PIN & (1 << row_pins[row])));
+                    return key_map[row][col];
+                }
+            }
+        }
+    }
+
+    // C?? ??? ???I? ?O?I? ?OI? E?I? ??IC? ??? (NULL) ?C E???IC?
+    return 0;
+}
+
+
+
+
+
 
 //  «»⁄ ”«œÂ »—«Ì «—”«· œ” Ê—«  AT
 void send_at_command(char *command)
 {
     printf("%s\r\n", command);
 }
+
+unsigned char init_sms(void)
+{
+    glcd_clear();
+    glcd_outtextxy(0, 0, "Setting SMS Mode...");
+    send_at_command("AT+CMGF=1");
+    delay_ms(500);
+
+    send_at_command("AT+CNMI=2,2,0,0,0");
+    delay_ms(500);
+
+    send_at_command("AT+CMGDA=\"DEL ALL\"");
+    delay_ms(2000);
+
+    glcd_outtextxy(0, 10, "SMS Ready.");
+    delay_ms(1000);
+    return 1;
+}
+
+
+//
+//void process_sms(void) 
+//{
+//    sms_char = content_buffer[0]; // ›ﬁÿ ò«—«ò — «Ê· „Õ Ê« „Â„ «” 
+//
+//    if (sms_char == '1' || sms_char == '2' || sms_char == '3')
+//    {
+//        glcd_clear();
+//        glcd_outtextxy(0, 5, "SMS Code:");
+//                        
+//        // ⁄œœ œ—Ì«›  ‘œÂ «“ ÅÌ«„ò —« ‰„«Ì‘ »œÂ
+//        display_buffer[0] = sms_char;
+//        glcd_outtextxy(70, 5, display_buffer);
+//        glcd_outtextxy(0, 25, "Enter code on keypad:");
+//
+//        // „‰ Ÿ— »„«‰  « ò«—»— ò·ÌœÌ —« ›‘«— œÂœ
+//        do {
+//            key_pressed = get_key();
+//        } while (key_pressed == 0); //  « Êﬁ Ì ò·ÌœÌ ›‘—œÂ ‰‘œÂ° œ— Õ·ﬁÂ »„«‰
+//                        
+//        glcd_outtextxy(0, 45, "You pressed:");
+//                        
+//        // ò·Ìœ ›‘—œÂ ‘œÂ —« ‰„«Ì‘ »œÂ
+//        display_buffer[0] = key_pressed;
+//        glcd_outtextxy(90, 45, display_buffer);
+//        delay_ms(2000); // 2 À«‰ÌÂ ’»— ò‰  « ò«—»— Ê—ÊœÌ ŒÊœ —« »»Ì‰œ
+//
+//        // ‘—ÿ 2: ¬Ì« Ê—ÊœÌ ò«—»— »« ÅÌ«„ò ÌòÌ «” ø
+//        if (key_pressed == sms_char)
+//        {
+//            // «ê— ÌòÌ »Êœ
+//            glcd_clear();
+//            glcd_outtextxy(10, 25, "Code is CORRECT!");
+//            delay_ms(3000); // 10 À«‰ÌÂ ’»— ò‰
+//                            
+//            glcd_clear();
+//            glcd_outtextxy(10, 25, "Program Halted.");
+//            //while(1); // »—‰«„Â —« „ Êﬁ› ò‰
+//        }
+//        else
+//        {
+//            // «ê— ÌòÌ ‰»Êœ
+//            glcd_clear();
+//            glcd_outtextxy(5, 25, "Error in entry!");
+//            delay_ms(3000);
+//                            
+//            glcd_clear();
+//            glcd_outtextxy(10, 25, "Program Halted.");
+//            while(1); // »—‰«„Â —« „ Êﬁ› ò‰
+//        }
+//    }
+//    else
+//    {
+//        // «ê— ⁄œœ ÅÌ«„ò ‘œÂ 1° 2 Ì« 3 ‰»Êœ
+//        glcd_clear();
+//        glcd_outtextxy(5, 25, "SMS code is invalid!");
+//        delay_ms(4000); // 4 À«‰ÌÂ ÅÌ«„ Œÿ« —« ‰„«Ì‘ »œÂ
+//    }
+//}
+
+
+
+void activate_motor(int product_id)
+{
+unsigned char motor_pin;
+char motor_msg[20];
+
+switch (product_id)
+{
+case 1: motor_pin = MOTOR_PIN_1; break;
+case 2: motor_pin = MOTOR_PIN_2; break;
+case 3: motor_pin = MOTOR_PIN_3; break;
+default: return;
+}
+
+sprintf(motor_msg, "MOTOR %d ON!", product_id);
+glcd_clear();
+glcd_outtextxy(10, 20, motor_msg);
+MOTOR_PORT |= (1 << motor_pin);
+delay_ms(10000);
+MOTOR_PORT &= ~(1 << motor_pin);
+
+sprintf(motor_msg, "MOTOR %d OFF!", product_id);
+glcd_outtextxy(10, 40, motor_msg);
+delay_ms(2000);
+}
+
 
 void main(void)
 {
@@ -50,30 +219,35 @@ void main(void)
 
     // 1. Œ«„Ê‘ ò—œ‰ «òÊ
     send_at_command("ATE0");
+    delay_ms(500); 
+    send_at_command("AT");
     delay_ms(500);
 
-    // 2.  ‰ŸÌ„ Õ«·  ÅÌ«„ò »Â TEXT
-    send_at_command("AT+CMGF=1");
-    delay_ms(500);
 
-    // 3.  ‰ŸÌ„ „«éÊ· »—«Ì «—”«· „” ﬁÌ„ ÅÌ«„ò »Â ÅÊ—  ”—Ì«·
-    send_at_command("AT+CNMI=2,2,0,0,0");
-    delay_ms(500);
-    
-    // 4. Õ–›  „«„ ÅÌ«„ò Â«Ì ﬁ»·Ì »—«Ì «ÿ„Ì‰«‰
-    send_at_command("AT+CMGDA=\"DEL ALL\"");
-    delay_ms(2000);
+    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
+//    // 2.  ‰ŸÌ„ Õ«·  ÅÌ«„ò »Â TEXT
+//    send_at_command("AT+CMGF=1");
+//    delay_ms(500);
+//
+//    // 3.  ‰ŸÌ„ „«éÊ· »—«Ì «—”«· „” ﬁÌ„ ÅÌ«„ò »Â ÅÊ—  ”—Ì«·
+//    send_at_command("AT+CNMI=2,2,0,0,0");
+//    delay_ms(500);
+//    
+//    // 4. Õ–›  „«„ ÅÌ«„ò Â«Ì ﬁ»·Ì »—«Ì «ÿ„Ì‰«‰
+//    send_at_command("AT+CMGDA=\"DEL ALL\"");
+//    delay_ms(2000);
 
     glcd_clear();
     glcd_outtextxy(0, 0, "System Ready.");
     glcd_outtextxy(0, 10, "Waiting for SMS...");  
     
-    char header_buffer[100];
-    char content_buffer[100];
 
     // Õ·ﬁÂ «’·Ì »—‰«„Â
     while (1)
     {
+        char sms_char;
+        char key_pressed;
+        char display_buffer[2] = {0}; // »«›— òÊçò »—«Ì ‰„«Ì‘ Ìò ò«—«ò —
         // Â„Ì‘Â ¬„«œÂ œ—Ì«›  Œÿ «Ê· (Âœ—) »«‘
         memset(header_buffer, 0, sizeof(header_buffer));
 
@@ -83,21 +257,74 @@ void main(void)
             // ›Ê—« çò ò‰ òÂ ¬Ì« «Ì‰ Œÿ° Â„«‰ Âœ— ÅÌ«„ò «” ø
             if (strstr(header_buffer, "+CMT:") != NULL)
             {
-                // «ê— Âœ— »Êœ° »œÊ‰ ÂÌç ò«— «÷«›Âù«Ì° »·«›«’·Â Œÿ »⁄œÌ („Õ Ê«) —« »ŒÊ«‰
-                // «Ì‰ ò«— «“ ”——Ì“ ‘œ‰ »«›— Ã·ÊêÌ—Ì „Ìùò‰œ
+
                 memset(content_buffer, 0, sizeof(content_buffer));
                 gets(content_buffer, sizeof(content_buffer)); 
 
-                // Õ«·« òÂ Â— œÊ Œÿ œ— „ €Ì—Â«Ì „« «„‰ Â” ‰œ° »« ŒÌ«· —«Õ  —ÊÌ ‰„«Ì‘ê— ‰‘«‰‘«‰ »œÂ
-                glcd_clear();
-                glcd_outtextxy(0, 5, "From:");
-                glcd_outtextxy(0, 18, header_buffer); // ‰„«Ì‘ Âœ—
-                
-                glcd_outtextxy(0, 35, "Content:");
-                glcd_outtextxy(0, 48, content_buffer); // ‰„«Ì‘ „Õ Ê«
-                
-                // ç‰œ À«‰ÌÂ ÅÌ«„ —« ‰êÂ œ«—  « ŒÊ«‰œÂ ‘Êœ
-                delay_ms(10000); 
+                if (strlen(content_buffer) > 0) 
+                {
+                    sms_char = content_buffer[0]; // ›ﬁÿ ò«—«ò — «Ê· „Õ Ê« „Â„ «” 
+                    
+                    // ‘—ÿ 1: çò ò‰ ¬Ì« „Õ Ê«Ì ÅÌ«„ò 1° 2 Ì« 3 «” ø
+                    if (sms_char == '1' || sms_char == '2' || sms_char == '3')
+                    {
+                        glcd_clear();
+                        glcd_outtextxy(0, 5, "SMS Code:");
+                        
+                        // ⁄œœ œ—Ì«›  ‘œÂ «“ ÅÌ«„ò —« ‰„«Ì‘ »œÂ
+                        display_buffer[0] = sms_char;
+                        glcd_outtextxy(70, 5, display_buffer);
+                        glcd_outtextxy(0, 25, "Enter code on keypad:");
+
+                        // „‰ Ÿ— »„«‰  « ò«—»— ò·ÌœÌ —« ›‘«— œÂœ
+                        do {
+                            key_pressed = get_key();
+                        } while (key_pressed == 0); //  « Êﬁ Ì ò·ÌœÌ ›‘—œÂ ‰‘œÂ° œ— Õ·ﬁÂ »„«‰
+                        
+                        glcd_outtextxy(0, 45, "You pressed:");
+                        
+                        // ò·Ìœ ›‘—œÂ ‘œÂ —« ‰„«Ì‘ »œÂ
+                        display_buffer[0] = key_pressed;
+                        glcd_outtextxy(90, 45, display_buffer);
+                        delay_ms(2000); // 2 À«‰ÌÂ ’»— ò‰  « ò«—»— Ê—ÊœÌ ŒÊœ —« »»Ì‰œ
+
+                        // ‘—ÿ 2: ¬Ì« Ê—ÊœÌ ò«—»— »« ÅÌ«„ò ÌòÌ «” ø
+                        if (key_pressed == sms_char)
+                        {
+                            // «ê— ÌòÌ »Êœ
+                            glcd_clear();
+                            glcd_outtextxy(10, 25, "Code is CORRECT!");
+                            delay_ms(3000); // 10 À«‰ÌÂ ’»— ò‰
+                            
+                            glcd_clear();
+                            glcd_outtextxy(10, 25, "Program Halted.");
+                            //while(1); // »—‰«„Â —« „ Êﬁ› ò‰
+                        }
+                        else
+                        {
+                            // «ê— ÌòÌ ‰»Êœ
+                            glcd_clear();
+                            glcd_outtextxy(5, 25, "Error in entry!");
+                            delay_ms(3000);
+                            
+                            glcd_clear();
+                            glcd_outtextxy(10, 25, "Program Halted.");
+                            while(1); // »—‰«„Â —« „ Êﬁ› ò‰
+                        }
+                    }
+                    else
+                    {
+                        // «ê— ⁄œœ ÅÌ«„ò ‘œÂ 1° 2 Ì« 3 ‰»Êœ
+                        glcd_clear();
+                        glcd_outtextxy(5, 25, "SMS code is invalid!");
+                        delay_ms(4000); // 4 À«‰ÌÂ ÅÌ«„ Œÿ« —« ‰„«Ì‘ »œÂ
+                    }
+                }
+
+                // ==========================================================
+                // ========== Å«Ì«‰ „‰ÿﬁ ÃœÌœ Ê »«“ê‘  »Â Õ«·  «‰ Ÿ«— ========
+                // ==========================================================
+
                 
                 // ’›ÕÂ —« »—«Ì ÅÌ«„ »⁄œÌ ¬„«œÂ ò‰
                 glcd_clear();
