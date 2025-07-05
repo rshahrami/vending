@@ -1,6 +1,4 @@
-main DSTACK_USAGE:6 DSTACK_LEVEL:6 FILE:"glcd_keypad_sim.c" LINE:411
-process_sms DSTACK_USAGE:106 DSTACK_LEVEL:112 FILE:"glcd_keypad_sim.c" LINE:357
-send_http_post_request DSTACK_USAGE:336 DSTACK_LEVEL:448 FILE:"glcd_keypad_sim.c" LINE:317
-check_and_reopen_bearer DSTACK_USAGE:0 DSTACK_LEVEL:448 FILE:"glcd_keypad_sim.c" LINE:243
-get_full_response DSTACK_USAGE:134 DSTACK_LEVEL:582 FILE:"glcd_keypad_sim.c" LINE:113
-gets DSTACK_USAGE:10 DSTACK_LEVEL:592 FILE:"" LINE:328
+main DSTACK_USAGE:33 DSTACK_LEVEL:33 FILE:"glcd_keypad_sim.c" LINE:289
+process_sms DSTACK_USAGE:266 DSTACK_LEVEL:299 FILE:"glcd_keypad_sim.c" LINE:215
+get_full_response DSTACK_USAGE:134 DSTACK_LEVEL:433 FILE:"glcd_keypad_sim.c" LINE:122
+gets DSTACK_USAGE:10 DSTACK_LEVEL:443 FILE:"" LINE:328
