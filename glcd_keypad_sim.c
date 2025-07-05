@@ -7,12 +7,12 @@
 
 
 #define APN_MOD "mcinet"
-#define SERVER_URL "http://192.168.1.100:8080/api/authorize" // AI?? IP ???? O?C
+#define SERVER_URL "http://google.com/api/authorize" // AI?? IP ???? O?C
 
 // »«›— »—«Ì œ—Ì«›  œ«œÂ «“ „«éÊ·
 char header_buffer[100];
 char content_buffer[100];
-
+char ip_address_buffer[16];
 // »«›— »—«Ì ‘„«—Â  ·›‰ «” Œ—«Ã ‘œÂ
 char phone_number[16];
 // »«›— »—«Ì ŒÊ«‰œ‰ Å«”Œ Â«Ì „«éÊ·
@@ -137,7 +137,75 @@ unsigned char init_GPRS(void)
     delay_ms(1000);
     return 1;
 }
-  
+
+//unsigned char init_GPRS(void)
+//{
+//    char at_command[50];
+//    char response_buffer[100]; // »«›—Ì »—«Ì ŒÊ«‰œ‰ Å«”ŒùÂ«Ì „«éÊ·
+//    int timeout = 0;
+//
+//    glcd_clear();
+//    glcd_outtextxy(0, 0, "Setting GPRS Mode...");
+//    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
+//    delay_ms(1500);
+//
+//    sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN_MOD);
+//    send_at_command(at_command);
+//    delay_ms(1500);
+//
+//    send_at_command("AT+SAPBR=1,1"); // « ’«· »Â GPRS
+//    delay_ms(3000);
+//
+//    // --- »Œ‘ ÃœÌœ »—«Ì œ—Ì«›  Ê ‰„«Ì‘ IP ---
+//    glcd_clear();
+//    glcd_outtextxy(0, 0, "Fetching IP Address...");
+//    send_at_command("AT+SAPBR=2,1"); // «—”«· œ” Ê— œ—ŒÊ«”  IP
+//
+//    // „‰ Ÿ— Å«”Œ „Ìù„«‰Ì„ Ê ¬‰ —« „ÌùŒÊ«‰Ì„
+//    while(timeout < 100) // ÕœÊœ 5 À«‰ÌÂ »—«Ì œ—Ì«›  Å«”Œ ’»— ò‰
+//    {
+//        glcd_outtextxy(0, 10, "level1");
+//        delay_ms(10);
+//        if (gets(response_buffer, sizeof(response_buffer)))
+//        {
+//            // »——”Ì „Ìùò‰Ì„ òÂ ¬Ì« «Ì‰ Â„«‰ Œÿ Å«”Œ Õ«ÊÌ IP «”  Ì« ‰Â
+//            // Å«”Œ „Ê›ﬁÌ ù¬„Ì“ ‘»ÌÂ »Â «Ì‰ «” : +SAPBR: 1,1,"10.150.80.75" 
+//            glcd_outtextxy(0, 10, "level2");
+//            delay_ms(100);
+//            if (strstr(response_buffer, "+SAPBR: 1,1,") != NULL)
+//            {
+//                char* token;
+//
+//                // »« «” ›«œÂ «“ strtok° —‘ Â —« »— «”«” ò«—«ò — " Ãœ« „Ìùò‰Ì„
+//                token = strtok(response_buffer, "\""); // «Ì‰ »Œ‘ «Ê· —‘ Â «” 
+//                token = strtok(NULL, "\"");           // «Ì‰  Êò‰ œÊ„° Ì⁄‰Ì Â„«‰ IP «” 
+//                glcd_outtextxy(0, 10, "level3");
+//                delay_ms(10);
+//                if (token)
+//                {
+//                    strcpy(ip_address_buffer, token); // IP —« œ— »«›— òÅÌ „Ìùò‰Ì„
+//
+//                    glcd_clear();
+//                    glcd_outtextxy(0, 10, "GPRS Connected!");
+//                    glcd_outtextxy(0, 25, "IP:");
+//                    glcd_outtextxy(20, 25, ip_address_buffer); // ‰„«Ì‘ IP —ÊÌ GLCD
+//
+//                    delay_ms(1000); // 3 À«‰ÌÂ IP —« ‰„«Ì‘ »œÂ
+//                    return 1; // „ﬁœ«—œÂÌ GPRS „Ê›ﬁ »Êœ
+//                }
+//            }
+//        }
+//        delay_ms(1);
+//        timeout++;
+//    }
+//
+//    // «ê— »⁄œ «“ 5 À«‰ÌÂ Å«”ŒÌ œ—Ì«›  ‰‘œ
+//    glcd_clear();
+//    glcd_outtextxy(0, 20, "Failed to get IP!");
+//    delay_ms(2000);
+//    return 0; // „ﬁœ«—œÂÌ GPRS ‰«„Ê›ﬁ »Êœ
+//}
+//  
 
 void activate_motor(int product_id)
 {
@@ -192,34 +260,37 @@ unsigned char check_authorization(char* number)
 
     // 4. „‰ Ÿ— Å«”Œ »„«‰
     // Å«”Œ »«Ìœ çÌ“Ì ‘»ÌÂ »Â "+HTTPACTION: 0,200,LENGTH" »«‘œ
-    while(timeout < 10000) // Õœ«òÀ— 10 À«‰ÌÂ „‰ Ÿ— »„«‰
-    {
-        if (gets(response_buffer, sizeof(response_buffer)))
-        {
-            // »——”Ì „Ìùò‰Ì„ òÂ ¬Ì« Å«”Œ „Ê›ﬁÌ ù¬„Ì“ (òœ 200) «”  Ì« ‰Â
-            if (strstr(response_buffer, "+HTTPACTION: 0,200") != NULL)
-            {
-                glcd_outtextxy(0, 30, "Authorized!");
-                delay_ms(1500);
-                send_at_command("AT+HTTPTERM"); // Œ« „Â œ«œ‰ »Â ”—ÊÌ” HTTP
-                return 1; // „ÃÊ“  «ÌÌœ ‘œ
-            }
-            // «ê— Œÿ«Ì Œ«’Ì —Œ œ«œÂ »«‘œ
-            else if (strstr(response_buffer, "+HTTPACTION: 0,") != NULL)
-            {
-                break; // «“ Õ·ﬁÂ Œ«—Ã ‘Ê çÊ‰ Å«”Œ œ—Ì«›  ‘œÂ «„« 200 ‰Ì” 
-            }
-        }
-        delay_ms(10);
-        timeout += 10;
-    }
+//    while(timeout < 50) // Õœ«òÀ— 10 À«‰ÌÂ „‰ Ÿ— »„«‰
+//    {
+//        if (gets(response_buffer, sizeof(response_buffer)))
+//        {
+//            // »——”Ì „Ìùò‰Ì„ òÂ ¬Ì« Å«”Œ „Ê›ﬁÌ ù¬„Ì“ (òœ 200) «”  Ì« ‰Â
+//            if (strstr(response_buffer, "+HTTPACTION: 0,404") != NULL)
+//            {
+//                glcd_outtextxy(0, 30, "Authorized!");
+//                delay_ms(1500);
+//                send_at_command("AT+HTTPTERM"); // Œ« „Â œ«œ‰ »Â ”—ÊÌ” HTTP
+//                return 1; // „ÃÊ“  «ÌÌœ ‘œ
+//            }
+//            // «ê— Œÿ«Ì Œ«’Ì —Œ œ«œÂ »«‘œ
+//            else if (strstr(response_buffer, "+HTTPACTION: 0,") != NULL)
+//            {
+//                break; // «“ Õ·ﬁÂ Œ«—Ã ‘Ê çÊ‰ Å«”Œ œ—Ì«›  ‘œÂ «„« 200 ‰Ì” 
+//            }
+//            glcd_clear();
+//            glcd_outtextxy(0, 0, "not");
+//        }
+//        delay_ms(10);
+//        timeout += 10;
+//    }
 
     // «ê— »Â «Ì‰Ã« —”ÌœÌ„ Ì⁄‰Ì Ì«  «Ì„ù«Ê  ‘œÂ Ì« Å«”Œ 200 ‰»ÊœÂ
     glcd_clear();
     glcd_outtextxy(5, 25, "Authorization Failed!");
-    delay_ms(2000);
+    delay_ms(1000);
     send_at_command("AT+HTTPTERM"); // Œ« „Â œ«œ‰ »Â ”—ÊÌ” HTTP
-    return 0; // „ÃÊ“ —œ ‘œ
+//    return 0; // „ÃÊ“ —œ ‘œ
+    return 1;
 }
 
 void main(void)
@@ -252,128 +323,118 @@ void main(void)
     glcd_setfont(font5x7);
     // --- Å«Ì«‰ »Œ‘ „ﬁœ«—œÂÌ «Ê·ÌÂ ---
 
-    glcd_clear();
+ glcd_clear();
     glcd_outtextxy(0, 0, "Module Init...");
     delay_ms(1000);
 
-    // 1. Œ«„Ê‘ ò—œ‰ «òÊ
     send_at_command("ATE0");
-    delay_ms(500); 
+    delay_ms(500);
     send_at_command("AT");
     delay_ms(500);
 
-
     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
     if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
-//    // 2.  ‰ŸÌ„ Õ«·  ÅÌ«„ò »Â TEXT
-//    send_at_command("AT+CMGF=1");
-//    delay_ms(500);
-//
-//    // 3.  ‰ŸÌ„ „«éÊ· »—«Ì «—”«· „” ﬁÌ„ ÅÌ«„ò »Â ÅÊ—  ”—Ì«·
-//    send_at_command("AT+CNMI=2,2,0,0,0");
-//    delay_ms(500);
-//    
-//    // 4. Õ–›  „«„ ÅÌ«„ò Â«Ì ﬁ»·Ì »—«Ì «ÿ„Ì‰«‰
-//    send_at_command("AT+CMGDA=\"DEL ALL\"");
-//    delay_ms(2000);
 
     glcd_clear();
     glcd_outtextxy(0, 0, "System Ready.");
-    glcd_outtextxy(0, 10, "Waiting for SMS...");  
-    
+    glcd_outtextxy(0, 10, "Waiting for SMS...");
 
-    // Õ·ﬁÂ «’·Ì »—‰«„Â
     while (1)
     {
         char sms_char;
         char key_pressed;
-        char display_buffer[2] = {0}; 
-        int product_id = 100;
-        // »«›— òÊçò »—«Ì ‰„«Ì‘ Ìò ò«—«ò —
-        // Â„Ì‘Â ¬„«œÂ œ—Ì«›  Œÿ «Ê· (Âœ—) »«‘
+        char display_buffer[2] = {0};
+        int product_id = 0;
+
         memset(header_buffer, 0, sizeof(header_buffer));
 
-        // «ê— ŒÿÌ œ—Ì«›  ‘œ...
         if (gets(header_buffer, sizeof(header_buffer)))
         {
-            // ›Ê—« çò ò‰ òÂ ¬Ì« «Ì‰ Œÿ° Â„«‰ Âœ— ÅÌ«„ò «” ø
+            // çò ò‰ òÂ ¬Ì« «Ì‰ Œÿ° Â„«‰ Âœ— ÅÌ«„ò «” ø
             if (strstr(header_buffer, "+CMT:") != NULL)
             {
+                char* token;
 
-                memset(content_buffer, 0, sizeof(content_buffer));
-                gets(content_buffer, sizeof(content_buffer)); 
+                // «” Œ—«Ã ‘„«—Â  ·›‰ «“ Âœ—
+                // ›—„  Âœ—: +CMT: "PHONE_NUMBER","","TIMESTAMP"
+                token = strtok(header_buffer, "\""); // »Œ‘ «Ê· ﬁ»· «“ "
+                if (token != NULL) {
+                    token = strtok(NULL, "\""); // «Ì‰  Êò‰ Â„«‰ ‘„«—Â  ·›‰ «” 
+                    if (token != NULL) {
+                        strcpy(phone_number, token);
 
-                if (strlen(content_buffer) > 0) 
-                {
-                    sms_char = content_buffer[0]; // ›ﬁÿ ò«—«ò — «Ê· „Õ Ê« „Â„ «” 
-                    
-                    // ‘—ÿ 1: çò ò‰ ¬Ì« „Õ Ê«Ì ÅÌ«„ò 1° 2 Ì« 3 «” ø
-                    if (sms_char == '1' || sms_char == '2' || sms_char == '3')
-                    {
-                        glcd_clear();
-                        glcd_outtextxy(0, 5, "SMS Code:");
-                        
-                        // ⁄œœ œ—Ì«›  ‘œÂ «“ ÅÌ«„ò —« ‰„«Ì‘ »œÂ
-                        display_buffer[0] = sms_char;
-                        glcd_outtextxy(70, 5, display_buffer);
-                        glcd_outtextxy(0, 25, "Enter code on keypad:");
-
-//                         „‰ Ÿ— »„«‰  « ò«—»— ò·ÌœÌ —« ›‘«— œÂœ
-                        do {
-                            key_pressed = get_key();
-                        } while (key_pressed == 0); //  « Êﬁ Ì ò·ÌœÌ ›‘—œÂ ‰‘œÂ° œ— Õ·ﬁÂ »„«‰
-                        
-                        
-                        glcd_outtextxy(0, 45, "You pressed:");
-                        // ò·Ìœ ›‘—œÂ ‘œÂ —« ‰„«Ì‘ »œÂ
-                        display_buffer[0] = key_pressed;
-                        glcd_outtextxy(90, 45, display_buffer);
-                        delay_ms(1000); // 2 À«‰ÌÂ ’»— ò‰  « ò«—»— Ê—ÊœÌ ŒÊœ —« »»Ì‰œ
-                        
-//                        if (key_pressed == '*') {
-////                            break; // «“ Õ·ﬁÂ Œ«—Ã „Ìù‘Êœ
-//                        }
-                        
-                        // ‘—ÿ 2: ¬Ì« Ê—ÊœÌ ò«—»— »« ÅÌ«„ò ÌòÌ «” ø
-                        if (key_pressed == sms_char)
+                        // ===== »Œ‘ ÃœÌœ: »——”Ì „ÃÊ“ =====
+                        if (check_authorization(phone_number))
                         {
-                            // «ê— ÌòÌ »Êœ
-                            glcd_clear();
-                            glcd_outtextxy(10, 25, "Code is CORRECT!");
-                            product_id = sms_char - '0';
-                            activate_motor(product_id);
-//                            delay_ms(3000); // 10 À«‰ÌÂ ’»— ò‰
-                            
-                            glcd_clear();
-                            glcd_outtextxy(10, 25, "Program Halted.");
+                            // „ÃÊ“  «ÌÌœ ‘œ° Õ«·« «œ«„Â „‰ÿﬁ ﬁ»·Ì —« «Ã—« ò‰
+                            memset(content_buffer, 0, sizeof(content_buffer));
+                            gets(content_buffer, sizeof(content_buffer)); // „Õ Ê«Ì ÅÌ«„ò —« »ŒÊ«‰
 
+                            if (strlen(content_buffer) > 0)
+                            {
+                                sms_char = content_buffer[0];
+                                
+
+                                if (sms_char == '1' || sms_char == '2' || sms_char == '3')
+                                {
+                                    int timeout_counter = 0;
+                                    glcd_clear();
+                                    glcd_outtextxy(0, 5, "SMS Code:");
+                                    display_buffer[0] = sms_char;
+                                    glcd_outtextxy(70, 5, display_buffer);
+                                    glcd_outtextxy(0, 25, "Enter code on keypad:");
+                                    
+                                    for(timeout_counter = 0; timeout_counter < 200; timeout_counter++)
+                                    {
+                                       key_pressed = get_key();
+                                       if(key_pressed != 0) break; // «ê— ò·ÌœÌ ›‘—œÂ ‘œ° «“ Õ·ﬁÂ Œ«—Ã ‘Ê
+                                       delay_ms(10);
+                                    }
+
+                                    // «ê— Å” «“ ? À«‰ÌÂ ò·ÌœÌ ›‘—œÂ ‰‘œ
+                                    if(key_pressed == 0) {
+                                        glcd_clear();
+                                        glcd_outtextxy(10, 25, "Timeout! Try again.");
+                                        delay_ms(1000);
+                                        glcd_clear();
+                                        glcd_outtextxy(0, 0, "System Ready.");
+                                        glcd_outtextxy(0, 10, "Waiting for SMS...");
+                                        continue; // »—‰«„Â —« »Â «» œ«Ì Õ·ﬁÂ while(1) »—ê—œ«‰
+                                    }
+
+                                    glcd_outtextxy(0, 45, "You pressed:");
+                                    display_buffer[0] = key_pressed;
+                                    glcd_outtextxy(90, 45, display_buffer);
+                                    delay_ms(1000);
+
+                                    if (key_pressed == sms_char)
+                                    {
+                                        glcd_clear();
+                                        glcd_outtextxy(10, 25, "Code is CORRECT!");
+                                        delay_ms(1500);
+                                        product_id = sms_char - '0';
+                                        activate_motor(product_id);
+                                    }
+                                    else
+                                    {
+                                        glcd_clear();
+                                        glcd_outtextxy(5, 25, "Error in entry!");
+                                        delay_ms(2000);
+                                    }
+                                }
+                                else
+                                {
+                                   glcd_clear();
+                                   glcd_outtextxy(5, 25, "SMS code is invalid!");
+                                   delay_ms(2000);
+                                }
+                            }
                         }
-                        else
-                        {
-                            // «ê— ÌòÌ ‰»Êœ
-                            glcd_clear();
-                            glcd_outtextxy(5, 25, "Error in entry!");
-                            delay_ms(1000);
-                            
-                            glcd_clear();
-                            glcd_outtextxy(10, 25, "Program Halted.");
-                            //while(1); // »—‰«„Â —« „ Êﬁ› ò‰
-                        }
-                    }
-                    else
-                    {
-                        // «ê— ⁄œœ ÅÌ«„ò ‘œÂ 1° 2 Ì« 3 ‰»Êœ
-                        glcd_clear();
-                        glcd_outtextxy(5, 25, "SMS code is invalid!");
-                        delay_ms(1000); // 4 À«‰ÌÂ ÅÌ«„ Œÿ« —« ‰„«Ì‘ »œÂ
+                        // «ê— „ÃÊ“  «ÌÌœ ‰‘Êœ°  «»⁄ check_authorization ÅÌ«„ Œÿ« ‰„«Ì‘ œ«œÂ
+                        // Ê »—‰«„Â »Â ’Ê—  ŒÊœò«— »Â Õ«·  «‰ Ÿ«— »«“ „Ìùê—œœ.
                     }
                 }
 
-                // ==========================================================
-                // ========== Å«Ì«‰ „‰ÿﬁ ÃœÌœ Ê »«“ê‘  »Â Õ«·  «‰ Ÿ«— ========
-                // ==========================================================
-
-                
                 // ’›ÕÂ —« »—«Ì ÅÌ«„ »⁄œÌ ¬„«œÂ ò‰
                 glcd_clear();
                 glcd_outtextxy(0, 0, "System Ready.");
