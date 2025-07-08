@@ -4,44 +4,239 @@
 #include <font5x7.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h> // »—«Ì «” ›«œÂ «“  «»⁄ atoi
 
+// ---  ‰ŸÌ„«  «’·Ì ---
+#define APN "mcinet" // APN «Å—« Ê— ŒÊœ —« Ê«—œ ò‰Ìœ
+//#define SERVER_URL "http://google.com/api/authorize" // ¬œ—” ò«„· ”—Ê— ŒÊœ —« «Ì‰Ã« ﬁ—«— œÂÌœ
+#define SERVER_URL_POST "http://192.168.143.15/post/"
 
-#define APN "mcinet"
-#define SERVER_URL "http://google.com/api/authorize" // AI?? IP ???? O?C
-
-// EC?? E?C? I??C?E ICI? C? ?C???
+// --- »«›—Â«Ì ”—«”—Ì ---
 char header_buffer[100];
 char content_buffer[100];
 char ip_address_buffer[16];
-// EC?? E?C? O?C?? E??? C?EI?C? OI?
 char phone_number[16];
-// EC?? E?C? I?C?I? ?C?I ?C? ?C???
-char response_buffer[100];
+char response_buffer[256]; // «›“«Ì‘ ”«Ì“ »«›— »—«Ì œ—Ì«›  Å«”ŒùÂ«Ì HTTP
 
-//// --- E???? ???E ? ??? ??E?? ---
+// ---  ⁄—Ì› ÅÌ‰ùÂ«Ì „Ê Ê— ---
 #define MOTOR_DDR DDRE
 #define MOTOR_PORT PORTE
 #define MOTOR_PIN_1 2
 #define MOTOR_PIN_2 3
 #define MOTOR_PIN_3 4
-#define MOTOR_PIN_4 5
 
-
-// E???? ???E C E?C? ????I
+// ---  ⁄—Ì› ÅÌ‰ùÂ«Ì òÌùÅœ ---
 #define KEYPAD_PORT PORTC
 #define KEYPAD_DDR DDRC
 #define KEYPAD_PIN PINC
-
-// E???? ?????C? ?E?? (I????)
 #define COL1_PIN 0
 #define COL2_PIN 1
 #define COL3_PIN 2
-
-// E???? ?????C? ??? (???I?) - E? ???E ?C??EE
 #define ROW1_PIN 7
 #define ROW2_PIN 5
 #define ROW3_PIN 6
 #define ROW4_PIN 4
+
+//  «»⁄ «—”«· œ” Ê— AT »Â „«éÊ·
+void send_at_command(char *command)
+{
+    printf("%s\r\n", command);
+}
+
+unsigned char read_serial_response(char* buffer, int buffer_size, int timeout_ms, char* expected_response) {
+    int i = 0;
+    unsigned int timeout_counter = 0;
+    char c;
+
+    // Clear the buffer at the start
+    memset(buffer, 0, buffer_size);
+
+    // Loop until the timeout period is reached
+    while (timeout_counter < timeout_ms) {
+        // This is the correct way to check if a character has been received on USART0
+        if (UCSR0A & (1 << RXC0)) {
+            c = getchar(); // Read the character from the buffer
+            if (i < (buffer_size - 1)) {
+                buffer[i++] = c; // Add it to our response buffer
+            }
+            // Optional: You can reset the timeout counter each time a character is received
+            // to wait for the *entire* message to finish. For simplicity, we'll use a fixed timeout.
+        } else {
+            // If no character is waiting, wait 1ms and increment the counter
+            delay_ms(1);
+            timeout_counter++;
+        }
+    }
+
+    // After the loop finishes, check if the expected text exists in the buffer
+    if (strstr(buffer, expected_response) != NULL) {
+        return 1; // Success!
+    }
+
+    return 0; // Failed to find the response
+}
+
+
+//  «»⁄ »——”Ì „ÃÊ“ ‘„«—Â  ·›‰ «“ ÿ—Ìﬁ ”—Ê—
+unsigned char check_authorization_post(char* number)
+{
+    char at_command[256];
+    char json_payload[100];
+    char* p_status;
+    int status_code = 0; 
+    int json_len = 0;
+
+    glcd_clear();
+    glcd_outtextxy(0, 0, "Authorizing (POST)...");
+    glcd_outtextxy(0, 10, number);
+
+    // 1. „ﬁœ«—œÂÌ «Ê·ÌÂ «— »«ÿ HTTP
+    send_at_command("AT+HTTPINIT");
+    if (!read_serial_response(response_buffer, sizeof(response_buffer), 2000, "OK")) {
+        glcd_outtextxy(0, 20, "HTTP Init Failed");
+        delay_ms(2000);
+        return 0;
+    }
+
+    // 2.  ‰ŸÌ„ Å«—«„ —Â«Ì HTTP
+    send_at_command("AT+HTTPPARA=\"CID\",1");
+    read_serial_response(response_buffer, sizeof(response_buffer), 1000, "OK");
+
+    //  ‰ŸÌ„ URL
+    sprintf(at_command, "AT+HTTPPARA=\"URL\",\"%s\"", SERVER_URL_POST);
+    send_at_command(at_command);
+    read_serial_response(response_buffer, sizeof(response_buffer), 1000, "OK");
+
+    // **„Â„**:  ‰ŸÌ„ ‰Ê⁄ „Õ Ê« »—«Ì «—”«· JSON
+    send_at_command("AT+HTTPPARA=\"CONTENT\",\"application/json\"");
+    read_serial_response(response_buffer, sizeof(response_buffer), 1000, "OK");
+
+    // 3. ¬„«œÂù”«“Ì Ê «—”«· œ«œÂ JSON
+    // ”«Œ  —‘ Â JSON
+    sprintf(json_payload, "{\"phone_number\":\"%s\"}", number);
+    json_len = strlen(json_payload);
+
+    // «—”«· œ” Ê— AT+HTTPDATA »—«Ì „‘Œ’ ò—œ‰ ÿÊ· œ«œÂ
+    sprintf(at_command, "AT+HTTPDATA=%d,10000", json_len); // 10 À«‰ÌÂ „Â·  »—«Ì «—”«· œ«œÂ
+    send_at_command(at_command);
+
+    // „‰ Ÿ— Å«”Œ "DOWNLOAD" «“ „«éÊ· »„«‰
+    if (read_serial_response(response_buffer, sizeof(response_buffer), 5000, "DOWNLOAD")) {
+        // Å” «“ œ—Ì«›  "DOWNLOAD"° œ«œÂ «’·Ì JSON —« «—”«· ò‰
+        // «Ì‰  «»⁄ »«Ìœ œ«œÂ —« »Â ’Ê—  Œ«„ Ê »œÊ‰ ò«—«ò — «÷«›Â «—”«· ò‰œ
+        send_at_command(json_payload); 
+        
+        // „‰ Ÿ— Å«”Œ OK «“ „«éÊ· Å” «“ «—”«· œ«œÂ »„«‰
+        if (!read_serial_response(response_buffer, sizeof(response_buffer), 5000, "OK")){
+             goto auth_failed; // «ê— «—”«· œ«œÂ ‰«„Ê›ﬁ »Êœ
+        }
+    } else {
+        goto auth_failed; // «ê— „«éÊ· »—«Ì œ—Ì«›  œ«œÂ ¬„«œÂ ‰‘œ
+    }
+
+    // 4. «—”«· œ—ŒÊ«”  POST (Action=1)
+    send_at_command("AT+HTTPACTION=1");
+
+    // 5. „‰ Ÿ— Å«”Œ +HTTPACTION »„«‰ Ê ¬‰ —« »——”Ì ò‰
+    // Å«”Œ „Ê›ﬁ: +HTTPACTION: 1,200,LENGTH
+    if (read_serial_response(response_buffer, sizeof(response_buffer), 15000, "+HTTPACTION:")) {
+        p_status = strstr(response_buffer, ",");
+        if (p_status) {
+            status_code = atoi(p_status + 1);
+        }
+
+        // «ê— òœ 200 »Êœ° Ì⁄‰Ì œ—ŒÊ«”  „Ê›ﬁ »ÊœÂ «” 
+        if (status_code == 200) {
+            glcd_outtextxy(0, 20, "Status OK (200)");
+            
+            // **«Œ Ì«—Ì**: „Ìù Ê«‰Ìœ Å«”Œ ”—Ê— —« »« AT+HTTPREAD »ŒÊ«‰Ìœ
+            // Ê »——”Ì ò‰Ìœ òÂ ¬Ì« Õ«ÊÌ "OK" Â”  Ì« ŒÌ—.
+            // send_at_command("AT+HTTPREAD");
+            // read_serial_response(...);
+            
+            glcd_outtextxy(0, 30, "Authorized!");
+            delay_ms(1500);
+            send_at_command("AT+HTTPTERM"); // Å«Ì«‰ œ«œ‰ »Â «— »«ÿ
+            read_serial_response(response_buffer, sizeof(response_buffer), 1000, "OK");
+            return 1; // „Ê›ﬁÌ 
+        }
+    }
+
+// »—ç”» »—«Ì „œÌ—Ì  Œÿ«
+auth_failed:
+    glcd_clear();
+    glcd_outtextxy(0, 25, "Authorization Failed!");
+    delay_ms(2000);
+    send_at_command("AT+HTTPTERM"); // «— »«ÿ —« œ— Â— ’Ê—  Œ« „Â »œÂ
+    read_serial_response(response_buffer, sizeof(response_buffer), 1000, "OK");
+    return 0; // ‘ò” 
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+unsigned char init_sms(void)
+{
+    glcd_clear();
+    glcd_outtextxy(0, 0, "Setting SMS Mode...");
+    send_at_command("AT+CMGF=1");
+    delay_ms(500);
+
+    send_at_command("AT+CNMI=2,2,0,0,0");
+    delay_ms(500);
+
+    send_at_command("AT+CMGDA=\"DEL ALL\"");
+    delay_ms(2000);
+
+    glcd_outtextxy(0, 10, "SMS Ready.");
+    delay_ms(1000);
+    return 1;
+}
+
+unsigned char init_GPRS(void)
+{
+    char at_command[50];
+    char response[100]; // Local buffer for the response
+
+    glcd_clear();
+    glcd_outtextxy(0, 0, "Connecting to GPRS...");
+
+    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
+    delay_ms(1500);
+
+    sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
+    send_at_command(at_command);
+    delay_ms(1500);
+
+    send_at_command("AT+SAPBR=1,1");
+    delay_ms(3000);
+
+    glcd_clear();
+    glcd_outtextxy(0, 0, "Fetching IP...");
+    send_at_command("AT+SAPBR=2,1"); // Request IP
+
+    // Attempt to read the response for 5 seconds, looking for "+SAPBR:"
+    // FIX: Added the 4th argument, "+SAPBR:", to the function call.
+    if (read_serial_response(response, sizeof(response), 5000, "+SAPBR:")) {
+        glcd_outtextxy(0, 10, "Resp:");
+        glcd_outtextxy(0, 20, response); // Display the received response for debugging
+        delay_ms(3000);
+
+        // Check if the response contains the IP address part
+        if (strstr(response, "+SAPBR: 1,1,") != NULL) {
+            char* token = strtok(response, "\"");
+            token = strtok(NULL, "\"");
+
+            if (token) {
+                strcpy(ip_address_buffer, token);
+                return 1; // Success
+            }
+        }
+    }
+
+    // If we reach here, it means getting the IP address failed
+    return 0; // Failure
+}
+ 
 
 
 
@@ -84,123 +279,6 @@ char get_key(void)
 
 
 
-// ECE? ?CI? E?C? C??C? I?E??CE AT
-void send_at_command(char *command)
-{
-    printf("%s\r\n", command);
-}
-
-unsigned char init_sms(void)
-{
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Setting SMS Mode...");
-    send_at_command("AT+CMGF=1");
-    delay_ms(500);
-
-    send_at_command("AT+CNMI=2,2,0,0,0");
-    delay_ms(500);
-
-    send_at_command("AT+CMGDA=\"DEL ALL\"");
-    delay_ms(2000);
-
-    glcd_outtextxy(0, 10, "SMS Ready.");
-    delay_ms(1000);
-    return 1;
-}
-
-
-
-
-unsigned char read_serial_response(char* buffer, int buffer_size, int timeout_ms) {
-    int i = 0;
-    int timeout_counter = 0;
-    char c;
-
-    // »«›— —« Å«ò „Ìùò‰Ì„
-    memset(buffer, 0, buffer_size);
-
-    while (timeout_counter < timeout_ms) {
-        // ”⁄Ì „Ìùò‰Ì„ Ìò ò«—«ò — »ŒÊ«‰Ì„
-        // getchar() «ê— ò«—«ò —Ì œ— »«›— ‰»«‘œ° „ﬁœ«— „‰›Ì »—„Ìùê—œ«‰œ
-        c = getchar();
-        if (c >= 0) { // «ê— ò«—«ò —Ì œ—Ì«›  ‘œ
-            // «ê— »Â «‰ Â«Ì Œÿ —”ÌœÌ„° ò«—  „«„ «” 
-            if (c == '\n' || c == '\r') {
-                if (i > 0) return 1; // «ê— çÌ“Ì œ—Ì«›  ò—œÂ »ÊœÌ„° „Ê›ﬁÌ  —« »—ê—œ«‰
-            } else if (i < (buffer_size - 1)) {
-                buffer[i++] = c; // ò«—«ò — —« »Â »«›— «÷«›Â ò‰
-            }
-        } else { // «ê— ò«—«ò —Ì œ— »«›— ‰»Êœ
-            delay_ms(1); // 1 „Ì·ÌùÀ«‰ÌÂ ’»— ò‰
-            timeout_counter++;
-        }
-    }
-    return i > 0; // «ê— çÌ“Ì œ—Ì«›  ò—œÂ »«‘Ì„ 1° Êê—‰Â 0 »—ê—œ«‰
-}
-
-
-
-
-unsigned char init_GPRS(void)
-{
-    char at_command[50];
-    char response[100]; // »«›— „Õ·Ì »—«Ì Å«”ŒùÂ«
-
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Connecting to GPRS...");
-
-    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
-    delay_ms(1500);
-
-    sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
-    send_at_command(at_command);
-    delay_ms(1500);
-
-    send_at_command("AT+SAPBR=1,1");
-    delay_ms(3000);
-
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Fetching IP...");
-    send_at_command("AT+SAPBR=2,1"); // œ—ŒÊ«”  IP
-
-    //  ·«‘ »—«Ì ŒÊ«‰œ‰ Å«”Œ »Â „œ  ? À«‰ÌÂ
-    //  «»⁄ ÃœÌœ „« Å«”Œ —« œ— „ €Ì— response „Ìù—Ì“œ
-    if (read_serial_response(response, sizeof(response), 5000)) {
-        
-        // ‰„«Ì‘ Å«”Œ œ—Ì«› Ì —ÊÌ GLCD »—«Ì œÌ»«ê
-        glcd_outtextxy(0, 40, "Resp:");
-        glcd_outtextxy(0, 50, response);
-        delay_ms(3000); // ‰„«Ì‘ »Â „œ  ? À«‰ÌÂ
-        
-        // Õ«·« »——”Ì „Ìùò‰Ì„ òÂ ¬Ì« IP œ— Å«”Œ ÊÃÊœ œ«—œ Ì« ‰Â
-        if (strstr(response, "+SAPBR: 1,1,") != NULL) {
-            char* token = strtok(response, "\"");
-            token = strtok(NULL, "\"");
-
-            if (token) {
-                strcpy(ip_address_buffer, token);
-                return 1; // „Ê›ﬁÌ 
-            }
-        }
-        // «ê— Å«”Œ œ—Ì«› Ì Õ«ÊÌ IP ‰»Êœ° „„ò‰ «”  Œÿ œÌê—Ì »«‘œ („À·« OK)
-        // Å” Ìò »«— œÌê—  ·«‘ „Ìùò‰Ì„ Œÿ »⁄œÌ —« »ŒÊ«‰Ì„
-        if (read_serial_response(response, sizeof(response), 5000)) {
-            glcd_outtextxy(0, 50, response); // ‰„«Ì‘ Œÿ œÊ„
-            delay_ms(3000);
-             if (strstr(response, "+SAPBR: 1,1,") != NULL) {
-                char* token = strtok(response, "\"");
-                token = strtok(NULL, "\"");
-                if (token) {
-                    strcpy(ip_address_buffer, token);
-                    return 1; // „Ê›ﬁÌ 
-                }
-            }
-        }
-    }
-    
-    return 0; // ‘ò” 
-}
- 
 
 void activate_motor(int product_id)
 {
@@ -227,68 +305,7 @@ void activate_motor(int product_id)
     delay_ms(2000);
 }
 
-
-
-unsigned char check_authorization(char* number)
-{
-    char at_command[150];
-    int timeout = 0;
-
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Authorizing...");
-    glcd_outtextxy(0, 10, number);
-
-    // 1. ??IC?I?? C???? ????? HTTP
-    send_at_command("AT+HTTPINIT");
-    delay_ms(1000);
-
-    // 2. E?U?? ?C?C?E??C? HTTP (CID ? URL)
-    send_at_command("AT+HTTPPARA=\"CID\",1");
-    delay_ms(500);
-
-    // ?CIE URL ??C?? E? ???C? O?C?? E???
-    sprintf(at_command, "AT+HTTPPARA=\"URL\",\"%s?phone=%s\"", SERVER_URL, number);
-    send_at_command(at_command);
-    delay_ms(1000);
-
-    // 3. C??C? I?I?C?E GET (Action = 0)
-    send_at_command("AT+HTTPACTION=0");
-    delay_ms(1000); // ??? ??C? E?C? O??? ????CE
-
-    // 4. ??EU? ?C?I E?C?
-    // ?C?I EC?I ???? OE?? E? "+HTTPACTION: 0,200,LENGTH" ECOI
-//    while(timeout < 50) // ?IC?E? 10 EC??? ??EU? E?C?
-//    {
-//        if (gets(response_buffer, sizeof(response_buffer)))
-//        {
-//            // E???? ??????? ?? A?C ?C?I ?????E?A??? (?I 200) C?E ?C ??
-//            if (strstr(response_buffer, "+HTTPACTION: 0,404") != NULL)
-//            {
-//                glcd_outtextxy(0, 30, "Authorized!");
-//                delay_ms(1500);
-//                send_at_command("AT+HTTPTERM"); // ICE?? ICI? E? ????? HTTP
-//                return 1; // ???? EC??I OI
-//            }
-//            // C?? I?C? IC?? ?I ICI? ECOI
-//            else if (strstr(response_buffer, "+HTTPACTION: 0,") != NULL)
-//            {
-//                break; // C? ???? IC?? O? ??? ?C?I I??C?E OI? C?C 200 ???E
-//            }
-//            glcd_clear();
-//            glcd_outtextxy(0, 0, "not");
-//        }
-//        delay_ms(10);
-//        timeout += 10;
-//    }
-
-    // C?? E? C???C ???I?? ???? ?C EC???C?E OI? ?C ?C?I 200 ?E?I?
-    glcd_clear();
-    glcd_outtextxy(5, 25, "Authorization Failed!");
-    delay_ms(1000);
-    send_at_command("AT+HTTPTERM"); // ICE?? ICI? E? ????? HTTP
-//    return 0; // ???? ?I OI
-    return 1;
-}
+///////////////////////////////////////////////////////////////////////////////////
 
 void main(void)
 {
@@ -320,7 +337,7 @@ void main(void)
     glcd_setfont(font5x7);
     // --- ?C?C? EIO ??IC?I?? C???? ---
 
- glcd_clear();
+    glcd_clear();
     glcd_outtextxy(0, 0, "Module Init...");
     delay_ms(1000);
 
@@ -347,30 +364,25 @@ void main(void)
 
         if (gets(header_buffer, sizeof(header_buffer)))
         {
-            // ?? ?? ?? A?C C?? I?? ??C? ?I? ??C?? C?E?
             if (strstr(header_buffer, "+CMT:") != NULL)
             {
                 char* token;
-
-                // C?EI?C? O?C?? E??? C? ?I?
-                // ???E ?I?: +CMT: "PHONE_NUMBER","","TIMESTAMP"
-                token = strtok(header_buffer, "\""); // EIO C?? ?E? C? "
+                token = strtok(header_buffer, "\"");
                 if (token != NULL) {
-                    token = strtok(NULL, "\""); // C?? E??? ??C? O?C?? E??? C?E
+                    token = strtok(NULL, "\"");
                     if (token != NULL) {
                         strcpy(phone_number, token);
 
-                        // ===== EIO ?I?I: E???? ???? =====
-                        if (check_authorization(phone_number))
+                        // ===== »Œ‘ «’·Ì: »——”Ì „ÃÊ“ =====
+                        if (check_authorization_post(phone_number))
                         {
-                            // ???? EC??I OI? ?C?C CIC?? ???? ?E?? ?C C??C ??
+                            // ò«—»— „Ã«“ «” ° «œ«„Â ›—«Ì‰œ...
                             memset(content_buffer, 0, sizeof(content_buffer));
-                            gets(content_buffer, sizeof(content_buffer)); // ??E?C? ??C?? ?C EI?C?
+                            gets(content_buffer, sizeof(content_buffer)); // ŒÊ«‰œ‰ „ ‰ ÅÌ«„ò
 
                             if (strlen(content_buffer) > 0)
                             {
                                 sms_char = content_buffer[0];
-                                
 
                                 if (sms_char == '1' || sms_char == '2' || sms_char == '3')
                                 {
@@ -419,16 +431,20 @@ void main(void)
                                         delay_ms(2000);
                                     }
                                 }
-                                else
-                                {
-                                   glcd_clear();
-                                   glcd_outtextxy(5, 25, "SMS code is invalid!");
-                                   delay_ms(2000);
+                                else {
+                                     glcd_clear();
+                                     glcd_outtextxy(5, 25, "Invalid SMS Code!");
+                                     delay_ms(2000);
                                 }
                             }
                         }
-                        // C?? ???? EC??I ?O?I? ECE? check_authorization ??C? I?C ??C?O ICI?
-                        // ? E??C?? E? ???E I?I?C? E? ?C?E C?EUC? EC? ?????II.
+                        else
+                        {
+                             // «ê—  «»⁄ check_authorization „ﬁœ«— 0 »—ê—œ«‰œ
+                             glcd_clear();
+                             glcd_outtextxy(0, 25, "You are not authorized!");
+                             delay_ms(2500);
+                        }
                     }
                 }
 
