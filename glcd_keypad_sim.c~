@@ -92,6 +92,8 @@ unsigned char send_json_post(const char* url, const char* phone_number) {
     char response[256];
     char json[64];
     unsigned int json_len;
+    int status_code = 0;
+    char* p = 0;
 
     // 1. Initialize HTTP service
     send_at_command("AT+HTTPINIT");
@@ -145,8 +147,21 @@ unsigned char send_json_post(const char* url, const char* phone_number) {
     send_at_command("AT+HTTPACTION=1");
     if (!read_serial_response(response, sizeof(response), HTTP_TIMEOUT_MS, "+HTTPACTION:")) return 0;
 
+
+    // e.g.: "+HTTPACTION: 1,200,45"
+    char* p = strchr(response, ':');
+    if (p) {
+        int method = 0;
+        int data_len = 0;
+        if (sscanf(p + 1, "%d,%d,%d", &method, &status_code, &data_len) != 3) {
+            status_code = 0; // parse error
+        }
+    }
+
+
     glcd_outtextxy(0,20,"lev 8");
-    
+
+
     // 9. («Œ Ì«—Ì) ŒÊ«‰œ‰ Å«”Œ ”—Ê—
     send_at_command("AT+HTTPREAD");
     if (read_serial_response(response, sizeof(response), 5000, "OK")) {
@@ -165,7 +180,9 @@ unsigned char send_json_post(const char* url, const char* phone_number) {
     read_serial_response(response, sizeof(response), 1000, "OK");
 
     glcd_outtextxy(0,20,"lev 10");
-    return 1;
+    // Determine result based on HTTP status
+    return (status_code == 200) ? 1 : 0;
+    //return 1;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -355,19 +372,19 @@ void main(void)
     glcd_outtextxy(0, 10, "Waiting for SMS...");
 
 //
-//    glcd_clear();
-//    glcd_outtextxy(0,0,"Sending POST...");
+    glcd_clear();
+    glcd_outtextxy(0,0,"Sending POST...");
     
-//    for(i; i<3; i++){
+    for(i; i<3; i++){
         if (send_json_post(server_url, my_phone)) {
             glcd_outtextxy(0,10,"POST OK");
         } else {
             glcd_outtextxy(0,10,"POST Fail");
         }
-//        delay_ms(10000);
-//        glcd_clear();
-//        glcd_outtextxy(0,0,"Sending POST...");
-//    }
+        delay_ms(10000);
+        glcd_clear();
+        glcd_outtextxy(0,0,"Sending POST...");
+    }
     
 
 
