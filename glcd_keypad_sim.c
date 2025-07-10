@@ -11,9 +11,13 @@
 // ---  ‰ŸÌ„«  «’·Ì ---
 #define APN "mcinet" // APN «Å—« Ê— ŒÊœ —« Ê«—œ ò‰Ìœ
 //#define SERVER_URL "http://google.com/api/authorize" // ¬œ—” ò«„· ”—Ê— ŒÊœ —« «Ì‰Ã« ﬁ—«— œÂÌœ
-#define SERVER_URL_POST "http://193.5.44.191/home/post/"
+//#define SERVER_URL_POST "http://193.5.44.191/home/post/"
 
-#define HTTP_TIMEOUT_MS 30000
+#define HTTP_TIMEOUT_MS 10000
+
+
+const char* server_url = "http://193.5.44.191/home/post/";
+const char* my_phone    = "+989122608582";
 
 // --- »«›—Â«Ì ”—«”—Ì ---
 char header_buffer[100];
@@ -91,7 +95,7 @@ unsigned char send_json_post(const char* url, const char* phone_number) {
 
     // 1. Initialize HTTP service
     send_at_command("AT+HTTPINIT");
-    if (!read_serial_response(response, sizeof(response), 2000, "OK")) return 0;  
+    if (!read_serial_response(response, sizeof(response), 3000, "OK")) return 0;  
     
     glcd_outtextxy(0,20,"lev 1");
     
@@ -145,18 +149,20 @@ unsigned char send_json_post(const char* url, const char* phone_number) {
     
     // 9. («Œ Ì«—Ì) ŒÊ«‰œ‰ Å«”Œ ”—Ê—
     send_at_command("AT+HTTPREAD");
-    if (read_serial_response(response, sizeof(response), 7000, "OK")) {
+    if (read_serial_response(response, sizeof(response), 5000, "OK")) {
         // Å«”Œ ”—Ê— œ— response «” ° „Ìù Ê«‰Ìœ »—«Ì œÌ»«ê ç«Å ò‰Ìœ:
         glcd_clear();
         glcd_outtextxy(0,0,"Response:");
         glcd_outtextxy(0,10,response);
+        delay_ms(5000);
     } 
-    
-    glcd_outtextxy(0,20,"lev 9");
+//    
+    glcd_clear();
+//    glcd_outtextxy(0,20,"lev 9");
 
     // 10. Terminate HTTP service
     send_at_command("AT+HTTPTERM");
-    read_serial_response(response, sizeof(response), 2000, "OK");
+    read_serial_response(response, sizeof(response), 1000, "OK");
 
     glcd_outtextxy(0,20,"lev 10");
     return 1;
@@ -302,6 +308,7 @@ void main(void)
 {
     const char* server_url = "http://193.5.44.191/home/post/";
     const char* my_phone    = "+989122608582";
+    int i = 0;
     
     GLCDINIT_t glcd_init_data;
 
@@ -333,7 +340,7 @@ void main(void)
 
     glcd_clear();
     glcd_outtextxy(0, 0, "Module Init...");
-    delay_ms(5000);
+    delay_ms(10000);
 
     send_at_command("ATE0");
     delay_ms(1000);
@@ -347,14 +354,22 @@ void main(void)
     glcd_outtextxy(0, 0, "System Ready.");
     glcd_outtextxy(0, 10, "Waiting for SMS...");
 
+//
+//    glcd_clear();
+//    glcd_outtextxy(0,0,"Sending POST...");
+    
+//    for(i; i<3; i++){
+//        if (send_json_post(server_url, my_phone)) {
+//            glcd_outtextxy(0,10,"POST OK");
+//        } else {
+//            glcd_outtextxy(0,10,"POST Fail");
+//        }
+//        delay_ms(10000);
+//        glcd_clear();
+//        glcd_outtextxy(0,0,"Sending POST...");
+//    }
+    
 
-    glcd_clear();
-    glcd_outtextxy(0,0,"Sending POST...");
-    if (send_json_post(server_url, my_phone)) {
-        glcd_outtextxy(0,10,"POST OK");
-    } else {
-        glcd_outtextxy(0,10,"POST Fail");
-    }
 
     while (1)
     {

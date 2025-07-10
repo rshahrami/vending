@@ -1235,63 +1235,63 @@ _0x0:
 	.DB  0x6C,0x65,0x76,0x20,0x38,0x0,0x41,0x54
 	.DB  0x2B,0x48,0x54,0x54,0x50,0x52,0x45,0x41
 	.DB  0x44,0x0,0x52,0x65,0x73,0x70,0x6F,0x6E
-	.DB  0x73,0x65,0x3A,0x0,0x6C,0x65,0x76,0x20
-	.DB  0x39,0x0,0x41,0x54,0x2B,0x48,0x54,0x54
-	.DB  0x50,0x54,0x45,0x52,0x4D,0x0,0x6C,0x65
-	.DB  0x76,0x20,0x31,0x30,0x0,0x53,0x65,0x74
-	.DB  0x74,0x69,0x6E,0x67,0x20,0x53,0x4D,0x53
-	.DB  0x20,0x4D,0x6F,0x64,0x65,0x2E,0x2E,0x2E
-	.DB  0x0,0x41,0x54,0x2B,0x43,0x4D,0x47,0x46
-	.DB  0x3D,0x31,0x0,0x41,0x54,0x2B,0x43,0x4E
-	.DB  0x4D,0x49,0x3D,0x32,0x2C,0x32,0x2C,0x30
-	.DB  0x2C,0x30,0x2C,0x30,0x0,0x41,0x54,0x2B
-	.DB  0x43,0x4D,0x47,0x44,0x41,0x3D,0x22,0x44
-	.DB  0x45,0x4C,0x20,0x41,0x4C,0x4C,0x22,0x0
-	.DB  0x53,0x4D,0x53,0x20,0x52,0x65,0x61,0x64
-	.DB  0x79,0x2E,0x0,0x43,0x6F,0x6E,0x6E,0x65
-	.DB  0x63,0x74,0x69,0x6E,0x67,0x20,0x74,0x6F
-	.DB  0x20,0x47,0x50,0x52,0x53,0x2E,0x2E,0x2E
+	.DB  0x73,0x65,0x3A,0x0,0x41,0x54,0x2B,0x48
+	.DB  0x54,0x54,0x50,0x54,0x45,0x52,0x4D,0x0
+	.DB  0x6C,0x65,0x76,0x20,0x31,0x30,0x0,0x53
+	.DB  0x65,0x74,0x74,0x69,0x6E,0x67,0x20,0x53
+	.DB  0x4D,0x53,0x20,0x4D,0x6F,0x64,0x65,0x2E
+	.DB  0x2E,0x2E,0x0,0x41,0x54,0x2B,0x43,0x4D
+	.DB  0x47,0x46,0x3D,0x31,0x0,0x41,0x54,0x2B
+	.DB  0x43,0x4E,0x4D,0x49,0x3D,0x32,0x2C,0x32
+	.DB  0x2C,0x30,0x2C,0x30,0x2C,0x30,0x0,0x41
+	.DB  0x54,0x2B,0x43,0x4D,0x47,0x44,0x41,0x3D
+	.DB  0x22,0x44,0x45,0x4C,0x20,0x41,0x4C,0x4C
+	.DB  0x22,0x0,0x53,0x4D,0x53,0x20,0x52,0x65
+	.DB  0x61,0x64,0x79,0x2E,0x0,0x43,0x6F,0x6E
+	.DB  0x6E,0x65,0x63,0x74,0x69,0x6E,0x67,0x20
+	.DB  0x74,0x6F,0x20,0x47,0x50,0x52,0x53,0x2E
+	.DB  0x2E,0x2E,0x0,0x41,0x54,0x2B,0x53,0x41
+	.DB  0x50,0x42,0x52,0x3D,0x33,0x2C,0x31,0x2C
+	.DB  0x22,0x43,0x6F,0x6E,0x74,0x79,0x70,0x65
+	.DB  0x22,0x2C,0x22,0x47,0x50,0x52,0x53,0x22
 	.DB  0x0,0x41,0x54,0x2B,0x53,0x41,0x50,0x42
-	.DB  0x52,0x3D,0x33,0x2C,0x31,0x2C,0x22,0x43
-	.DB  0x6F,0x6E,0x74,0x79,0x70,0x65,0x22,0x2C
-	.DB  0x22,0x47,0x50,0x52,0x53,0x22,0x0,0x41
-	.DB  0x54,0x2B,0x53,0x41,0x50,0x42,0x52,0x3D
-	.DB  0x33,0x2C,0x31,0x2C,0x22,0x41,0x50,0x4E
-	.DB  0x22,0x2C,0x22,0x25,0x73,0x22,0x0,0x6D
-	.DB  0x63,0x69,0x6E,0x65,0x74,0x0,0x41,0x54
-	.DB  0x2B,0x53,0x41,0x50,0x42,0x52,0x3D,0x31
-	.DB  0x2C,0x31,0x0,0x46,0x65,0x74,0x63,0x68
-	.DB  0x69,0x6E,0x67,0x20,0x49,0x50,0x2E,0x2E
-	.DB  0x2E,0x0,0x41,0x54,0x2B,0x53,0x41,0x50
-	.DB  0x42,0x52,0x3D,0x32,0x2C,0x31,0x0,0x2B
-	.DB  0x53,0x41,0x50,0x42,0x52,0x3A,0x0,0x52
-	.DB  0x65,0x73,0x70,0x3A,0x0,0x2B,0x53,0x41
-	.DB  0x50,0x42,0x52,0x3A,0x20,0x31,0x2C,0x31
-	.DB  0x2C,0x0,0x4D,0x4F,0x54,0x4F,0x52,0x20
-	.DB  0x25,0x64,0x20,0x4F,0x4E,0x21,0x0,0x4D
-	.DB  0x4F,0x54,0x4F,0x52,0x20,0x25,0x64,0x20
-	.DB  0x4F,0x46,0x46,0x21,0x0,0x68,0x74,0x74
-	.DB  0x70,0x3A,0x2F,0x2F,0x31,0x39,0x33,0x2E
-	.DB  0x35,0x2E,0x34,0x34,0x2E,0x31,0x39,0x31
-	.DB  0x2F,0x68,0x6F,0x6D,0x65,0x2F,0x70,0x6F
-	.DB  0x73,0x74,0x2F,0x0,0x2B,0x39,0x38,0x39
-	.DB  0x31,0x32,0x32,0x36,0x30,0x38,0x35,0x38
-	.DB  0x32,0x0,0x4D,0x6F,0x64,0x75,0x6C,0x65
-	.DB  0x20,0x49,0x6E,0x69,0x74,0x2E,0x2E,0x2E
-	.DB  0x0,0x41,0x54,0x45,0x30,0x0,0x41,0x54
-	.DB  0x0,0x53,0x4D,0x53,0x20,0x49,0x6E,0x69
-	.DB  0x74,0x20,0x46,0x61,0x69,0x6C,0x65,0x64
-	.DB  0x21,0x0,0x47,0x50,0x52,0x53,0x20,0x49
+	.DB  0x52,0x3D,0x33,0x2C,0x31,0x2C,0x22,0x41
+	.DB  0x50,0x4E,0x22,0x2C,0x22,0x25,0x73,0x22
+	.DB  0x0,0x6D,0x63,0x69,0x6E,0x65,0x74,0x0
+	.DB  0x41,0x54,0x2B,0x53,0x41,0x50,0x42,0x52
+	.DB  0x3D,0x31,0x2C,0x31,0x0,0x46,0x65,0x74
+	.DB  0x63,0x68,0x69,0x6E,0x67,0x20,0x49,0x50
+	.DB  0x2E,0x2E,0x2E,0x0,0x41,0x54,0x2B,0x53
+	.DB  0x41,0x50,0x42,0x52,0x3D,0x32,0x2C,0x31
+	.DB  0x0,0x2B,0x53,0x41,0x50,0x42,0x52,0x3A
+	.DB  0x0,0x52,0x65,0x73,0x70,0x3A,0x0,0x2B
+	.DB  0x53,0x41,0x50,0x42,0x52,0x3A,0x20,0x31
+	.DB  0x2C,0x31,0x2C,0x0,0x4D,0x4F,0x54,0x4F
+	.DB  0x52,0x20,0x25,0x64,0x20,0x4F,0x4E,0x21
+	.DB  0x0,0x4D,0x4F,0x54,0x4F,0x52,0x20,0x25
+	.DB  0x64,0x20,0x4F,0x46,0x46,0x21,0x0,0x68
+	.DB  0x74,0x74,0x70,0x3A,0x2F,0x2F,0x31,0x39
+	.DB  0x33,0x2E,0x35,0x2E,0x34,0x34,0x2E,0x31
+	.DB  0x39,0x31,0x2F,0x68,0x6F,0x6D,0x65,0x2F
+	.DB  0x70,0x6F,0x73,0x74,0x2F,0x0,0x2B,0x39
+	.DB  0x38,0x39,0x31,0x32,0x32,0x36,0x30,0x38
+	.DB  0x35,0x38,0x32,0x0,0x4D,0x6F,0x64,0x75
+	.DB  0x6C,0x65,0x20,0x49,0x6E,0x69,0x74,0x2E
+	.DB  0x2E,0x2E,0x0,0x41,0x54,0x45,0x30,0x0
+	.DB  0x41,0x54,0x0,0x53,0x4D,0x53,0x20,0x49
 	.DB  0x6E,0x69,0x74,0x20,0x46,0x61,0x69,0x6C
-	.DB  0x65,0x64,0x21,0x0,0x53,0x79,0x73,0x74
-	.DB  0x65,0x6D,0x20,0x52,0x65,0x61,0x64,0x79
-	.DB  0x2E,0x0,0x57,0x61,0x69,0x74,0x69,0x6E
-	.DB  0x67,0x20,0x66,0x6F,0x72,0x20,0x53,0x4D
-	.DB  0x53,0x2E,0x2E,0x2E,0x0,0x53,0x65,0x6E
-	.DB  0x64,0x69,0x6E,0x67,0x20,0x50,0x4F,0x53
-	.DB  0x54,0x2E,0x2E,0x2E,0x0,0x50,0x4F,0x53
-	.DB  0x54,0x20,0x4F,0x4B,0x0,0x50,0x4F,0x53
-	.DB  0x54,0x20,0x46,0x61,0x69,0x6C,0x0
+	.DB  0x65,0x64,0x21,0x0,0x47,0x50,0x52,0x53
+	.DB  0x20,0x49,0x6E,0x69,0x74,0x20,0x46,0x61
+	.DB  0x69,0x6C,0x65,0x64,0x21,0x0,0x53,0x79
+	.DB  0x73,0x74,0x65,0x6D,0x20,0x52,0x65,0x61
+	.DB  0x64,0x79,0x2E,0x0,0x57,0x61,0x69,0x74
+	.DB  0x69,0x6E,0x67,0x20,0x66,0x6F,0x72,0x20
+	.DB  0x53,0x4D,0x53,0x2E,0x2E,0x2E,0x0,0x53
+	.DB  0x65,0x6E,0x64,0x69,0x6E,0x67,0x20,0x50
+	.DB  0x4F,0x53,0x54,0x2E,0x2E,0x2E,0x0,0x50
+	.DB  0x4F,0x53,0x54,0x20,0x4F,0x4B,0x0,0x50
+	.DB  0x4F,0x53,0x54,0x20,0x46,0x61,0x69,0x6C
+	.DB  0x0
 _0x20A0060:
 	.DB  0x1
 _0x20A0000:
@@ -1383,121 +1383,121 @@ __GLOBAL_INI_TBL:
 	.DW  _0xA+186
 	.DW  _0x0*2+242
 
-	.DW  0x06
+	.DW  0x0C
 	.DW  _0xA+196
 	.DW  _0x0*2+252
 
-	.DW  0x0C
-	.DW  _0xA+202
-	.DW  _0x0*2+258
-
 	.DW  0x03
-	.DW  _0xA+214
+	.DW  _0xA+208
 	.DW  _0x0*2+17
 
 	.DW  0x07
-	.DW  _0xA+217
-	.DW  _0x0*2+270
+	.DW  _0xA+211
+	.DW  _0x0*2+264
 
 	.DW  0x14
 	.DW  _0x12
-	.DW  _0x0*2+277
+	.DW  _0x0*2+271
 
 	.DW  0x0A
 	.DW  _0x12+20
-	.DW  _0x0*2+297
+	.DW  _0x0*2+291
 
 	.DW  0x12
 	.DW  _0x12+30
-	.DW  _0x0*2+307
+	.DW  _0x0*2+301
 
 	.DW  0x13
 	.DW  _0x12+48
-	.DW  _0x0*2+325
+	.DW  _0x0*2+319
 
 	.DW  0x0B
 	.DW  _0x12+67
-	.DW  _0x0*2+344
+	.DW  _0x0*2+338
 
 	.DW  0x16
 	.DW  _0x13
-	.DW  _0x0*2+355
+	.DW  _0x0*2+349
 
 	.DW  0x1E
 	.DW  _0x13+22
-	.DW  _0x0*2+377
+	.DW  _0x0*2+371
 
 	.DW  0x0D
 	.DW  _0x13+52
-	.DW  _0x0*2+438
+	.DW  _0x0*2+432
 
 	.DW  0x0F
 	.DW  _0x13+65
-	.DW  _0x0*2+451
+	.DW  _0x0*2+445
 
 	.DW  0x0D
 	.DW  _0x13+80
-	.DW  _0x0*2+466
+	.DW  _0x0*2+460
 
 	.DW  0x08
 	.DW  _0x13+93
-	.DW  _0x0*2+479
+	.DW  _0x0*2+473
 
 	.DW  0x06
 	.DW  _0x13+101
-	.DW  _0x0*2+487
+	.DW  _0x0*2+481
 
 	.DW  0x0D
 	.DW  _0x13+107
-	.DW  _0x0*2+493
+	.DW  _0x0*2+487
 
 	.DW  0x1F
 	.DW  _0x2A
-	.DW  _0x0*2+533
+	.DW  _0x0*2+527
 
 	.DW  0x0E
 	.DW  _0x2A+31
-	.DW  _0x0*2+564
+	.DW  _0x0*2+558
 
 	.DW  0x0F
 	.DW  _0x2A+45
-	.DW  _0x0*2+578
+	.DW  _0x0*2+572
 
 	.DW  0x05
 	.DW  _0x2A+60
-	.DW  _0x0*2+593
+	.DW  _0x0*2+587
 
 	.DW  0x03
 	.DW  _0x2A+65
-	.DW  _0x0*2+598
+	.DW  _0x0*2+592
 
 	.DW  0x11
 	.DW  _0x2A+68
-	.DW  _0x0*2+601
+	.DW  _0x0*2+595
 
 	.DW  0x12
 	.DW  _0x2A+85
-	.DW  _0x0*2+618
+	.DW  _0x0*2+612
 
 	.DW  0x0E
 	.DW  _0x2A+103
-	.DW  _0x0*2+636
+	.DW  _0x0*2+630
 
 	.DW  0x13
 	.DW  _0x2A+117
-	.DW  _0x0*2+650
+	.DW  _0x0*2+644
 
 	.DW  0x10
 	.DW  _0x2A+136
-	.DW  _0x0*2+669
+	.DW  _0x0*2+663
 
 	.DW  0x08
 	.DW  _0x2A+152
-	.DW  _0x0*2+685
+	.DW  _0x0*2+679
 
 	.DW  0x0A
 	.DW  _0x2A+160
-	.DW  _0x0*2+693
+	.DW  _0x0*2+687
+
+	.DW  0x10
+	.DW  _0x2A+170
+	.DW  _0x0*2+663
 
 	.DW  0x01
 	.DW  __seed_G105
@@ -1607,7 +1607,7 @@ __GLOBAL_INI_END:
 ;//#define SERVER_URL "http://google.com/api/authorize" // ÂÏÑÓ ˜Çãá ÓÑæÑ ÎæÏ ÑÇ ÇíäÌÇ ÞÑÇÑ ÏåíÏ
 ;#define SERVER_URL_POST "http://193.5.44.191/home/post/"
 ;
-;#define HTTP_TIMEOUT_MS 30000
+;#define HTTP_TIMEOUT_MS 10000
 ;
 ;// --- ÈÇÝÑåÇí ÓÑÇÓÑí ---
 ;char header_buffer[100];
@@ -1797,7 +1797,11 @@ _send_json_post:
 ;	json_len -> R16,R17
 	__POINTW2MN _0xA,0
 	CALL SUBOPT_0x1
-; 0000 005E     if (!read_serial_response(response, sizeof(response), 2000, "OK")) return 0;
+; 0000 005E     if (!read_serial_response(response, sizeof(response), 3000, "OK")) return 0;
+	LDI  R30,LOW(3000)
+	LDI  R31,HIGH(3000)
+	ST   -Y,R31
+	ST   -Y,R30
 	__POINTW2MN _0xA,12
 	RCALL _read_serial_response
 	CPI  R30,0
@@ -1816,6 +1820,7 @@ _0xB:
 	__POINTW2MN _0xA,21
 	CALL SUBOPT_0x1
 ; 0000 0064     if (!read_serial_response(response, sizeof(response), 2000, "OK")) return 0;
+	CALL SUBOPT_0x3
 	__POINTW2MN _0xA,41
 	RCALL _read_serial_response
 	CPI  R30,0
@@ -1827,7 +1832,7 @@ _0xB:
 _0xC:
 	CALL SUBOPT_0x2
 	__POINTW2MN _0xA,44
-	CALL SUBOPT_0x3
+	CALL SUBOPT_0x4
 ; 0000 0067 
 ; 0000 0068     // 3. Set the target URL
 ; 0000 0069     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", url);
@@ -1844,6 +1849,7 @@ _0xC:
 	SBCI R27,HIGH(-(322))
 	CALL SUBOPT_0x1
 ; 0000 006B     if (!read_serial_response(response, sizeof(response), 2000, "OK")) return 0;
+	CALL SUBOPT_0x3
 	__POINTW2MN _0xA,50
 	RCALL _read_serial_response
 	CPI  R30,0
@@ -1862,6 +1868,7 @@ _0xD:
 	__POINTW2MN _0xA,59
 	CALL SUBOPT_0x1
 ; 0000 0071     if (!read_serial_response(response, sizeof(response), 2000, "OK")) return 0;
+	CALL SUBOPT_0x3
 	__POINTW2MN _0xA,100
 	RCALL _read_serial_response
 	CPI  R30,0
@@ -1897,7 +1904,7 @@ _0xE:
 ; 0000 0079     glcd_outtextxy(0,20,"lev 5");
 	CALL SUBOPT_0x2
 	__POINTW2MN _0xA,109
-	CALL SUBOPT_0x3
+	CALL SUBOPT_0x4
 ; 0000 007A //    delay_ms(3000);
 ; 0000 007B 
 ; 0000 007C     // 6. Notify module about payload size and wait for “DOWNLOAD”
@@ -1909,7 +1916,7 @@ _0xE:
 	CLR  R22
 	CLR  R23
 	CALL __PUTPARD1
-	__GETD1N 0x7530
+	__GETD1N 0x2710
 	CALL __PUTPARD1
 	LDI  R24,8
 	CALL _sprintf
@@ -1918,7 +1925,7 @@ _0xE:
 	MOVW R26,R28
 	SUBI R26,LOW(-(322))
 	SBCI R27,HIGH(-(322))
-	CALL SUBOPT_0x4
+	CALL SUBOPT_0x1
 ; 0000 007F     if (!read_serial_response(response, sizeof(response), 7000, "DOWNLOAD")) return 0;
 	LDI  R30,LOW(7000)
 	LDI  R31,HIGH(7000)
@@ -1955,10 +1962,10 @@ _0xF:
 ; 0000 008C     // 8. Execute the POST (1 = POST method)
 ; 0000 008D     send_at_command("AT+HTTPACTION=1");
 	__POINTW2MN _0xA,136
-	CALL SUBOPT_0x4
+	CALL SUBOPT_0x1
 ; 0000 008E     if (!read_serial_response(response, sizeof(response), HTTP_TIMEOUT_MS, "+HTTPACTION:")) return 0;
-	LDI  R30,LOW(30000)
-	LDI  R31,HIGH(30000)
+	LDI  R30,LOW(10000)
+	LDI  R31,HIGH(10000)
 	ST   -Y,R31
 	ST   -Y,R30
 	__POINTW2MN _0xA,152
@@ -1977,10 +1984,10 @@ _0x10:
 ; 0000 0092     // 9. (ÇÎÊíÇÑí) ÎæÇäÏä ÇÓÎ ÓÑæÑ
 ; 0000 0093     send_at_command("AT+HTTPREAD");
 	__POINTW2MN _0xA,171
-	CALL SUBOPT_0x4
-; 0000 0094     if (read_serial_response(response, sizeof(response), 7000, "OK")) {
-	LDI  R30,LOW(7000)
-	LDI  R31,HIGH(7000)
+	CALL SUBOPT_0x1
+; 0000 0094     if (read_serial_response(response, sizeof(response), 5000, "OK")) {
+	LDI  R30,LOW(5000)
+	LDI  R31,HIGH(5000)
 	ST   -Y,R31
 	ST   -Y,R30
 	__POINTW2MN _0xA,183
@@ -1998,27 +2005,34 @@ _0x10:
 	SUBI R26,LOW(-(68))
 	SBCI R27,HIGH(-(68))
 	CALL _glcd_outtextxy
-; 0000 0099     }
-; 0000 009A 
-; 0000 009B     glcd_outtextxy(0,20,"lev 9");
+; 0000 0099         delay_ms(5000);
+	LDI  R26,LOW(5000)
+	LDI  R27,HIGH(5000)
+	CALL _delay_ms
+; 0000 009A     }
+; 0000 009B //
+; 0000 009C     glcd_clear();
 _0x11:
-	CALL SUBOPT_0x2
+	RCALL _glcd_clear
+; 0000 009D //    glcd_outtextxy(0,20,"lev 9");
+; 0000 009E 
+; 0000 009F     // 10. Terminate HTTP service
+; 0000 00A0     send_at_command("AT+HTTPTERM");
 	__POINTW2MN _0xA,196
-	CALL _glcd_outtextxy
-; 0000 009C 
-; 0000 009D     // 10. Terminate HTTP service
-; 0000 009E     send_at_command("AT+HTTPTERM");
-	__POINTW2MN _0xA,202
 	CALL SUBOPT_0x1
-; 0000 009F     read_serial_response(response, sizeof(response), 2000, "OK");
-	__POINTW2MN _0xA,214
+; 0000 00A1     read_serial_response(response, sizeof(response), 1000, "OK");
+	LDI  R30,LOW(1000)
+	LDI  R31,HIGH(1000)
+	ST   -Y,R31
+	ST   -Y,R30
+	__POINTW2MN _0xA,208
 	RCALL _read_serial_response
-; 0000 00A0 
-; 0000 00A1     glcd_outtextxy(0,20,"lev 10");
+; 0000 00A2 
+; 0000 00A3     glcd_outtextxy(0,20,"lev 10");
 	CALL SUBOPT_0x2
-	__POINTW2MN _0xA,217
+	__POINTW2MN _0xA,211
 	CALL _glcd_outtextxy
-; 0000 00A2     return 1;
+; 0000 00A4     return 1;
 	LDI  R30,LOW(1)
 _0x212000E:
 	LDD  R17,Y+1
@@ -2029,54 +2043,54 @@ _0x212000E:
 	ADIW R28,9
 	SUBI R29,-1
 	RET
-; 0000 00A3 }
+; 0000 00A5 }
 ; .FEND
 
 	.DSEG
 _0xA:
-	.BYTE 0xE0
+	.BYTE 0xDA
 ;
 ;///////////////////////////////////////////////////////////////////////////////////////////
 ;
 ;unsigned char init_sms(void)
-; 0000 00A8 {
+; 0000 00AA {
 
 	.CSEG
 _init_sms:
 ; .FSTART _init_sms
-; 0000 00A9     glcd_clear();
+; 0000 00AB     glcd_clear();
 	CALL SUBOPT_0x6
-; 0000 00AA     glcd_outtextxy(0, 0, "Setting SMS Mode...");
+; 0000 00AC     glcd_outtextxy(0, 0, "Setting SMS Mode...");
 	__POINTW2MN _0x12,0
 	CALL _glcd_outtextxy
-; 0000 00AB     send_at_command("AT+CMGF=1");
+; 0000 00AD     send_at_command("AT+CMGF=1");
 	__POINTW2MN _0x12,20
 	CALL SUBOPT_0x5
-; 0000 00AC     delay_ms(500);
-; 0000 00AD 
-; 0000 00AE     send_at_command("AT+CNMI=2,2,0,0,0");
+; 0000 00AE     delay_ms(500);
+; 0000 00AF 
+; 0000 00B0     send_at_command("AT+CNMI=2,2,0,0,0");
 	__POINTW2MN _0x12,30
 	CALL SUBOPT_0x5
-; 0000 00AF     delay_ms(500);
-; 0000 00B0 
-; 0000 00B1     send_at_command("AT+CMGDA=\"DEL ALL\"");
+; 0000 00B1     delay_ms(500);
+; 0000 00B2 
+; 0000 00B3     send_at_command("AT+CMGDA=\"DEL ALL\"");
 	__POINTW2MN _0x12,48
 	RCALL _send_at_command
-; 0000 00B2     delay_ms(2000);
+; 0000 00B4     delay_ms(2000);
 	LDI  R26,LOW(2000)
 	LDI  R27,HIGH(2000)
 	CALL _delay_ms
-; 0000 00B3 
-; 0000 00B4     glcd_outtextxy(0, 10, "SMS Ready.");
+; 0000 00B5 
+; 0000 00B6     glcd_outtextxy(0, 10, "SMS Ready.");
 	CALL SUBOPT_0x8
 	__POINTW2MN _0x12,67
 	CALL _glcd_outtextxy
-; 0000 00B5     delay_ms(1000);
+; 0000 00B7     delay_ms(1000);
 	CALL SUBOPT_0x9
-; 0000 00B6     return 1;
+; 0000 00B8     return 1;
 	LDI  R30,LOW(1)
 	RET
-; 0000 00B7 }
+; 0000 00B9 }
 ; .FEND
 
 	.DSEG
@@ -2084,71 +2098,71 @@ _0x12:
 	.BYTE 0x4E
 ;
 ;unsigned char init_GPRS(void)
-; 0000 00BA {
+; 0000 00BC {
 
 	.CSEG
 _init_GPRS:
 ; .FSTART _init_GPRS
-; 0000 00BB     char at_command[50];
-; 0000 00BC     char response[100]; // Local buffer for the response
-; 0000 00BD 
-; 0000 00BE     glcd_clear();
+; 0000 00BD     char at_command[50];
+; 0000 00BE     char response[100]; // Local buffer for the response
+; 0000 00BF 
+; 0000 00C0     glcd_clear();
 	SBIW R28,63
 	SBIW R28,63
 	SBIW R28,24
 ;	at_command -> Y+100
 ;	response -> Y+0
 	CALL SUBOPT_0x6
-; 0000 00BF     glcd_outtextxy(0, 0, "Connecting to GPRS...");
+; 0000 00C1     glcd_outtextxy(0, 0, "Connecting to GPRS...");
 	__POINTW2MN _0x13,0
 	CALL _glcd_outtextxy
-; 0000 00C0 
-; 0000 00C1     send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
+; 0000 00C2 
+; 0000 00C3     send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
 	__POINTW2MN _0x13,22
 	CALL SUBOPT_0xA
-; 0000 00C2     delay_ms(1500);
-; 0000 00C3 
-; 0000 00C4     sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
+; 0000 00C4     delay_ms(1500);
+; 0000 00C5 
+; 0000 00C6     sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
 	MOVW R30,R28
 	SUBI R30,LOW(-(100))
 	SBCI R31,HIGH(-(100))
 	ST   -Y,R31
 	ST   -Y,R30
-	__POINTW1FN _0x0,407
+	__POINTW1FN _0x0,401
 	ST   -Y,R31
 	ST   -Y,R30
-	__POINTW1FN _0x0,431
+	__POINTW1FN _0x0,425
 	CALL SUBOPT_0x0
 	CALL _sprintf
 	ADIW R28,8
-; 0000 00C5     send_at_command(at_command);
+; 0000 00C7     send_at_command(at_command);
 	MOVW R26,R28
 	SUBI R26,LOW(-(100))
 	SBCI R27,HIGH(-(100))
 	CALL SUBOPT_0xA
-; 0000 00C6     delay_ms(1500);
-; 0000 00C7 
-; 0000 00C8     send_at_command("AT+SAPBR=1,1");
+; 0000 00C8     delay_ms(1500);
+; 0000 00C9 
+; 0000 00CA     send_at_command("AT+SAPBR=1,1");
 	__POINTW2MN _0x13,52
 	RCALL _send_at_command
-; 0000 00C9     delay_ms(3000);
+; 0000 00CB     delay_ms(3000);
 	LDI  R26,LOW(3000)
 	LDI  R27,HIGH(3000)
 	CALL _delay_ms
-; 0000 00CA 
-; 0000 00CB     glcd_clear();
+; 0000 00CC 
+; 0000 00CD     glcd_clear();
 	CALL SUBOPT_0x6
-; 0000 00CC     glcd_outtextxy(0, 0, "Fetching IP...");
+; 0000 00CE     glcd_outtextxy(0, 0, "Fetching IP...");
 	__POINTW2MN _0x13,65
 	CALL _glcd_outtextxy
-; 0000 00CD     send_at_command("AT+SAPBR=2,1"); // Request IP
+; 0000 00CF     send_at_command("AT+SAPBR=2,1"); // Request IP
 	__POINTW2MN _0x13,80
 	RCALL _send_at_command
-; 0000 00CE     // delay_ms(5000);
-; 0000 00CF 
-; 0000 00D0     // Attempt to read the response for 5 seconds, looking for "+SAPBR:"
-; 0000 00D1     // FIX: Added the 4th argument, "+SAPBR:", to the function call.
-; 0000 00D2     if (read_serial_response(response, sizeof(response), 5000, "+SAPBR:")) {
+; 0000 00D0     // delay_ms(5000);
+; 0000 00D1 
+; 0000 00D2     // Attempt to read the response for 5 seconds, looking for "+SAPBR:"
+; 0000 00D3     // FIX: Added the 4th argument, "+SAPBR:", to the function call.
+; 0000 00D4     if (read_serial_response(response, sizeof(response), 5000, "+SAPBR:")) {
 	MOVW R30,R28
 	ST   -Y,R31
 	ST   -Y,R30
@@ -2164,22 +2178,22 @@ _init_GPRS:
 	RCALL _read_serial_response
 	CPI  R30,0
 	BREQ _0x14
-; 0000 00D3         glcd_outtextxy(0, 10, "Resp:");
+; 0000 00D5         glcd_outtextxy(0, 10, "Resp:");
 	CALL SUBOPT_0x8
 	__POINTW2MN _0x13,101
 	CALL _glcd_outtextxy
-; 0000 00D4         glcd_outtextxy(0, 20, response); // Display the received response for debugging
+; 0000 00D6         glcd_outtextxy(0, 20, response); // Display the received response for debugging
 	CALL SUBOPT_0x2
 	MOVW R26,R28
 	ADIW R26,2
 	CALL _glcd_outtextxy
-; 0000 00D5         delay_ms(3000);
+; 0000 00D7         delay_ms(3000);
 	LDI  R26,LOW(3000)
 	LDI  R27,HIGH(3000)
 	CALL _delay_ms
-; 0000 00D6 
-; 0000 00D7         // Check if the response contains the IP address part
-; 0000 00D8         if (strstr(response, "+SAPBR: 1,1,") != NULL) {
+; 0000 00D8 
+; 0000 00D9         // Check if the response contains the IP address part
+; 0000 00DA         if (strstr(response, "+SAPBR: 1,1,") != NULL) {
 	MOVW R30,R28
 	ST   -Y,R31
 	ST   -Y,R30
@@ -2187,8 +2201,8 @@ _init_GPRS:
 	CALL _strstr
 	SBIW R30,0
 	BREQ _0x15
-; 0000 00D9             char* token = strtok(response, "\"");
-; 0000 00DA             token = strtok(NULL, "\"");
+; 0000 00DB             char* token = strtok(response, "\"");
+; 0000 00DC             token = strtok(NULL, "\"");
 	SBIW R28,2
 ;	at_command -> Y+102
 ;	response -> Y+2
@@ -2199,13 +2213,13 @@ _init_GPRS:
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
 	CALL SUBOPT_0xB
-; 0000 00DB 
-; 0000 00DC             if (token) {
+; 0000 00DD 
+; 0000 00DE             if (token) {
 	LD   R30,Y
 	LDD  R31,Y+1
 	SBIW R30,0
 	BREQ _0x16
-; 0000 00DD                 strcpy(ip_address_buffer, token);
+; 0000 00DF                 strcpy(ip_address_buffer, token);
 	LDI  R30,LOW(_ip_address_buffer)
 	LDI  R31,HIGH(_ip_address_buffer)
 	ST   -Y,R31
@@ -2213,19 +2227,19 @@ _init_GPRS:
 	LDD  R26,Y+2
 	LDD  R27,Y+2+1
 	CALL _strcpy
-; 0000 00DE                 return 1; // Success
+; 0000 00E0                 return 1; // Success
 	LDI  R30,LOW(1)
 	ADIW R28,2
 	RJMP _0x212000D
-; 0000 00DF             }
-; 0000 00E0         }
+; 0000 00E1             }
+; 0000 00E2         }
 _0x16:
 	ADIW R28,2
-; 0000 00E1     }
+; 0000 00E3     }
 _0x15:
-; 0000 00E2 
-; 0000 00E3     // If we reach here, it means getting the IP address failed
-; 0000 00E4     return 0; // Failure
+; 0000 00E4 
+; 0000 00E5     // If we reach here, it means getting the IP address failed
+; 0000 00E6     return 0; // Failure
 _0x14:
 	LDI  R30,LOW(0)
 _0x212000D:
@@ -2233,7 +2247,7 @@ _0x212000D:
 	ADIW R28,63
 	ADIW R28,24
 	RET
-; 0000 00E5 }
+; 0000 00E7 }
 ; .FEND
 
 	.DSEG
@@ -2244,187 +2258,190 @@ _0x13:
 ;
 ;
 ;char get_key(void)
-; 0000 00EB {
+; 0000 00ED {
 
 	.CSEG
-; 0000 00EC     unsigned char row, col;
-; 0000 00ED     const unsigned char column_pins[3] = {COL1_PIN, COL2_PIN, COL3_PIN};
-; 0000 00EE     const unsigned char row_pins[4] = {ROW1_PIN, ROW2_PIN, ROW3_PIN, ROW4_PIN};
-; 0000 00EF 
-; 0000 00F0     const char key_map[4][3] = {
-; 0000 00F1         {'1', '2', '3'},
-; 0000 00F2         {'4', '5', '6'},
-; 0000 00F3         {'7', '8', '9'},
-; 0000 00F4         {'*', '0', '#'}
-; 0000 00F5     };
-; 0000 00F6 
-; 0000 00F7     for (col = 0; col < 3; col++)
+; 0000 00EE     unsigned char row, col;
+; 0000 00EF     const unsigned char column_pins[3] = {COL1_PIN, COL2_PIN, COL3_PIN};
+; 0000 00F0     const unsigned char row_pins[4] = {ROW1_PIN, ROW2_PIN, ROW3_PIN, ROW4_PIN};
+; 0000 00F1 
+; 0000 00F2     const char key_map[4][3] = {
+; 0000 00F3         {'1', '2', '3'},
+; 0000 00F4         {'4', '5', '6'},
+; 0000 00F5         {'7', '8', '9'},
+; 0000 00F6         {'*', '0', '#'}
+; 0000 00F7     };
+; 0000 00F8 
+; 0000 00F9     for (col = 0; col < 3; col++)
 ;	row -> R17
 ;	col -> R16
 ;	column_pins -> Y+18
 ;	row_pins -> Y+14
 ;	key_map -> Y+2
-; 0000 00F8     {
-; 0000 00F9         KEYPAD_PORT |= (1 << COL1_PIN) | (1 << COL2_PIN) | (1 << COL3_PIN);
-; 0000 00FA         KEYPAD_PORT &= ~(1 << column_pins[col]);
-; 0000 00FB 
-; 0000 00FC         for (row = 0; row < 4; row++)
-; 0000 00FD         {
-; 0000 00FE             if (!(KEYPAD_PIN & (1 << row_pins[row])))
-; 0000 00FF             {
-; 0000 0100                 delay_ms(10);
-; 0000 0101 
-; 0000 0102                 if (!(KEYPAD_PIN & (1 << row_pins[row])))
-; 0000 0103                 {
-; 0000 0104                     while (!(KEYPAD_PIN & (1 << row_pins[row])));
-; 0000 0105                     return key_map[row][col];
-; 0000 0106                 }
-; 0000 0107             }
-; 0000 0108         }
-; 0000 0109     }
-; 0000 010A 
-; 0000 010B     // C?? ??? ???I? ?O?I? ?OI? E?I? ??IC? ??? (NULL) ?C E???IC?
-; 0000 010C     return 0;
-; 0000 010D }
+; 0000 00FA     {
+; 0000 00FB         KEYPAD_PORT |= (1 << COL1_PIN) | (1 << COL2_PIN) | (1 << COL3_PIN);
+; 0000 00FC         KEYPAD_PORT &= ~(1 << column_pins[col]);
+; 0000 00FD 
+; 0000 00FE         for (row = 0; row < 4; row++)
+; 0000 00FF         {
+; 0000 0100             if (!(KEYPAD_PIN & (1 << row_pins[row])))
+; 0000 0101             {
+; 0000 0102                 delay_ms(10);
+; 0000 0103 
+; 0000 0104                 if (!(KEYPAD_PIN & (1 << row_pins[row])))
+; 0000 0105                 {
+; 0000 0106                     while (!(KEYPAD_PIN & (1 << row_pins[row])));
+; 0000 0107                     return key_map[row][col];
+; 0000 0108                 }
+; 0000 0109             }
+; 0000 010A         }
+; 0000 010B     }
+; 0000 010C 
+; 0000 010D     // C?? ??? ???I? ?O?I? ?OI? E?I? ??IC? ??? (NULL) ?C E???IC?
+; 0000 010E     return 0;
+; 0000 010F }
 ;
 ;
 ;
 ;
 ;void activate_motor(int product_id)
-; 0000 0113 {
-; 0000 0114     unsigned char motor_pin;
-; 0000 0115     char motor_msg[20];
-; 0000 0116 
-; 0000 0117     switch (product_id)
+; 0000 0115 {
+; 0000 0116     unsigned char motor_pin;
+; 0000 0117     char motor_msg[20];
+; 0000 0118 
+; 0000 0119     switch (product_id)
 ;	product_id -> Y+21
 ;	motor_pin -> R17
 ;	motor_msg -> Y+1
-; 0000 0118     {
-; 0000 0119         case 1: motor_pin = MOTOR_PIN_1; break;
-; 0000 011A         case 2: motor_pin = MOTOR_PIN_2; break;
-; 0000 011B         case 3: motor_pin = MOTOR_PIN_3; break;
-; 0000 011C         default: return;
-; 0000 011D     }
-; 0000 011E 
-; 0000 011F     sprintf(motor_msg, "MOTOR %d ON!", product_id);
-; 0000 0120     glcd_clear();
-; 0000 0121     glcd_outtextxy(10, 20, motor_msg);
-; 0000 0122     MOTOR_PORT |= (1 << motor_pin);
-; 0000 0123     delay_ms(10000);
-; 0000 0124     MOTOR_PORT &= ~(1 << motor_pin);
-; 0000 0125 
-; 0000 0126     sprintf(motor_msg, "MOTOR %d OFF!", product_id);
-; 0000 0127     glcd_outtextxy(10, 40, motor_msg);
-; 0000 0128     delay_ms(2000);
-; 0000 0129 }
+; 0000 011A     {
+; 0000 011B         case 1: motor_pin = MOTOR_PIN_1; break;
+; 0000 011C         case 2: motor_pin = MOTOR_PIN_2; break;
+; 0000 011D         case 3: motor_pin = MOTOR_PIN_3; break;
+; 0000 011E         default: return;
+; 0000 011F     }
+; 0000 0120 
+; 0000 0121     sprintf(motor_msg, "MOTOR %d ON!", product_id);
+; 0000 0122     glcd_clear();
+; 0000 0123     glcd_outtextxy(10, 20, motor_msg);
+; 0000 0124     MOTOR_PORT |= (1 << motor_pin);
+; 0000 0125     delay_ms(10000);
+; 0000 0126     MOTOR_PORT &= ~(1 << motor_pin);
+; 0000 0127 
+; 0000 0128     sprintf(motor_msg, "MOTOR %d OFF!", product_id);
+; 0000 0129     glcd_outtextxy(10, 40, motor_msg);
+; 0000 012A     delay_ms(2000);
+; 0000 012B }
 ;
 ;///////////////////////////////////////////////////////////////////////////////////
 ;
 ;void main(void)
-; 0000 012E {
+; 0000 0130 {
 _main:
 ; .FSTART _main
-; 0000 012F     const char* server_url = "http://193.5.44.191/home/post/";
-; 0000 0130     const char* my_phone    = "+989122608582";
-; 0000 0131 
-; 0000 0132     GLCDINIT_t glcd_init_data;
-; 0000 0133 
-; 0000 0134     // --- C?? EIO ??IC?I?? C???? ???E??C ? USART C?E ?? C? ?I I?IEC? ??? OI? ---
-; 0000 0135     // --- ? ???? C?E. ??C?? E? EU??? A? ???E.                             ---
-; 0000 0136     DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (0<<DDA1) | (0<<DDA0);
+; 0000 0131     const char* server_url = "http://193.5.44.191/home/post/";
+; 0000 0132     const char* my_phone    = "+989122608582";
+; 0000 0133     int i = 0;
+; 0000 0134 
+; 0000 0135     GLCDINIT_t glcd_init_data;
+; 0000 0136 
+; 0000 0137     // --- C?? EIO ??IC?I?? C???? ???E??C ? USART C?E ?? C? ?I I?IEC? ??? OI? ---
+; 0000 0138     // --- ? ???? C?E. ??C?? E? EU??? A? ???E.                             ---
+; 0000 0139     DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (0<<DDA1) | (0<<DDA0);
 	SBIW R28,6
 ;	*server_url -> R16,R17
 ;	*my_phone -> R18,R19
+;	i -> R20,R21
 ;	glcd_init_data -> Y+0
 	__POINTWRMN 16,17,_0x2A,0
 	__POINTWRMN 18,19,_0x2A,31
+	__GETWRN 20,21,0
 	LDI  R30,LOW(0)
 	OUT  0x1A,R30
-; 0000 0137     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
+; 0000 013A     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
 	OUT  0x1B,R30
-; 0000 0138     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
+; 0000 013B     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
 	OUT  0x17,R30
-; 0000 0139     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
+; 0000 013C     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
 	LDI  R30,LOW(240)
 	OUT  0x18,R30
-; 0000 013A     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
+; 0000 013D     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
 	LDI  R30,LOW(7)
 	OUT  0x14,R30
-; 0000 013B     PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
+; 0000 013E     PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
 	LDI  R30,LOW(240)
 	OUT  0x15,R30
-; 0000 013C     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
+; 0000 013F     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
 	LDI  R30,LOW(60)
 	OUT  0x2,R30
-; 0000 013D     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
+; 0000 0140     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
 	LDI  R30,LOW(0)
 	OUT  0x3,R30
-; 0000 013E     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
+; 0000 0141     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
 	STS  97,R30
-; 0000 013F     PORTF=(0<<PORTF7) | (0<<PORTF6) | (0<<PORTF5) | (0<<PORTF4) | (0<<PORTF3) | (0<<PORTF2) | (0<<PORTF1) | (0<<PORTF0);
+; 0000 0142     PORTF=(0<<PORTF7) | (0<<PORTF6) | (0<<PORTF5) | (0<<PORTF4) | (0<<PORTF3) | (0<<PORTF2) | (0<<PORTF1) | (0<<PORTF0);
 	STS  98,R30
-; 0000 0140     UCSR0A=(0<<RXC0) | (0<<TXC0) | (0<<UDRE0) | (0<<FE0) | (0<<DOR0) | (0<<UPE0) | (0<<U2X0) | (0<<MPCM0);
+; 0000 0143     UCSR0A=(0<<RXC0) | (0<<TXC0) | (0<<UDRE0) | (0<<FE0) | (0<<DOR0) | (0<<UPE0) | (0<<U2X0) | (0<<MPCM0);
 	OUT  0xB,R30
-; 0000 0141     UCSR0B=(0<<RXCIE0) | (0<<TXCIE0) | (0<<UDRIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02) | (0<<RXB80) | (0<<TXB80);
+; 0000 0144     UCSR0B=(0<<RXCIE0) | (0<<TXCIE0) | (0<<UDRIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02) | (0<<RXB80) | (0<<TXB80);
 	LDI  R30,LOW(24)
 	OUT  0xA,R30
-; 0000 0142     UCSR0C=(0<<UMSEL0) | (0<<UPM01) | (0<<UPM00) | (0<<USBS0) | (1<<UCSZ01) | (1<<UCSZ00) | (0<<UCPOL0);
+; 0000 0145     UCSR0C=(0<<UMSEL0) | (0<<UPM01) | (0<<UPM00) | (0<<USBS0) | (1<<UCSZ01) | (1<<UCSZ00) | (0<<UCPOL0);
 	LDI  R30,LOW(6)
 	STS  149,R30
-; 0000 0143     UBRR0H=0x00;
+; 0000 0146     UBRR0H=0x00;
 	LDI  R30,LOW(0)
 	STS  144,R30
-; 0000 0144     UBRR0L=0x33; // 9600 Baud Rate for 8MHz clock
+; 0000 0147     UBRR0L=0x33; // 9600 Baud Rate for 8MHz clock
 	LDI  R30,LOW(51)
 	OUT  0x9,R30
-; 0000 0145     MCUCSR = (1 << JTD);
+; 0000 0148     MCUCSR = (1 << JTD);
 	LDI  R30,LOW(128)
 	OUT  0x34,R30
-; 0000 0146     MCUCSR = (1 << JTD);
+; 0000 0149     MCUCSR = (1 << JTD);
 	OUT  0x34,R30
-; 0000 0147     glcd_init_data.font=font5x7;
+; 0000 014A     glcd_init_data.font=font5x7;
 	LDI  R30,LOW(_font5x7*2)
 	LDI  R31,HIGH(_font5x7*2)
 	ST   Y,R30
 	STD  Y+1,R31
-; 0000 0148     glcd_init_data.readxmem=NULL;
+; 0000 014B     glcd_init_data.readxmem=NULL;
 	LDI  R30,LOW(0)
 	STD  Y+2,R30
 	STD  Y+2+1,R30
-; 0000 0149     glcd_init_data.writexmem=NULL;
+; 0000 014C     glcd_init_data.writexmem=NULL;
 	STD  Y+4,R30
 	STD  Y+4+1,R30
-; 0000 014A     glcd_init(&glcd_init_data);
+; 0000 014D     glcd_init(&glcd_init_data);
 	MOVW R26,R28
 	RCALL _glcd_init
-; 0000 014B     glcd_setfont(font5x7);
+; 0000 014E     glcd_setfont(font5x7);
 	LDI  R30,LOW(_font5x7*2)
 	LDI  R31,HIGH(_font5x7*2)
 	CALL SUBOPT_0xC
-; 0000 014C     // --- ?C?C? EIO ??IC?I?? C???? ---
-; 0000 014D 
-; 0000 014E     glcd_clear();
+; 0000 014F     // --- ?C?C? EIO ??IC?I?? C???? ---
+; 0000 0150 
+; 0000 0151     glcd_clear();
 	CALL SUBOPT_0x6
-; 0000 014F     glcd_outtextxy(0, 0, "Module Init...");
+; 0000 0152     glcd_outtextxy(0, 0, "Module Init...");
 	__POINTW2MN _0x2A,45
 	CALL _glcd_outtextxy
-; 0000 0150     delay_ms(5000);
-	LDI  R26,LOW(5000)
-	LDI  R27,HIGH(5000)
+; 0000 0153     delay_ms(10000);
+	LDI  R26,LOW(10000)
+	LDI  R27,HIGH(10000)
 	CALL _delay_ms
-; 0000 0151 
-; 0000 0152     send_at_command("ATE0");
+; 0000 0154 
+; 0000 0155     send_at_command("ATE0");
 	__POINTW2MN _0x2A,60
 	RCALL _send_at_command
-; 0000 0153     delay_ms(1000);
+; 0000 0156     delay_ms(1000);
 	CALL SUBOPT_0x9
-; 0000 0154     send_at_command("AT");
+; 0000 0157     send_at_command("AT");
 	__POINTW2MN _0x2A,65
 	RCALL _send_at_command
-; 0000 0155     delay_ms(1000);
+; 0000 0158     delay_ms(1000);
 	CALL SUBOPT_0x9
-; 0000 0156 
-; 0000 0157     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
+; 0000 0159 
+; 0000 015A     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
 	RCALL _init_sms
 	CPI  R30,0
 	BRNE _0x2B
@@ -2433,7 +2450,7 @@ _main:
 	CALL _glcd_outtextxy
 _0x2C:
 	RJMP _0x2C
-; 0000 0158     if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
+; 0000 015B     if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
 _0x2B:
 	RCALL _init_GPRS
 	CPI  R30,0
@@ -2443,154 +2460,175 @@ _0x2B:
 	CALL _glcd_outtextxy
 _0x30:
 	RJMP _0x30
-; 0000 0159 
-; 0000 015A     glcd_clear();
+; 0000 015C 
+; 0000 015D     glcd_clear();
 _0x2F:
 	CALL SUBOPT_0x6
-; 0000 015B     glcd_outtextxy(0, 0, "System Ready.");
+; 0000 015E     glcd_outtextxy(0, 0, "System Ready.");
 	__POINTW2MN _0x2A,103
 	CALL SUBOPT_0x7
-; 0000 015C     glcd_outtextxy(0, 10, "Waiting for SMS...");
+; 0000 015F     glcd_outtextxy(0, 10, "Waiting for SMS...");
 	__POINTW2MN _0x2A,117
 	CALL _glcd_outtextxy
-; 0000 015D 
-; 0000 015E 
-; 0000 015F     glcd_clear();
+; 0000 0160 
+; 0000 0161 
+; 0000 0162     glcd_clear();
 	CALL SUBOPT_0x6
-; 0000 0160     glcd_outtextxy(0,0,"Sending POST...");
+; 0000 0163     glcd_outtextxy(0,0,"Sending POST...");
 	__POINTW2MN _0x2A,136
 	CALL _glcd_outtextxy
-; 0000 0161     if (send_json_post(server_url, my_phone)) {
+; 0000 0164 
+; 0000 0165     for(i; i<3; i++){
+	MOVW R30,R20
+_0x34:
+	__CPWRN 20,21,3
+	BRGE _0x35
+; 0000 0166         if (send_json_post(server_url, my_phone)) {
 	ST   -Y,R17
 	ST   -Y,R16
 	MOVW R26,R18
 	RCALL _send_json_post
 	CPI  R30,0
-	BREQ _0x33
-; 0000 0162         glcd_outtextxy(0,10,"POST OK");
+	BREQ _0x36
+; 0000 0167             glcd_outtextxy(0,10,"POST OK");
 	CALL SUBOPT_0x8
 	__POINTW2MN _0x2A,152
-	RJMP _0x39
-; 0000 0163     } else {
-_0x33:
-; 0000 0164         glcd_outtextxy(0,10,"POST Fail");
+	RJMP _0x3C
+; 0000 0168         } else {
+_0x36:
+; 0000 0169             glcd_outtextxy(0,10,"POST Fail");
 	CALL SUBOPT_0x8
 	__POINTW2MN _0x2A,160
-_0x39:
+_0x3C:
 	CALL _glcd_outtextxy
-; 0000 0165     }
-; 0000 0166 
-; 0000 0167     while (1)
+; 0000 016A         }
+; 0000 016B        delay_ms(10000);
+	LDI  R26,LOW(10000)
+	LDI  R27,HIGH(10000)
+	CALL _delay_ms
+; 0000 016C         glcd_clear();
+	CALL SUBOPT_0x6
+; 0000 016D         glcd_outtextxy(0,0,"Sending POST...");
+	__POINTW2MN _0x2A,170
+	CALL _glcd_outtextxy
+; 0000 016E     }
+	__ADDWRN 20,21,1
+	RJMP _0x34
 _0x35:
-; 0000 0168     {
-; 0000 0169 //        char sms_char;
-; 0000 016A //        char key_pressed;
-; 0000 016B //        char display_buffer[2] = {0};
-; 0000 016C //        int product_id = 0;
-; 0000 016D //
-; 0000 016E //        memset(header_buffer, 0, sizeof(header_buffer));
-; 0000 016F //
-; 0000 0170 //        if (gets(header_buffer, sizeof(header_buffer)))
-; 0000 0171 //        {
-; 0000 0172 //            if (strstr(header_buffer, "+CMT:") != NULL)
-; 0000 0173 //            {
-; 0000 0174 //                char* token;
-; 0000 0175 //                token = strtok(header_buffer, "\"");
-; 0000 0176 //                if (token != NULL) {
-; 0000 0177 //                    token = strtok(NULL, "\"");
-; 0000 0178 //                    if (token != NULL) {
-; 0000 0179 //                        strcpy(phone_number, token);
+; 0000 016F 
+; 0000 0170 
+; 0000 0171 
+; 0000 0172     while (1)
+_0x38:
+; 0000 0173     {
+; 0000 0174 //        char sms_char;
+; 0000 0175 //        char key_pressed;
+; 0000 0176 //        char display_buffer[2] = {0};
+; 0000 0177 //        int product_id = 0;
+; 0000 0178 //
+; 0000 0179 //        memset(header_buffer, 0, sizeof(header_buffer));
 ; 0000 017A //
-; 0000 017B //                        // ===== ÈÎÔ ÇÕáí: ÈÑÑÓí ãÌæÒ =====
-; 0000 017C //                        if (check_authorization_post(phone_number))
-; 0000 017D //                        {
-; 0000 017E //                            // ˜ÇÑÈÑ ãÌÇÒ ÇÓÊ¡ ÇÏÇãå ÝÑÇíäÏ...
-; 0000 017F //                            memset(content_buffer, 0, sizeof(content_buffer));
-; 0000 0180 //                            gets(content_buffer, sizeof(content_buffer)); // ÎæÇäÏä ãÊä íÇã˜
-; 0000 0181 //
-; 0000 0182 //                            if (strlen(content_buffer) > 0)
-; 0000 0183 //                            {
-; 0000 0184 //                                sms_char = content_buffer[0];
+; 0000 017B //        if (gets(header_buffer, sizeof(header_buffer)))
+; 0000 017C //        {
+; 0000 017D //            if (strstr(header_buffer, "+CMT:") != NULL)
+; 0000 017E //            {
+; 0000 017F //                char* token;
+; 0000 0180 //                token = strtok(header_buffer, "\"");
+; 0000 0181 //                if (token != NULL) {
+; 0000 0182 //                    token = strtok(NULL, "\"");
+; 0000 0183 //                    if (token != NULL) {
+; 0000 0184 //                        strcpy(phone_number, token);
 ; 0000 0185 //
-; 0000 0186 //                                if (sms_char == '1' || sms_char == '2' || sms_char == '3')
-; 0000 0187 //                                {
-; 0000 0188 //                                    int timeout_counter = 0;
-; 0000 0189 //                                    glcd_clear();
-; 0000 018A //                                    glcd_outtextxy(0, 5, "SMS Code:");
-; 0000 018B //                                    display_buffer[0] = sms_char;
-; 0000 018C //                                    glcd_outtextxy(70, 5, display_buffer);
-; 0000 018D //                                    glcd_outtextxy(0, 25, "Enter code on keypad:");
-; 0000 018E //
-; 0000 018F //                                    for(timeout_counter = 0; timeout_counter < 200; timeout_counter++)
-; 0000 0190 //                                    {
-; 0000 0191 //                                       key_pressed = get_key();
-; 0000 0192 //                                       if(key_pressed != 0) break; // C?? ???I? ?O?I? OI? C? ???? IC?? O?
-; 0000 0193 //                                       delay_ms(10);
-; 0000 0194 //                                    }
-; 0000 0195 //
-; 0000 0196 //                                    // C?? ?? C? ? EC??? ???I? ?O?I? ?OI
-; 0000 0197 //                                    if(key_pressed == 0) {
-; 0000 0198 //                                        glcd_clear();
-; 0000 0199 //                                        glcd_outtextxy(10, 25, "Timeout! Try again.");
-; 0000 019A //                                        delay_ms(1000);
-; 0000 019B //                                        glcd_clear();
-; 0000 019C //                                        glcd_outtextxy(0, 0, "System Ready.");
-; 0000 019D //                                        glcd_outtextxy(0, 10, "Waiting for SMS...");
-; 0000 019E //                                        continue; // E??C?? ?C E? CEEIC? ???? while(1) E???IC?
+; 0000 0186 //                        // ===== ÈÎÔ ÇÕáí: ÈÑÑÓí ãÌæÒ =====
+; 0000 0187 //                        if (check_authorization_post(phone_number))
+; 0000 0188 //                        {
+; 0000 0189 //                            // ˜ÇÑÈÑ ãÌÇÒ ÇÓÊ¡ ÇÏÇãå ÝÑÇíäÏ...
+; 0000 018A //                            memset(content_buffer, 0, sizeof(content_buffer));
+; 0000 018B //                            gets(content_buffer, sizeof(content_buffer)); // ÎæÇäÏä ãÊä íÇã˜
+; 0000 018C //
+; 0000 018D //                            if (strlen(content_buffer) > 0)
+; 0000 018E //                            {
+; 0000 018F //                                sms_char = content_buffer[0];
+; 0000 0190 //
+; 0000 0191 //                                if (sms_char == '1' || sms_char == '2' || sms_char == '3')
+; 0000 0192 //                                {
+; 0000 0193 //                                    int timeout_counter = 0;
+; 0000 0194 //                                    glcd_clear();
+; 0000 0195 //                                    glcd_outtextxy(0, 5, "SMS Code:");
+; 0000 0196 //                                    display_buffer[0] = sms_char;
+; 0000 0197 //                                    glcd_outtextxy(70, 5, display_buffer);
+; 0000 0198 //                                    glcd_outtextxy(0, 25, "Enter code on keypad:");
+; 0000 0199 //
+; 0000 019A //                                    for(timeout_counter = 0; timeout_counter < 200; timeout_counter++)
+; 0000 019B //                                    {
+; 0000 019C //                                       key_pressed = get_key();
+; 0000 019D //                                       if(key_pressed != 0) break; // C?? ???I? ?O?I? OI? C? ???? IC?? O?
+; 0000 019E //                                       delay_ms(10);
 ; 0000 019F //                                    }
 ; 0000 01A0 //
-; 0000 01A1 //                                    glcd_outtextxy(0, 45, "You pressed:");
-; 0000 01A2 //                                    display_buffer[0] = key_pressed;
-; 0000 01A3 //                                    glcd_outtextxy(90, 45, display_buffer);
-; 0000 01A4 //                                    delay_ms(1000);
-; 0000 01A5 //
-; 0000 01A6 //                                    if (key_pressed == sms_char)
-; 0000 01A7 //                                    {
-; 0000 01A8 //                                        glcd_clear();
-; 0000 01A9 //                                        glcd_outtextxy(10, 25, "Code is CORRECT!");
-; 0000 01AA //                                        delay_ms(1500);
-; 0000 01AB //                                        product_id = sms_char - '0';
-; 0000 01AC //                                        activate_motor(product_id);
-; 0000 01AD //                                    }
-; 0000 01AE //                                    else
-; 0000 01AF //                                    {
-; 0000 01B0 //                                        glcd_clear();
-; 0000 01B1 //                                        glcd_outtextxy(5, 25, "Error in entry!");
-; 0000 01B2 //                                        delay_ms(2000);
-; 0000 01B3 //                                    }
-; 0000 01B4 //                                }
-; 0000 01B5 //                                else {
-; 0000 01B6 //                                     glcd_clear();
-; 0000 01B7 //                                     glcd_outtextxy(5, 25, "Invalid SMS Code!");
-; 0000 01B8 //                                     delay_ms(2000);
-; 0000 01B9 //                                }
-; 0000 01BA //                            }
-; 0000 01BB //                        }
-; 0000 01BC //                        else
-; 0000 01BD //                        {
-; 0000 01BE //                             // ÇÑ ÊÇÈÚ check_authorization ãÞÏÇÑ 0 ÈÑÑÏÇäÏ
-; 0000 01BF //                             glcd_clear();
-; 0000 01C0 //                             glcd_outtextxy(0, 25, "You are not authorized!");
-; 0000 01C1 //                             delay_ms(2500);
-; 0000 01C2 //                        }
-; 0000 01C3 //                    }
-; 0000 01C4 //                }
-; 0000 01C5 //
-; 0000 01C6 //                glcd_clear();
-; 0000 01C7 //                glcd_outtextxy(0, 0, "System Ready.");
-; 0000 01C8 //                glcd_outtextxy(0, 10, "Waiting for SMS...");
-; 0000 01C9 //            }
-; 0000 01CA //        }
-; 0000 01CB     }
-	RJMP _0x35
-; 0000 01CC }
-_0x38:
+; 0000 01A1 //                                    // C?? ?? C? ? EC??? ???I? ?O?I? ?OI
+; 0000 01A2 //                                    if(key_pressed == 0) {
+; 0000 01A3 //                                        glcd_clear();
+; 0000 01A4 //                                        glcd_outtextxy(10, 25, "Timeout! Try again.");
+; 0000 01A5 //                                        delay_ms(1000);
+; 0000 01A6 //                                        glcd_clear();
+; 0000 01A7 //                                        glcd_outtextxy(0, 0, "System Ready.");
+; 0000 01A8 //                                        glcd_outtextxy(0, 10, "Waiting for SMS...");
+; 0000 01A9 //                                        continue; // E??C?? ?C E? CEEIC? ???? while(1) E???IC?
+; 0000 01AA //                                    }
+; 0000 01AB //
+; 0000 01AC //                                    glcd_outtextxy(0, 45, "You pressed:");
+; 0000 01AD //                                    display_buffer[0] = key_pressed;
+; 0000 01AE //                                    glcd_outtextxy(90, 45, display_buffer);
+; 0000 01AF //                                    delay_ms(1000);
+; 0000 01B0 //
+; 0000 01B1 //                                    if (key_pressed == sms_char)
+; 0000 01B2 //                                    {
+; 0000 01B3 //                                        glcd_clear();
+; 0000 01B4 //                                        glcd_outtextxy(10, 25, "Code is CORRECT!");
+; 0000 01B5 //                                        delay_ms(1500);
+; 0000 01B6 //                                        product_id = sms_char - '0';
+; 0000 01B7 //                                        activate_motor(product_id);
+; 0000 01B8 //                                    }
+; 0000 01B9 //                                    else
+; 0000 01BA //                                    {
+; 0000 01BB //                                        glcd_clear();
+; 0000 01BC //                                        glcd_outtextxy(5, 25, "Error in entry!");
+; 0000 01BD //                                        delay_ms(2000);
+; 0000 01BE //                                    }
+; 0000 01BF //                                }
+; 0000 01C0 //                                else {
+; 0000 01C1 //                                     glcd_clear();
+; 0000 01C2 //                                     glcd_outtextxy(5, 25, "Invalid SMS Code!");
+; 0000 01C3 //                                     delay_ms(2000);
+; 0000 01C4 //                                }
+; 0000 01C5 //                            }
+; 0000 01C6 //                        }
+; 0000 01C7 //                        else
+; 0000 01C8 //                        {
+; 0000 01C9 //                             // ÇÑ ÊÇÈÚ check_authorization ãÞÏÇÑ 0 ÈÑÑÏÇäÏ
+; 0000 01CA //                             glcd_clear();
+; 0000 01CB //                             glcd_outtextxy(0, 25, "You are not authorized!");
+; 0000 01CC //                             delay_ms(2500);
+; 0000 01CD //                        }
+; 0000 01CE //                    }
+; 0000 01CF //                }
+; 0000 01D0 //
+; 0000 01D1 //                glcd_clear();
+; 0000 01D2 //                glcd_outtextxy(0, 0, "System Ready.");
+; 0000 01D3 //                glcd_outtextxy(0, 10, "Waiting for SMS...");
+; 0000 01D4 //            }
+; 0000 01D5 //        }
+; 0000 01D6     }
 	RJMP _0x38
+; 0000 01D7 }
+_0x3B:
+	RJMP _0x3B
 ; .FEND
 
 	.DSEG
 _0x2A:
-	.BYTE 0xAA
+	.BYTE 0xBA
 	#ifndef __SLEEP_DEFINED__
 	#define __SLEEP_DEFINED__
 	.EQU __se_bit=0x20
@@ -4716,7 +4754,7 @@ SUBOPT_0x0:
 	LDI  R24,4
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:49 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 8 TIMES, CODE SIZE REDUCTION:60 WORDS
 SUBOPT_0x1:
 	CALL _send_at_command
 	MOVW R30,R28
@@ -4728,13 +4766,9 @@ SUBOPT_0x1:
 	LDI  R31,HIGH(256)
 	ST   -Y,R31
 	ST   -Y,R30
-	LDI  R30,LOW(2000)
-	LDI  R31,HIGH(2000)
-	ST   -Y,R31
-	ST   -Y,R30
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 11 TIMES, CODE SIZE REDUCTION:17 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 10 TIMES, CODE SIZE REDUCTION:15 WORDS
 SUBOPT_0x2:
 	LDI  R30,LOW(0)
 	ST   -Y,R30
@@ -4742,26 +4776,20 @@ SUBOPT_0x2:
 	ST   -Y,R30
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:2 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
 SUBOPT_0x3:
-	CALL _glcd_outtextxy
-	MOVW R30,R28
-	SUBI R30,LOW(-(322))
-	SBCI R31,HIGH(-(322))
+	LDI  R30,LOW(2000)
+	LDI  R31,HIGH(2000)
 	ST   -Y,R31
 	ST   -Y,R30
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:15 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:2 WORDS
 SUBOPT_0x4:
-	CALL _send_at_command
+	CALL _glcd_outtextxy
 	MOVW R30,R28
-	SUBI R30,LOW(-(66))
-	SBCI R31,HIGH(-(66))
-	ST   -Y,R31
-	ST   -Y,R30
-	LDI  R30,LOW(256)
-	LDI  R31,HIGH(256)
+	SUBI R30,LOW(-(322))
+	SBCI R31,HIGH(-(322))
 	ST   -Y,R31
 	ST   -Y,R30
 	RET
@@ -4773,7 +4801,7 @@ SUBOPT_0x5:
 	LDI  R27,HIGH(500)
 	JMP  _delay_ms
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:21 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 8 TIMES, CODE SIZE REDUCTION:25 WORDS
 SUBOPT_0x6:
 	CALL _glcd_clear
 	LDI  R30,LOW(0)
