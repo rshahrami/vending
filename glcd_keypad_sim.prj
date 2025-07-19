@@ -127,8 +127,8 @@ WatchAVR8LAutoVariables=0
 UseEEPROMLocation0=1
 RebuildAll=0
 LinkageInformationPresent=1
-COFFileTimeStamp=1525786670
-Build=200
+COFFileTimeStamp=1525944136
+Build=204
 [DefinedSymbolsDebug]
 Count=0
 [Compiler]
@@ -230,7 +230,7 @@ UseEEPROMLocation0=1
 RebuildAll=1
 LinkageInformationPresent=0
 COFFileTimeStamp=-1
-Build=200
+Build=204
 [DefinedSymbols]
 Count=0
 [CompilerAdvanced]
@@ -361,41 +361,41 @@ L13=Enhanced function parameters passing: Yes
 L14=Automatic register allocation: Yes
 L15=Smart register allocation: Yes
 L16=
-L17=Build: 199
-L18=22582 line(s) compiled
+L17=Build: 204
+L18=22587 line(s) compiled
 L19=No errors
-L20=7 warning(s)
+L20=3 warning(s)
 L21=
 L22=Bit variables size: 0 byte(s)
 L23=
 L24=Data Stack area: 0x100 to 0x4FF
 L25=Data Stack size: 1024 byte(s)
-L26=Estimated Data Stack usage: 823 byte(s)
+L26=Estimated Data Stack usage: 833 byte(s)
 L27=
-L28=RAM Global variables area: 0x500 to 0x73B
-L29=RAM Global variables size: 572 byte(s)
+L28=RAM Global variables area: 0x500 to 0x8C8
+L29=RAM Global variables size: 969 byte(s)
 L30=
-L31=Hardware Stack area: 0x73C to 0x10FF
-L32=Hardware Stack size: 2500 byte(s)
+L31=Hardware Stack area: 0x8C9 to 0x10FF
+L32=Hardware Stack size: 2103 byte(s)
 L33=
 L34=Heap size: 0 byte(s)
 L35=
 Lines=38
 L36=EEPROM usage: 0 byte(s), 0.0% of EEPROM
-L37=Program size: 3698 words (7396 bytes), 11.3% of FLASH
-L38=223 words (446 bytes), 5.7% reduced by Code Compression
+L37=Program size: 4331 words (8662 bytes), 13.2% of FLASH
+L38=281 words (562 bytes), 6.1% reduced by Code Compression
 [BuildInfoAssembler]
 Lines=12
 L1=AVRASM: AVR macro assembler 2.1.30 (build 592 Nov  7 2008 12:38:17)
 L2=Copyright (C) 1995-2008 ATMEL Corporation
 L3=
-L4=D:\project\vending\code\glcd_keypad_sim\Debug\List\glcd_keypad_sim.asm(5131): No EEPROM data, deleting D:\project\vending\code\glcd_keypad_sim\Debug\Exe\glcd_keypad_sim.eep
+L4=D:\project\vending\code\glcd_keypad_sim\Debug\List\glcd_keypad_sim.asm(5758): No EEPROM data, deleting D:\project\vending\code\glcd_keypad_sim\Debug\Exe\glcd_keypad_sim.eep
 L5=
 L6=ATmega64A memory use summary [bytes]:
 L7=Segment   Begin    End      Code   Data   Used    Size   Use%
 L8=---------------------------------------------------------------
-L9=[.cseg] 0x000000 0x001ce4   5984   1412   7396   65536  11.3%
-L10=[.dseg] 0x000100 0x00073c      0    572    572    4096  14.0%
+L9=[.cseg] 0x000000 0x0021d6   7072   1590   8662   65536  13.2%
+L10=[.dseg] 0x000100 0x0008c9      0    969    969    4096  23.7%
 L11=[.eseg] 0x000000 0x000000      0      0      0    2048   0.0%
 L12=
 [BookmarksFoldedCode]
@@ -518,6 +518,8 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
+[FoldedCode6]
+Blocks=0
 [HeadersList]
 Files=1
 F1=D:\project\vending\code\glcd_keypad_sim\glcd_keypad_sim.c
@@ -537,5 +539,3 @@ F11=C:\cvavr\inc\stdarg.h
 F12=C:\cvavr\inc\string.h
 F13=C:\cvavr\inc\stdlib.h
 F14=C:\cvavr\inc\delay.h
-[FoldedCode6]
-Blocks=0
