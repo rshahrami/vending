@@ -11,13 +11,9 @@
 // ---  ‰ŸÌ„«  «’·Ì ---
 #define APN "mcinet" // APN «Å—« Ê— ŒÊœ —« Ê«—œ ò‰Ìœ
 //#define SERVER_URL "http://google.com/api/authorize" // ¬œ—” ò«„· ”—Ê— ŒÊœ —« «Ì‰Ã« ﬁ—«— œÂÌœ
-//#define SERVER_URL_POST "http://193.5.44.191/home/post/"
+#define SERVER_URL_POST "http://193.5.44.191/home/post/"
 
-#define HTTP_TIMEOUT_MS 10000
-
-
-const char* server_url = "http://193.5.44.191/home/post/";
-const char* my_phone    = "+989122608582";
+#define HTTP_TIMEOUT_MS 1000
 
 // --- »«›—Â«Ì ”—«”—Ì ---
 char header_buffer[100];
@@ -85,105 +81,70 @@ unsigned char read_serial_response(char* buffer, int buffer_size, int timeout_ms
 }
 
 
-//  «»⁄ »——”Ì „ÃÊ“ ‘„«—Â  ·›‰ «“ ÿ—Ìﬁ ”—Ê—
+void usart_puts(const char* str)
+{
+    while (*str)
+    {
+        putchar(*str++); // 'usart_putchar' is your function to send a single byte
+    }
+}
 
-unsigned char send_json_post(const char* url, const char* phone_number) {
-    char cmd[128];
+unsigned char send_json_post(const char* base_url, const char* phone_number) {
+
+    char cmd[256];
     char response[256];
-    char json[64];
-    unsigned int json_len;
-    int status_code = 0;
-    char* p = 0;
+    char full_url[256];
 
     // 1. Initialize HTTP service
     send_at_command("AT+HTTPINIT");
-    if (!read_serial_response(response, sizeof(response), 3000, "OK")) return 0;  
-    
+    if (!read_serial_response(response, sizeof(response), 300, "OK")) return 0;
+
+    glcd_clear();
     glcd_outtextxy(0,20,"lev 1");
-    
+
     // 2. Set CID to bearer profile 1
     send_at_command("AT+HTTPPARA=\"CID\",1");
-    if (!read_serial_response(response, sizeof(response), 2000, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 300, "OK")) return 0;
 
-    glcd_outtextxy(0,20,"lev 2");  
+    glcd_outtextxy(0,20,"lev 2");
+
+    // 3. Build the full URL with query parameter
     
-    // 3. Set the target URL
-    sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", url);
+    sprintf(full_url, "%s?phone_number=%s", base_url, phone_number);
+
+    // 4. Set the target URL
+    sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
     send_at_command(cmd);
-    if (!read_serial_response(response, sizeof(response), 2000, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 300, "OK")) return 0;
 
-    glcd_outtextxy(0,20,"lev 3");
+    glcd_outtextxy(0,20,"lev 3");  
 
-    // 4. Tell the module weíll send JSON
-    send_at_command("AT+HTTPPARA=\"CONTENT\",\"application/json\"");
-    if (!read_serial_response(response, sizeof(response), 2000, "OK")) return 0;
-                                 
-    glcd_outtextxy(0,20,"lev 4");
-    
-    // 5. Build the JSON payload
-    sprintf(json, "{\"phone_number\":\"%s\"}", phone_number);
-    json_len = strlen(json);
-    
-    glcd_outtextxy(0,20,"lev 5");
-//    delay_ms(3000);     
-    
-    // 6. Notify module about payload size and wait for ìDOWNLOADî
-    sprintf(cmd, "AT+HTTPDATA=%u,%d", json_len, HTTP_TIMEOUT_MS);
-    send_at_command(cmd);
-    if (!read_serial_response(response, sizeof(response), 7000, "DOWNLOAD")) return 0;
-
-    glcd_outtextxy(0,20,"lev 6");
-
-    // 7. Send the actual JSON data
-    send_at_command((char*)json);  // send_at_command appends \r\n
-    // ò„Ì ’»— ò‰Ìœ  « œ«œÂ ò«„· »—Êœ
-    delay_ms(500);  
-
-    glcd_outtextxy(0,20,"lev 7");    
-//    glcd_outtextxy(0,20,"level 2");
-//    delay_ms(3000);
-    
-    // 8. Execute the POST (1 = POST method)
     send_at_command("AT+HTTPACTION=1");
-    if (!read_serial_response(response, sizeof(response), HTTP_TIMEOUT_MS, "+HTTPACTION:")) return 0;
-
-
-    // e.g.: "+HTTPACTION: 1,200,45"
-    p = strchr(response, ':');
-    
-    if (p) {
-        int method = 0;
-        int data_len = 0;
-        if (sscanf(p + 1, "%d,%d,%d", &method, &status_code, &data_len) != 3) {
-            status_code = 0; // parse error
-        }
-    }
-
-
-    glcd_outtextxy(0,20,"lev 8");
-
-
-    // 9. («Œ Ì«—Ì) ŒÊ«‰œ‰ Å«”Œ ”—Ê—
-    send_at_command("AT+HTTPREAD");
-    if (read_serial_response(response, sizeof(response), 5000, "OK")) {
-        // Å«”Œ ”—Ê— œ— response «” ° „Ìù Ê«‰Ìœ »—«Ì œÌ»«ê ç«Å ò‰Ìœ:
+    // if (!read_serial_response(response, sizeof(response), HTTP_TIMEOUT_MS, "+HTTPACTION:")) return 0;
+    if (!read_serial_response(response, sizeof(response), HTTP_TIMEOUT_MS, "+HTTPACTION:")) {
         glcd_clear();
         glcd_outtextxy(0,0,"Response:");
         glcd_outtextxy(0,10,response);
-        delay_ms(5000);
-    } 
-//    
-    glcd_clear();
-//    glcd_outtextxy(0,20,"lev 9");
+    }
+                                       
 
-    // 10. Terminate HTTP service
+    glcd_outtextxy(0,20,"lev 4");
+
+    // 7. (Optional) Read server response
+    send_at_command("AT+HTTPREAD");
+    if (read_serial_response(response, sizeof(response), 500, "OK")) {
+        glcd_clear();
+        glcd_outtextxy(0,0,"Response:");
+        glcd_outtextxy(0,10,response);
+    }
+
+    glcd_outtextxy(0,20,"lev 5");
+    
+    // 8. Terminate HTTP service
     send_at_command("AT+HTTPTERM");
-    read_serial_response(response, sizeof(response), 1000, "OK");
+    read_serial_response(response, sizeof(response), 500, "OK");
 
-    glcd_outtextxy(0,20,"lev 10");
-    // Determine result based on HTTP status
-    return (status_code == 200) ? 1 : 0;
-    //return 1;
+    return 1;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -193,16 +154,16 @@ unsigned char init_sms(void)
     glcd_clear();
     glcd_outtextxy(0, 0, "Setting SMS Mode...");
     send_at_command("AT+CMGF=1");
-    delay_ms(500);
+    delay_ms(300);
 
     send_at_command("AT+CNMI=2,2,0,0,0");
-    delay_ms(500);
+    delay_ms(300);
 
     send_at_command("AT+CMGDA=\"DEL ALL\"");
-    delay_ms(2000);
+    delay_ms(500);
 
     glcd_outtextxy(0, 10, "SMS Ready.");
-    delay_ms(1000);
+    delay_ms(500);
     return 1;
 }
 
@@ -215,14 +176,14 @@ unsigned char init_GPRS(void)
     glcd_outtextxy(0, 0, "Connecting to GPRS...");
 
     send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
-    delay_ms(1500);
+    delay_ms(500);
 
     sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
     send_at_command(at_command);
-    delay_ms(1500);
+    delay_ms(500);
 
     send_at_command("AT+SAPBR=1,1");
-    delay_ms(3000);
+    delay_ms(500);
 
     glcd_clear();
     glcd_outtextxy(0, 0, "Fetching IP...");
@@ -231,10 +192,10 @@ unsigned char init_GPRS(void)
     
     // Attempt to read the response for 5 seconds, looking for "+SAPBR:"
     // FIX: Added the 4th argument, "+SAPBR:", to the function call.
-    if (read_serial_response(response, sizeof(response), 5000, "+SAPBR:")) {
+    if (read_serial_response(response, sizeof(response), 500, "+SAPBR:")) {
         glcd_outtextxy(0, 10, "Resp:");
         glcd_outtextxy(0, 20, response); // Display the received response for debugging
-        delay_ms(3000);
+        delay_ms(500);
 
         // Check if the response contains the IP address part
         if (strstr(response, "+SAPBR: 1,1,") != NULL) {
@@ -325,8 +286,7 @@ void activate_motor(int product_id)
 void main(void)
 {
     const char* server_url = "http://193.5.44.191/home/post/";
-    const char* my_phone    = "+989122608582";
-    int i = 0;
+    const char* my_phone    = "+989152608582";
     
     GLCDINIT_t glcd_init_data;
 
@@ -358,12 +318,12 @@ void main(void)
 
     glcd_clear();
     glcd_outtextxy(0, 0, "Module Init...");
-    delay_ms(10000);
+    delay_ms(3000);
 
     send_at_command("ATE0");
-    delay_ms(1000);
+    delay_ms(300);
     send_at_command("AT");
-    delay_ms(1000);
+    delay_ms(300);
 
     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
     if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
@@ -372,22 +332,14 @@ void main(void)
     glcd_outtextxy(0, 0, "System Ready.");
     glcd_outtextxy(0, 10, "Waiting for SMS...");
 
-//
+
     glcd_clear();
     glcd_outtextxy(0,0,"Sending POST...");
-    
-    for(i; i<3; i++){
-        if (send_json_post(server_url, my_phone)) {
-            glcd_outtextxy(0,10,"POST OK");
-        } else {
-            glcd_outtextxy(0,10,"POST Fail");
-        }
-        delay_ms(10000);
-        glcd_clear();
-        glcd_outtextxy(0,0,"Sending POST...");
+    if (send_json_post(server_url, my_phone)) {
+        glcd_outtextxy(0,10,"POST OK");
+    } else {
+        glcd_outtextxy(0,10,"POST Fail");
     }
-    
-
 
     while (1)
     {
