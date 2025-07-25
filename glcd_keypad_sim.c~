@@ -173,7 +173,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
    
     // 1. Initialize HTTP service
     send_at_command("AT+HTTPINIT");
-    if (!read_serial_response(response, sizeof(response), 200, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
 
 //    glcd_clear();
 //    glcd_outtextxy(0,10,phone_number);
@@ -181,7 +181,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
     // 2. Set CID to bearer profile 1
     send_at_command("AT+HTTPPARA=\"CID\",1");
-    if (!read_serial_response(response, sizeof(response), 200, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
 
     glcd_outtextxy(0,20,"lev 2");
 
@@ -191,7 +191,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     // 4. Set the target URL
     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
     send_at_command(cmd);
-    if (!read_serial_response(response, sizeof(response), 200, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
 
     glcd_outtextxy(0,20,"lev 3");
 
@@ -200,7 +200,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     if (!read_serial_response(response, sizeof(response), HTTP_TIMEOUT_MS, "+HTTPACTION:")) {
         glcd_clear();
         glcd_outtextxy(0,0,"No Action Resp");
-        delay_ms(200);
+        delay_ms(100);
         return 0;
     }
 
@@ -218,7 +218,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     }
     
     glcd_outtextxy(0,20,"lev 5");
-    delay_ms(200);
+    //delay_ms(200);
     // 7. Show response based on status
     glcd_clear();
     glcd_outtextxy(0,0,"HTTP Status:");
@@ -227,18 +227,18 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     } else {
         glcd_outtextxy(0,10,"Not OK");
     }             
-    delay_ms(200);
+    //delay_ms(200);
     glcd_outtextxy(0,20,"lev 6");
 
     // 8. Read server response if needed
     send_at_command("AT+HTTPREAD");
-    read_serial_response(response, sizeof(response), 200, "OK");
+    read_serial_response(response, sizeof(response), 100, "OK");
 
     glcd_outtextxy(0,20,"lev 7");
 
     // 9. Terminate HTTP service
     send_at_command("AT+HTTPTERM");
-    read_serial_response(response, sizeof(response), 200, "OK");
+    read_serial_response(response, sizeof(response), 100, "OK");
                                                                    
     glcd_outtextxy(0,20,"lev 8");
     return (status_code == 200) ? 1 : 0;
@@ -373,12 +373,12 @@ void activate_motor(int product_id)
     glcd_clear();
     glcd_outtextxy(10, 20, motor_msg);
     MOTOR_PORT |= (1 << motor_pin);
-    delay_ms(10000);
+    delay_ms(500);
     MOTOR_PORT &= ~(1 << motor_pin);
 
     sprintf(motor_msg, "MOTOR %d OFF!", product_id);
     glcd_outtextxy(10, 40, motor_msg);
-    delay_ms(2000);
+    delay_ms(200);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

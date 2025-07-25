@@ -103,6 +103,32 @@ unsigned char check_gprs_status(void) {
 }
 
 
+unsigned char init_sms(void)
+{
+    glcd_clear();
+    glcd_outtextxy(0, 0, "Setting SMS Mode...");
+    send_at_command("AT+CMGF=1");
+    delay_ms(100);
+
+    send_at_command("AT+CNMI=2,2,0,0,0");
+    delay_ms(100);
+
+    send_at_command("AT+CMGDA=\"DEL ALL\"");
+    delay_ms(200);
+
+
+    // «ÿ„Ì‰«‰ «“ ›⁄«· »Êœ‰ ò«„· „«éÊ· Ê €Ì—›⁄«· »Êœ‰ sleep
+    send_at_command("AT+CFUN=1");    // ›⁄«·ù”«“Ì ò«„· „«éÊ·
+    delay_ms(100);
+    send_at_command("AT+CSCLK=0");   // €Ì—›⁄«·ù”«“Ì Õ«·  sleep
+    delay_ms(100);
+
+    glcd_outtextxy(0, 10, "SMS Ready.");
+    delay_ms(200);
+    return 1;
+}
+
+
 unsigned char init_GPRS(void)
 {
     char at_command[50];
@@ -173,7 +199,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
    
     // 1. Initialize HTTP service
     send_at_command("AT+HTTPINIT");
-    if (!read_serial_response(response, sizeof(response), 200, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
 
 //    glcd_clear();
 //    glcd_outtextxy(0,10,phone_number);
@@ -181,7 +207,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
     // 2. Set CID to bearer profile 1
     send_at_command("AT+HTTPPARA=\"CID\",1");
-    if (!read_serial_response(response, sizeof(response), 200, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
 
     glcd_outtextxy(0,20,"lev 2");
 
@@ -191,7 +217,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     // 4. Set the target URL
     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
     send_at_command(cmd);
-    if (!read_serial_response(response, sizeof(response), 200, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
 
     glcd_outtextxy(0,20,"lev 3");
 
@@ -200,7 +226,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     if (!read_serial_response(response, sizeof(response), HTTP_TIMEOUT_MS, "+HTTPACTION:")) {
         glcd_clear();
         glcd_outtextxy(0,0,"No Action Resp");
-        delay_ms(200);
+        delay_ms(100);
         return 0;
     }
 
@@ -218,7 +244,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     }
     
     glcd_outtextxy(0,20,"lev 5");
-    delay_ms(200);
+    //delay_ms(200);
     // 7. Show response based on status
     glcd_clear();
     glcd_outtextxy(0,0,"HTTP Status:");
@@ -227,18 +253,18 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     } else {
         glcd_outtextxy(0,10,"Not OK");
     }             
-    delay_ms(200);
+    //delay_ms(200);
     glcd_outtextxy(0,20,"lev 6");
 
     // 8. Read server response if needed
     send_at_command("AT+HTTPREAD");
-    read_serial_response(response, sizeof(response), 200, "OK");
+    read_serial_response(response, sizeof(response), 100, "OK");
 
     glcd_outtextxy(0,20,"lev 7");
 
     // 9. Terminate HTTP service
     send_at_command("AT+HTTPTERM");
-    read_serial_response(response, sizeof(response), 200, "OK");
+    read_serial_response(response, sizeof(response), 100, "OK");
                                                                    
     glcd_outtextxy(0,20,"lev 8");
     return (status_code == 200) ? 1 : 0;
@@ -247,23 +273,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-unsigned char init_sms(void)
-{
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Setting SMS Mode...");
-    send_at_command("AT+CMGF=1");
-    delay_ms(100);
 
-    send_at_command("AT+CNMI=2,2,0,0,0");
-    delay_ms(100);
-
-    send_at_command("AT+CMGDA=\"DEL ALL\"");
-    delay_ms(200);
-
-    glcd_outtextxy(0, 10, "SMS Ready.");
-    delay_ms(200);
-    return 1;
-}
 
 
 
