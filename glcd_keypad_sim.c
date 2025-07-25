@@ -549,9 +549,9 @@ void main(void)
     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
     if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
 
-    glcd_clear();
-    glcd_outtextxy(0, 0, "System Ready.");
-    glcd_outtextxy(0, 10, "Waiting for SMS...");
+//    glcd_clear();
+//    glcd_outtextxy(0, 0, "System Ready.");
+//    glcd_outtextxy(0, 10, "Waiting for SMS...");
 
 
 //    glcd_clear();
@@ -564,8 +564,31 @@ void main(void)
 
 
     glcd_clear();
-    draw_bitmap(0, 0, payamak, 128, 64);
-    //delay_ms(200);
+    draw_bitmap(0, 0, ersal_payamak, 128, 64);
+    delay_ms(500);
+
+
+    glcd_clear();
+    draw_bitmap(0, 0, soton_payamak_shode, 128, 32);
+    delay_ms(500);
+ 
+ 
+    glcd_clear();
+    draw_bitmap(0, 0, code_dorost_ast, 128, 32);
+    delay_ms(500);
+
+    
+    glcd_clear();
+    draw_bitmap(0, 0, code_dorost_nist, 128, 32);
+    delay_ms(500);
+    
+
+    glcd_clear();
+    draw_bitmap(0, 0, adad_soton_dorost_nist, 128, 32);
+    delay_ms(500);    
+    
+    
+    
 
     while (1)
     {

@@ -1681,25 +1681,9 @@ _0x21:
 ;PCODE: $00000414 VOL: 0
 ;PCODE: $00000415 VOL: 0
 ; 0000 0227 
-; 0000 0228     glcd_clear();
-;PCODE: $00000416 VOL: 0
-;PCODE: $00000417 VOL: 0
-; 0000 0229     glcd_outtextxy(0, 0, "System Ready.");
-;PCODE: $00000418 VOL: 0
-;PCODE: $00000419 VOL: 0
-;PCODE: $0000041A VOL: 0
-;PCODE: $0000041B VOL: 0
-;PCODE: $0000041C VOL: 0
-;PCODE: $0000041D VOL: 0
-;PCODE: $0000041E VOL: 0
-; 0000 022A     glcd_outtextxy(0, 10, "Waiting for SMS...");
-;PCODE: $0000041F VOL: 0
-;PCODE: $00000420 VOL: 0
-;PCODE: $00000421 VOL: 0
-;PCODE: $00000422 VOL: 0
-;PCODE: $00000423 VOL: 0
-;PCODE: $00000424 VOL: 0
-;PCODE: $00000425 VOL: 0
+; 0000 0228 //    glcd_clear();
+; 0000 0229 //    glcd_outtextxy(0, 0, "System Ready.");
+; 0000 022A //    glcd_outtextxy(0, 10, "Waiting for SMS...");
 ; 0000 022B 
 ; 0000 022C 
 ; 0000 022D //    glcd_clear();
@@ -1712,8 +1696,29 @@ _0x21:
 ; 0000 0234 
 ; 0000 0235 
 ; 0000 0236     glcd_clear();
+;PCODE: $00000416 VOL: 0
+;PCODE: $00000417 VOL: 0
+; 0000 0237     draw_bitmap(0, 0, ersal_payamak, 128, 64);
+;PCODE: $00000418 VOL: 0
+;PCODE: $00000419 VOL: 0
+;PCODE: $0000041A VOL: 0
+;PCODE: $0000041B VOL: 0
+;PCODE: $0000041C VOL: 0
+;PCODE: $0000041D VOL: 0
+;PCODE: $0000041E VOL: 0
+;PCODE: $0000041F VOL: 0
+;PCODE: $00000420 VOL: 0
+;PCODE: $00000421 VOL: 0
+; 0000 0238     delay_ms(500);
+;PCODE: $00000422 VOL: 0
+;PCODE: $00000423 VOL: 0
+; 0000 0239 
+; 0000 023A 
+; 0000 023B     glcd_clear();
+;PCODE: $00000424 VOL: 0
+; 0000 023C     draw_bitmap(0, 0, soton_payamak_shode, 128, 32);
+;PCODE: $00000425 VOL: 0
 ;PCODE: $00000426 VOL: 0
-; 0000 0237     draw_bitmap(0, 0, payamak, 128, 64);
 ;PCODE: $00000427 VOL: 0
 ;PCODE: $00000428 VOL: 0
 ;PCODE: $00000429 VOL: 0
@@ -1722,134 +1727,188 @@ _0x21:
 ;PCODE: $0000042C VOL: 0
 ;PCODE: $0000042D VOL: 0
 ;PCODE: $0000042E VOL: 0
+; 0000 023D     delay_ms(500);
 ;PCODE: $0000042F VOL: 0
 ;PCODE: $00000430 VOL: 0
-; 0000 0238     delay_ms(200);
+; 0000 023E 
+; 0000 023F 
+; 0000 0240     glcd_clear();
 ;PCODE: $00000431 VOL: 0
+; 0000 0241     draw_bitmap(0, 0, code_dorost_ast, 128, 32);
 ;PCODE: $00000432 VOL: 0
 ;PCODE: $00000433 VOL: 0
-; 0000 0239 
-; 0000 023A     while (1)
 ;PCODE: $00000434 VOL: 0
-; 0000 023B     {
-; 0000 023C //        char sms_char;
-; 0000 023D //        char key_pressed;
-; 0000 023E //        char display_buffer[2] = {0};
-; 0000 023F //        int product_id = 0;
-; 0000 0240 //        int timeout_counter = 0;
-; 0000 0241 //        char* token;
-; 0000 0242 //
-; 0000 0243 //        char content_buffer[32];
-; 0000 0244 //        memset(header_buffer, 0, sizeof(header_buffer));
-; 0000 0245 //        memset(content_buffer, 0, sizeof(content_buffer));
-; 0000 0246 //
-; 0000 0247 //        if (gets(header_buffer, sizeof(header_buffer)))
-; 0000 0248 //        {
-; 0000 0249 //            if (strstr(header_buffer, "+CMT:") != NULL)
-; 0000 024A //            {
-; 0000 024B //                // ?? ›Ê—« „ ‰ ÅÌ«„ò —Ê »ŒÊ‰ Ê ‰êÂ œ«—
-; 0000 024C //                if (!gets(content_buffer, sizeof(content_buffer))) {
-; 0000 024D //                    glcd_clear();
-; 0000 024E //                    glcd_outtextxy(0, 0, "Failed to read msg");
-; 0000 024F //                    delay_ms(1000);
-; 0000 0250 //                    continue;
-; 0000 0251 //                }
-; 0000 0252 //
-; 0000 0253 //                // ?? ‘„«—Â  ·›‰ —Ê »êÌ—
-; 0000 0254 //                token = strtok(header_buffer, "\"");
-; 0000 0255 //                if (token != NULL) token = strtok(NULL, "\"");
-; 0000 0256 //                if (token != NULL)
-; 0000 0257 //                {
-; 0000 0258 //                    strcpy(phone_number, token);
-; 0000 0259 //
-; 0000 025A //                    // ?? Õ«·« „ÃÊ“ —Ê »——”Ì ò‰
-; 0000 025B //                    if (send_json_post(server_url, phone_number))
-; 0000 025C //                    {
-; 0000 025D //                        glcd_clear();
-; 0000 025E //                        glcd_outtextxy(0, 5, "step 1");
-; 0000 025F //                        delay_ms(200);
-; 0000 0260 //
-; 0000 0261 //                        sms_char = content_buffer[0];  // „À·« '1'
-; 0000 0262 //
-; 0000 0263 //                        glcd_outtextxy(0, 5, "step 2");
-; 0000 0264 //                        delay_ms(200);
-; 0000 0265 //
-; 0000 0266 //                        if (sms_char == '1' || sms_char == '2' || sms_char == '3')
-; 0000 0267 //                        {
-; 0000 0268 //                            glcd_clear();
-; 0000 0269 //                            glcd_outtextxy(0, 5, "SMS Code:");
-; 0000 026A //                            display_buffer[0] = sms_char;
-; 0000 026B //                            glcd_outtextxy(70, 5, display_buffer);
-; 0000 026C //                            glcd_outtextxy(0, 25, "Enter code on keypad:");
-; 0000 026D //
-; 0000 026E //                            key_pressed = 0;
-; 0000 026F //                            for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
-; 0000 0270 //                            {
-; 0000 0271 //                                key_pressed = get_key();
-; 0000 0272 //                                if (key_pressed != 0) break;
-; 0000 0273 //                                delay_ms(10);
-; 0000 0274 //                            }
-; 0000 0275 //
-; 0000 0276 //                            if (key_pressed == 0)
-; 0000 0277 //                            {
-; 0000 0278 //                                glcd_clear();
-; 0000 0279 //                                glcd_outtextxy(10, 25, "Timeout! Try again.");
-; 0000 027A //                                delay_ms(200);
-; 0000 027B //                            }
-; 0000 027C //                            else
-; 0000 027D //                            {
-; 0000 027E //                                glcd_outtextxy(0, 45, "You pressed:");
-; 0000 027F //                                display_buffer[0] = key_pressed;
-; 0000 0280 //                                glcd_outtextxy(90, 45, display_buffer);
-; 0000 0281 //                                delay_ms(200);
-; 0000 0282 //
-; 0000 0283 //                                if (key_pressed == sms_char)
-; 0000 0284 //                                {
-; 0000 0285 //                                    glcd_clear();
-; 0000 0286 //                                    glcd_outtextxy(10, 25, "Code is CORRECT!");
-; 0000 0287 //                                    delay_ms(300);
-; 0000 0288 //                                    product_id = sms_char - '0';
-; 0000 0289 //                                    activate_motor(product_id);
-; 0000 028A //                                }
-; 0000 028B //                                else
-; 0000 028C //                                {
-; 0000 028D //                                    glcd_clear();
-; 0000 028E //                                    glcd_outtextxy(5, 25, "Error in entry!");
-; 0000 028F //                                    delay_ms(300);
-; 0000 0290 //                                }
-; 0000 0291 //                            }
-; 0000 0292 //                        }
-; 0000 0293 //                        else
-; 0000 0294 //                        {
-; 0000 0295 //                            glcd_clear();
-; 0000 0296 //                            glcd_outtextxy(5, 25, "Invalid SMS Code!");
-; 0000 0297 //                            delay_ms(300);
-; 0000 0298 //                        }
-; 0000 0299 //                    }
-; 0000 029A //                    else
-; 0000 029B //                    {
-; 0000 029C //                        glcd_clear();
-; 0000 029D //                        glcd_outtextxy(0, 25, "You are not authorized!");
-; 0000 029E //                        delay_ms(300);
-; 0000 029F //                    }
-; 0000 02A0 //                }
-; 0000 02A1 //
-; 0000 02A2 //                // »«“ê‘  »Â Ê÷⁄Ì  ¬„«œÂù»Âùò«—
-; 0000 02A3 //                glcd_clear();
-; 0000 02A4 //                glcd_outtextxy(0, 0, "System Ready.");
-; 0000 02A5 //                glcd_outtextxy(0, 10, "Waiting for SMS...");
-; 0000 02A6 //            }
-; 0000 02A7 //        }
-; 0000 02A8     }
 ;PCODE: $00000435 VOL: 0
 ;PCODE: $00000436 VOL: 0
-; 0000 02A9 
-; 0000 02AA }
 ;PCODE: $00000437 VOL: 0
 ;PCODE: $00000438 VOL: 0
 ;PCODE: $00000439 VOL: 0
 ;PCODE: $0000043A VOL: 0
+;PCODE: $0000043B VOL: 0
+; 0000 0242     delay_ms(500);
+;PCODE: $0000043C VOL: 0
+;PCODE: $0000043D VOL: 0
+; 0000 0243 
+; 0000 0244 
+; 0000 0245     glcd_clear();
+;PCODE: $0000043E VOL: 0
+; 0000 0246     draw_bitmap(0, 0, code_dorost_nist, 128, 32);
+;PCODE: $0000043F VOL: 0
+;PCODE: $00000440 VOL: 0
+;PCODE: $00000441 VOL: 0
+;PCODE: $00000442 VOL: 0
+;PCODE: $00000443 VOL: 0
+;PCODE: $00000444 VOL: 0
+;PCODE: $00000445 VOL: 0
+;PCODE: $00000446 VOL: 0
+;PCODE: $00000447 VOL: 0
+;PCODE: $00000448 VOL: 0
+; 0000 0247     delay_ms(500);
+;PCODE: $00000449 VOL: 0
+;PCODE: $0000044A VOL: 0
+; 0000 0248 
+; 0000 0249 
+; 0000 024A     glcd_clear();
+;PCODE: $0000044B VOL: 0
+; 0000 024B     draw_bitmap(0, 0, adad_soton_dorost_nist, 128, 32);
+;PCODE: $0000044C VOL: 0
+;PCODE: $0000044D VOL: 0
+;PCODE: $0000044E VOL: 0
+;PCODE: $0000044F VOL: 0
+;PCODE: $00000450 VOL: 0
+;PCODE: $00000451 VOL: 0
+;PCODE: $00000452 VOL: 0
+;PCODE: $00000453 VOL: 0
+;PCODE: $00000454 VOL: 0
+;PCODE: $00000455 VOL: 0
+; 0000 024C     delay_ms(500);
+;PCODE: $00000456 VOL: 0
+;PCODE: $00000457 VOL: 0
+; 0000 024D 
+; 0000 024E 
+; 0000 024F 
+; 0000 0250 
+; 0000 0251     while (1)
+;PCODE: $00000458 VOL: 0
+; 0000 0252     {
+; 0000 0253 //        char sms_char;
+; 0000 0254 //        char key_pressed;
+; 0000 0255 //        char display_buffer[2] = {0};
+; 0000 0256 //        int product_id = 0;
+; 0000 0257 //        int timeout_counter = 0;
+; 0000 0258 //        char* token;
+; 0000 0259 //
+; 0000 025A //        char content_buffer[32];
+; 0000 025B //        memset(header_buffer, 0, sizeof(header_buffer));
+; 0000 025C //        memset(content_buffer, 0, sizeof(content_buffer));
+; 0000 025D //
+; 0000 025E //        if (gets(header_buffer, sizeof(header_buffer)))
+; 0000 025F //        {
+; 0000 0260 //            if (strstr(header_buffer, "+CMT:") != NULL)
+; 0000 0261 //            {
+; 0000 0262 //                // ?? ›Ê—« „ ‰ ÅÌ«„ò —Ê »ŒÊ‰ Ê ‰êÂ œ«—
+; 0000 0263 //                if (!gets(content_buffer, sizeof(content_buffer))) {
+; 0000 0264 //                    glcd_clear();
+; 0000 0265 //                    glcd_outtextxy(0, 0, "Failed to read msg");
+; 0000 0266 //                    delay_ms(1000);
+; 0000 0267 //                    continue;
+; 0000 0268 //                }
+; 0000 0269 //
+; 0000 026A //                // ?? ‘„«—Â  ·›‰ —Ê »êÌ—
+; 0000 026B //                token = strtok(header_buffer, "\"");
+; 0000 026C //                if (token != NULL) token = strtok(NULL, "\"");
+; 0000 026D //                if (token != NULL)
+; 0000 026E //                {
+; 0000 026F //                    strcpy(phone_number, token);
+; 0000 0270 //
+; 0000 0271 //                    // ?? Õ«·« „ÃÊ“ —Ê »——”Ì ò‰
+; 0000 0272 //                    if (send_json_post(server_url, phone_number))
+; 0000 0273 //                    {
+; 0000 0274 //                        glcd_clear();
+; 0000 0275 //                        glcd_outtextxy(0, 5, "step 1");
+; 0000 0276 //                        delay_ms(200);
+; 0000 0277 //
+; 0000 0278 //                        sms_char = content_buffer[0];  // „À·« '1'
+; 0000 0279 //
+; 0000 027A //                        glcd_outtextxy(0, 5, "step 2");
+; 0000 027B //                        delay_ms(200);
+; 0000 027C //
+; 0000 027D //                        if (sms_char == '1' || sms_char == '2' || sms_char == '3')
+; 0000 027E //                        {
+; 0000 027F //                            glcd_clear();
+; 0000 0280 //                            glcd_outtextxy(0, 5, "SMS Code:");
+; 0000 0281 //                            display_buffer[0] = sms_char;
+; 0000 0282 //                            glcd_outtextxy(70, 5, display_buffer);
+; 0000 0283 //                            glcd_outtextxy(0, 25, "Enter code on keypad:");
+; 0000 0284 //
+; 0000 0285 //                            key_pressed = 0;
+; 0000 0286 //                            for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
+; 0000 0287 //                            {
+; 0000 0288 //                                key_pressed = get_key();
+; 0000 0289 //                                if (key_pressed != 0) break;
+; 0000 028A //                                delay_ms(10);
+; 0000 028B //                            }
+; 0000 028C //
+; 0000 028D //                            if (key_pressed == 0)
+; 0000 028E //                            {
+; 0000 028F //                                glcd_clear();
+; 0000 0290 //                                glcd_outtextxy(10, 25, "Timeout! Try again.");
+; 0000 0291 //                                delay_ms(200);
+; 0000 0292 //                            }
+; 0000 0293 //                            else
+; 0000 0294 //                            {
+; 0000 0295 //                                glcd_outtextxy(0, 45, "You pressed:");
+; 0000 0296 //                                display_buffer[0] = key_pressed;
+; 0000 0297 //                                glcd_outtextxy(90, 45, display_buffer);
+; 0000 0298 //                                delay_ms(200);
+; 0000 0299 //
+; 0000 029A //                                if (key_pressed == sms_char)
+; 0000 029B //                                {
+; 0000 029C //                                    glcd_clear();
+; 0000 029D //                                    glcd_outtextxy(10, 25, "Code is CORRECT!");
+; 0000 029E //                                    delay_ms(300);
+; 0000 029F //                                    product_id = sms_char - '0';
+; 0000 02A0 //                                    activate_motor(product_id);
+; 0000 02A1 //                                }
+; 0000 02A2 //                                else
+; 0000 02A3 //                                {
+; 0000 02A4 //                                    glcd_clear();
+; 0000 02A5 //                                    glcd_outtextxy(5, 25, "Error in entry!");
+; 0000 02A6 //                                    delay_ms(300);
+; 0000 02A7 //                                }
+; 0000 02A8 //                            }
+; 0000 02A9 //                        }
+; 0000 02AA //                        else
+; 0000 02AB //                        {
+; 0000 02AC //                            glcd_clear();
+; 0000 02AD //                            glcd_outtextxy(5, 25, "Invalid SMS Code!");
+; 0000 02AE //                            delay_ms(300);
+; 0000 02AF //                        }
+; 0000 02B0 //                    }
+; 0000 02B1 //                    else
+; 0000 02B2 //                    {
+; 0000 02B3 //                        glcd_clear();
+; 0000 02B4 //                        glcd_outtextxy(0, 25, "You are not authorized!");
+; 0000 02B5 //                        delay_ms(300);
+; 0000 02B6 //                    }
+; 0000 02B7 //                }
+; 0000 02B8 //
+; 0000 02B9 //                // »«“ê‘  »Â Ê÷⁄Ì  ¬„«œÂù»Âùò«—
+; 0000 02BA //                glcd_clear();
+; 0000 02BB //                glcd_outtextxy(0, 0, "System Ready.");
+; 0000 02BC //                glcd_outtextxy(0, 10, "Waiting for SMS...");
+; 0000 02BD //            }
+; 0000 02BE //        }
+; 0000 02BF     }
+;PCODE: $00000459 VOL: 0
+;PCODE: $0000045A VOL: 0
+; 0000 02C0 
+; 0000 02C1 }
+;PCODE: $0000045B VOL: 0
+;PCODE: $0000045C VOL: 0
+;PCODE: $0000045D VOL: 0
+;PCODE: $0000045E VOL: 0
 
 	.DSEG
 _0x41:
-	.BYTE 0x88
+	.BYTE 0x67
