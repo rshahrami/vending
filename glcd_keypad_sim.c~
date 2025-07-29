@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdlib.h> // »—«Ì «” ›«œÂ «“  «»⁄ atoi
 //#include <stdint.h>
+#include "bitmaps.h"
 
 typedef unsigned char uint8_t;
 typedef unsigned int  uint16_t;
@@ -53,75 +54,6 @@ char response_buffer[256]; // «›“«Ì‘ ”«Ì“ »«›— »—«Ì œ—Ì«›  Å«”ŒùÂ«Ì HTTP
 #define ROW3_PIN 6
 #define ROW4_PIN 4
 
-#include "bitmaps.h"
-
-
-//__flash unsigned char payamak[1024] = {
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0xC0, 0x00, 0x00,
-//    0xC0, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC0, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC0, 0x80, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF8, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80,
-//    0x80, 0x00, 0x00, 0x00, 0x08, 0x98, 0x80, 0x00, 0x00, 0x0E, 0x1A, 0x32, 0x73, 0xC3, 0x81, 0x01,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xFF, 0x00, 0x00,
-//    0x03, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x40, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00,
-//    0xE0, 0xC0, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x03, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0xC0, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x0E, 0x0E, 0x1A, 0x32, 0xE3, 0x81, 0x01, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0xC0, 0x60, 0x60, 0xE0, 0xC0, 0x00, 0x00, 0x03, 0xFF, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x07, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x07, 0x0C, 0x0C, 0x8C, 0xCC, 0x4C, 0x47,
-//    0xC7, 0x0C, 0x0C, 0x0C, 0x0C, 0x07, 0x07, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x03, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x3E, 0x6F, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0x40, 0x60, 0x3F, 0x00, 0x00,
-//    0x00, 0x07, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x07, 0x0E, 0x0C, 0x0C, 0x0C, 0x07, 0x0C, 0x0C, 0x0C,
-//    0x0C, 0x03, 0x00, 0x80, 0xC0, 0xE1, 0x3F, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x07, 0x04, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x07, 0x06, 0x0C, 0x0C, 0x0C,
-//    0x0C, 0x06, 0x07, 0x04, 0x0C, 0x0C, 0x0C, 0x07, 0x00, 0x00, 0x00, 0x07, 0x0C, 0x0C, 0x0C, 0xCC,
-//    0xCC, 0x8C, 0xC7, 0x4E, 0x0C, 0xCC, 0xCC, 0x8C, 0xCC, 0x8D, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x07, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-//};
 
 
 void draw_bitmap(uint8_t x, uint8_t y, __flash unsigned char* bmp, uint8_t width, uint8_t height)
@@ -294,19 +226,24 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     char* action_ptr;
     int method = 0, status_code = 0, data_len = 0;
 
-    if (!check_gprs_status()) {
-        if (!init_GPRS()) {
-            glcd_clear();
-            glcd_outtextxy(0, 0, "GPRS Failed!");
-            delay_ms(1000);
-            return 0;
-        }
-    }
+    glcd_clear();
+    draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
+    //delay_ms(500); 
+
+
+//    if (!check_gprs_status()) {
+//        if (!init_GPRS()) {
+//            glcd_clear();
+//            glcd_outtextxy(0, 0, "GPRS Failed!");
+//            delay_ms(1000);
+//            return 0;
+//        }
+//    }
 
  
-    glcd_clear();
-    glcd_outtextxy(0,10,phone_number);
-    glcd_outtextxy(0,20,"lev 0");
+//    glcd_clear();
+//    glcd_outtextxy(0,10,phone_number);
+//    glcd_outtextxy(0,20,"lev 0");
    
     // 1. Initialize HTTP service
     send_at_command("AT+HTTPINIT");
@@ -314,13 +251,13 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
 //    glcd_clear();
 //    glcd_outtextxy(0,10,phone_number);
-    glcd_outtextxy(0,20,"lev 1");
+//    glcd_outtextxy(0,20,"lev 1");
 
     // 2. Set CID to bearer profile 1
     send_at_command("AT+HTTPPARA=\"CID\",1");
     if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
 
-    glcd_outtextxy(0,20,"lev 2");
+//    glcd_outtextxy(0,20,"lev 2");
 
     // 3. Build the full URL with query parameter
     sprintf(full_url, "%s?phone_number=%s", base_url, phone_number);
@@ -330,7 +267,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     send_at_command(cmd);
     if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
 
-    glcd_outtextxy(0,20,"lev 3");
+//    glcd_outtextxy(0,20,"lev 3");
 
     // 5. Start POST action
     send_at_command("AT+HTTPACTION=1");
@@ -341,7 +278,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
         return 0;
     }
 
-    glcd_outtextxy(0,20,"lev 4");
+//    glcd_outtextxy(0,20,"lev 4");
 
     // 6. Parse status code from response
 
@@ -354,7 +291,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
         return 0;
     }
     
-    glcd_outtextxy(0,20,"lev 5");
+//    glcd_outtextxy(0,20,"lev 5");
     //delay_ms(200);
     // 7. Show response based on status
     glcd_clear();
@@ -365,77 +302,23 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
         glcd_outtextxy(0,10,"Not OK");
     }             
     //delay_ms(200);
-    glcd_outtextxy(0,20,"lev 6");
+//    glcd_outtextxy(0,20,"lev 6");
 
     // 8. Read server response if needed
     send_at_command("AT+HTTPREAD");
     read_serial_response(response, sizeof(response), 100, "OK");
 
-    glcd_outtextxy(0,20,"lev 7");
+//    glcd_outtextxy(0,20,"lev 7");
 
     // 9. Terminate HTTP service
     send_at_command("AT+HTTPTERM");
     read_serial_response(response, sizeof(response), 100, "OK");
                                                                    
-    glcd_outtextxy(0,20,"lev 8");
+//    glcd_outtextxy(0,20,"lev 8");
     return (status_code == 200) ? 1 : 0;
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-//unsigned char init_GPRS(void)
-//{
-//    char at_command[50];
-//    char response[100]; // Local buffer for the response
-//
-//    glcd_clear();
-//    glcd_outtextxy(0, 0, "Connecting to GPRS...");
-//
-//    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
-//    delay_ms(300);
-//
-//    sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
-//    send_at_command(at_command);
-//    delay_ms(300);
-//
-//    send_at_command("AT+SAPBR=1,1");
-//    delay_ms(300);
-//
-//    glcd_clear();
-//    glcd_outtextxy(0, 0, "Fetching IP...");
-//    send_at_command("AT+SAPBR=2,1"); // Request IP
-//    // delay_ms(5000);
-//    
-//    // Attempt to read the response for 5 seconds, looking for "+SAPBR:"
-//    // FIX: Added the 4th argument, "+SAPBR:", to the function call.
-//    if (read_serial_response(response, sizeof(response), 200, "+SAPBR:")) {
-//        glcd_outtextxy(0, 10, "Resp:");
-//        glcd_outtextxy(0, 20, response); // Display the received response for debugging
-//        delay_ms(200);
-//
-//        // Check if the response contains the IP address part
-//        if (strstr(response, "+SAPBR: 1,1,") != NULL) {
-//            char* token = strtok(response, "\"");
-//            token = strtok(NULL, "\"");
-//
-//            if (token) {
-//                strcpy(ip_address_buffer, token);
-//                return 1; // Success
-//            }
-//        }
-//    }
-//
-//    // If we reach here, it means getting the IP address failed
-//    return 0; // Failure
-//}
- 
-
-
 
 char get_key(void)
 {
@@ -475,8 +358,6 @@ char get_key(void)
 }
 
 
-
-
 void activate_motor(int product_id)
 {
     unsigned char motor_pin;
@@ -497,9 +378,10 @@ void activate_motor(int product_id)
     delay_ms(500);
     MOTOR_PORT &= ~(1 << motor_pin);
 
-    sprintf(motor_msg, "MOTOR %d OFF!", product_id);
-    glcd_outtextxy(10, 40, motor_msg);
-    delay_ms(200);
+//    sprintf(motor_msg, "MOTOR %d OFF!", product_id);
+//    glcd_outtextxy(10, 40, motor_msg);
+    draw_bitmap(0, 0, mahsol_ra_bardarid, 128, 64);
+    delay_ms(300);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -507,7 +389,7 @@ void activate_motor(int product_id)
 void main(void)
 {
     const char* server_url = "http://193.5.44.191/home/post/";
-    const char* my_phone    = "+989152608582";
+    // const char* my_phone    = "+989152608582";
     
     GLCDINIT_t glcd_init_data;
 
@@ -563,142 +445,186 @@ void main(void)
 //    }
 
 
-    glcd_clear();
-    draw_bitmap(0, 0, ersal_payamak, 128, 64);
-    delay_ms(500);
+//    glcd_clear();
+//    draw_bitmap(0, 0, ersal_payamak, 128, 64);
+//    delay_ms(500);
+//
+//
+//    glcd_clear();
+//    draw_bitmap(0, 0, soton_payamak_shode, 128, 32);
+//    delay_ms(500);
+// 
+// 
+//    glcd_clear();
+//    draw_bitmap(0, 0, code_dorost_ast, 128, 32);
+//    delay_ms(500);
+//
+//    
+//    glcd_clear();
+//    draw_bitmap(0, 0, code_dorost_nist, 128, 32);
+//    delay_ms(500);
+//    
+//
+//    glcd_clear();
+//    draw_bitmap(0, 0, adad_soton_dorost_nist, 128, 32);
+//    delay_ms(500);    
+//    
+//    
+//
+//    glcd_clear();
+//    draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
+//    delay_ms(500);
+//    
+//    glcd_clear();
+//    glcd_putimagef(0,0,shomare_soton_ra_payamak,GLCD_PUTCOPY);
+//    delay_ms(500); 
+//    
+//    glcd_clear();
+//    draw_bitmap(0, 0, mahsol_ra_bardarid, 128, 64);
+//    delay_ms(500);  
+
+//    glcd_clear();
+//    draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
+//    delay_ms(500); 
+//    
+//    glcd_clear();
+//    draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 64);
+//    delay_ms(500); 
+//    
+//    glcd_clear();
+//    draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
+//    delay_ms(500); 
+    
+//    glcd_clear();
+//    draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
+//    delay_ms(500); 
+    
+//    glcd_clear();
+//    draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
+//    delay_ms(500); 
 
 
     glcd_clear();
-    draw_bitmap(0, 0, soton_payamak_shode, 128, 32);
-    delay_ms(500);
- 
- 
-    glcd_clear();
-    draw_bitmap(0, 0, code_dorost_ast, 128, 32);
-    delay_ms(500);
-    
-    glcd_clear();
-    draw_bitmap(0, 0, code_dorost_nist, 128, 32);
-    delay_ms(500);
-    
+    draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
 
-    glcd_clear();
-    draw_bitmap(0, 0, adad_soton_dorost_nist, 128, 32);
-    delay_ms(500);    
-    
-    
-    
 
     while (1)
     {
-//        char sms_char;
-//        char key_pressed;
-//        char display_buffer[2] = {0};
-//        int product_id = 0;
-//        int timeout_counter = 0;
-//        char* token;
-//
-//        char content_buffer[32];
-//        memset(header_buffer, 0, sizeof(header_buffer));
-//        memset(content_buffer, 0, sizeof(content_buffer));
-//
-//        if (gets(header_buffer, sizeof(header_buffer)))
-//        {
-//            if (strstr(header_buffer, "+CMT:") != NULL)
-//            {
-//                // ?? ›Ê—« „ ‰ ÅÌ«„ò —Ê »ŒÊ‰ Ê ‰êÂ œ«—
-//                if (!gets(content_buffer, sizeof(content_buffer))) {
-//                    glcd_clear();
-//                    glcd_outtextxy(0, 0, "Failed to read msg");
-//                    delay_ms(1000);
-//                    continue;
-//                }
-//
-//                // ?? ‘„«—Â  ·›‰ —Ê »êÌ—
-//                token = strtok(header_buffer, "\"");
-//                if (token != NULL) token = strtok(NULL, "\"");
-//                if (token != NULL)
-//                {
-//                    strcpy(phone_number, token);
-//
-//                    // ?? Õ«·« „ÃÊ“ —Ê »——”Ì ò‰
-//                    if (send_json_post(server_url, phone_number))
-//                    {
+        char sms_char;
+        char key_pressed;
+        char display_buffer[2] = {0};
+        int product_id = 0;
+        int timeout_counter = 0;
+        char* token;
+
+        char content_buffer[32];
+        memset(header_buffer, 0, sizeof(header_buffer));
+        memset(content_buffer, 0, sizeof(content_buffer));
+
+        if (gets(header_buffer, sizeof(header_buffer)))
+        {
+            if (strstr(header_buffer, "+CMT:") != NULL)
+            {
+                // ?? ›Ê—« „ ‰ ÅÌ«„ò —Ê »ŒÊ‰ Ê ‰êÂ œ«—
+                if (!gets(content_buffer, sizeof(content_buffer))) {
+                    glcd_clear();
+                    glcd_outtextxy(0, 0, "Failed to read msg");
+                    delay_ms(1000);
+                    continue;
+                }
+
+                // ?? ‘„«—Â  ·›‰ —Ê »êÌ—
+                token = strtok(header_buffer, "\"");
+                if (token != NULL) token = strtok(NULL, "\"");
+                if (token != NULL)
+                {
+                    strcpy(phone_number, token);
+
+                    // ?? Õ«·« „ÃÊ“ —Ê »——”Ì ò‰
+                    if (send_json_post(server_url, phone_number))
+                    {
 //                        glcd_clear();
 //                        glcd_outtextxy(0, 5, "step 1");
 //                        delay_ms(200);
-//
-//                        sms_char = content_buffer[0];  // „À·« '1'
-//
+
+                        sms_char = content_buffer[0];  // „À·« '1'
+
 //                        glcd_outtextxy(0, 5, "step 2");
 //                        delay_ms(200);
-//
-//                        if (sms_char == '1' || sms_char == '2' || sms_char == '3')
-//                        {
-//                            glcd_clear();
+
+                        if (sms_char == '1' || sms_char == '2' || sms_char == '3')
+                        {
+                            glcd_clear();
 //                            glcd_outtextxy(0, 5, "SMS Code:");
-//                            display_buffer[0] = sms_char;
-//                            glcd_outtextxy(70, 5, display_buffer);
+                            display_buffer[0] = sms_char;
+                            glcd_outtextxy(70, 5, display_buffer);
 //                            glcd_outtextxy(0, 25, "Enter code on keypad:");
-//
-//                            key_pressed = 0;
-//                            for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
-//                            {
-//                                key_pressed = get_key();
-//                                if (key_pressed != 0) break;
-//                                delay_ms(10);
-//                            }
-//
-//                            if (key_pressed == 0)
-//                            {
-//                                glcd_clear();
-//                                glcd_outtextxy(10, 25, "Timeout! Try again.");
-//                                delay_ms(200);
-//                            }
-//                            else
-//                            {
+                            draw_bitmap(0, 10, adad_ra_vared_namaeid, 128, 64);
+
+                            key_pressed = 0;
+                            for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
+                            {
+                                key_pressed = get_key();
+                                if (key_pressed != 0) break;
+                                delay_ms(10);
+                            }
+
+                            if (key_pressed == 0)
+                            {
+                                glcd_clear();
+                                glcd_outtextxy(10, 25, "Timeout! Try again.");
+                                delay_ms(200);
+                            }
+                            else
+                            {
 //                                glcd_outtextxy(0, 45, "You pressed:");
-//                                display_buffer[0] = key_pressed;
-//                                glcd_outtextxy(90, 45, display_buffer);
-//                                delay_ms(200);
-//
-//                                if (key_pressed == sms_char)
-//                                {
-//                                    glcd_clear();
-//                                    glcd_outtextxy(10, 25, "Code is CORRECT!");
-//                                    delay_ms(300);
-//                                    product_id = sms_char - '0';
-//                                    activate_motor(product_id);
-//                                }
-//                                else
-//                                {
-//                                    glcd_clear();
+                                draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
+                                display_buffer[0] = key_pressed;
+                                glcd_outtextxy(90, 45, display_buffer);
+                                delay_ms(200);
+
+                                if (key_pressed == sms_char)
+                                {
+                                    glcd_clear(); 
+//                                    draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
+                                    glcd_outtextxy(10, 25, "Code is CORRECT!");
+                                    delay_ms(300);
+                                    product_id = sms_char - '0';
+                                    activate_motor(product_id);
+                                }
+                                else
+                                {
+                                    glcd_clear();
 //                                    glcd_outtextxy(5, 25, "Error in entry!");
-//                                    delay_ms(300);
-//                                }
-//                            }
-//                        }
-//                        else
-//                        {
-//                            glcd_clear();
-//                            glcd_outtextxy(5, 25, "Invalid SMS Code!");
-//                            delay_ms(300);
-//                        }
-//                    }
-//                    else
-//                    {
-//                        glcd_clear();
+                                    draw_bitmap(0, 0, code_dorost_nist, 128, 32);
+                                    delay_ms(300);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            glcd_clear();
+                            glcd_outtextxy(5, 25, "Invalid SMS Code!");
+                            delay_ms(300);
+                        }
+                    }
+                    else
+                    {
+                        glcd_clear();
 //                        glcd_outtextxy(0, 25, "You are not authorized!");
-//                        delay_ms(300);
-//                    }
-//                }
-//
-//                // »«“ê‘  »Â Ê÷⁄Ì  ¬„«œÂù»Âùò«—
-//                glcd_clear();
+                        draw_bitmap(0, 0, code_dorost_nist, 128, 64);
+                        delay_ms(300);
+                    }
+                }
+
+                // »«“ê‘  »Â Ê÷⁄Ì  ¬„«œÂù»Âùò«—
+                glcd_clear();
+                draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
 //                glcd_outtextxy(0, 0, "System Ready.");
 //                glcd_outtextxy(0, 10, "Waiting for SMS...");
-//            }
-//        }
+
+            }
+        }
     }
 
 }
