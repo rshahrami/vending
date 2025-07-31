@@ -219,6 +219,34 @@ unsigned char init_GPRS(void)
 }
 
 
+
+
+
+unsigned char active_GPRS(void)
+{
+    char at_command[50];
+    char response[100]; // Local buffer for the response
+
+//    glcd_clear();
+//    glcd_outtextxy(0, 0, "Connecting to GPRS...");
+
+    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
+    delay_ms(200);
+
+    sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
+    send_at_command(at_command);
+    delay_ms(200);
+
+    send_at_command("AT+SAPBR=1,1");
+    delay_ms(200);
+
+    // If we reach here, it means getting the IP address failed
+    return 0; // Failure
+}
+
+
+
+
 unsigned char send_json_post(const char* base_url, const char* phone_number) {
     char cmd[256];
     char response[256];
@@ -228,11 +256,13 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
     glcd_clear();
     draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
-    //delay_ms(500); 
+    
+    
+    active_GPRS();
 
 
 //    if (!check_gprs_status()) {
-//        if (!init_GPRS()) {
+//        if (!active_GPRS()) {
 //            glcd_clear();
 //            glcd_outtextxy(0, 0, "GPRS Failed!");
 //            delay_ms(1000);
@@ -284,23 +314,23 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
     action_ptr = strstr(response, "+HTTPACTION:");
     if (action_ptr == NULL || sscanf(action_ptr, "+HTTPACTION: %d,%d,%d", &method, &status_code, &data_len) != 3) {
-        glcd_clear();
-        glcd_outtextxy(0,0,"Parse Err");
-        glcd_outtextxy(0,10,response);  // ‰„«Ì‘ „Õ Ê«Ì response ò«„· »—«Ì œÌ»«ê
-        delay_ms(500);
+//        glcd_clear();
+//        glcd_outtextxy(0,0,"Parse Err");
+//        glcd_outtextxy(0,10,response);  // ‰„«Ì‘ „Õ Ê«Ì response ò«„· »—«Ì œÌ»«ê
+//        delay_ms(500);
         return 0;
     }
     
 //    glcd_outtextxy(0,20,"lev 5");
     //delay_ms(200);
     // 7. Show response based on status
-    glcd_clear();
-    glcd_outtextxy(0,0,"HTTP Status:");
-    if (status_code == 200) {
-        glcd_outtextxy(0,10,"OK");
-    } else {
-        glcd_outtextxy(0,10,"Not OK");
-    }             
+//    glcd_clear();
+//    glcd_outtextxy(0,0,"HTTP Status:");
+//    if (status_code == 200) {
+//        glcd_outtextxy(0,10,"OK");
+//    } else {
+//        glcd_outtextxy(0,10,"Not OK");
+//    }             
     //delay_ms(200);
 //    glcd_outtextxy(0,20,"lev 6");
 
@@ -431,73 +461,6 @@ void main(void)
     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
     if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
 
-//    glcd_clear();
-//    glcd_outtextxy(0, 0, "System Ready.");
-//    glcd_outtextxy(0, 10, "Waiting for SMS...");
-
-
-//    glcd_clear();
-//    glcd_outtextxy(0,0,"Sending POST...");
-//    if (send_json_post(server_url, my_phone)) {
-//        glcd_outtextxy(0,10,"POST OK");
-//    } else {
-//        glcd_outtextxy(0,10,"POST Fail");
-//    }
-
-
-//    glcd_clear();
-//    draw_bitmap(0, 0, ersal_payamak, 128, 64);
-//    delay_ms(500);
-//
-//
-//    glcd_clear();
-//    draw_bitmap(0, 0, soton_payamak_shode, 128, 32);
-//    delay_ms(500);
-// 
-// 
-//    glcd_clear();
-//    draw_bitmap(0, 0, code_dorost_ast, 128, 32);
-//    delay_ms(500);
-//
-//    
-//    glcd_clear();
-//    draw_bitmap(0, 0, code_dorost_nist, 128, 32);
-//    delay_ms(500);
-//    
-//
-//    glcd_clear();
-//    draw_bitmap(0, 0, adad_soton_dorost_nist, 128, 32);
-//    delay_ms(500);    
-//    
-//    
-//
-//    glcd_clear();
-//    draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
-//    delay_ms(500);
-//    
-//    glcd_clear();
-//    glcd_putimagef(0,0,shomare_soton_ra_payamak,GLCD_PUTCOPY);
-//    delay_ms(500); 
-//    
-//    glcd_clear();
-//    draw_bitmap(0, 0, mahsol_ra_bardarid, 128, 64);
-//    delay_ms(500);  
-
-//    glcd_clear();
-//    draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
-//    delay_ms(500); 
-//    
-//    glcd_clear();
-//    draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 64);
-//    delay_ms(500); 
-//    
-//    glcd_clear();
-//    draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
-//    delay_ms(500); 
-    
-//    glcd_clear();
-//    draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
-//    delay_ms(500); 
     
 //    glcd_clear();
 //    draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
@@ -556,10 +519,11 @@ void main(void)
                         {
                             glcd_clear();
 //                            glcd_outtextxy(0, 5, "SMS Code:");
+                            draw_bitmap(0, 0, square, 128, 32);
                             display_buffer[0] = sms_char;
-                            glcd_outtextxy(70, 5, display_buffer);
+                            glcd_outtextxy(65, 10, display_buffer);
 //                            glcd_outtextxy(0, 25, "Enter code on keypad:");
-                            draw_bitmap(0, 10, adad_ra_vared_namaeid, 128, 64);
+                            draw_bitmap(0, 20, adad_ra_vared_namaeid, 128, 64);
 
                             key_pressed = 0;
                             for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
@@ -578,17 +542,20 @@ void main(void)
                             else
                             {
 //                                glcd_outtextxy(0, 45, "You pressed:");
-                                draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
+                                //draw_bitmap(70, 45, square, 128, 32);
+                                draw_bitmap(65, 0, square, 128, 32);
                                 display_buffer[0] = key_pressed;
-                                glcd_outtextxy(90, 45, display_buffer);
+                                glcd_outtextxy(65, 50, display_buffer);
+                                
                                 delay_ms(200);
 
                                 if (key_pressed == sms_char)
                                 {
                                     glcd_clear(); 
 //                                    draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
-                                    glcd_outtextxy(10, 25, "Code is CORRECT!");
-                                    delay_ms(300);
+                                    //glcd_outtextxy(10, 25, "Code is CORRECT!");
+                                    //draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
+                                    //delay_ms(300);
                                     product_id = sms_char - '0';
                                     activate_motor(product_id);
                                 }
@@ -596,7 +563,7 @@ void main(void)
                                 {
                                     glcd_clear();
 //                                    glcd_outtextxy(5, 25, "Error in entry!");
-                                    draw_bitmap(0, 0, code_dorost_nist, 128, 32);
+                                    draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
                                     delay_ms(300);
                                 }
                             }
@@ -604,7 +571,8 @@ void main(void)
                         else
                         {
                             glcd_clear();
-                            glcd_outtextxy(5, 25, "Invalid SMS Code!");
+//                            glcd_outtextxy(5, 25, "Invalid SMS Code!");
+                            draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
                             delay_ms(300);
                         }
                     }
@@ -612,7 +580,7 @@ void main(void)
                     {
                         glcd_clear();
 //                        glcd_outtextxy(0, 25, "You are not authorized!");
-                        draw_bitmap(0, 0, code_dorost_nist, 128, 64);
+                        draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
                         delay_ms(300);
                     }
                 }
