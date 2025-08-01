@@ -22,7 +22,7 @@ typedef signed char   int8_t;
 // ---  ‰ŸÌ„«  «’·Ì ---
 #define APN "mcinet" // APN «Å—« Ê— ŒÊœ —« Ê«—œ ò‰Ìœ
 //#define SERVER_URL "http://google.com/api/authorize" // ¬œ—” ò«„· ”—Ê— ŒÊœ —« «Ì‰Ã« ﬁ—«— œÂÌœ
-#define SERVER_URL_POST "http://193.5.44.191/home/post/"
+//#define SERVER_URL_POST "http://193.5.44.191/home/post/"
 
 #define HTTP_TIMEOUT_MS 500
 
@@ -277,7 +277,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
    
     // 1. Initialize HTTP service
     send_at_command("AT+HTTPINIT");
-    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 150, "OK")) return 0;
 
 //    glcd_clear();
 //    glcd_outtextxy(0,10,phone_number);
@@ -285,7 +285,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
     // 2. Set CID to bearer profile 1
     send_at_command("AT+HTTPPARA=\"CID\",1");
-    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 150, "OK")) return 0;
 
 //    glcd_outtextxy(0,20,"lev 2");
 
@@ -295,7 +295,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     // 4. Set the target URL
     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
     send_at_command(cmd);
-    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 150, "OK")) return 0;
 
 //    glcd_outtextxy(0,20,"lev 3");
 
@@ -336,13 +336,13 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
     // 8. Read server response if needed
     send_at_command("AT+HTTPREAD");
-    read_serial_response(response, sizeof(response), 100, "OK");
+    read_serial_response(response, sizeof(response), 150, "OK");
 
 //    glcd_outtextxy(0,20,"lev 7");
 
     // 9. Terminate HTTP service
     send_at_command("AT+HTTPTERM");
-    read_serial_response(response, sizeof(response), 100, "OK");
+    read_serial_response(response, sizeof(response), 150, "OK");
                                                                    
 //    glcd_outtextxy(0,20,"lev 8");
     return (status_code == 200) ? 1 : 0;
@@ -391,7 +391,8 @@ char get_key(void)
 void activate_motor(int product_id)
 {
     unsigned char motor_pin;
-    char motor_msg[20];
+    char motor_msg[20]; 
+    int timeout = 5000;
 
     switch (product_id)
     {
@@ -405,7 +406,19 @@ void activate_motor(int product_id)
     glcd_clear();
     glcd_outtextxy(10, 20, motor_msg);
     MOTOR_PORT |= (1 << motor_pin);
-    delay_ms(500);
+    
+//    while (!(PIND & (1 << PIND1)) && timeout > 0)
+//    {
+//        delay_ms(1);
+//        timeout--;
+//    }    
+
+    while ((PIND & (1 << PIND1)) && timeout > 0)
+    {
+        delay_ms(1);
+        timeout--;
+    }
+ 
     MOTOR_PORT &= ~(1 << motor_pin);
 
 //    sprintf(motor_msg, "MOTOR %d OFF!", product_id);
@@ -430,7 +443,11 @@ void main(void)
     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
-    PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
+    PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);   
+    
+    DDRD = (0 << DDD7) | (0 << DDD6) | (0 << DDD5) | (0 << DDD4) | (0 << DDD3) | (0 << DDD2) | (0 << DDD1) | (0 << DDD0);  // Â„Â Ê—ÊœÌ
+    PORTD = (0 << PORTD7) | (0 << PORTD6) | (0 << PORTD5) | (0 << PORTD4) | (0 << PORTD3) | (0 << PORTD2) | (1 << PORTD1) | (0 << PORTD0); // Pull-down (Ì⁄‰Ì €Ì—›⁄«· ò—œ‰ pull-up)    
+    
     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
@@ -543,7 +560,7 @@ void main(void)
                             {
 //                                glcd_outtextxy(0, 45, "You pressed:");
                                 //draw_bitmap(70, 45, square, 128, 32);
-                                draw_bitmap(65, 0, square, 128, 32);
+//                                draw_bitmap(65, 0, square, 128, 32);
                                 display_buffer[0] = key_pressed;
                                 glcd_outtextxy(65, 50, display_buffer);
                                 

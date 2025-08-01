@@ -46,7 +46,7 @@
 ;// ---  ‰ŸÌ„«  «’·Ì ---
 ;#define APN "mcinet" // APN «Å—« Ê— ŒÊœ —« Ê«—œ ò‰Ìœ
 ;//#define SERVER_URL "http://google.com/api/authorize" // ¬œ—” ò«„· ”—Ê— ŒÊœ —« «Ì‰Ã« ﬁ—«— œÂÌœ
-;#define SERVER_URL_POST "http://193.5.44.191/home/post/"
+;//#define SERVER_URL_POST "http://193.5.44.191/home/post/"
 ;
 ;#define HTTP_TIMEOUT_MS 500
 ;
@@ -811,7 +811,7 @@ _0x1F:
 ;PCODE: $000001C6 VOL: 0
 ;PCODE: $000001C7 VOL: 0
 ;PCODE: $000001C8 VOL: 0
-; 0000 0118     if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
+; 0000 0118     if (!read_serial_response(response, sizeof(response), 150, "OK")) return 0;
 ;PCODE: $000001C9 VOL: 0
 ;PCODE: $000001CA VOL: 0
 ;PCODE: $000001CB VOL: 0
@@ -838,7 +838,7 @@ _0x1F:
 ;PCODE: $000001D9 VOL: 0
 ;PCODE: $000001DA VOL: 0
 ;PCODE: $000001DB VOL: 0
-; 0000 0120     if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
+; 0000 0120     if (!read_serial_response(response, sizeof(response), 150, "OK")) return 0;
 ;PCODE: $000001DC VOL: 0
 ;PCODE: $000001DD VOL: 0
 ;PCODE: $000001DE VOL: 0
@@ -893,7 +893,7 @@ _0x1F:
 ; 0000 0129     send_at_command(cmd);
 ;PCODE: $00000207 VOL: 0
 ;PCODE: $00000208 VOL: 0
-; 0000 012A     if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
+; 0000 012A     if (!read_serial_response(response, sizeof(response), 150, "OK")) return 0;
 ;PCODE: $00000209 VOL: 0
 ;PCODE: $0000020A VOL: 0
 ;PCODE: $0000020B VOL: 0
@@ -1025,7 +1025,7 @@ _0x1F:
 ;PCODE: $00000261 VOL: 0
 ;PCODE: $00000262 VOL: 0
 ;PCODE: $00000263 VOL: 0
-; 0000 0153     read_serial_response(response, sizeof(response), 100, "OK");
+; 0000 0153     read_serial_response(response, sizeof(response), 150, "OK");
 ;PCODE: $00000264 VOL: 0
 ;PCODE: $00000265 VOL: 0
 ;PCODE: $00000266 VOL: 0
@@ -1043,7 +1043,7 @@ _0x1F:
 ;PCODE: $0000026D VOL: 0
 ;PCODE: $0000026E VOL: 0
 ;PCODE: $0000026F VOL: 0
-; 0000 0159     read_serial_response(response, sizeof(response), 100, "OK");
+; 0000 0159     read_serial_response(response, sizeof(response), 150, "OK");
 ;PCODE: $00000270 VOL: 0
 ;PCODE: $00000271 VOL: 0
 ;PCODE: $00000272 VOL: 0
@@ -1250,47 +1250,49 @@ _0x20:
 ;PCODE: $00000301 VOL: 0
 ; 0000 0189     unsigned char motor_pin;
 ; 0000 018A     char motor_msg[20];
-; 0000 018B 
-; 0000 018C     switch (product_id)
+; 0000 018B     int timeout = 5000;
+; 0000 018C 
+; 0000 018D     switch (product_id)
 ;PCODE: $00000302 VOL: 0
 ;PCODE: $00000303 VOL: 0
 ;PCODE: $00000304 VOL: 0
-;	product_id -> Y+21
+;	product_id -> Y+24
 ;	motor_pin -> R17
-;	motor_msg -> Y+1
+;	motor_msg -> Y+4
+;	timeout -> R18,R19
 ;PCODE: $00000305 VOL: 0
-; 0000 018D     {
-; 0000 018E         case 1: motor_pin = MOTOR_PIN_1; break;
 ;PCODE: $00000306 VOL: 0
 ;PCODE: $00000307 VOL: 0
+; 0000 018E     {
+; 0000 018F         case 1: motor_pin = MOTOR_PIN_1; break;
 ;PCODE: $00000308 VOL: 0
 ;PCODE: $00000309 VOL: 0
 ;PCODE: $0000030A VOL: 0
-; 0000 018F         case 2: motor_pin = MOTOR_PIN_2; break;
 ;PCODE: $0000030B VOL: 0
 ;PCODE: $0000030C VOL: 0
+; 0000 0190         case 2: motor_pin = MOTOR_PIN_2; break;
 ;PCODE: $0000030D VOL: 0
 ;PCODE: $0000030E VOL: 0
 ;PCODE: $0000030F VOL: 0
 ;PCODE: $00000310 VOL: 0
-; 0000 0190         case 3: motor_pin = MOTOR_PIN_3; break;
 ;PCODE: $00000311 VOL: 0
 ;PCODE: $00000312 VOL: 0
+; 0000 0191         case 3: motor_pin = MOTOR_PIN_3; break;
 ;PCODE: $00000313 VOL: 0
 ;PCODE: $00000314 VOL: 0
 ;PCODE: $00000315 VOL: 0
 ;PCODE: $00000316 VOL: 0
-; 0000 0191         default: return;
 ;PCODE: $00000317 VOL: 0
 ;PCODE: $00000318 VOL: 0
+; 0000 0192         default: return;
 ;PCODE: $00000319 VOL: 0
 ;PCODE: $0000031A VOL: 0
 ;PCODE: $0000031B VOL: 0
-; 0000 0192     }
 ;PCODE: $0000031C VOL: 0
-; 0000 0193 
-; 0000 0194     sprintf(motor_msg, "MOTOR %d ON!", product_id);
+; 0000 0193     }
 ;PCODE: $0000031D VOL: 0
+; 0000 0194 
+; 0000 0195     sprintf(motor_msg, "MOTOR %d ON!", product_id);
 ;PCODE: $0000031E VOL: 0
 ;PCODE: $0000031F VOL: 0
 ;PCODE: $00000320 VOL: 0
@@ -1302,27 +1304,33 @@ _0x20:
 ;PCODE: $00000326 VOL: 0
 ;PCODE: $00000327 VOL: 0
 ;PCODE: $00000328 VOL: 0
-; 0000 0195     glcd_clear();
 ;PCODE: $00000329 VOL: 0
-; 0000 0196     glcd_outtextxy(10, 20, motor_msg);
+; 0000 0196     glcd_clear();
 ;PCODE: $0000032A VOL: 0
+; 0000 0197     glcd_outtextxy(10, 20, motor_msg);
 ;PCODE: $0000032B VOL: 0
 ;PCODE: $0000032C VOL: 0
 ;PCODE: $0000032D VOL: 0
 ;PCODE: $0000032E VOL: 0
 ;PCODE: $0000032F VOL: 0
-; 0000 0197     MOTOR_PORT |= (1 << motor_pin);
 ;PCODE: $00000330 VOL: 0
+; 0000 0198     MOTOR_PORT |= (1 << motor_pin);
 ;PCODE: $00000331 VOL: 0
 ;PCODE: $00000332 VOL: 0
 ;PCODE: $00000333 VOL: 0
 ;PCODE: $00000334 VOL: 0
 ;PCODE: $00000335 VOL: 0
 ;PCODE: $00000336 VOL: 0
-; 0000 0198     delay_ms(500);
 ;PCODE: $00000337 VOL: 0
+; 0000 0199 
+; 0000 019A //    while (!(PIND & (1 << PIND1)) && timeout > 0)
+; 0000 019B //    {
+; 0000 019C //        delay_ms(1);
+; 0000 019D //        timeout--;
+; 0000 019E //    }
+; 0000 019F 
+; 0000 01A0     while ((PIND & (1 << PIND1)) && timeout > 0)
 ;PCODE: $00000338 VOL: 0
-; 0000 0199     MOTOR_PORT &= ~(1 << motor_pin);
 ;PCODE: $00000339 VOL: 0
 ;PCODE: $0000033A VOL: 0
 ;PCODE: $0000033B VOL: 0
@@ -1331,147 +1339,149 @@ _0x20:
 ;PCODE: $0000033E VOL: 0
 ;PCODE: $0000033F VOL: 0
 ;PCODE: $00000340 VOL: 0
-; 0000 019A 
-; 0000 019B //    sprintf(motor_msg, "MOTOR %d OFF!", product_id);
-; 0000 019C //    glcd_outtextxy(10, 40, motor_msg);
-; 0000 019D     draw_bitmap(0, 0, mahsol_ra_bardarid, 128, 64);
 ;PCODE: $00000341 VOL: 0
+; 0000 01A1     {
+; 0000 01A2         delay_ms(1);
 ;PCODE: $00000342 VOL: 0
 ;PCODE: $00000343 VOL: 0
 ;PCODE: $00000344 VOL: 0
+; 0000 01A3         timeout--;
 ;PCODE: $00000345 VOL: 0
 ;PCODE: $00000346 VOL: 0
+; 0000 01A4     }
 ;PCODE: $00000347 VOL: 0
 ;PCODE: $00000348 VOL: 0
+; 0000 01A5 
+; 0000 01A6     MOTOR_PORT &= ~(1 << motor_pin);
 ;PCODE: $00000349 VOL: 0
 ;PCODE: $0000034A VOL: 0
-; 0000 019E     delay_ms(300);
 ;PCODE: $0000034B VOL: 0
 ;PCODE: $0000034C VOL: 0
-; 0000 019F }
 ;PCODE: $0000034D VOL: 0
 ;PCODE: $0000034E VOL: 0
 ;PCODE: $0000034F VOL: 0
 ;PCODE: $00000350 VOL: 0
-;PCODE: $00000351 VOL: 0
-;
-;///////////////////////////////////////////////////////////////////////////////////
-;
-;void main(void)
-; 0000 01A4 {
-;PCODE: $00000352 VOL: 0
-; 0000 01A5     const char* server_url = "http://193.5.44.191/home/post/";
-; 0000 01A6     // const char* my_phone    = "+989152608582";
 ; 0000 01A7 
-; 0000 01A8     GLCDINIT_t glcd_init_data;
-; 0000 01A9 
-; 0000 01AA     // --- C?? EIO ??IC?I?? C???? ???E??C ? USART C?E ?? C? ?I I?IEC? ??? OI? ---
-; 0000 01AB     // --- ? ???? C?E. ??C?? E? EU??? A? ???E.                             ---
-; 0000 01AC     DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (0<<DDA1) | (0<<DDA0);
+; 0000 01A8 //    sprintf(motor_msg, "MOTOR %d OFF!", product_id);
+; 0000 01A9 //    glcd_outtextxy(10, 40, motor_msg);
+; 0000 01AA     draw_bitmap(0, 0, mahsol_ra_bardarid, 128, 64);
+;PCODE: $00000351 VOL: 0
+;PCODE: $00000352 VOL: 0
 ;PCODE: $00000353 VOL: 0
-;	*server_url -> R16,R17
-;	glcd_init_data -> Y+0
 ;PCODE: $00000354 VOL: 0
 ;PCODE: $00000355 VOL: 0
 ;PCODE: $00000356 VOL: 0
 ;PCODE: $00000357 VOL: 0
 ;PCODE: $00000358 VOL: 0
-; 0000 01AD     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
 ;PCODE: $00000359 VOL: 0
 ;PCODE: $0000035A VOL: 0
-; 0000 01AE     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
+; 0000 01AB     delay_ms(300);
 ;PCODE: $0000035B VOL: 0
 ;PCODE: $0000035C VOL: 0
-; 0000 01AF     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
+; 0000 01AC }
 ;PCODE: $0000035D VOL: 0
 ;PCODE: $0000035E VOL: 0
-; 0000 01B0     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
 ;PCODE: $0000035F VOL: 0
 ;PCODE: $00000360 VOL: 0
-; 0000 01B1     PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
+;
+;///////////////////////////////////////////////////////////////////////////////////
+;
+;void main(void)
+; 0000 01B1 {
 ;PCODE: $00000361 VOL: 0
+; 0000 01B2     const char* server_url = "http://193.5.44.191/home/post/";
+; 0000 01B3     // const char* my_phone    = "+989152608582";
+; 0000 01B4 
+; 0000 01B5     GLCDINIT_t glcd_init_data;
+; 0000 01B6 
+; 0000 01B7     // --- C?? EIO ??IC?I?? C???? ???E??C ? USART C?E ?? C? ?I I?IEC? ??? OI? ---
+; 0000 01B8     // --- ? ???? C?E. ??C?? E? EU??? A? ???E.                             ---
+; 0000 01B9     DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (0<<DDA1) | (0<<DDA0);
 ;PCODE: $00000362 VOL: 0
-; 0000 01B2     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
+;	*server_url -> R16,R17
+;	glcd_init_data -> Y+0
 ;PCODE: $00000363 VOL: 0
 ;PCODE: $00000364 VOL: 0
-; 0000 01B3     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
 ;PCODE: $00000365 VOL: 0
 ;PCODE: $00000366 VOL: 0
-; 0000 01B4     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
 ;PCODE: $00000367 VOL: 0
+; 0000 01BA     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
 ;PCODE: $00000368 VOL: 0
-; 0000 01B5     PORTF=(0<<PORTF7) | (0<<PORTF6) | (0<<PORTF5) | (0<<PORTF4) | (0<<PORTF3) | (0<<PORTF2) | (0<<PORTF1) | (0<<PORTF0);
 ;PCODE: $00000369 VOL: 0
+; 0000 01BB     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
 ;PCODE: $0000036A VOL: 0
-; 0000 01B6     UCSR0A=(0<<RXC0) | (0<<TXC0) | (0<<UDRE0) | (0<<FE0) | (0<<DOR0) | (0<<UPE0) | (0<<U2X0) | (0<<MPCM0);
 ;PCODE: $0000036B VOL: 0
+; 0000 01BC     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
 ;PCODE: $0000036C VOL: 0
-; 0000 01B7     UCSR0B=(0<<RXCIE0) | (0<<TXCIE0) | (0<<UDRIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02) | (0<<RXB80) | (0<<TXB80);
 ;PCODE: $0000036D VOL: 0
+; 0000 01BD     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
 ;PCODE: $0000036E VOL: 0
-; 0000 01B8     UCSR0C=(0<<UMSEL0) | (0<<UPM01) | (0<<UPM00) | (0<<USBS0) | (1<<UCSZ01) | (1<<UCSZ00) | (0<<UCPOL0);
 ;PCODE: $0000036F VOL: 0
+; 0000 01BE     PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
 ;PCODE: $00000370 VOL: 0
-; 0000 01B9     UBRR0H=0x00;
 ;PCODE: $00000371 VOL: 0
+; 0000 01BF 
+; 0000 01C0     DDRD = (0 << DDD7) | (0 << DDD6) | (0 << DDD5) | (0 << DDD4) | (0 << DDD3) | (0 << DDD2) | (0 << DDD1) | (0 << DDD0) ...
 ;PCODE: $00000372 VOL: 0
-; 0000 01BA     UBRR0L=0x33; // 9600 Baud Rate for 8MHz clock
 ;PCODE: $00000373 VOL: 0
+; 0000 01C1     PORTD = (0 << PORTD7) | (0 << PORTD6) | (0 << PORTD5) | (0 << PORTD4) | (0 << PORTD3) | (0 << PORTD2) | (1 << PORTD1 ...
 ;PCODE: $00000374 VOL: 0
-; 0000 01BB     MCUCSR = (1 << JTD);
 ;PCODE: $00000375 VOL: 0
+; 0000 01C2 
+; 0000 01C3     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
 ;PCODE: $00000376 VOL: 0
-; 0000 01BC     MCUCSR = (1 << JTD);
 ;PCODE: $00000377 VOL: 0
+; 0000 01C4     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
 ;PCODE: $00000378 VOL: 0
-; 0000 01BD     glcd_init_data.font=font5x7;
 ;PCODE: $00000379 VOL: 0
+; 0000 01C5     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
 ;PCODE: $0000037A VOL: 0
-; 0000 01BE     glcd_init_data.readxmem=NULL;
 ;PCODE: $0000037B VOL: 0
+; 0000 01C6     PORTF=(0<<PORTF7) | (0<<PORTF6) | (0<<PORTF5) | (0<<PORTF4) | (0<<PORTF3) | (0<<PORTF2) | (0<<PORTF1) | (0<<PORTF0);
 ;PCODE: $0000037C VOL: 0
-; 0000 01BF     glcd_init_data.writexmem=NULL;
 ;PCODE: $0000037D VOL: 0
+; 0000 01C7     UCSR0A=(0<<RXC0) | (0<<TXC0) | (0<<UDRE0) | (0<<FE0) | (0<<DOR0) | (0<<UPE0) | (0<<U2X0) | (0<<MPCM0);
 ;PCODE: $0000037E VOL: 0
-; 0000 01C0     glcd_init(&glcd_init_data);
 ;PCODE: $0000037F VOL: 0
+; 0000 01C8     UCSR0B=(0<<RXCIE0) | (0<<TXCIE0) | (0<<UDRIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02) | (0<<RXB80) | (0<<TXB80);
 ;PCODE: $00000380 VOL: 0
-; 0000 01C1     glcd_setfont(font5x7);
 ;PCODE: $00000381 VOL: 0
+; 0000 01C9     UCSR0C=(0<<UMSEL0) | (0<<UPM01) | (0<<UPM00) | (0<<USBS0) | (1<<UCSZ01) | (1<<UCSZ00) | (0<<UCPOL0);
 ;PCODE: $00000382 VOL: 0
 ;PCODE: $00000383 VOL: 0
-; 0000 01C2     // --- ?C?C? EIO ??IC?I?? C???? ---
-; 0000 01C3 
-; 0000 01C4     glcd_clear();
+; 0000 01CA     UBRR0H=0x00;
 ;PCODE: $00000384 VOL: 0
-; 0000 01C5     glcd_outtextxy(0, 0, "Module Init...");
 ;PCODE: $00000385 VOL: 0
+; 0000 01CB     UBRR0L=0x33; // 9600 Baud Rate for 8MHz clock
 ;PCODE: $00000386 VOL: 0
 ;PCODE: $00000387 VOL: 0
+; 0000 01CC     MCUCSR = (1 << JTD);
 ;PCODE: $00000388 VOL: 0
 ;PCODE: $00000389 VOL: 0
+; 0000 01CD     MCUCSR = (1 << JTD);
 ;PCODE: $0000038A VOL: 0
 ;PCODE: $0000038B VOL: 0
-; 0000 01C6     delay_ms(3000);
+; 0000 01CE     glcd_init_data.font=font5x7;
 ;PCODE: $0000038C VOL: 0
 ;PCODE: $0000038D VOL: 0
-; 0000 01C7 
-; 0000 01C8     send_at_command("ATE0");
+; 0000 01CF     glcd_init_data.readxmem=NULL;
 ;PCODE: $0000038E VOL: 0
 ;PCODE: $0000038F VOL: 0
+; 0000 01D0     glcd_init_data.writexmem=NULL;
 ;PCODE: $00000390 VOL: 0
-; 0000 01C9     delay_ms(300);
 ;PCODE: $00000391 VOL: 0
+; 0000 01D1     glcd_init(&glcd_init_data);
 ;PCODE: $00000392 VOL: 0
-; 0000 01CA     send_at_command("AT");
 ;PCODE: $00000393 VOL: 0
+; 0000 01D2     glcd_setfont(font5x7);
 ;PCODE: $00000394 VOL: 0
 ;PCODE: $00000395 VOL: 0
-; 0000 01CB     delay_ms(300);
 ;PCODE: $00000396 VOL: 0
+; 0000 01D3     // --- ?C?C? EIO ??IC?I?? C???? ---
+; 0000 01D4 
+; 0000 01D5     glcd_clear();
 ;PCODE: $00000397 VOL: 0
-; 0000 01CC 
-; 0000 01CD     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
+; 0000 01D6     glcd_outtextxy(0, 0, "Module Init...");
 ;PCODE: $00000398 VOL: 0
 ;PCODE: $00000399 VOL: 0
 ;PCODE: $0000039A VOL: 0
@@ -1479,19 +1489,26 @@ _0x20:
 ;PCODE: $0000039C VOL: 0
 ;PCODE: $0000039D VOL: 0
 ;PCODE: $0000039E VOL: 0
+; 0000 01D7     delay_ms(3000);
 ;PCODE: $0000039F VOL: 0
 ;PCODE: $000003A0 VOL: 0
+; 0000 01D8 
+; 0000 01D9     send_at_command("ATE0");
 ;PCODE: $000003A1 VOL: 0
 ;PCODE: $000003A2 VOL: 0
 ;PCODE: $000003A3 VOL: 0
+; 0000 01DA     delay_ms(300);
 ;PCODE: $000003A4 VOL: 0
-; 0000 01CE     if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
 ;PCODE: $000003A5 VOL: 0
+; 0000 01DB     send_at_command("AT");
 ;PCODE: $000003A6 VOL: 0
 ;PCODE: $000003A7 VOL: 0
 ;PCODE: $000003A8 VOL: 0
+; 0000 01DC     delay_ms(300);
 ;PCODE: $000003A9 VOL: 0
 ;PCODE: $000003AA VOL: 0
+; 0000 01DD 
+; 0000 01DE     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
 ;PCODE: $000003AB VOL: 0
 ;PCODE: $000003AC VOL: 0
 ;PCODE: $000003AD VOL: 0
@@ -1500,20 +1517,12 @@ _0x20:
 ;PCODE: $000003B0 VOL: 0
 ;PCODE: $000003B1 VOL: 0
 ;PCODE: $000003B2 VOL: 0
-; 0000 01CF 
-; 0000 01D0 
-; 0000 01D1 //    glcd_clear();
-; 0000 01D2 //    draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
-; 0000 01D3 //    delay_ms(500);
-; 0000 01D4 
-; 0000 01D5 
-; 0000 01D6     glcd_clear();
 ;PCODE: $000003B3 VOL: 0
 ;PCODE: $000003B4 VOL: 0
-; 0000 01D7     draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
 ;PCODE: $000003B5 VOL: 0
 ;PCODE: $000003B6 VOL: 0
 ;PCODE: $000003B7 VOL: 0
+; 0000 01DF     if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
 ;PCODE: $000003B8 VOL: 0
 ;PCODE: $000003B9 VOL: 0
 ;PCODE: $000003BA VOL: 0
@@ -1521,33 +1530,61 @@ _0x20:
 ;PCODE: $000003BC VOL: 0
 ;PCODE: $000003BD VOL: 0
 ;PCODE: $000003BE VOL: 0
-; 0000 01D8 
-; 0000 01D9 
-; 0000 01DA     while (1)
 ;PCODE: $000003BF VOL: 0
-; 0000 01DB     {
-; 0000 01DC         char sms_char;
-; 0000 01DD         char key_pressed;
-; 0000 01DE         char display_buffer[2] = {0};
-; 0000 01DF         int product_id = 0;
-; 0000 01E0         int timeout_counter = 0;
-; 0000 01E1         char* token;
-; 0000 01E2 
-; 0000 01E3         char content_buffer[32];
-; 0000 01E4         memset(header_buffer, 0, sizeof(header_buffer));
 ;PCODE: $000003C0 VOL: 0
 ;PCODE: $000003C1 VOL: 0
 ;PCODE: $000003C2 VOL: 0
 ;PCODE: $000003C3 VOL: 0
 ;PCODE: $000003C4 VOL: 0
 ;PCODE: $000003C5 VOL: 0
+; 0000 01E0 
+; 0000 01E1 
+; 0000 01E2 //    glcd_clear();
+; 0000 01E3 //    draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
+; 0000 01E4 //    delay_ms(500);
+; 0000 01E5 
+; 0000 01E6 
+; 0000 01E7     glcd_clear();
 ;PCODE: $000003C6 VOL: 0
 ;PCODE: $000003C7 VOL: 0
+; 0000 01E8     draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
 ;PCODE: $000003C8 VOL: 0
 ;PCODE: $000003C9 VOL: 0
 ;PCODE: $000003CA VOL: 0
 ;PCODE: $000003CB VOL: 0
 ;PCODE: $000003CC VOL: 0
+;PCODE: $000003CD VOL: 0
+;PCODE: $000003CE VOL: 0
+;PCODE: $000003CF VOL: 0
+;PCODE: $000003D0 VOL: 0
+;PCODE: $000003D1 VOL: 0
+; 0000 01E9 
+; 0000 01EA 
+; 0000 01EB     while (1)
+;PCODE: $000003D2 VOL: 0
+; 0000 01EC     {
+; 0000 01ED         char sms_char;
+; 0000 01EE         char key_pressed;
+; 0000 01EF         char display_buffer[2] = {0};
+; 0000 01F0         int product_id = 0;
+; 0000 01F1         int timeout_counter = 0;
+; 0000 01F2         char* token;
+; 0000 01F3 
+; 0000 01F4         char content_buffer[32];
+; 0000 01F5         memset(header_buffer, 0, sizeof(header_buffer));
+;PCODE: $000003D3 VOL: 0
+;PCODE: $000003D4 VOL: 0
+;PCODE: $000003D5 VOL: 0
+;PCODE: $000003D6 VOL: 0
+;PCODE: $000003D7 VOL: 0
+;PCODE: $000003D8 VOL: 0
+;PCODE: $000003D9 VOL: 0
+;PCODE: $000003DA VOL: 0
+;PCODE: $000003DB VOL: 0
+;PCODE: $000003DC VOL: 0
+;PCODE: $000003DD VOL: 0
+;PCODE: $000003DE VOL: 0
+;PCODE: $000003DF VOL: 0
 ;	glcd_init_data -> Y+42
 ;	sms_char -> Y+41
 ;	key_pressed -> Y+40
@@ -1556,69 +1593,42 @@ _0x20:
 ;	timeout_counter -> Y+34
 ;	*token -> Y+32
 ;	content_buffer -> Y+0
-;PCODE: $000003CD VOL: 0
-;PCODE: $000003CE VOL: 0
-;PCODE: $000003CF VOL: 0
-;PCODE: $000003D0 VOL: 0
-;PCODE: $000003D1 VOL: 0
-;PCODE: $000003D2 VOL: 0
-;PCODE: $000003D3 VOL: 0
-; 0000 01E5         memset(content_buffer, 0, sizeof(content_buffer));
-;PCODE: $000003D4 VOL: 0
-;PCODE: $000003D5 VOL: 0
-;PCODE: $000003D6 VOL: 0
-;PCODE: $000003D7 VOL: 0
-;PCODE: $000003D8 VOL: 0
-;PCODE: $000003D9 VOL: 0
-;PCODE: $000003DA VOL: 0
-; 0000 01E6 
-; 0000 01E7         if (gets(header_buffer, sizeof(header_buffer)))
-;PCODE: $000003DB VOL: 0
-;PCODE: $000003DC VOL: 0
-;PCODE: $000003DD VOL: 0
-;PCODE: $000003DE VOL: 0
-;PCODE: $000003DF VOL: 0
 ;PCODE: $000003E0 VOL: 0
 ;PCODE: $000003E1 VOL: 0
-; 0000 01E8         {
-; 0000 01E9             if (strstr(header_buffer, "+CMT:") != NULL)
 ;PCODE: $000003E2 VOL: 0
 ;PCODE: $000003E3 VOL: 0
 ;PCODE: $000003E4 VOL: 0
 ;PCODE: $000003E5 VOL: 0
 ;PCODE: $000003E6 VOL: 0
+; 0000 01F6         memset(content_buffer, 0, sizeof(content_buffer));
 ;PCODE: $000003E7 VOL: 0
 ;PCODE: $000003E8 VOL: 0
-; 0000 01EA             {
-; 0000 01EB                 // ?? ›Ê—« „ ‰ ÅÌ«„ò —Ê »ŒÊ‰ Ê ‰êÂ œ«—
-; 0000 01EC                 if (!gets(content_buffer, sizeof(content_buffer))) {
 ;PCODE: $000003E9 VOL: 0
 ;PCODE: $000003EA VOL: 0
 ;PCODE: $000003EB VOL: 0
 ;PCODE: $000003EC VOL: 0
 ;PCODE: $000003ED VOL: 0
+; 0000 01F7 
+; 0000 01F8         if (gets(header_buffer, sizeof(header_buffer)))
 ;PCODE: $000003EE VOL: 0
 ;PCODE: $000003EF VOL: 0
-; 0000 01ED                     glcd_clear();
 ;PCODE: $000003F0 VOL: 0
-; 0000 01EE                     glcd_outtextxy(0, 0, "Failed to read msg");
 ;PCODE: $000003F1 VOL: 0
 ;PCODE: $000003F2 VOL: 0
 ;PCODE: $000003F3 VOL: 0
 ;PCODE: $000003F4 VOL: 0
+; 0000 01F9         {
+; 0000 01FA             if (strstr(header_buffer, "+CMT:") != NULL)
 ;PCODE: $000003F5 VOL: 0
 ;PCODE: $000003F6 VOL: 0
 ;PCODE: $000003F7 VOL: 0
-; 0000 01EF                     delay_ms(1000);
 ;PCODE: $000003F8 VOL: 0
 ;PCODE: $000003F9 VOL: 0
-; 0000 01F0                     continue;
 ;PCODE: $000003FA VOL: 0
 ;PCODE: $000003FB VOL: 0
-; 0000 01F1                 }
-; 0000 01F2 
-; 0000 01F3                 // ?? ‘„«—Â  ·›‰ —Ê »êÌ—
-; 0000 01F4                 token = strtok(header_buffer, "\"");
+; 0000 01FB             {
+; 0000 01FC                 // ?? ›Ê—« „ ‰ ÅÌ«„ò —Ê »ŒÊ‰ Ê ‰êÂ œ«—
+; 0000 01FD                 if (!gets(content_buffer, sizeof(content_buffer))) {
 ;PCODE: $000003FC VOL: 0
 ;PCODE: $000003FD VOL: 0
 ;PCODE: $000003FE VOL: 0
@@ -1626,8 +1636,9 @@ _0x20:
 ;PCODE: $00000400 VOL: 0
 ;PCODE: $00000401 VOL: 0
 ;PCODE: $00000402 VOL: 0
-; 0000 01F5                 if (token != NULL) token = strtok(NULL, "\"");
+; 0000 01FE                     glcd_clear();
 ;PCODE: $00000403 VOL: 0
+; 0000 01FF                     glcd_outtextxy(0, 0, "Failed to read msg");
 ;PCODE: $00000404 VOL: 0
 ;PCODE: $00000405 VOL: 0
 ;PCODE: $00000406 VOL: 0
@@ -1635,78 +1646,81 @@ _0x20:
 ;PCODE: $00000408 VOL: 0
 ;PCODE: $00000409 VOL: 0
 ;PCODE: $0000040A VOL: 0
+; 0000 0200                     delay_ms(1000);
 ;PCODE: $0000040B VOL: 0
-; 0000 01F6                 if (token != NULL)
 ;PCODE: $0000040C VOL: 0
+; 0000 0201                     continue;
 ;PCODE: $0000040D VOL: 0
 ;PCODE: $0000040E VOL: 0
+; 0000 0202                 }
+; 0000 0203 
+; 0000 0204                 // ?? ‘„«—Â  ·›‰ —Ê »êÌ—
+; 0000 0205                 token = strtok(header_buffer, "\"");
 ;PCODE: $0000040F VOL: 0
-; 0000 01F7                 {
-; 0000 01F8                     strcpy(phone_number, token);
 ;PCODE: $00000410 VOL: 0
 ;PCODE: $00000411 VOL: 0
 ;PCODE: $00000412 VOL: 0
 ;PCODE: $00000413 VOL: 0
-; 0000 01F9 
-; 0000 01FA                     // ?? Õ«·« „ÃÊ“ —Ê »——”Ì ò‰
-; 0000 01FB                     if (send_json_post(server_url, phone_number))
 ;PCODE: $00000414 VOL: 0
 ;PCODE: $00000415 VOL: 0
+; 0000 0206                 if (token != NULL) token = strtok(NULL, "\"");
 ;PCODE: $00000416 VOL: 0
 ;PCODE: $00000417 VOL: 0
 ;PCODE: $00000418 VOL: 0
-; 0000 01FC                     {
-; 0000 01FD //                        glcd_clear();
-; 0000 01FE //                        glcd_outtextxy(0, 5, "step 1");
-; 0000 01FF //                        delay_ms(200);
-; 0000 0200 
-; 0000 0201                         sms_char = content_buffer[0];  // „À·« '1'
 ;PCODE: $00000419 VOL: 0
 ;PCODE: $0000041A VOL: 0
-; 0000 0202 
-; 0000 0203 //                        glcd_outtextxy(0, 5, "step 2");
-; 0000 0204 //                        delay_ms(200);
-; 0000 0205 
-; 0000 0206                         if (sms_char == '1' || sms_char == '2' || sms_char == '3')
 ;PCODE: $0000041B VOL: 0
 ;PCODE: $0000041C VOL: 0
 ;PCODE: $0000041D VOL: 0
 ;PCODE: $0000041E VOL: 0
+; 0000 0207                 if (token != NULL)
 ;PCODE: $0000041F VOL: 0
 ;PCODE: $00000420 VOL: 0
 ;PCODE: $00000421 VOL: 0
 ;PCODE: $00000422 VOL: 0
+; 0000 0208                 {
+; 0000 0209                     strcpy(phone_number, token);
 ;PCODE: $00000423 VOL: 0
 ;PCODE: $00000424 VOL: 0
 ;PCODE: $00000425 VOL: 0
-; 0000 0207                         {
-; 0000 0208                             glcd_clear();
 ;PCODE: $00000426 VOL: 0
-; 0000 0209 //                            glcd_outtextxy(0, 5, "SMS Code:");
-; 0000 020A                             draw_bitmap(0, 0, square, 128, 32);
+; 0000 020A 
+; 0000 020B                     // ?? Õ«·« „ÃÊ“ —Ê »——”Ì ò‰
+; 0000 020C                     if (send_json_post(server_url, phone_number))
 ;PCODE: $00000427 VOL: 0
 ;PCODE: $00000428 VOL: 0
 ;PCODE: $00000429 VOL: 0
 ;PCODE: $0000042A VOL: 0
 ;PCODE: $0000042B VOL: 0
+; 0000 020D                     {
+; 0000 020E //                        glcd_clear();
+; 0000 020F //                        glcd_outtextxy(0, 5, "step 1");
+; 0000 0210 //                        delay_ms(200);
+; 0000 0211 
+; 0000 0212                         sms_char = content_buffer[0];  // „À·« '1'
 ;PCODE: $0000042C VOL: 0
 ;PCODE: $0000042D VOL: 0
+; 0000 0213 
+; 0000 0214 //                        glcd_outtextxy(0, 5, "step 2");
+; 0000 0215 //                        delay_ms(200);
+; 0000 0216 
+; 0000 0217                         if (sms_char == '1' || sms_char == '2' || sms_char == '3')
 ;PCODE: $0000042E VOL: 0
 ;PCODE: $0000042F VOL: 0
 ;PCODE: $00000430 VOL: 0
-; 0000 020B                             display_buffer[0] = sms_char;
 ;PCODE: $00000431 VOL: 0
 ;PCODE: $00000432 VOL: 0
-; 0000 020C                             glcd_outtextxy(65, 10, display_buffer);
 ;PCODE: $00000433 VOL: 0
 ;PCODE: $00000434 VOL: 0
 ;PCODE: $00000435 VOL: 0
 ;PCODE: $00000436 VOL: 0
 ;PCODE: $00000437 VOL: 0
 ;PCODE: $00000438 VOL: 0
-; 0000 020D //                            glcd_outtextxy(0, 25, "Enter code on keypad:");
-; 0000 020E                             draw_bitmap(0, 20, adad_ra_vared_namaeid, 128, 64);
+; 0000 0218                         {
+; 0000 0219                             glcd_clear();
 ;PCODE: $00000439 VOL: 0
+; 0000 021A //                            glcd_outtextxy(0, 5, "SMS Code:");
+; 0000 021B                             draw_bitmap(0, 0, square, 128, 32);
 ;PCODE: $0000043A VOL: 0
 ;PCODE: $0000043B VOL: 0
 ;PCODE: $0000043C VOL: 0
@@ -1716,225 +1730,238 @@ _0x20:
 ;PCODE: $00000440 VOL: 0
 ;PCODE: $00000441 VOL: 0
 ;PCODE: $00000442 VOL: 0
-; 0000 020F 
-; 0000 0210                             key_pressed = 0;
 ;PCODE: $00000443 VOL: 0
+; 0000 021C                             display_buffer[0] = sms_char;
 ;PCODE: $00000444 VOL: 0
-; 0000 0211                             for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
 ;PCODE: $00000445 VOL: 0
+; 0000 021D                             glcd_outtextxy(65, 10, display_buffer);
 ;PCODE: $00000446 VOL: 0
 ;PCODE: $00000447 VOL: 0
 ;PCODE: $00000448 VOL: 0
 ;PCODE: $00000449 VOL: 0
 ;PCODE: $0000044A VOL: 0
 ;PCODE: $0000044B VOL: 0
+; 0000 021E //                            glcd_outtextxy(0, 25, "Enter code on keypad:");
+; 0000 021F                             draw_bitmap(0, 20, adad_ra_vared_namaeid, 128, 64);
 ;PCODE: $0000044C VOL: 0
 ;PCODE: $0000044D VOL: 0
 ;PCODE: $0000044E VOL: 0
-; 0000 0212                             {
-; 0000 0213                                 key_pressed = get_key();
 ;PCODE: $0000044F VOL: 0
 ;PCODE: $00000450 VOL: 0
-; 0000 0214                                 if (key_pressed != 0) break;
 ;PCODE: $00000451 VOL: 0
 ;PCODE: $00000452 VOL: 0
 ;PCODE: $00000453 VOL: 0
 ;PCODE: $00000454 VOL: 0
-; 0000 0215                                 delay_ms(10);
 ;PCODE: $00000455 VOL: 0
+; 0000 0220 
+; 0000 0221                             key_pressed = 0;
 ;PCODE: $00000456 VOL: 0
 ;PCODE: $00000457 VOL: 0
+; 0000 0222                             for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
 ;PCODE: $00000458 VOL: 0
-; 0000 0216                             }
 ;PCODE: $00000459 VOL: 0
 ;PCODE: $0000045A VOL: 0
 ;PCODE: $0000045B VOL: 0
 ;PCODE: $0000045C VOL: 0
 ;PCODE: $0000045D VOL: 0
 ;PCODE: $0000045E VOL: 0
-; 0000 0217 
-; 0000 0218                             if (key_pressed == 0)
 ;PCODE: $0000045F VOL: 0
 ;PCODE: $00000460 VOL: 0
 ;PCODE: $00000461 VOL: 0
-; 0000 0219                             {
-; 0000 021A                                 glcd_clear();
+; 0000 0223                             {
+; 0000 0224                                 key_pressed = get_key();
 ;PCODE: $00000462 VOL: 0
-; 0000 021B                                 glcd_outtextxy(10, 25, "Timeout! Try again.");
 ;PCODE: $00000463 VOL: 0
+; 0000 0225                                 if (key_pressed != 0) break;
 ;PCODE: $00000464 VOL: 0
 ;PCODE: $00000465 VOL: 0
 ;PCODE: $00000466 VOL: 0
 ;PCODE: $00000467 VOL: 0
+; 0000 0226                                 delay_ms(10);
 ;PCODE: $00000468 VOL: 0
 ;PCODE: $00000469 VOL: 0
-; 0000 021C                                 delay_ms(200);
 ;PCODE: $0000046A VOL: 0
 ;PCODE: $0000046B VOL: 0
+; 0000 0227                             }
 ;PCODE: $0000046C VOL: 0
-; 0000 021D                             }
-; 0000 021E                             else
 ;PCODE: $0000046D VOL: 0
 ;PCODE: $0000046E VOL: 0
-; 0000 021F                             {
-; 0000 0220 //                                glcd_outtextxy(0, 45, "You pressed:");
-; 0000 0221                                 //draw_bitmap(70, 45, square, 128, 32);
-; 0000 0222                                 draw_bitmap(65, 0, square, 128, 32);
 ;PCODE: $0000046F VOL: 0
 ;PCODE: $00000470 VOL: 0
 ;PCODE: $00000471 VOL: 0
+; 0000 0228 
+; 0000 0229                             if (key_pressed == 0)
 ;PCODE: $00000472 VOL: 0
 ;PCODE: $00000473 VOL: 0
 ;PCODE: $00000474 VOL: 0
+; 0000 022A                             {
+; 0000 022B                                 glcd_clear();
 ;PCODE: $00000475 VOL: 0
+; 0000 022C                                 glcd_outtextxy(10, 25, "Timeout! Try again.");
 ;PCODE: $00000476 VOL: 0
 ;PCODE: $00000477 VOL: 0
 ;PCODE: $00000478 VOL: 0
-; 0000 0223                                 display_buffer[0] = key_pressed;
 ;PCODE: $00000479 VOL: 0
 ;PCODE: $0000047A VOL: 0
-; 0000 0224                                 glcd_outtextxy(65, 50, display_buffer);
 ;PCODE: $0000047B VOL: 0
 ;PCODE: $0000047C VOL: 0
+; 0000 022D                                 delay_ms(200);
 ;PCODE: $0000047D VOL: 0
 ;PCODE: $0000047E VOL: 0
 ;PCODE: $0000047F VOL: 0
+; 0000 022E                             }
+; 0000 022F                             else
 ;PCODE: $00000480 VOL: 0
-; 0000 0225 
-; 0000 0226                                 delay_ms(200);
 ;PCODE: $00000481 VOL: 0
+; 0000 0230                             {
+; 0000 0231 //                                glcd_outtextxy(0, 45, "You pressed:");
+; 0000 0232                                 //draw_bitmap(70, 45, square, 128, 32);
+; 0000 0233 //                                draw_bitmap(65, 0, square, 128, 32);
+; 0000 0234                                 display_buffer[0] = key_pressed;
 ;PCODE: $00000482 VOL: 0
 ;PCODE: $00000483 VOL: 0
-; 0000 0227 
-; 0000 0228                                 if (key_pressed == sms_char)
+; 0000 0235                                 glcd_outtextxy(65, 50, display_buffer);
 ;PCODE: $00000484 VOL: 0
 ;PCODE: $00000485 VOL: 0
 ;PCODE: $00000486 VOL: 0
 ;PCODE: $00000487 VOL: 0
-; 0000 0229                                 {
-; 0000 022A                                     glcd_clear();
 ;PCODE: $00000488 VOL: 0
-; 0000 022B //                                    draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
-; 0000 022C                                     //glcd_outtextxy(10, 25, "Code is CORRECT!");
-; 0000 022D                                     //draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
-; 0000 022E                                     //delay_ms(300);
-; 0000 022F                                     product_id = sms_char - '0';
 ;PCODE: $00000489 VOL: 0
+; 0000 0236 
+; 0000 0237                                 delay_ms(200);
 ;PCODE: $0000048A VOL: 0
 ;PCODE: $0000048B VOL: 0
 ;PCODE: $0000048C VOL: 0
-; 0000 0230                                     activate_motor(product_id);
+; 0000 0238 
+; 0000 0239                                 if (key_pressed == sms_char)
 ;PCODE: $0000048D VOL: 0
 ;PCODE: $0000048E VOL: 0
-; 0000 0231                                 }
-; 0000 0232                                 else
 ;PCODE: $0000048F VOL: 0
 ;PCODE: $00000490 VOL: 0
-; 0000 0233                                 {
-; 0000 0234                                     glcd_clear();
+; 0000 023A                                 {
+; 0000 023B                                     glcd_clear();
 ;PCODE: $00000491 VOL: 0
-; 0000 0235 //                                    glcd_outtextxy(5, 25, "Error in entry!");
-; 0000 0236                                     draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
+; 0000 023C //                                    draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
+; 0000 023D                                     //glcd_outtextxy(10, 25, "Code is CORRECT!");
+; 0000 023E                                     //draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
+; 0000 023F                                     //delay_ms(300);
+; 0000 0240                                     product_id = sms_char - '0';
 ;PCODE: $00000492 VOL: 0
 ;PCODE: $00000493 VOL: 0
 ;PCODE: $00000494 VOL: 0
 ;PCODE: $00000495 VOL: 0
+; 0000 0241                                     activate_motor(product_id);
 ;PCODE: $00000496 VOL: 0
 ;PCODE: $00000497 VOL: 0
+; 0000 0242                                 }
+; 0000 0243                                 else
 ;PCODE: $00000498 VOL: 0
 ;PCODE: $00000499 VOL: 0
+; 0000 0244                                 {
+; 0000 0245                                     glcd_clear();
 ;PCODE: $0000049A VOL: 0
+; 0000 0246 //                                    glcd_outtextxy(5, 25, "Error in entry!");
+; 0000 0247                                     draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
 ;PCODE: $0000049B VOL: 0
-; 0000 0237                                     delay_ms(300);
 ;PCODE: $0000049C VOL: 0
 ;PCODE: $0000049D VOL: 0
-; 0000 0238                                 }
 ;PCODE: $0000049E VOL: 0
-; 0000 0239                             }
 ;PCODE: $0000049F VOL: 0
-; 0000 023A                         }
-; 0000 023B                         else
 ;PCODE: $000004A0 VOL: 0
 ;PCODE: $000004A1 VOL: 0
-; 0000 023C                         {
-; 0000 023D                             glcd_clear();
 ;PCODE: $000004A2 VOL: 0
-; 0000 023E //                            glcd_outtextxy(5, 25, "Invalid SMS Code!");
-; 0000 023F                             draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
 ;PCODE: $000004A3 VOL: 0
 ;PCODE: $000004A4 VOL: 0
+; 0000 0248                                     delay_ms(300);
 ;PCODE: $000004A5 VOL: 0
 ;PCODE: $000004A6 VOL: 0
+; 0000 0249                                 }
 ;PCODE: $000004A7 VOL: 0
+; 0000 024A                             }
 ;PCODE: $000004A8 VOL: 0
+; 0000 024B                         }
+; 0000 024C                         else
 ;PCODE: $000004A9 VOL: 0
 ;PCODE: $000004AA VOL: 0
+; 0000 024D                         {
+; 0000 024E                             glcd_clear();
 ;PCODE: $000004AB VOL: 0
+; 0000 024F //                            glcd_outtextxy(5, 25, "Invalid SMS Code!");
+; 0000 0250                             draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
 ;PCODE: $000004AC VOL: 0
-; 0000 0240                             delay_ms(300);
 ;PCODE: $000004AD VOL: 0
 ;PCODE: $000004AE VOL: 0
-; 0000 0241                         }
 ;PCODE: $000004AF VOL: 0
-; 0000 0242                     }
-; 0000 0243                     else
 ;PCODE: $000004B0 VOL: 0
 ;PCODE: $000004B1 VOL: 0
-; 0000 0244                     {
-; 0000 0245                         glcd_clear();
 ;PCODE: $000004B2 VOL: 0
-; 0000 0246 //                        glcd_outtextxy(0, 25, "You are not authorized!");
-; 0000 0247                         draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
 ;PCODE: $000004B3 VOL: 0
 ;PCODE: $000004B4 VOL: 0
 ;PCODE: $000004B5 VOL: 0
+; 0000 0251                             delay_ms(300);
 ;PCODE: $000004B6 VOL: 0
 ;PCODE: $000004B7 VOL: 0
+; 0000 0252                         }
 ;PCODE: $000004B8 VOL: 0
+; 0000 0253                     }
+; 0000 0254                     else
 ;PCODE: $000004B9 VOL: 0
 ;PCODE: $000004BA VOL: 0
+; 0000 0255                     {
+; 0000 0256                         glcd_clear();
 ;PCODE: $000004BB VOL: 0
+; 0000 0257 //                        glcd_outtextxy(0, 25, "You are not authorized!");
+; 0000 0258                         draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
 ;PCODE: $000004BC VOL: 0
-; 0000 0248                         delay_ms(300);
 ;PCODE: $000004BD VOL: 0
 ;PCODE: $000004BE VOL: 0
-; 0000 0249                     }
 ;PCODE: $000004BF VOL: 0
-; 0000 024A                 }
-; 0000 024B 
-; 0000 024C                 // »«“ê‘  »Â Ê÷⁄Ì  ¬„«œÂù»Âùò«—
-; 0000 024D                 glcd_clear();
 ;PCODE: $000004C0 VOL: 0
 ;PCODE: $000004C1 VOL: 0
-; 0000 024E                 draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
 ;PCODE: $000004C2 VOL: 0
 ;PCODE: $000004C3 VOL: 0
 ;PCODE: $000004C4 VOL: 0
 ;PCODE: $000004C5 VOL: 0
+; 0000 0259                         delay_ms(300);
 ;PCODE: $000004C6 VOL: 0
 ;PCODE: $000004C7 VOL: 0
+; 0000 025A                     }
 ;PCODE: $000004C8 VOL: 0
+; 0000 025B                 }
+; 0000 025C 
+; 0000 025D                 // »«“ê‘  »Â Ê÷⁄Ì  ¬„«œÂù»Âùò«—
+; 0000 025E                 glcd_clear();
 ;PCODE: $000004C9 VOL: 0
 ;PCODE: $000004CA VOL: 0
+; 0000 025F                 draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
 ;PCODE: $000004CB VOL: 0
-; 0000 024F //                glcd_outtextxy(0, 0, "System Ready.");
-; 0000 0250 //                glcd_outtextxy(0, 10, "Waiting for SMS...");
-; 0000 0251 
-; 0000 0252             }
-; 0000 0253         }
 ;PCODE: $000004CC VOL: 0
-; 0000 0254     }
 ;PCODE: $000004CD VOL: 0
 ;PCODE: $000004CE VOL: 0
 ;PCODE: $000004CF VOL: 0
 ;PCODE: $000004D0 VOL: 0
-; 0000 0255 
-; 0000 0256 }
 ;PCODE: $000004D1 VOL: 0
 ;PCODE: $000004D2 VOL: 0
 ;PCODE: $000004D3 VOL: 0
 ;PCODE: $000004D4 VOL: 0
+; 0000 0260 //                glcd_outtextxy(0, 0, "System Ready.");
+; 0000 0261 //                glcd_outtextxy(0, 10, "Waiting for SMS...");
+; 0000 0262 
+; 0000 0263             }
+; 0000 0264         }
+;PCODE: $000004D5 VOL: 0
+; 0000 0265     }
+;PCODE: $000004D6 VOL: 0
+;PCODE: $000004D7 VOL: 0
+;PCODE: $000004D8 VOL: 0
+;PCODE: $000004D9 VOL: 0
+; 0000 0266 
+; 0000 0267 }
+;PCODE: $000004DA VOL: 0
+;PCODE: $000004DB VOL: 0
+;PCODE: $000004DC VOL: 0
+;PCODE: $000004DD VOL: 0
 
 	.DSEG
-_0x3E:
+_0x43:
 	.BYTE 0x86

@@ -127,8 +127,8 @@ WatchAVR8LAutoVariables=0
 UseEEPROMLocation0=1
 RebuildAll=0
 LinkageInformationPresent=1
-COFFileTimeStamp=1526663887
-Build=254
+COFFileTimeStamp=1526832558
+Build=280
 [DefinedSymbolsDebug]
 Count=0
 [Compiler]
@@ -230,7 +230,7 @@ UseEEPROMLocation0=1
 RebuildAll=1
 LinkageInformationPresent=0
 COFFileTimeStamp=-1
-Build=254
+Build=280
 [DefinedSymbols]
 Count=0
 [CompilerAdvanced]
@@ -361,8 +361,8 @@ L13=Enhanced function parameters passing: Yes
 L14=Automatic register allocation: Yes
 L15=Smart register allocation: Yes
 L16=
-L17=Build: 254
-L18=23945 line(s) compiled
+L17=Build: 280
+L18=23962 line(s) compiled
 L19=No errors
 L20=10 warning(s)
 L21=
@@ -382,19 +382,19 @@ L34=Heap size: 0 byte(s)
 L35=
 Lines=38
 L36=EEPROM usage: 0 byte(s), 0.0% of EEPROM
-L37=Program size: 8668 words (17336 bytes), 26.5% of FLASH
-L38=372 words (744 bytes), 4.1% reduced by Code Compression
+L37=Program size: 8677 words (17354 bytes), 26.5% of FLASH
+L38=371 words (742 bytes), 4.1% reduced by Code Compression
 [BuildInfoAssembler]
 Lines=12
 L1=AVRASM: AVR macro assembler 2.1.30 (build 592 Nov  7 2008 12:38:17)
 L2=Copyright (C) 1995-2008 ATMEL Corporation
 L3=
-L4=D:\project\vending\code\glcd_keypad_sim\Debug\List\glcd_keypad_sim.asm(7556): No EEPROM data, deleting D:\project\vending\code\glcd_keypad_sim\Debug\Exe\glcd_keypad_sim.eep
+L4=D:\project\vending\code\glcd_keypad_sim\Debug\List\glcd_keypad_sim.asm(7581): No EEPROM data, deleting D:\project\vending\code\glcd_keypad_sim\Debug\Exe\glcd_keypad_sim.eep
 L5=
 L6=ATmega64A memory use summary [bytes]:
 L7=Segment   Begin    End      Code   Data   Used    Size   Use%
 L8=---------------------------------------------------------------
-L9=[.cseg] 0x000000 0x0043b8   8282   9054  17336   65536  26.5%
+L9=[.cseg] 0x000000 0x0043ca   8300   9054  17354   65536  26.5%
 L10=[.dseg] 0x000100 0x0007d8      0    728    728    4096  17.8%
 L11=[.eseg] 0x000000 0x000000      0      0      0    2048   0.0%
 L12=
