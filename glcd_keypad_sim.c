@@ -325,7 +325,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
    
     // 1. Initialize HTTP service
     send_at_command("AT+HTTPINIT");
-    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 50, "OK")) return 0;
 
 //    glcd_clear();
 //    glcd_outtextxy(0,10,phone_number);
@@ -333,7 +333,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
     // 2. Set CID to bearer profile 1
     send_at_command("AT+HTTPPARA=\"CID\",1");
-    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 50, "OK")) return 0;
 
 //    glcd_outtextxy(0,20,"lev 2");
 
@@ -343,7 +343,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     // 4. Set the target URL
     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
     send_at_command(cmd);
-    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 50, "OK")) return 0;
 
 //    glcd_outtextxy(0,20,"lev 3");
 
@@ -384,13 +384,13 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
     // 8. Read server response if needed
     send_at_command("AT+HTTPREAD");
-    read_serial_response(response, sizeof(response), 100, "OK");
+    read_serial_response(response, sizeof(response), 50, "OK");
 
 //    glcd_outtextxy(0,20,"lev 7");
 
     // 9. Terminate HTTP service
     send_at_command("AT+HTTPTERM");
-    read_serial_response(response, sizeof(response), 100, "OK");
+    read_serial_response(response, sizeof(response), 50, "OK");
                                                                    
 //    glcd_outtextxy(0,20,"lev 8");
     return (status_code == 200) ? 1 : 0;
@@ -519,9 +519,9 @@ void main(void)
     delay_ms(3000);
 
     send_at_command("ATE0");
-    delay_ms(200);
+    delay_ms(100);
     send_at_command("AT");
-    delay_ms(200);
+    delay_ms(100);
 
     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
     if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
@@ -589,11 +589,13 @@ void main(void)
                         {
                             glcd_clear();
 //                            glcd_outtextxy(0, 5, "SMS Code:");
-                            draw_bitmap(0, 0, square, 128, 32);
+                            
                             display_buffer[0] = sms_char;
-                            glcd_outtextxy(65, 10, display_buffer);
+                            
 //                            glcd_outtextxy(0, 25, "Enter code on keypad:");
-                            draw_bitmap(0, 20, adad_ra_vared_namaeid, 128, 64);
+                            draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
+                            draw_bitmap(0, 32, square, 128, 32); 
+                            glcd_outtextxy(65, 55, display_buffer);
 
                             key_pressed = 0;
                             for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
@@ -613,11 +615,11 @@ void main(void)
                             {
 //                                glcd_outtextxy(0, 45, "You pressed:");
                                 //draw_bitmap(70, 45, square, 128, 32);
-                                draw_bitmap(65, 0, square, 128, 32);
-                                display_buffer[0] = key_pressed;
-                                glcd_outtextxy(65, 50, display_buffer);
+                                //draw_bitmap(65, 0, square, 128, 32);
+                                //display_buffer[0] = key_pressed;
+                                //glcd_outtextxy(65, 0, display_buffer);
                                 
-                                delay_ms(200);
+                                //delay_ms(200);
 
                                 if (key_pressed == sms_char)
                                 {
