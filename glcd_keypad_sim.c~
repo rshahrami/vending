@@ -3,7 +3,7 @@
 #include <font5x7.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h> // »—«Ì «” ›«œÂ «“  «»⁄ atoi
+#include <stdlib.h> // E?C? C?E?CI? C? ECE? atoi
 //#include <stdint.h>
 #include "bitmaps.h"
 
@@ -19,30 +19,30 @@ typedef signed char   int8_t;
 // #define F_CPU 8000000UL
 #include <delay.h>
 
-// ---  ‰ŸÌ„«  «’·Ì ---
-#define APN "mcinet" // APN «Å—« Ê— ŒÊœ —« Ê«—œ ò‰Ìœ
-//#define SERVER_URL "http://google.com/api/authorize" // ¬œ—” ò«„· ”—Ê— ŒÊœ —« «Ì‰Ã« ﬁ—«— œÂÌœ
-//#define SERVER_URL_POST "http://193.5.44.191/home/post/"
+// --- E?U??CE C??? ---
+#define APN "mcinet" // APN C??CE?? I?I ?C ?C?I ???I
+//#define SERVER_URL "http://google.com/api/authorize" // AI?? ?C?? ???? I?I ?C C???C ??C? I??I
+#define SERVER_URL_POST "http://193.5.44.191/home/post/"
 
 #define HTTP_TIMEOUT_MS 500
 
 #define read_flash_byte(p) (*(p))
 
-// --- »«›—Â«Ì ”—«”—Ì ---
+// --- EC???C? ??C??? ---
 char header_buffer[100];
 char content_buffer[100];
 char ip_address_buffer[16];
 char phone_number[16];
-char response_buffer[256]; // «›“«Ì‘ ”«Ì“ »«›— »—«Ì œ—Ì«›  Å«”ŒùÂ«Ì HTTP
+char response_buffer[256]; // C??C?O ?C?? EC?? E?C? I??C?E ?C?I??C? HTTP
 
-// ---  ⁄—Ì› ÅÌ‰ùÂ«Ì „Ê Ê— ---
+// --- E???? ?????C? ??E?? ---
 #define MOTOR_DDR DDRE
 #define MOTOR_PORT PORTE
 #define MOTOR_PIN_1 2
 #define MOTOR_PIN_2 3
 #define MOTOR_PIN_3 4
 
-// ---  ⁄—Ì› ÅÌ‰ùÂ«Ì òÌùÅœ ---
+// --- E???? ?????C? ????I ---
 #define KEYPAD_PORT PORTC
 #define KEYPAD_DDR DDRC
 #define KEYPAD_PIN PINC
@@ -84,7 +84,7 @@ void draw_bitmap(uint8_t x, uint8_t y, __flash unsigned char* bmp, uint8_t width
 
 
 
-//  «»⁄ «—”«· œ” Ê— AT »Â „«éÊ·
+// ECE? C??C? I?E?? AT E? ?C???
 void send_at_command(char *command)
 {
     printf("%s\r\n", command);
@@ -133,16 +133,26 @@ void usart_puts(const char* str)
 }
 
 
-unsigned char check_gprs_status(void) {
+unsigned char check_and_activate_GPRS(void) {
     char response[100];
-
+    
+    // 1. Check if GPRS is already active
     send_at_command("AT+SAPBR=2,1");
-    if (read_serial_response(response, sizeof(response), 200, "+SAPBR:")) {
-        if (strstr(response, "+SAPBR: 1,1,") != NULL) {
-            return 1; // Already connected
-        }
+    if (read_serial_response(response, sizeof(response), 1000, "+SAPBR: 1,1")) {
+        return 1; // GPRS is already active
     }
-    return 0; // Not connected
+    
+    // 2. If not active, try to activate it
+    if (!init_GPRS()) {
+        // Failed to activate GPRS
+        glcd_clear();
+        glcd_outtextxy(0, 0, "GPRS Activation");
+        glcd_outtextxy(0, 10, "Failed!");
+        delay_ms(1000);
+        return 0;
+    }
+    
+    return 1; // GPRS activated successfully
 }
 
 
@@ -160,10 +170,10 @@ unsigned char init_sms(void)
     delay_ms(200);
 
 
-    // «ÿ„Ì‰«‰ «“ ›⁄«· »Êœ‰ ò«„· „«éÊ· Ê €Ì—›⁄«· »Êœ‰ sleep
-    send_at_command("AT+CFUN=1");    // ›⁄«·ù”«“Ì ò«„· „«éÊ·
+    // C????C? C? ??C? E?I? ?C?? ?C??? ? U????C? E?I? sleep
+    send_at_command("AT+CFUN=1");    // ??C???C?? ?C?? ?C???
     delay_ms(100);
-    send_at_command("AT+CSCLK=0");   // €Ì—›⁄«·ù”«“Ì Õ«·  sleep
+    send_at_command("AT+CSCLK=0");   // U????C???C?? ?C?E sleep
     delay_ms(100);
 
     glcd_outtextxy(0, 10, "SMS Ready.");
@@ -227,18 +237,42 @@ unsigned char active_GPRS(void)
     char at_command[50];
     char response[100]; // Local buffer for the response
 
-//    glcd_clear();
-//    glcd_outtextxy(0, 0, "Connecting to GPRS...");
+    //glcd_clear();
+    //glcd_outtextxy(0, 0, "Connecting to GPRS...");
 
     send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
-    delay_ms(200);
+    delay_ms(300);
 
     sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
     send_at_command(at_command);
-    delay_ms(200);
+    delay_ms(300);
 
     send_at_command("AT+SAPBR=1,1");
-    delay_ms(200);
+    delay_ms(300);
+
+    //glcd_clear();
+    //glcd_outtextxy(0, 0, "Fetching IP...");
+    send_at_command("AT+SAPBR=2,1"); // Request IP
+    // delay_ms(5000);
+    
+    // Attempt to read the response for 5 seconds, looking for "+SAPBR:"
+    // FIX: Added the 4th argument, "+SAPBR:", to the function call.
+    if (read_serial_response(response, sizeof(response), 200, "+SAPBR:")) {
+        //glcd_outtextxy(0, 10, "Resp:");
+        //glcd_outtextxy(0, 20, response); // Display the received response for debugging
+        //delay_ms(200);
+
+        // Check if the response contains the IP address part
+        if (strstr(response, "+SAPBR: 1,1,") != NULL) {
+            char* token = strtok(response, "\"");
+            token = strtok(NULL, "\"");
+
+            if (token) {
+                strcpy(ip_address_buffer, token);
+                return 1; // Success
+            }
+        }
+    }
 
     // If we reach here, it means getting the IP address failed
     return 0; // Failure
@@ -252,24 +286,18 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     char response[256];
     char full_url[256];    
     char* action_ptr;
-    int method = 0, status_code = 0, data_len = 0;
+    int method = 0, status_code = 0, data_len = 0;  
+    
+    
 
     glcd_clear();
     draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
     
     
-    active_GPRS();
-
-
-//    if (!check_gprs_status()) {
-//        if (!active_GPRS()) {
-//            glcd_clear();
-//            glcd_outtextxy(0, 0, "GPRS Failed!");
-//            delay_ms(1000);
-//            return 0;
-//        }
-//    }
-
+    if (!check_and_activate_GPRS()) {
+        return 0;
+    }
+    
  
 //    glcd_clear();
 //    glcd_outtextxy(0,10,phone_number);
@@ -277,7 +305,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
    
     // 1. Initialize HTTP service
     send_at_command("AT+HTTPINIT");
-    if (!read_serial_response(response, sizeof(response), 150, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
 
 //    glcd_clear();
 //    glcd_outtextxy(0,10,phone_number);
@@ -285,7 +313,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
     // 2. Set CID to bearer profile 1
     send_at_command("AT+HTTPPARA=\"CID\",1");
-    if (!read_serial_response(response, sizeof(response), 150, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
 
 //    glcd_outtextxy(0,20,"lev 2");
 
@@ -295,7 +323,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     // 4. Set the target URL
     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
     send_at_command(cmd);
-    if (!read_serial_response(response, sizeof(response), 150, "OK")) return 0;
+    if (!read_serial_response(response, sizeof(response), 100, "OK")) return 0;
 
 //    glcd_outtextxy(0,20,"lev 3");
 
@@ -316,7 +344,7 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     if (action_ptr == NULL || sscanf(action_ptr, "+HTTPACTION: %d,%d,%d", &method, &status_code, &data_len) != 3) {
 //        glcd_clear();
 //        glcd_outtextxy(0,0,"Parse Err");
-//        glcd_outtextxy(0,10,response);  // ‰„«Ì‘ „Õ Ê«Ì response ò«„· »—«Ì œÌ»«ê
+//        glcd_outtextxy(0,10,response);  // ??C?O ??E?C? response ?C?? E?C? I?EC?
 //        delay_ms(500);
         return 0;
     }
@@ -336,13 +364,13 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 
     // 8. Read server response if needed
     send_at_command("AT+HTTPREAD");
-    read_serial_response(response, sizeof(response), 150, "OK");
+    read_serial_response(response, sizeof(response), 100, "OK");
 
 //    glcd_outtextxy(0,20,"lev 7");
 
     // 9. Terminate HTTP service
     send_at_command("AT+HTTPTERM");
-    read_serial_response(response, sizeof(response), 150, "OK");
+    read_serial_response(response, sizeof(response), 100, "OK");
                                                                    
 //    glcd_outtextxy(0,20,"lev 8");
     return (status_code == 200) ? 1 : 0;
@@ -391,8 +419,7 @@ char get_key(void)
 void activate_motor(int product_id)
 {
     unsigned char motor_pin;
-    char motor_msg[20]; 
-    int timeout = 5000;
+    char motor_msg[20];
 
     switch (product_id)
     {
@@ -406,19 +433,7 @@ void activate_motor(int product_id)
     glcd_clear();
     glcd_outtextxy(10, 20, motor_msg);
     MOTOR_PORT |= (1 << motor_pin);
-    
-//    while (!(PIND & (1 << PIND1)) && timeout > 0)
-//    {
-//        delay_ms(1);
-//        timeout--;
-//    }    
-
-    while ((PIND & (1 << PD1)) && timeout > 0)
-    {
-        delay_ms(1);
-        timeout--;
-    }
- 
+    delay_ms(500);
     MOTOR_PORT &= ~(1 << motor_pin);
 
 //    sprintf(motor_msg, "MOTOR %d OFF!", product_id);
@@ -443,11 +458,7 @@ void main(void)
     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
-    PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);   
-    
-    DDRD = (0 << DDD7) | (0 << DDD6) | (0 << DDD5) | (0 << DDD4) | (0 << DDD3) | (0 << DDD2) | (0 << DDD1) | (0 << DDD0);  // Â„Â Ê—ÊœÌ
-    PORTD = (0 << PORTD7) | (0 << PORTD6) | (0 << PORTD5) | (0 << PORTD4) | (0 << PORTD3) | (0 << PORTD2) | (1 << PORTD1) | (0 << PORTD0); // Pull-down (Ì⁄‰Ì €Ì—›⁄«· ò—œ‰ pull-up)    
-    
+    PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
@@ -505,7 +516,7 @@ void main(void)
         {
             if (strstr(header_buffer, "+CMT:") != NULL)
             {
-                // ?? ›Ê—« „ ‰ ÅÌ«„ò —Ê »ŒÊ‰ Ê ‰êÂ œ«—
+                // ?? ???C? ?E? ??C?? ?? EI?? ? ??? IC?
                 if (!gets(content_buffer, sizeof(content_buffer))) {
                     glcd_clear();
                     glcd_outtextxy(0, 0, "Failed to read msg");
@@ -513,21 +524,21 @@ void main(void)
                     continue;
                 }
 
-                // ?? ‘„«—Â  ·›‰ —Ê »êÌ—
+                // ?? O?C?? E??? ?? E???
                 token = strtok(header_buffer, "\"");
                 if (token != NULL) token = strtok(NULL, "\"");
                 if (token != NULL)
                 {
                     strcpy(phone_number, token);
 
-                    // ?? Õ«·« „ÃÊ“ —Ê »——”Ì ò‰
+                    // ?? ?C?C ???? ?? E???? ??
                     if (send_json_post(server_url, phone_number))
                     {
 //                        glcd_clear();
 //                        glcd_outtextxy(0, 5, "step 1");
 //                        delay_ms(200);
 
-                        sms_char = content_buffer[0];  // „À·« '1'
+                        sms_char = content_buffer[0];  // ?E?C '1'
 
 //                        glcd_outtextxy(0, 5, "step 2");
 //                        delay_ms(200);
@@ -560,7 +571,7 @@ void main(void)
                             {
 //                                glcd_outtextxy(0, 45, "You pressed:");
                                 //draw_bitmap(70, 45, square, 128, 32);
-//                                draw_bitmap(65, 0, square, 128, 32);
+                                draw_bitmap(65, 0, square, 128, 32);
                                 display_buffer[0] = key_pressed;
                                 glcd_outtextxy(65, 50, display_buffer);
                                 
@@ -602,7 +613,7 @@ void main(void)
                     }
                 }
 
-                // »«“ê‘  »Â Ê÷⁄Ì  ¬„«œÂù»Âùò«—
+                // EC??OE E? ????E A?CI??E???C?
                 glcd_clear();
                 draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
 //                glcd_outtextxy(0, 0, "System Ready.");
