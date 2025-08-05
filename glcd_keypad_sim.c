@@ -135,7 +135,6 @@ void usart_puts(const char* str)
 
 
 
-
 unsigned char init_sms(void)
 {
     glcd_clear();
@@ -209,29 +208,6 @@ unsigned char init_GPRS(void)
 }
 
 
-unsigned char check_and_activate_GPRS(void) {
-    char response[100];
-    
-    // 1. Check if GPRS is already active
-    send_at_command("AT+SAPBR=2,1");
-    if (read_serial_response(response, sizeof(response), 1000, "+SAPBR: 1,1")) {
-        return 1; // GPRS is already active
-    }
-    
-    // 2. If not active, try to activate it
-    if (!init_GPRS()) {
-        // Failed to activate GPRS
-        glcd_clear();
-        glcd_outtextxy(0, 0, "GPRS Activation");
-        glcd_outtextxy(0, 10, "Failed!");
-        delay_ms(1000);
-        return 0;
-    }
-    
-    return 1; // GPRS activated successfully
-}
-
-
 unsigned char active_GPRS(void)
 {
     char at_command[50];
@@ -257,25 +233,50 @@ unsigned char active_GPRS(void)
     
     // Attempt to read the response for 5 seconds, looking for "+SAPBR:"
     // FIX: Added the 4th argument, "+SAPBR:", to the function call.
-    if (read_serial_response(response, sizeof(response), 200, "+SAPBR:")) {
-        //glcd_outtextxy(0, 10, "Resp:");
-        //glcd_outtextxy(0, 20, response); // Display the received response for debugging
-        //delay_ms(200);
-
-        // Check if the response contains the IP address part
-        if (strstr(response, "+SAPBR: 1,1,") != NULL) {
-            char* token = strtok(response, "\"");
-            token = strtok(NULL, "\"");
-
-            if (token) {
-                strcpy(ip_address_buffer, token);
-                return 1; // Success
-            }
-        }
-    }
+//    if (read_serial_response(response, sizeof(response), 200, "+SAPBR:")) {
+//        //glcd_outtextxy(0, 10, "Resp:");
+//        //glcd_outtextxy(0, 20, response); // Display the received response for debugging
+//        //delay_ms(200);
+//
+//        // Check if the response contains the IP address part
+//        if (strstr(response, "+SAPBR: 1,1,") != NULL) {
+//            char* token = strtok(response, "\"");
+//            token = strtok(NULL, "\"");
+//
+//            if (token) {
+//                strcpy(ip_address_buffer, token);
+//                return 1; // Success
+//            }
+//        }
+//    }
 
     // If we reach here, it means getting the IP address failed
     return 0; // Failure
+}
+
+
+
+
+unsigned char check_and_activate_GPRS(void) {
+    char response[100];
+    
+    // 1. Check if GPRS is already active
+    send_at_command("AT+SAPBR=2,1");
+    if (read_serial_response(response, sizeof(response), 1000, "+SAPBR: 1,1")) {
+        return 1; // GPRS is already active
+    }
+    
+    // 2. If not active, try to activate it
+    if (!active_GPRS()) {
+        // Failed to activate GPRS
+        glcd_clear();
+        glcd_outtextxy(0, 0, "GPRS Activation");
+        glcd_outtextxy(0, 10, "Failed!");
+        delay_ms(1000);
+        return 0;
+    }
+    
+    return 1; // GPRS activated successfully
 }
 
 
@@ -482,9 +483,9 @@ void main(void)
     delay_ms(3000);
 
     send_at_command("ATE0");
-    delay_ms(300);
+    delay_ms(200);
     send_at_command("AT");
-    delay_ms(300);
+    delay_ms(200);
 
     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
     if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
@@ -528,22 +529,27 @@ void main(void)
                 token = strtok(header_buffer, "\"");
                 if (token != NULL) token = strtok(NULL, "\"");
                 if (token != NULL)
+                ///////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////
                 {
                     strcpy(phone_number, token);
+                    sms_char = content_buffer[0];  // ?E?C '1'
 
-                    // ?? ?C?C ???? ?? E???? ??
-                    if (send_json_post(server_url, phone_number))
+                    if (sms_char == '1' || sms_char == '2' || sms_char == '3')
                     {
+                    // if (send_json_post(server_url, phone_number))
+                    // {
 //                        glcd_clear();
 //                        glcd_outtextxy(0, 5, "step 1");
 //                        delay_ms(200);
 
-                        sms_char = content_buffer[0];  // ?E?C '1'
+                        // sms_char = content_buffer[0];  // ?E?C '1'
 
 //                        glcd_outtextxy(0, 5, "step 2");
 //                        delay_ms(200);
 
-                        if (sms_char == '1' || sms_char == '2' || sms_char == '3')
+                        if (send_json_post(server_url, phone_number))
                         {
                             glcd_clear();
 //                            glcd_outtextxy(0, 5, "SMS Code:");
@@ -599,20 +605,32 @@ void main(void)
                         else
                         {
                             glcd_clear();
-//                            glcd_outtextxy(5, 25, "Invalid SMS Code!");
-                            draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
+    //                        glcd_outtextxy(0, 25, "You are not authorized!");
+                            draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
                             delay_ms(300);
                         }
                     }
+
+
+
+//                     else
+//                     {
+//                         glcd_clear();
+// //                        glcd_outtextxy(0, 25, "You are not authorized!");
+//                         draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
+//                         delay_ms(300);
+//                     }
                     else
                     {
                         glcd_clear();
-//                        glcd_outtextxy(0, 25, "You are not authorized!");
-                        draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
+//                            glcd_outtextxy(5, 25, "Invalid SMS Code!");
+                        draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
                         delay_ms(300);
                     }
                 }
-
+                ///////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////
                 // EC??OE E? ????E A?CI??E???C?
                 glcd_clear();
                 draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
@@ -622,5 +640,4 @@ void main(void)
             }
         }
     }
-
 }
