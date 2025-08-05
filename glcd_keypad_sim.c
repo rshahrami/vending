@@ -140,23 +140,23 @@ unsigned char init_sms(void)
     glcd_clear();
     glcd_outtextxy(0, 0, "Setting SMS Mode...");
     send_at_command("AT+CMGF=1");
-    delay_ms(100);
+    delay_ms(50);
 
     send_at_command("AT+CNMI=2,2,0,0,0");
-    delay_ms(100);
+    delay_ms(50);
 
     send_at_command("AT+CMGDA=\"DEL ALL\"");
-    delay_ms(200);
+    delay_ms(100);
 
 
     // C????C? C? ??C? E?I? ?C?? ?C??? ? U????C? E?I? sleep
     send_at_command("AT+CFUN=1");    // ??C???C?? ?C?? ?C???
-    delay_ms(100);
+    delay_ms(50);
     send_at_command("AT+CSCLK=0");   // U????C???C?? ?C?E sleep
-    delay_ms(100);
+    delay_ms(50);
 
     glcd_outtextxy(0, 10, "SMS Ready.");
-    delay_ms(200);
+    delay_ms(100);
     return 1;
 }
 
@@ -169,15 +169,34 @@ unsigned char init_GPRS(void)
     glcd_clear();
     glcd_outtextxy(0, 0, "Connecting to GPRS...");
 
+
+    // 1?? Õ „« Õ«·  ŒÊ«» —« €Ì—›⁄«· ò‰ (Õ Ì «ê— œ— SMS  ‰ŸÌ„ ‘œÂ)
+    send_at_command("AT+CSCLK=0");   // ÷—Ê—Ì »—«Ì Ã·ÊêÌ—Ì «“ ﬁÿ⁄Ì GPRS
+    delay_ms(50);
+
     send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
-    delay_ms(300);
+    delay_ms(100);
 
     sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
     send_at_command(at_command);
-    delay_ms(300);
+    delay_ms(100);
+
+
+    // ?? «÷«›Â ò—œ‰ «Ì‰ Œÿ ÕÌ« Ì «” : €Ì—›⁄«· ò—œ‰ Idle Timeout
+    send_at_command("AT+SAPBR=3,1,\"Idle Timeout\",\"0\""); 
+    delay_ms(100);
+
+    // 3?? ›⁄«·ù”«“Ì Keep-Alive »—«Ì «—”«· ÅòÌ ùÂ«Ì  ”  œÊ—Âù«Ì
+    send_at_command("AT+CIPKEEPALIVE=1"); // «—”«· ÅòÌ  Â— 20 À«‰ÌÂ
+    delay_ms(50);
+
+    // 4?? «ÿ„Ì‰«‰ «“ À» ù‰«„ ŒÊœò«— œ— ‘»òÂ (÷—Ê—Ì »—«Ì —Ìò«‰ò  ŒÊœò«—)
+    send_at_command("AT+CGREG=1"); // ê“«—‘ Ê÷⁄Ì  GPRS
+    delay_ms(50);
+
 
     send_at_command("AT+SAPBR=1,1");
-    delay_ms(300);
+    delay_ms(100);
 
     glcd_clear();
     glcd_outtextxy(0, 0, "Fetching IP...");
@@ -217,14 +236,14 @@ unsigned char active_GPRS(void)
     //glcd_outtextxy(0, 0, "Connecting to GPRS...");
 
     send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
-    delay_ms(300);
+    delay_ms(100);
 
     sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
     send_at_command(at_command);
-    delay_ms(300);
+    delay_ms(100);
 
     send_at_command("AT+SAPBR=1,1");
-    delay_ms(300);
+    delay_ms(100);
 
     //glcd_clear();
     //glcd_outtextxy(0, 0, "Fetching IP...");
@@ -420,7 +439,8 @@ char get_key(void)
 void activate_motor(int product_id)
 {
     unsigned char motor_pin;
-    char motor_msg[20];
+    char motor_msg[20]; 
+    int timeout = 5000;
 
     switch (product_id)
     {
@@ -434,7 +454,19 @@ void activate_motor(int product_id)
     glcd_clear();
     glcd_outtextxy(10, 20, motor_msg);
     MOTOR_PORT |= (1 << motor_pin);
-    delay_ms(500);
+    
+//    while (!(PIND & (1 << PIND1)) && timeout > 0)
+//    {
+//        delay_ms(1);
+//        timeout--;
+//    }    
+
+    while ((PIND & (1 << PIND1)) && timeout > 0)
+    {
+        delay_ms(1);
+        timeout--;
+    }
+ 
     MOTOR_PORT &= ~(1 << motor_pin);
 
 //    sprintf(motor_msg, "MOTOR %d OFF!", product_id);
@@ -460,6 +492,10 @@ void main(void)
     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
     PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
+    
+    DDRD = (0 << DDD7) | (0 << DDD6) | (0 << DDD5) | (0 << DDD4) | (0 << DDD3) | (0 << DDD2) | (0 << DDD1) | (0 << DDD0);  // ??? ???I?
+    PORTD = (0 << PORTD7) | (0 << PORTD6) | (0 << PORTD5) | (0 << PORTD4) | (0 << PORTD3) | (0 << PORTD2) | (1 << PORTD1) | (0 << PORTD0); // Pull-down (???? U????C? ??I? pull-up)    
+      
     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
