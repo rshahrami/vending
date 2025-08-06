@@ -169,42 +169,42 @@ unsigned char init_GPRS(void)
     glcd_clear();
     glcd_outtextxy(0, 0, "Connecting to GPRS...");
 
-
-    // 1?? Õ „« Õ«·  ŒÊ«» —« €Ì—›⁄«· ò‰ (Õ Ì «ê— œ— SMS  ‰ŸÌ„ ‘œÂ)
+    // €Ì—›⁄«· ò—œ‰ Õ«·  ŒÊ«» (Sleep Mode) 
     send_at_command("AT+CSCLK=0");   // ÷—Ê—Ì »—«Ì Ã·ÊêÌ—Ì «“ ﬁÿ⁄Ì GPRS
     delay_ms(50);
 
-    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
+    send_at_command("AT+CSMP=17,167,0,0"); // €Ì—›⁄«· ò—œ‰ Sleep Mode
     delay_ms(100);
 
-    sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
+    //  ‰ŸÌ„ ‰Ê⁄ « ’«· »Â GPRS
+    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\""); 
+    delay_ms(100);
+
+    sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN); //  ‰ŸÌ„ APN
     send_at_command(at_command);
     delay_ms(100);
 
-
-    // ?? «÷«›Â ò—œ‰ «Ì‰ Œÿ ÕÌ« Ì «” : €Ì—›⁄«· ò—œ‰ Idle Timeout
+    // €Ì—›⁄«· ò—œ‰ Idle Timeout
     send_at_command("AT+SAPBR=3,1,\"Idle Timeout\",\"0\""); 
+    delay_ms(150);
+
+    // ›⁄«·ù”«“Ì Keep-Alive »—«Ì «—”«· ÅòÌ ùÂ«Ì  ”  œÊ—Âù«Ì
+    send_at_command("AT+CIPKEEPALIVE=1"); // «—”«· ÅòÌ  Â— 20 À«‰ÌÂ
     delay_ms(100);
 
-    // 3?? ›⁄«·ù”«“Ì Keep-Alive »—«Ì «—”«· ÅòÌ ùÂ«Ì  ”  œÊ—Âù«Ì
-    send_at_command("AT+CIPKEEPALIVE=1"); // «—”«· ÅòÌ  Â— 20 À«‰ÌÂ
-    delay_ms(50);
-
-    // 4?? «ÿ„Ì‰«‰ «“ À» ù‰«„ ŒÊœò«— œ— ‘»òÂ (÷—Ê—Ì »—«Ì —Ìò«‰ò  ŒÊœò«—)
+    // «ÿ„Ì‰«‰ «“ À» ù‰«„ ŒÊœò«— œ— ‘»òÂ (÷—Ê—Ì »—«Ì —Ìò«‰ò  ŒÊœò«—)
     send_at_command("AT+CGREG=1"); // ê“«—‘ Ê÷⁄Ì  GPRS
-    delay_ms(50);
+    delay_ms(100);
 
-
+    // « ’«· »Â GPRS
     send_at_command("AT+SAPBR=1,1");
     delay_ms(100);
 
     glcd_clear();
     glcd_outtextxy(0, 0, "Fetching IP...");
     send_at_command("AT+SAPBR=2,1"); // Request IP
-    // delay_ms(5000);
     
     // Attempt to read the response for 5 seconds, looking for "+SAPBR:"
-    // FIX: Added the 4th argument, "+SAPBR:", to the function call.
     if (read_serial_response(response, sizeof(response), 200, "+SAPBR:")) {
         glcd_outtextxy(0, 10, "Resp:");
         glcd_outtextxy(0, 20, response); // Display the received response for debugging
@@ -225,6 +225,7 @@ unsigned char init_GPRS(void)
     // If we reach here, it means getting the IP address failed
     return 0; // Failure
 }
+
 
 
 unsigned char active_GPRS(void)
@@ -288,10 +289,10 @@ unsigned char check_and_activate_GPRS(void) {
     // 2. If not active, try to activate it
     if (!active_GPRS()) {
         // Failed to activate GPRS
-        glcd_clear();
-        glcd_outtextxy(0, 0, "GPRS Activation");
-        glcd_outtextxy(0, 10, "Failed!");
-        delay_ms(1000);
+//        glcd_clear();
+//        glcd_outtextxy(0, 0, "GPRS Activation");
+//        glcd_outtextxy(0, 10, "Failed!");
+//        delay_ms(1000);
         return 0;
     }
     
@@ -301,7 +302,7 @@ unsigned char check_and_activate_GPRS(void) {
 
 
 
-unsigned char send_json_post(const char* base_url, const char* phone_number) {
+unsigned char send_json_post(const char* base_url, const char* phone_number, char pro) {
     char cmd[256];
     char response[256];
     char full_url[256];    
@@ -336,9 +337,9 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     if (!read_serial_response(response, sizeof(response), 50, "OK")) return 0;
 
 //    glcd_outtextxy(0,20,"lev 2");
-
+                                 
     // 3. Build the full URL with query parameter
-    sprintf(full_url, "%s?phone_number=%s", base_url, phone_number);
+    sprintf(full_url, "%s?phone_number=%s&pro=%s", base_url, phone_number, pro);
 
     // 4. Set the target URL
     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
@@ -549,6 +550,10 @@ void main(void)
         memset(header_buffer, 0, sizeof(header_buffer));
         memset(content_buffer, 0, sizeof(content_buffer));
 
+        send_at_command("AT+PING=\"8.8.8.8\"");  // «—”«· ÅÌ‰ê »Â Google DNS
+        delay_ms(1000);  //  «ŒÌ— »Ì‰ «—”«· Åò ùÂ« (1 À«‰ÌÂ)
+
+
         if (gets(header_buffer, sizeof(header_buffer)))
         {
             if (strstr(header_buffer, "+CMT:") != NULL)
@@ -584,18 +589,18 @@ void main(void)
 
 //                        glcd_outtextxy(0, 5, "step 2");
 //                        delay_ms(200);
-
-                        if (send_json_post(server_url, phone_number))
+                        display_buffer[0] = sms_char;
+                        if (send_json_post(server_url, phone_number, display_buffer[0]))
                         {
                             glcd_clear();
 //                            glcd_outtextxy(0, 5, "SMS Code:");
                             
-                            display_buffer[0] = sms_char;
+                            
                             
 //                            glcd_outtextxy(0, 25, "Enter code on keypad:");
                             draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
                             draw_bitmap(0, 32, square, 128, 32); 
-                            glcd_outtextxy(65, 55, display_buffer);
+                            glcd_outtextxy(65, 45, display_buffer);
 
                             key_pressed = 0;
                             for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
@@ -615,11 +620,11 @@ void main(void)
                             {
 //                                glcd_outtextxy(0, 45, "You pressed:");
                                 //draw_bitmap(70, 45, square, 128, 32);
-                                draw_bitmap(65, 0, square, 128, 32);
-                                display_buffer[0] = key_pressed;
-                                glcd_outtextxy(65, 0, display_buffer);
+                                //draw_bitmap(65, 0, square, 128, 32);
+                                //display_buffer[0] = key_pressed;
+                                //glcd_outtextxy(65, 0, display_buffer);
                                 
-                                delay_ms(200);
+                                //delay_ms(200);
 
                                 if (key_pressed == sms_char)
                                 {
