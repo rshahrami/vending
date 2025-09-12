@@ -39,6 +39,21 @@
     <Compile Include="glcd_keypad_sim.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="common.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="keypad.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="motor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="init_sms.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sim800.c">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\vs\\CV.targets" />
 </Project>

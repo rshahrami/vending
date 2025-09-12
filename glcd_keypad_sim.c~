@@ -7,28 +7,17 @@
 #include <delay.h>
 
 #include "bitmaps.h"
+#include "common.h"
+#include "keypad.h"
+#include "motor.h"
+#include "init_sms.h"
+#include "sim800.h"
+
 
 typedef unsigned char uint8_t;
 typedef unsigned int  uint16_t;
 typedef signed char   int8_t;
 
-#define MOTOR_DDR DDRE
-#define MOTOR_PORT PORTE
-#define MOTOR_PIN_1 2
-#define MOTOR_PIN_2 3
-#define MOTOR_PIN_3 4
-
-// --- E???? ?????C? ????I ---
-#define KEYPAD_PORT PORTC
-#define KEYPAD_DDR DDRC
-#define KEYPAD_PIN PINC
-#define COL1_PIN 0
-#define COL2_PIN 1
-#define COL3_PIN 2
-#define ROW1_PIN 7
-#define ROW2_PIN 5
-#define ROW3_PIN 6
-#define ROW4_PIN 4
 
 #define APN "mcinet" // APN C??CE?? I?I ?C ?C?I ???I
 
@@ -37,7 +26,6 @@ typedef signed char   int8_t;
 #define read_flash_byte(p) (*(p))
 
 #define HTTP_TIMEOUT_MS 5000
-
 
 char ip_address_buffer[16];
 
@@ -154,45 +142,6 @@ void draw_bitmap(uint8_t x, uint8_t y, __flash unsigned char* bmp, uint8_t width
     }
 }
 
-void send_at_command(char *command)
-{
-    printf("%s\r\n", command);
-}
-
-void uart_flush0(void)
-{
-    unsigned char dummy;
-    //  « Êﬁ Ì çÌ“Ì  ÊÌ »«›— Â” ° »ŒÊ‰ Ê œÊ— »‰œ«“
-    while (UCSR0A & (1<<RXC0)) {
-        dummy = UDR0;
-    }
-}
-
-
-unsigned char read_serial_response(char* buffer, int buffer_size, int timeout_ms, const char* expected_response) {
-    int i = 0;
-    unsigned int elapsed = 0;
-
-    // ?C? ??I? EC?? ?C?E?
-    memset(buffer, 0, buffer_size);
-
-    while (elapsed < (unsigned)timeout_ms) {
-        // ?? EC?? E?C? EC?E??C? I? I?E?? ????? UART ?C EI?C??I
-        while (rx_counter0 > 0 && i < buffer_size - 1) {
-            buffer[i++] = getchar();  // getchar C? ????? EC?? ???A?I
-        }
-        // C?? C?EUC??C? ?C I?I??? ??I E???I??
-        if (strstr(buffer, expected_response)) {
-            return 1;
-        }
-        delay_ms(1);
-        elapsed++;
-    }
-    // ?? C? ?C?C? EC???C?E ?? ??EC? I??? ?? ???????
-    return (strstr(buffer, expected_response) != NULL);
-}
-
-
 
 
 unsigned char send_json_post(const char* base_url, const char* phone_number) {
@@ -281,108 +230,6 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
 }
 
 
-
-
-
-
-char get_key(void)
-{
-    unsigned char row, col;
-    const unsigned char column_pins[3] = {COL1_PIN, COL2_PIN, COL3_PIN};
-    const unsigned char row_pins[4] = {ROW1_PIN, ROW2_PIN, ROW3_PIN, ROW4_PIN};
-
-    const char key_map[4][3] = {
-        {'1', '2', '3'},
-        {'4', '5', '6'},
-        {'7', '8', '9'},
-        {'*', '0', '#'}
-    };
-
-    for (col = 0; col < 3; col++)
-    {
-        KEYPAD_PORT |= (1 << COL1_PIN) | (1 << COL2_PIN) | (1 << COL3_PIN);
-        KEYPAD_PORT &= ~(1 << column_pins[col]);
-
-        for (row = 0; row < 4; row++)
-        {
-            if (!(KEYPAD_PIN & (1 << row_pins[row])))
-            {
-                delay_ms(10);
-
-                if (!(KEYPAD_PIN & (1 << row_pins[row])))
-                {
-                    while (!(KEYPAD_PIN & (1 << row_pins[row])));
-                    return key_map[row][col];
-                }
-            }
-        }
-    }
-
-    // C?? ??? ???I? ?O?I? ?OI? E?I? ??IC? ??? (NULL) ?C E???IC?
-    return 0;
-}
-
-
-
-void activate_motor(int product_id)
-{
-    unsigned char motor_pin;
-    char motor_msg[20]; 
-    int timeout = 1000;
-
-    switch (product_id)
-    {
-        case 1: motor_pin = MOTOR_PIN_1; break;
-        case 2: motor_pin = MOTOR_PIN_2; break;
-        case 3: motor_pin = MOTOR_PIN_3; break;
-        default: return;
-    }
-
-    sprintf(motor_msg, "MOTOR %d ON!", product_id);
-    glcd_clear();
-    glcd_outtextxy(10, 20, motor_msg);
-    MOTOR_PORT |= (1 << motor_pin);
-    
-    while (!(PIND & (1 << PIND1)) && timeout > 0)
-    {
-        delay_ms(1);
-        timeout--;
-    }
- 
-    MOTOR_PORT &= ~(1 << motor_pin);
-
-
-    // draw_bitmap(0, 0, mahsol_ra_bardarid, 128, 64);
-    // delay_ms(300);
-}
-
-
-unsigned char init_sms(void)
-{
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Setting SMS Mode...");
-    send_at_command("AT+CMGF=1");
-    delay_ms(1000);
-
-    send_at_command("AT+CNMI=2,2,0,0,0");
-    delay_ms(1000);
-
-    send_at_command("AT+CMGDA=\"DEL ALL\"");
-    delay_ms(2000);
-
-
-    // C????C? C? ??C? E?I? ?C?? ?C??? ? U????C? E?I? sleep
-    send_at_command("AT+CFUN=1");    // ??C???C?? ?C?? ?C???
-    delay_ms(1000);
-    send_at_command("AT+CSCLK=0");   // U????C???C?? ?C?E sleep
-    delay_ms(1000);
-
-    glcd_outtextxy(0, 10, "SMS Ready.");
-    delay_ms(2000);
-    return 1;
-}
-
-
 void handle_sms(void)
 {
     const char* server_url = "http://193.5.44.191/home/post/";
@@ -463,11 +310,6 @@ void handle_sms(void)
         delay_ms(300);
     }
 
-
-
-
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -520,192 +362,105 @@ void process_uart_data(void)
     }
 }
 
-
-
-unsigned char init_GPRS(void) {
-    char at_command[50];
-    char response[100]; // Local buffer for the response
-
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Connecting to GPRS...");
-
-    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
-    delay_ms(150);
-
-    sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
-    send_at_command(at_command);
-    delay_ms(150);
-
-    send_at_command("AT+SAPBR=1,1");
-    delay_ms(150);
-
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Fetching IP...");
-    send_at_command("AT+SAPBR=2,1"); // Request IP
-    // delay_ms(5000);
-    
-    // Attempt to read the response for 5 seconds, looking for "+SAPBR:"
-    // FIX: Added the 4th argument, "+SAPBR:", to the function call.
-    if (read_serial_response(response, sizeof(response), 200, "+SAPBR:")) {
-        glcd_outtextxy(0, 10, "Resp:");
-        glcd_outtextxy(0, 20, response); // Display the received response for debugging
-        delay_ms(200);
-
-        // Check if the response contains the IP address part
-        if (strstr(response, "+SAPBR: 1,1,") != NULL) {
-            char* token = strtok(response, "\"");
-            token = strtok(NULL, "\"");
-
-            if (token) {
-                strcpy(ip_address_buffer, token);
-                return 1; // Success
-            }
-        }
-    }
-
-    // If we reach here, it means getting the IP address failed
-    return 0; // Failure
-}
-
-
-// —Ì”   „Ì“ SIM800: Œ—ÊÃ «“ œÌ « „Êœ° »” ‰ HTTP Ê ”Êò ùÂ«° Œ«„Ê‘ ò—œ‰ bearer° —Ì”  ‰—„ù«›“«—Ì
-unsigned char sim800_reset_clean(void)
-{
-    char resp[256];  
-    unsigned long waited = 0;
-
-    // 1) Œ—ÊÃ œ—”  «“ œÌ « „Êœ (+++) ó »œÊ‰ CR/LF Ê »« ê«—œ «Ì„
-    delay_ms(800);
-    uart_flush0();
-    send_at_command("+++");       // „Â„: »œÊ‰ \r
-    delay_ms(800);
-
-    // 2) «òÊ Œ«„Ê‘ »—«Ì Å«”Œ  „Ì“ («Œ Ì«—Ì Ê·Ì „›Ìœ)
-    uart_flush0(); send_at_command("ATE0\r");
-    read_serial_response(resp, sizeof(resp), 500, "OK");
-
-    // 3) »” ‰ Â„Â? ”—ÊÌ”ùÂ«/ò«‰ò‘‰ùÂ« (Â— òœÊ„ OK Ì« ERROR „Â„ ‰Ì” ∫ Âœ› Å«òù”«“Ì «” )
-    uart_flush0(); send_at_command("AT+HTTPTERM\r");  read_serial_response(resp, sizeof(resp), 600, "OK");   // Å«Ì«‰ HTTP
-    uart_flush0(); send_at_command("AT+CIPCLOSE\r");  read_serial_response(resp, sizeof(resp), 800, "OK");   // »” ‰ TCP («ê— »«“ »«‘œ)
-    uart_flush0(); send_at_command("AT+CIPSHUT\r");   read_serial_response(resp, sizeof(resp), 1500, "SHUT"); // —Ì”  «” ò IP
-    uart_flush0(); send_at_command("AT+SAPBR=0,1\r"); read_serial_response(resp, sizeof(resp), 1200, "OK");   // Œ«„Ê‘ ò—œ‰ bearer
-
-    // («Œ Ì«—Ì «ê— «” ›«œÂ ‘œÂ »Êœ)
-    // uart_flush0(); send_at_command("AT+NETCLOSE\r"); read_serial_response(resp, sizeof(resp), 1000, "OK");
-
-    // 4) —Ìù«” «—  ‰—„ù«›“«—Ì „«éÊ·
-    uart_flush0(); send_at_command("AT+CFUN=1,1\r");
-
-    // 5) „‰ Ÿ— »«·« ¬„œ‰ (RDY/Call Ready) Ê ”Å” ÅÌ‰ê AT
-    
-    while (waited < 20000) {
-        if (read_serial_response(resp, sizeof(resp), 800, "RDY") ||
-            read_serial_response(resp, sizeof(resp), 800, "Call Ready") ||
-            read_serial_response(resp, sizeof(resp), 800, "SMS Ready")) {
-            break;
-        }
-        waited += 800;
-    }
-
-    // ÅÌ‰ê ‰Â«ÌÌ
-    uart_flush0(); send_at_command("AT\r");
-    if (read_serial_response(resp, sizeof(resp), 1200, "OK")) {
-        return 1;  // „Ê›ﬁ
-    }
-
-    // »⁄÷Ì „«éÊ·ùÂ« ò„Ì œÌ— AT „ÌùÅ–Ì—‰œ
-    delay_ms(1500);
-    uart_flush0(); send_at_command("AT\r");
-    return read_serial_response(resp, sizeof(resp), 1200, "OK") ? 1 : 0;
-}
+//
+//unsigned char init_GPRS(void) {
+//    char cmd[64], resp[256];
+//    char *p, *end;
+//    int  len;
+//
+//    // ??O ??I? EC?? ????? UART
+//    rx_wr_index0 = rx_rd_index0 = 0;
+//    rx_counter0  = 0;
+//    rx_buffer_overflow0 = 0;
+//
+//    glcd_clear();
+//    glcd_outtextxy(0, 0, "Init GPRS...");
+//
+//    // ?? I?E?? AT ?C?? E?C? C????C?
+//    send_at_command("AT");
+//    if (!read_serial_response(resp, sizeof(resp), 1000, "OK")) {
+//        glcd_outtextxy(0,10,"No AT OK"); delay_ms(2000); return 0;
+//    }
+//
+//    // 1) U?? ??C? ??I? Sleep
+//    send_at_command("AT+CSCLK=0");
+//    if (!read_serial_response(resp, sizeof(resp), 1000, "OK")) {
+//        glcd_outtextxy(0,10,"No CSCLK OK"); delay_ms(2000); return 0;
+//    }
+//
+//    // 2) C?EUC? E?C? EEE OE??
+//    glcd_clear(); glcd_outtextxy(0,0,"Wait Network...");
+//    if (!wait_for_network()) {
+//        glcd_outtextxy(0,10,"Net Fail"); delay_ms(2000); return 0;
+//    }
+//
+//    // 3) C?EUC? E?C? Attach GPRS
+//    glcd_clear(); glcd_outtextxy(0,0,"Wait GPRS...");
+//    if (!wait_for_attach()) {
+//        glcd_outtextxy(0,10,"Attach Fail"); delay_ms(2000); return 0;
+//    }
+//
+//    // 4) E?U?? Contype
+//    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
+//    if (!read_serial_response(resp, sizeof(resp), 1000, "OK")) {
+//        glcd_outtextxy(0,10,"No Contype"); delay_ms(2000); return 0;
+//    }
+//
+//    // 5) E?U?? APN
+//    sprintf(cmd, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
+//    send_at_command(cmd);
+//    if (!read_serial_response(resp, sizeof(resp), 2000, "OK")) {
+//        glcd_outtextxy(0,10,"No APN OK"); delay_ms(2000); return 0;
+//    }
+//
+//    // 6) EC? ??I? ?C?C? (EC 30 EC??? ?E?)
+//    send_at_command("AT+SAPBR=1,1");
+//    if (!read_serial_response(resp, sizeof(resp), 30000, "OK")) {
+//        glcd_outtextxy(0,10,"SAPBR OPEN FAIL"); delay_ms(2000); return 0;
+//    }
+//
+//    // 7) I?I?C?E IP
+//    glcd_clear(); glcd_outtextxy(0,0,"Fetch IP...");
+//    rx_wr_index0 = rx_rd_index0 = 0; rx_counter0 = 0;
+//    send_at_command("AT+SAPBR=2,1");
+//    if (!read_serial_response(resp, sizeof(resp), 10000, "+SAPBR: 1,1,")) {
+//        glcd_outtextxy(0,10,"No IP Resp"); delay_ms(2000); return 0;
+//    }
+//
+//    // 8) C?EI?C? IP
+//    p = strstr(resp, "+SAPBR: 1,1,");
+//    p += strlen("+SAPBR: 1,1,");
+//    while (*p == ' ') p++;
+//    end = p;
+//    while (*end && *end != '\r' && *end != '\n') end++;
+//    len = end - p;
+//    if (len <= 0) {
+//        glcd_outtextxy(0,10,"No IP Found"); delay_ms(2000); return 0;
+//    }
+//    if (len >= (int)sizeof(ip_address_buffer))
+//        len = sizeof(ip_address_buffer) - 1;
+//    memcpy(ip_address_buffer, p, len);
+//    ip_address_buffer[len] = '\0';
+//
+//    // 9) ??C?O IP
+//    glcd_clear();
+//    glcd_outtextxy(0, 0, "GPRS OK, IP:");
+//    glcd_outtextxy(0,10, ip_address_buffer);
+//    delay_ms(3000);
+//
+//    return 1;
+//}
 
 
 
-// ’»— „Ìùò‰œ  « CREG=1 ‘Êœ. «ê— „Ê›ﬁ ‘œ 1 »—„Ìùê—œ«‰œ.
-unsigned char wait_for_register_home(void)
-{
-    char line1[24], line2[24];
-    int stat;
-    unsigned char csq;
 
-    for (;;) {
-        stat = get_creg_stat();
-        csq  = get_csq();
-
-        // ‰„«Ì‘ Ê÷⁄Ì  ›⁄·Ì
-        sprintf(line1, "REG=%d %s", stat, creg_text(stat));
-        glcd_outtextxy(0, 0, line1);
-
-        sprintf(line2, "CSQ=%u", csq);
-        glcd_outtextxy(0, 8, line2);
-
-        // ›ﬁÿ «ê— œ— ‘»òÂ Home —ÃÌ” — ‘œ
-        if (stat == 1) {
-            glcd_outtextxy(0, 16, "Registered(Home)");
-            return 1;
-        } else {
-            glcd_outtextxy(0, 16, "Waiting...      ");
-            delay_ms(1000);
-        }
-    }
-}
-
-
-// ›ﬁÿ „‰ Ÿ— „Ìù„Ê‰Â  « CSQ >= min_csq »‘Â (0..31). dBm „Õ«”»Â/‰„«Ì‘ ‰„Ìù‘Êœ.
-// ⁄œœ Œ«„ ”Ìê‰«· (0..31) Ì« 99 «ê— ‰«„‘Œ’
-unsigned char get_csq(void)
-{
-    char resp[256];
-    int rssi = 99;
-
-    uart_flush0();
-    send_at_command("AT+CSQ\r");                 // Õ „« \r »›—” 
-    if (read_serial_response(resp, sizeof(resp), 1500, "OK")) {  //  « ¬Œ— ÃÊ«»
-        char *p = strstr(resp, "+CSQ:");
-        if (p) {
-            // ›—„ : "+CSQ: <rssi>,<ber>"
-            if (sscanf(p, "+CSQ: %d", &rssi) != 1) rssi = 99;
-        }
-    }
-    return (rssi >= 0 && rssi <= 31) ? (unsigned char)rssi : 99;
-}
-
-unsigned char wait_csq_greater_than(unsigned char limit)
-{
-    char line[20];
-    if (limit > 31) limit = 31;
-
-    // Ìòù»«— Echo Œ«„Ê‘ («Œ Ì«—Ì)
-    {
-        char tmp[32];
-        uart_flush0();
-        send_at_command("ATE0\r");
-        read_serial_response(tmp, sizeof(tmp), 400, "OK");
-    }
-
-    for (;;) {
-        unsigned char s = get_csq();
-
-        sprintf(line, "CSQ=%u          ", s);
-        glcd_outtextxy(0, 0, line);
-
-        if (s != 99 && s > limit) {      // œﬁÌﬁ« »“—êù — «“ Õœ
-            glcd_outtextxy(0, 8, "Signal OK       ");
-            return 1;
-        } else {
-            glcd_outtextxy(0, 8, "Waiting...      ");
-            delay_ms(700);
-        }
-    }
-}
 
 
 void main(void)
 {
 
     GLCDINIT_t glcd_init_data;
-    unsigned char s;
-    char buf[16];
+
 
     DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (0<<DDA1) | (0<<DDA0);
     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
@@ -804,42 +559,15 @@ void main(void)
     glcd_clear();
     glcd_outtextxy(0, 0, "Module Init...");
     delay_ms(500);
-    // --- «Ì‰Ã«” : —Ì”  Ê ’»—  « ¬„«œÂù‘œ‰ „«éÊ· ---
-    if (!sim800_restart()) {
-        glcd_outtextxy(0, 10, "SIM800 restart FAIL!");
-        while(1); // «ê— ‰”ŒÂ »Ìù‰Â«Ì  œ«—Ì° ⁄„·« «Ì‰Ã« ‰„Ìù—”Â
-    } 
-    //sim800_reset_clean()
-    delay_ms(500); 
-//    uart_flush0(); 
-//    send_at_command("ATE0\r");
 
-
-    if (wait_for_register_home()) {
-        glcd_outtextxy(0, 24, "Go next steps...");
-    }
-
-    s = get_csq();
-    glcd_clear();
-    sprintf(buf, "CSQ=%u", s);
-    glcd_outtextxy(0, 0, buf);   
-    delay_ms(1000);
-
-    wait_csq_greater_than(5);
-
-
-
-
-
-
-      
     send_at_command("ATE0");
     delay_ms(100);
     send_at_command("AT");
     delay_ms(100);
 
-    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
-    if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
+    sim800_restart();
+//    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
+//    if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
 
 
 
