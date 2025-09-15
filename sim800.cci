@@ -1,0 +1,8 @@
+VERSION:3 SOURCE_TIMESTAMP:5B2C1D1D
+NODE:I LEVEL:0 LINE:1 "D:\project\vending\code\full\glcd_keypad_sim\common.h"
+NODE:I LEVEL:0 LINE:2 "C:\cvavr\inc\glcd.h"
+NODE:I LEVEL:0 LINE:3 "C:\cvavr\inc\delay.h"
+NODE:I LEVEL:0 LINE:4 "C:\cvavr\inc\string.h"
+NODE:M LEVEL:0 LINE:6 "BUFFER_SIZE"
+NODE:V LEVEL:0 LINE:8 "buffer -> RAM:????"
+NODE:F LEVEL:0 LINE:10 "sim800_restart(void)"

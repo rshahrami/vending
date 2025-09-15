@@ -1,0 +1,508 @@
+;#include "common.h"
+;PCODE: $00000000 VOL: 0
+	#ifndef __SLEEP_DEFINED__
+;PCODE: $00000001 VOL: 0
+	#define __SLEEP_DEFINED__
+;PCODE: $00000002 VOL: 0
+	.EQU __se_bit=0x20
+;PCODE: $00000003 VOL: 0
+	.EQU __sm_mask=0x1C
+;PCODE: $00000004 VOL: 0
+	.EQU __sm_powerdown=0x10
+;PCODE: $00000005 VOL: 0
+	.EQU __sm_powersave=0x18
+;PCODE: $00000006 VOL: 0
+	.EQU __sm_standby=0x14
+;PCODE: $00000007 VOL: 0
+	.EQU __sm_ext_standby=0x1C
+;PCODE: $00000008 VOL: 0
+	.EQU __sm_adc_noise_red=0x08
+;PCODE: $00000009 VOL: 0
+	.SET power_ctrl_reg=mcucr
+;PCODE: $0000000A VOL: 0
+	#endif
+;PCODE: $0000000B VOL: 0
+;PCODE: $0000000C VOL: 0
+;#include <string.h>
+;#include <delay.h>
+;#include <mega64a.h>
+;#include <glcd.h>
+;
+;
+;// --- «—”«· œ” Ê— AT ---
+;void send_at_command(char *command)
+; 0001 000A {
+
+	.CSEG
+;PCODE: $0000000D VOL: 0
+;PCODE: $0000000E VOL: 0
+; 0001 000B     printf("%s\r\n", command);
+;PCODE: $0000000F VOL: 0
+;	*command -> Y+0
+;PCODE: $00000010 VOL: 0
+;PCODE: $00000011 VOL: 0
+;PCODE: $00000012 VOL: 0
+;PCODE: $00000013 VOL: 0
+;PCODE: $00000014 VOL: 0
+;PCODE: $00000015 VOL: 0
+;PCODE: $00000016 VOL: 0
+;PCODE: $00000017 VOL: 0
+;PCODE: $00000018 VOL: 0
+;PCODE: $00000019 VOL: 0
+; 0001 000C }
+;PCODE: $0000001A VOL: 0
+;PCODE: $0000001B VOL: 0
+;PCODE: $0000001C VOL: 0
+;
+;// --- Å«ò ò—œ‰ »«›— USART0 ---
+;void uart_flush0(void)
+; 0001 0010 {
+;PCODE: $0000001D VOL: 0
+;PCODE: $0000001E VOL: 0
+; 0001 0011     unsigned char dummy;
+; 0001 0012 
+; 0001 0013     // Å«ò ò—œ‰ —ÃÌ” — ”Œ ù«›“«—Ì
+; 0001 0014     while (UCSR0A & (1<<RXC0)) {
+;PCODE: $0000001F VOL: 0
+;	dummy -> R17
+;PCODE: $00000020 VOL: 0
+;PCODE: $00000021 VOL: 0
+;PCODE: $00000022 VOL: 0
+;PCODE: $00000023 VOL: 0
+; 0001 0015         dummy = UDR0;
+;PCODE: $00000024 VOL: 0
+;PCODE: $00000025 VOL: 0
+; 0001 0016     }
+;PCODE: $00000026 VOL: 0
+;PCODE: $00000027 VOL: 0
+; 0001 0017 //
+; 0001 0018 //    // Å«ò ò—œ‰ »«›— ‰—„ù«›“«—Ì
+; 0001 0019 //    rx_wr_index0 = rx_rd_index0 = 0;
+; 0001 001A //    rx_counter0 = 0;
+; 0001 001B //    rx_buffer_overflow0 = 0;
+; 0001 001C }
+;PCODE: $00000028 VOL: 0
+;PCODE: $00000029 VOL: 0
+;PCODE: $0000002A VOL: 0
+;
+;
+;unsigned char read_serial_timeout_simple(char* buffer, int buffer_size, unsigned long timeout_ms) {
+; 0001 001F unsigned char read_serial_timeout_simple(char* buffer, int buffer_size, unsigned long timeout_ms) {
+;PCODE: $0000002B VOL: 0
+;PCODE: $0000002C VOL: 0
+; 0001 0020     int i = 0;
+; 0001 0021     unsigned long elapsed = 0;
+; 0001 0022 
+; 0001 0023     // »«›— „Õ·Ì —« ’›— „Ìùò‰Ì„
+; 0001 0024     memset(buffer, 0, buffer_size);
+;PCODE: $0000002D VOL: 0
+;PCODE: $0000002E VOL: 0
+;PCODE: $0000002F VOL: 0
+;PCODE: $00000030 VOL: 0
+;PCODE: $00000031 VOL: 0
+;PCODE: $00000032 VOL: 0
+;PCODE: $00000033 VOL: 0
+;PCODE: $00000034 VOL: 0
+;PCODE: $00000035 VOL: 0
+;PCODE: $00000036 VOL: 0
+;PCODE: $00000037 VOL: 0
+;PCODE: $00000038 VOL: 0
+;	*buffer -> Y+12
+;	buffer_size -> Y+10
+;	timeout_ms -> Y+6
+;	i -> R16,R17
+;	elapsed -> Y+2
+;PCODE: $00000039 VOL: 0
+;PCODE: $0000003A VOL: 0
+;PCODE: $0000003B VOL: 0
+;PCODE: $0000003C VOL: 0
+;PCODE: $0000003D VOL: 0
+;PCODE: $0000003E VOL: 0
+;PCODE: $0000003F VOL: 0
+;PCODE: $00000040 VOL: 0
+; 0001 0025 
+; 0001 0026     //  «Ì„ù«Ê   ﬁ—Ì»Ì »— Õ”» Õ·ﬁÂ Ê delay
+; 0001 0027     while (elapsed < timeout_ms && i < buffer_size - 1) {
+;PCODE: $00000041 VOL: 0
+;PCODE: $00000042 VOL: 0
+;PCODE: $00000043 VOL: 0
+;PCODE: $00000044 VOL: 0
+;PCODE: $00000045 VOL: 0
+;PCODE: $00000046 VOL: 0
+;PCODE: $00000047 VOL: 0
+;PCODE: $00000048 VOL: 0
+;PCODE: $00000049 VOL: 0
+;PCODE: $0000004A VOL: 0
+;PCODE: $0000004B VOL: 0
+;PCODE: $0000004C VOL: 0
+;PCODE: $0000004D VOL: 0
+; 0001 0028         // «ê— œ«œÂù«Ì œ— UART ¬„œÂ »«‘œ
+; 0001 0029         while (rx_counter0 > 0 && i < buffer_size - 1) {
+;PCODE: $0000004E VOL: 0
+;PCODE: $0000004F VOL: 0
+;PCODE: $00000050 VOL: 0
+;PCODE: $00000051 VOL: 0
+;PCODE: $00000052 VOL: 0
+;PCODE: $00000053 VOL: 0
+;PCODE: $00000054 VOL: 0
+;PCODE: $00000055 VOL: 0
+;PCODE: $00000056 VOL: 0
+;PCODE: $00000057 VOL: 0
+;PCODE: $00000058 VOL: 0
+;PCODE: $00000059 VOL: 0
+; 0001 002A             char c = getchar();  // ŒÊ«‰œ‰ Ìò ò«—«ò — «“ UART
+; 0001 002B             buffer[i++] = c;
+;PCODE: $0000005A VOL: 0
+;	*buffer -> Y+13
+;	buffer_size -> Y+11
+;	timeout_ms -> Y+7
+;	elapsed -> Y+3
+;	c -> Y+0
+;PCODE: $0000005B VOL: 0
+;PCODE: $0000005C VOL: 0
+;PCODE: $0000005D VOL: 0
+;PCODE: $0000005E VOL: 0
+;PCODE: $0000005F VOL: 0
+;PCODE: $00000060 VOL: 0
+;PCODE: $00000061 VOL: 0
+;PCODE: $00000062 VOL: 0
+;PCODE: $00000063 VOL: 0
+; 0001 002C             buffer[i] = '\0';
+;PCODE: $00000064 VOL: 0
+;PCODE: $00000065 VOL: 0
+;PCODE: $00000066 VOL: 0
+;PCODE: $00000067 VOL: 0
+;PCODE: $00000068 VOL: 0
+; 0001 002D 
+; 0001 002E             // ‰„«Ì‘ “‰œÂ —ÊÌ GLCD
+; 0001 002F             glcd_outtextxy(0, 0, buffer);
+;PCODE: $00000069 VOL: 0
+;PCODE: $0000006A VOL: 0
+;PCODE: $0000006B VOL: 0
+;PCODE: $0000006C VOL: 0
+;PCODE: $0000006D VOL: 0
+;PCODE: $0000006E VOL: 0
+; 0001 0030         }
+;PCODE: $0000006F VOL: 0
+;PCODE: $00000070 VOL: 0
+;PCODE: $00000071 VOL: 0
+; 0001 0031         delay_ms(1);
+;PCODE: $00000072 VOL: 0
+;PCODE: $00000073 VOL: 0
+;PCODE: $00000074 VOL: 0
+; 0001 0032         elapsed++;
+;PCODE: $00000075 VOL: 0
+;PCODE: $00000076 VOL: 0
+;PCODE: $00000077 VOL: 0
+; 0001 0033     }
+;PCODE: $00000078 VOL: 0
+;PCODE: $00000079 VOL: 0
+; 0001 0034 
+; 0001 0035     return (i > 0); // 1 «ê— Õœ«ﬁ· Ìò ò«—«ò — œ—Ì«›  ‘œÂ »«‘œ
+;PCODE: $0000007A VOL: 0
+;PCODE: $0000007B VOL: 0
+;PCODE: $0000007C VOL: 0
+;PCODE: $0000007D VOL: 0
+;PCODE: $0000007E VOL: 0
+;PCODE: $0000007F VOL: 0
+;PCODE: $00000080 VOL: 0
+;PCODE: $00000081 VOL: 0
+;PCODE: $00000082 VOL: 0
+; 0001 0036 }
+;PCODE: $00000083 VOL: 0
+;
+;unsigned char read_until_keyword_keep_all(char* buffer, int buffer_size, unsigned long timeout_ms, const char* keyword)  ...
+; 0001 0038 unsigned char read_until_keyword_keep_all(char* buffer, int buffer_size, unsigned long timeout_ms, const char* keyword) {
+;PCODE: $00000084 VOL: 0
+;PCODE: $00000085 VOL: 0
+; 0001 0039     int i = 0;
+; 0001 003A     unsigned long elapsed = 0;
+; 0001 003B     int found = 0;
+; 0001 003C     int keyword_len = strlen(keyword);
+; 0001 003D 
+; 0001 003E     memset(buffer, 0, buffer_size);
+;PCODE: $00000086 VOL: 0
+;PCODE: $00000087 VOL: 0
+;PCODE: $00000088 VOL: 0
+;PCODE: $00000089 VOL: 0
+;PCODE: $0000008A VOL: 0
+;PCODE: $0000008B VOL: 0
+;PCODE: $0000008C VOL: 0
+;PCODE: $0000008D VOL: 0
+;PCODE: $0000008E VOL: 0
+;PCODE: $0000008F VOL: 0
+;PCODE: $00000090 VOL: 0
+;	*buffer -> Y+18
+;	buffer_size -> Y+16
+;	timeout_ms -> Y+12
+;	*keyword -> Y+10
+;	i -> R16,R17
+;	elapsed -> Y+6
+;	found -> R18,R19
+;	keyword_len -> R20,R21
+;PCODE: $00000091 VOL: 0
+;PCODE: $00000092 VOL: 0
+;PCODE: $00000093 VOL: 0
+;PCODE: $00000094 VOL: 0
+;PCODE: $00000095 VOL: 0
+;PCODE: $00000096 VOL: 0
+;PCODE: $00000097 VOL: 0
+;PCODE: $00000098 VOL: 0
+;PCODE: $00000099 VOL: 0
+;PCODE: $0000009A VOL: 0
+;PCODE: $0000009B VOL: 0
+;PCODE: $0000009C VOL: 0
+;PCODE: $0000009D VOL: 0
+; 0001 003F 
+; 0001 0040     while (elapsed < timeout_ms && i < buffer_size - 1) {
+;PCODE: $0000009E VOL: 0
+;PCODE: $0000009F VOL: 0
+;PCODE: $000000A0 VOL: 0
+;PCODE: $000000A1 VOL: 0
+;PCODE: $000000A2 VOL: 0
+;PCODE: $000000A3 VOL: 0
+;PCODE: $000000A4 VOL: 0
+;PCODE: $000000A5 VOL: 0
+;PCODE: $000000A6 VOL: 0
+;PCODE: $000000A7 VOL: 0
+;PCODE: $000000A8 VOL: 0
+;PCODE: $000000A9 VOL: 0
+;PCODE: $000000AA VOL: 0
+; 0001 0041         while (rx_counter0 > 0 && i < buffer_size - 1) {
+;PCODE: $000000AB VOL: 0
+;PCODE: $000000AC VOL: 0
+;PCODE: $000000AD VOL: 0
+;PCODE: $000000AE VOL: 0
+;PCODE: $000000AF VOL: 0
+;PCODE: $000000B0 VOL: 0
+;PCODE: $000000B1 VOL: 0
+;PCODE: $000000B2 VOL: 0
+;PCODE: $000000B3 VOL: 0
+;PCODE: $000000B4 VOL: 0
+;PCODE: $000000B5 VOL: 0
+;PCODE: $000000B6 VOL: 0
+; 0001 0042             char c = getchar();
+; 0001 0043             buffer[i++] = c;
+;PCODE: $000000B7 VOL: 0
+;	*buffer -> Y+19
+;	buffer_size -> Y+17
+;	timeout_ms -> Y+13
+;	*keyword -> Y+11
+;	elapsed -> Y+7
+;	c -> Y+0
+;PCODE: $000000B8 VOL: 0
+;PCODE: $000000B9 VOL: 0
+;PCODE: $000000BA VOL: 0
+;PCODE: $000000BB VOL: 0
+;PCODE: $000000BC VOL: 0
+;PCODE: $000000BD VOL: 0
+;PCODE: $000000BE VOL: 0
+;PCODE: $000000BF VOL: 0
+;PCODE: $000000C0 VOL: 0
+; 0001 0044             buffer[i] = '\0';
+;PCODE: $000000C1 VOL: 0
+;PCODE: $000000C2 VOL: 0
+;PCODE: $000000C3 VOL: 0
+;PCODE: $000000C4 VOL: 0
+;PCODE: $000000C5 VOL: 0
+; 0001 0045 
+; 0001 0046             // »——”Ì ÊÃÊœ keyword
+; 0001 0047             if (!found && i >= keyword_len) {
+;PCODE: $000000C6 VOL: 0
+;PCODE: $000000C7 VOL: 0
+;PCODE: $000000C8 VOL: 0
+;PCODE: $000000C9 VOL: 0
+;PCODE: $000000CA VOL: 0
+;PCODE: $000000CB VOL: 0
+;PCODE: $000000CC VOL: 0
+;PCODE: $000000CD VOL: 0
+;PCODE: $000000CE VOL: 0
+; 0001 0048                 if (strstr(buffer, keyword) != NULL) {
+;PCODE: $000000CF VOL: 0
+;PCODE: $000000D0 VOL: 0
+;PCODE: $000000D1 VOL: 0
+;PCODE: $000000D2 VOL: 0
+;PCODE: $000000D3 VOL: 0
+;PCODE: $000000D4 VOL: 0
+; 0001 0049                     found = 1;
+;PCODE: $000000D5 VOL: 0
+;PCODE: $000000D6 VOL: 0
+; 0001 004A                     elapsed = 0;   // —Ì”  ò—œ‰  «Ì„— ? «Ã«“Â »œÌ„ «œ«„Â ÃÊ«» Â„ »Ì«œ
+;PCODE: $000000D7 VOL: 0
+;PCODE: $000000D8 VOL: 0
+; 0001 004B                 }
+; 0001 004C             }
+;PCODE: $000000D9 VOL: 0
+; 0001 004D         }
+;PCODE: $000000DA VOL: 0
+;PCODE: $000000DB VOL: 0
+;PCODE: $000000DC VOL: 0
+;PCODE: $000000DD VOL: 0
+; 0001 004E 
+; 0001 004F         if (found && elapsed > 100) {
+;PCODE: $000000DE VOL: 0
+;PCODE: $000000DF VOL: 0
+;PCODE: $000000E0 VOL: 0
+;PCODE: $000000E1 VOL: 0
+;PCODE: $000000E2 VOL: 0
+;PCODE: $000000E3 VOL: 0
+;PCODE: $000000E4 VOL: 0
+;PCODE: $000000E5 VOL: 0
+;PCODE: $000000E6 VOL: 0
+; 0001 0050             // ÕœÊœ 100ms »⁄œ «“ œÌœ‰ ò·Ìœ° »Ì—Ê‰ »—Ê
+; 0001 0051             break;
+;PCODE: $000000E7 VOL: 0
+; 0001 0052         }
+; 0001 0053 
+; 0001 0054         delay_ms(1);
+;PCODE: $000000E8 VOL: 0
+;PCODE: $000000E9 VOL: 0
+;PCODE: $000000EA VOL: 0
+;PCODE: $000000EB VOL: 0
+; 0001 0055         elapsed++;
+;PCODE: $000000EC VOL: 0
+;PCODE: $000000ED VOL: 0
+;PCODE: $000000EE VOL: 0
+; 0001 0056     }
+;PCODE: $000000EF VOL: 0
+;PCODE: $000000F0 VOL: 0
+; 0001 0057 
+; 0001 0058     return (i > 0);
+;PCODE: $000000F1 VOL: 0
+;PCODE: $000000F2 VOL: 0
+;PCODE: $000000F3 VOL: 0
+;PCODE: $000000F4 VOL: 0
+;PCODE: $000000F5 VOL: 0
+;PCODE: $000000F6 VOL: 0
+; 0001 0059 }
+;PCODE: $000000F7 VOL: 0
+;
+;//unsigned char read_serial_response(char* buffer, int buffer_size, int timeout_ms, const char* end_pattern) {
+;//    int i = 0;
+;//    unsigned int elapsed = 0;
+;//
+;//    memset(buffer, 0, buffer_size);
+;//
+;//    while (elapsed < (unsigned)timeout_ms) {
+;//        while (rx_counter0 > 0 && i < buffer_size - 1) {
+;//            buffer[i++] = getchar();
+;//        }
+;//
+;//        // »——”Ì «·êÊÌ Å«Ì«‰ œ«œÂ
+;//        if (end_pattern != NULL && strstr(buffer, end_pattern)) {
+;//            buffer[i] = '\0';
+;//            return 1;
+;//        }
+;//
+;//        if (i >= buffer_size - 1) {
+;//            buffer[i] = '\0';
+;//            return 1;
+;//        }
+;//
+;//        delay_ms(1);
+;//        elapsed++;
+;//    }
+;//
+;//    buffer[i] = '\0';
+;//    return (i > 0);
+;//}
+;
+;//// --- ŒÊ«‰œ‰ Å«”Œ ”—Ì«· »« timeout ---
+;unsigned char read_serial_response(char* buffer, int buffer_size, int timeout_ms, const char* expected_response) {
+; 0001 007A unsigned char read_serial_response(char* buffer, int buffer_size, int timeout_ms, const char* expected_response) {
+;PCODE: $000000F8 VOL: 0
+;PCODE: $000000F9 VOL: 0
+; 0001 007B     int i = 0;
+; 0001 007C     unsigned int elapsed = 0;
+; 0001 007D 
+; 0001 007E     // ?C? ??I? EC?? ?C?E?
+; 0001 007F     memset(buffer, 0, buffer_size);
+;PCODE: $000000FA VOL: 0
+;PCODE: $000000FB VOL: 0
+;	*buffer -> Y+10
+;	buffer_size -> Y+8
+;	timeout_ms -> Y+6
+;	*expected_response -> Y+4
+;	i -> R16,R17
+;	elapsed -> R18,R19
+;PCODE: $000000FC VOL: 0
+;PCODE: $000000FD VOL: 0
+;PCODE: $000000FE VOL: 0
+;PCODE: $000000FF VOL: 0
+;PCODE: $00000100 VOL: 0
+;PCODE: $00000101 VOL: 0
+;PCODE: $00000102 VOL: 0
+;PCODE: $00000103 VOL: 0
+;PCODE: $00000104 VOL: 0
+;PCODE: $00000105 VOL: 0
+; 0001 0080 
+; 0001 0081     while (elapsed < (unsigned)timeout_ms) {
+;PCODE: $00000106 VOL: 0
+;PCODE: $00000107 VOL: 0
+;PCODE: $00000108 VOL: 0
+;PCODE: $00000109 VOL: 0
+; 0001 0082         // ?? EC?? E?C? EC?E??C? I? I?E?? ????? UART ?C EI?C??I
+; 0001 0083         while (rx_counter0 > 0 && i < buffer_size - 1) {
+;PCODE: $0000010A VOL: 0
+;PCODE: $0000010B VOL: 0
+;PCODE: $0000010C VOL: 0
+;PCODE: $0000010D VOL: 0
+;PCODE: $0000010E VOL: 0
+;PCODE: $0000010F VOL: 0
+;PCODE: $00000110 VOL: 0
+;PCODE: $00000111 VOL: 0
+;PCODE: $00000112 VOL: 0
+;PCODE: $00000113 VOL: 0
+;PCODE: $00000114 VOL: 0
+;PCODE: $00000115 VOL: 0
+; 0001 0084             buffer[i++] = getchar();  // getchar C? ????? EC?? ???A?I
+;PCODE: $00000116 VOL: 0
+;PCODE: $00000117 VOL: 0
+;PCODE: $00000118 VOL: 0
+;PCODE: $00000119 VOL: 0
+;PCODE: $0000011A VOL: 0
+;PCODE: $0000011B VOL: 0
+;PCODE: $0000011C VOL: 0
+;PCODE: $0000011D VOL: 0
+;PCODE: $0000011E VOL: 0
+; 0001 0085         }
+;PCODE: $0000011F VOL: 0
+;PCODE: $00000120 VOL: 0
+; 0001 0086         // C?? C?EUC??C? ?C I?I??? ??I E???I??
+; 0001 0087         if (strstr(buffer, expected_response)) {
+;PCODE: $00000121 VOL: 0
+;PCODE: $00000122 VOL: 0
+;PCODE: $00000123 VOL: 0
+;PCODE: $00000124 VOL: 0
+;PCODE: $00000125 VOL: 0
+;PCODE: $00000126 VOL: 0
+; 0001 0088             return 1;
+;PCODE: $00000127 VOL: 0
+;PCODE: $00000128 VOL: 0
+;PCODE: $00000129 VOL: 0
+;PCODE: $0000012A VOL: 0
+; 0001 0089         }
+; 0001 008A         delay_ms(1);
+;PCODE: $0000012B VOL: 0
+;PCODE: $0000012C VOL: 0
+;PCODE: $0000012D VOL: 0
+;PCODE: $0000012E VOL: 0
+; 0001 008B         elapsed++;
+;PCODE: $0000012F VOL: 0
+;PCODE: $00000130 VOL: 0
+; 0001 008C     }
+;PCODE: $00000131 VOL: 0
+;PCODE: $00000132 VOL: 0
+; 0001 008D     // ?? C? ?C?C? EC???C?E ?? ??EC? I??? ?? ???????
+; 0001 008E     return (strstr(buffer, expected_response) != NULL);
+;PCODE: $00000133 VOL: 0
+;PCODE: $00000134 VOL: 0
+;PCODE: $00000135 VOL: 0
+;PCODE: $00000136 VOL: 0
+;PCODE: $00000137 VOL: 0
+;PCODE: $00000138 VOL: 0
+;PCODE: $00000139 VOL: 0
+;PCODE: $0000013A VOL: 0
+;PCODE: $0000013B VOL: 0
+; 0001 008F }
+;PCODE: $0000013C VOL: 0

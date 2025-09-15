@@ -1,0 +1,26 @@
+#include "init_sms.h"
+
+unsigned char init_sms(void)
+{
+    glcd_clear();
+    glcd_outtextxy(0, 0, "Setting SMS Mode...");
+    send_at_command("AT+CMGF=1");
+    delay_ms(1000);
+
+    send_at_command("AT+CNMI=2,2,0,0,0");
+    delay_ms(1000);
+
+    send_at_command("AT+CMGDA=\"DEL ALL\"");
+    delay_ms(2000);
+
+    // ›⁄«· ò—œ‰ „«éÊ· Ê €Ì—›⁄«· ò—œ‰ sleep
+    send_at_command("AT+CFUN=1");    // —Ê‘‰ ò—œ‰ „«éÊ·
+    delay_ms(1000);
+    send_at_command("AT+CSCLK=0");   // €Ì—›⁄«· ò—œ‰ sleep
+    delay_ms(1000);
+
+    glcd_outtextxy(0, 10, "SMS Ready.");
+    delay_ms(2000);
+
+    return 1;
+}

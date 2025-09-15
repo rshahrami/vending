@@ -1,0 +1,103 @@
+;#include "init_sms.h"
+;PCODE: $00000000 VOL: 0
+	#ifndef __SLEEP_DEFINED__
+;PCODE: $00000001 VOL: 0
+	#define __SLEEP_DEFINED__
+;PCODE: $00000002 VOL: 0
+	.EQU __se_bit=0x20
+;PCODE: $00000003 VOL: 0
+	.EQU __sm_mask=0x1C
+;PCODE: $00000004 VOL: 0
+	.EQU __sm_powerdown=0x10
+;PCODE: $00000005 VOL: 0
+	.EQU __sm_powersave=0x18
+;PCODE: $00000006 VOL: 0
+	.EQU __sm_standby=0x14
+;PCODE: $00000007 VOL: 0
+	.EQU __sm_ext_standby=0x1C
+;PCODE: $00000008 VOL: 0
+	.EQU __sm_adc_noise_red=0x08
+;PCODE: $00000009 VOL: 0
+	.SET power_ctrl_reg=mcucr
+;PCODE: $0000000A VOL: 0
+	#endif
+;PCODE: $0000000B VOL: 0
+;PCODE: $0000000C VOL: 0
+;
+;unsigned char init_sms(void)
+; 0004 0004 {
+
+	.CSEG
+;PCODE: $0000000D VOL: 0
+;PCODE: $0000000E VOL: 0
+; 0004 0005     glcd_clear();
+;PCODE: $0000000F VOL: 0
+; 0004 0006     glcd_outtextxy(0, 0, "Setting SMS Mode...");
+;PCODE: $00000010 VOL: 0
+;PCODE: $00000011 VOL: 0
+;PCODE: $00000012 VOL: 0
+;PCODE: $00000013 VOL: 0
+;PCODE: $00000014 VOL: 0
+;PCODE: $00000015 VOL: 0
+;PCODE: $00000016 VOL: 0
+; 0004 0007     send_at_command("AT+CMGF=1");
+;PCODE: $00000017 VOL: 0
+;PCODE: $00000018 VOL: 0
+;PCODE: $00000019 VOL: 0
+; 0004 0008     delay_ms(1000);
+;PCODE: $0000001A VOL: 0
+;PCODE: $0000001B VOL: 0
+; 0004 0009 
+; 0004 000A     send_at_command("AT+CNMI=2,2,0,0,0");
+;PCODE: $0000001C VOL: 0
+;PCODE: $0000001D VOL: 0
+;PCODE: $0000001E VOL: 0
+; 0004 000B     delay_ms(1000);
+;PCODE: $0000001F VOL: 0
+;PCODE: $00000020 VOL: 0
+; 0004 000C 
+; 0004 000D     send_at_command("AT+CMGDA=\"DEL ALL\"");
+;PCODE: $00000021 VOL: 0
+;PCODE: $00000022 VOL: 0
+;PCODE: $00000023 VOL: 0
+; 0004 000E     delay_ms(2000);
+;PCODE: $00000024 VOL: 0
+;PCODE: $00000025 VOL: 0
+; 0004 000F 
+; 0004 0010     // ›⁄«· ò—œ‰ „«éÊ· Ê €Ì—›⁄«· ò—œ‰ sleep
+; 0004 0011     send_at_command("AT+CFUN=1");    // —Ê‘‰ ò—œ‰ „«éÊ·
+;PCODE: $00000026 VOL: 0
+;PCODE: $00000027 VOL: 0
+;PCODE: $00000028 VOL: 0
+; 0004 0012     delay_ms(1000);
+;PCODE: $00000029 VOL: 0
+;PCODE: $0000002A VOL: 0
+; 0004 0013     send_at_command("AT+CSCLK=0");   // €Ì—›⁄«· ò—œ‰ sleep
+;PCODE: $0000002B VOL: 0
+;PCODE: $0000002C VOL: 0
+;PCODE: $0000002D VOL: 0
+; 0004 0014     delay_ms(1000);
+;PCODE: $0000002E VOL: 0
+;PCODE: $0000002F VOL: 0
+; 0004 0015 
+; 0004 0016     glcd_outtextxy(0, 10, "SMS Ready.");
+;PCODE: $00000030 VOL: 0
+;PCODE: $00000031 VOL: 0
+;PCODE: $00000032 VOL: 0
+;PCODE: $00000033 VOL: 0
+;PCODE: $00000034 VOL: 0
+;PCODE: $00000035 VOL: 0
+;PCODE: $00000036 VOL: 0
+; 0004 0017     delay_ms(2000);
+;PCODE: $00000037 VOL: 0
+;PCODE: $00000038 VOL: 0
+; 0004 0018 
+; 0004 0019     return 1;
+;PCODE: $00000039 VOL: 0
+;PCODE: $0000003A VOL: 0
+; 0004 001A }
+;PCODE: $0000003B VOL: 0
+
+	.DSEG
+_0x80003:
+	.BYTE 0x63

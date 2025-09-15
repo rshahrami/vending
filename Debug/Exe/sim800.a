@@ -1,0 +1,96 @@
+;#include "common.h"
+;PCODE: $00000000 VOL: 0
+	#ifndef __SLEEP_DEFINED__
+;PCODE: $00000001 VOL: 0
+	#define __SLEEP_DEFINED__
+;PCODE: $00000002 VOL: 0
+	.EQU __se_bit=0x20
+;PCODE: $00000003 VOL: 0
+	.EQU __sm_mask=0x1C
+;PCODE: $00000004 VOL: 0
+	.EQU __sm_powerdown=0x10
+;PCODE: $00000005 VOL: 0
+	.EQU __sm_powersave=0x18
+;PCODE: $00000006 VOL: 0
+	.EQU __sm_standby=0x14
+;PCODE: $00000007 VOL: 0
+	.EQU __sm_ext_standby=0x1C
+;PCODE: $00000008 VOL: 0
+	.EQU __sm_adc_noise_red=0x08
+;PCODE: $00000009 VOL: 0
+	.SET power_ctrl_reg=mcucr
+;PCODE: $0000000A VOL: 0
+	#endif
+;PCODE: $0000000B VOL: 0
+;PCODE: $0000000C VOL: 0
+;#include <glcd.h>
+;#include <delay.h>
+;#include <string.h>
+;
+;#define BUFFER_SIZE 512
+;
+;char buffer[BUFFER_SIZE];
+;
+;void sim800_restart(void)
+; 0005 000B {
+
+	.CSEG
+;PCODE: $0000000D VOL: 0
+;PCODE: $0000000E VOL: 0
+; 0005 000C     // ›ﬁÿ Ìò»«— »«›— UART —« ’›— „Ìùò‰Ì„
+; 0005 000D     // (‰Â œ— œ«Œ· Õ·ﬁÂ ŒÊ«‰œ‰)
+; 0005 000E     rx_wr_index0 = rx_rd_index0 = 0;
+;PCODE: $0000000F VOL: 0
+;PCODE: $00000010 VOL: 0
+;PCODE: $00000011 VOL: 0
+; 0005 000F     rx_counter0 = 0;
+;PCODE: $00000012 VOL: 0
+;PCODE: $00000013 VOL: 0
+; 0005 0010     rx_buffer_overflow0 = 0;
+;PCODE: $00000014 VOL: 0
+;PCODE: $00000015 VOL: 0
+;PCODE: $00000016 VOL: 0
+; 0005 0011     send_at_command("AT+CSQ\r\n");
+;PCODE: $00000017 VOL: 0
+;PCODE: $00000018 VOL: 0
+;PCODE: $00000019 VOL: 0
+; 0005 0012 
+; 0005 0013     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "CSQ")) {
+;PCODE: $0000001A VOL: 0
+;PCODE: $0000001B VOL: 0
+;PCODE: $0000001C VOL: 0
+;PCODE: $0000001D VOL: 0
+;PCODE: $0000001E VOL: 0
+;PCODE: $0000001F VOL: 0
+;PCODE: $00000020 VOL: 0
+;PCODE: $00000021 VOL: 0
+;PCODE: $00000022 VOL: 0
+;PCODE: $00000023 VOL: 0
+;PCODE: $00000024 VOL: 0
+; 0005 0014         glcd_outtextxy(0, 0, buffer);  // »«Ìœ ò· Œ—ÊÃÌ "+CSQ: 11,0" Ê "OK" ç«Å ‘Êœ
+;PCODE: $00000025 VOL: 0
+;PCODE: $00000026 VOL: 0
+;PCODE: $00000027 VOL: 0
+;PCODE: $00000028 VOL: 0
+;PCODE: $00000029 VOL: 0
+;PCODE: $0000002A VOL: 0
+; 0005 0015         delay_ms(500);
+;PCODE: $0000002B VOL: 0
+;PCODE: $0000002C VOL: 0
+; 0005 0016     }
+; 0005 0017 //    send_at_command("AT+CSQ\r\n");  // œ” Ê— ”«œÂ ç‰œ ŒÿÌ
+; 0005 0018 //    read_serial_timeout_simple(buffer, BUFFER_SIZE, 5000); // ŒÊ«‰œ‰  « 5 À«‰ÌÂ
+; 0005 0019 //
+; 0005 001A //    delay_ms(500);
+; 0005 001B //
+; 0005 001C //    send_at_command("AT+CREG?\r\n"); // œ” Ê— œÊ„
+; 0005 001D //    read_serial_timeout_simple(buffer, BUFFER_SIZE, 5000); // ŒÊ«‰œ‰  « 5 À«‰ÌÂ
+; 0005 001E //    delay_ms(500);
+; 0005 001F }
+;PCODE: $0000002D VOL: 0
+;PCODE: $0000002E VOL: 0
+;PCODE: $0000002F VOL: 0
+
+	.DSEG
+_0xA0003:
+	.BYTE 0xD
