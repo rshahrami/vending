@@ -378,98 +378,6 @@ void process_uart_data(void)
     }
 }
 
-//
-//unsigned char init_GPRS(void) {
-//    char cmd[64], resp[256];
-//    char *p, *end;
-//    int  len;
-//
-//    // ??O ??I? EC?? ????? UART
-//    rx_wr_index0 = rx_rd_index0 = 0;
-//    rx_counter0  = 0;
-//    rx_buffer_overflow0 = 0;
-//
-//    glcd_clear();
-//    glcd_outtextxy(0, 0, "Init GPRS...");
-//
-//    // ?? I?E?? AT ?C?? E?C? C????C?
-//    send_at_command("AT");
-//    if (!read_serial_response(resp, sizeof(resp), 1000, "OK")) {
-//        glcd_outtextxy(0,10,"No AT OK"); delay_ms(2000); return 0;
-//    }
-//
-//    // 1) U?? ??C? ??I? Sleep
-//    send_at_command("AT+CSCLK=0");
-//    if (!read_serial_response(resp, sizeof(resp), 1000, "OK")) {
-//        glcd_outtextxy(0,10,"No CSCLK OK"); delay_ms(2000); return 0;
-//    }
-//
-//    // 2) C?EUC? E?C? EEE OE??
-//    glcd_clear(); glcd_outtextxy(0,0,"Wait Network...");
-//    if (!wait_for_network()) {
-//        glcd_outtextxy(0,10,"Net Fail"); delay_ms(2000); return 0;
-//    }
-//
-//    // 3) C?EUC? E?C? Attach GPRS
-//    glcd_clear(); glcd_outtextxy(0,0,"Wait GPRS...");
-//    if (!wait_for_attach()) {
-//        glcd_outtextxy(0,10,"Attach Fail"); delay_ms(2000); return 0;
-//    }
-//
-//    // 4) E?U?? Contype
-//    send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
-//    if (!read_serial_response(resp, sizeof(resp), 1000, "OK")) {
-//        glcd_outtextxy(0,10,"No Contype"); delay_ms(2000); return 0;
-//    }
-//
-//    // 5) E?U?? APN
-//    sprintf(cmd, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
-//    send_at_command(cmd);
-//    if (!read_serial_response(resp, sizeof(resp), 2000, "OK")) {
-//        glcd_outtextxy(0,10,"No APN OK"); delay_ms(2000); return 0;
-//    }
-//
-//    // 6) EC? ??I? ?C?C? (EC 30 EC??? ?E?)
-//    send_at_command("AT+SAPBR=1,1");
-//    if (!read_serial_response(resp, sizeof(resp), 30000, "OK")) {
-//        glcd_outtextxy(0,10,"SAPBR OPEN FAIL"); delay_ms(2000); return 0;
-//    }
-//
-//    // 7) I?I?C?E IP
-//    glcd_clear(); glcd_outtextxy(0,0,"Fetch IP...");
-//    rx_wr_index0 = rx_rd_index0 = 0; rx_counter0 = 0;
-//    send_at_command("AT+SAPBR=2,1");
-//    if (!read_serial_response(resp, sizeof(resp), 10000, "+SAPBR: 1,1,")) {
-//        glcd_outtextxy(0,10,"No IP Resp"); delay_ms(2000); return 0;
-//    }
-//
-//    // 8) C?EI?C? IP
-//    p = strstr(resp, "+SAPBR: 1,1,");
-//    p += strlen("+SAPBR: 1,1,");
-//    while (*p == ' ') p++;
-//    end = p;
-//    while (*end && *end != '\r' && *end != '\n') end++;
-//    len = end - p;
-//    if (len <= 0) {
-//        glcd_outtextxy(0,10,"No IP Found"); delay_ms(2000); return 0;
-//    }
-//    if (len >= (int)sizeof(ip_address_buffer))
-//        len = sizeof(ip_address_buffer) - 1;
-//    memcpy(ip_address_buffer, p, len);
-//    ip_address_buffer[len] = '\0';
-//
-//    // 9) ??C?O IP
-//    glcd_clear();
-//    glcd_outtextxy(0, 0, "GPRS OK, IP:");
-//    glcd_outtextxy(0,10, ip_address_buffer);
-//    delay_ms(3000);
-//
-//    return 1;
-//}
-
-
-
-
 
 
 void main(void)
@@ -576,24 +484,36 @@ void main(void)
     glcd_outtextxy(0, 0, "Module Init...");
     delay_ms(500);
 
-    sim800_restart();
-    check_sim();
-
-//    
-    if (!check_signal_with_restart()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }  
+//    sim800_restart();
+//    check_sim();
+//    if (!check_signal_with_restart()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }    
+//    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
     
-    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
-    if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
-    gprs_keep_alive();
+    while (1) {
+        sim800_restart();
+        check_sim();
+        check_signal_with_restart();
+        init_sms();
+
+        if (init_GPRS()) {
+            // «ê— „Ê›ﬁ ‘œ° «“ Õ·ﬁÂ Œ«—Ã »‘Â
+            break;
+        } else {
+            // «ê— ‰«„Ê›ﬁ »Êœ
+            glcd_clear();
+            glcd_outtextxy(0, 0, "GPRS Init Failed!");
+            delay_ms(2000);  // ò„Ì ’»— ò‰Â
+            // Ê œÊ»«—Â Õ·ﬁÂ  ò—«— „Ì‘Â
+        }
+    }
 
 
 
     glcd_clear();
-    draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
 
     while (1){
     
-        draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
+        draw_bitmap(0, 0, kode_mahsol_payamak_konid, 128, 64);
         process_uart_data();
         if (sms_received) {
             handle_sms();        // ECE?? ?? header_buffer ? content_buffer ?C ??C?O ???I?I

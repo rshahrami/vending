@@ -1,5 +1,6 @@
 #include "common.h"
 #include <stdlib.h>
+#include <stdint.h>
 #include <glcd.h>
 #include <delay.h>
 #include <string.h>
@@ -13,26 +14,6 @@ char value[16];
 char at_command[30];
 
 char buffer[BUFFER_SIZE];
-
-
-
-//unsigned char sim800_basic_init(void) {
-//    uart_buffer_reset();
-//
-//    send_at_command("ATE0");   // Œ«„Ê‘ ò—œ‰ Echo
-//    delay_ms(100);
-//
-//    uart_buffer_reset();
-//    send_at_command("AT");     // »——”Ì ¬„«œÂ »Êœ‰ „«éÊ·
-//    if (!read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) {
-//        glcd_outtextxy(0, 10, "SIM800 not responding!");
-//        return 0; // Failure
-//    }
-//    glcd_outtextxy(0, 0, buffer);
-//    delay_ms(100);
-//
-//    return 1; // Success
-//}
 
 
 void sim800_restart(void) {
@@ -218,6 +199,7 @@ unsigned char init_sms(void)
 
 unsigned char init_GPRS(void)
 {
+    uint8_t attempts = 0;
     glcd_clear();
     glcd_outtextxy(0, 0, "Connecting to GPRS...");
 
@@ -238,53 +220,68 @@ unsigned char init_GPRS(void)
     
     glcd_clear();
     glcd_outtextxy(0, 0, "Fetching IP...");
-    
-    uart_buffer_reset();
-    
-    send_at_command("AT+SAPBR=2,1"); // Request IP 
-    if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "SAPBR")) {
-        if (extract_field_after_keyword(buffer, "+SAPBR:", 3, value, sizeof(value))) { 
+
+    while (attempts < 3) {
+        uart_buffer_reset();
+        send_at_command("AT+SAPBR=2,1");
+
+        if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "SAPBR")) {
+            // «” Œ—«Ã status (›Ì·œ œÊ„ »⁄œ «“ +SAPBR:)
+            if (extract_field_after_keyword(buffer, "+SAPBR:", 1, value, sizeof(value))) {
+                if (atoi(value) == 1) { 
+                    // «ê— status=1 »Êœ° ›Ì·œ ”Ê„ Â„Ê‰ IP —Ê ‰‘Ê‰ »œÂ
+                    if (extract_field_after_keyword(buffer, "+SAPBR:", 2, value, sizeof(value))) {
+                        glcd_clear();
+                        glcd_outtextxy(0, 0, value);
+                        return 1; // „Ê›ﬁ
+                    }
+                }
+            }
         }
+
+        // «ê— »Â «Ì‰Ã« —”Ìœ Ì⁄‰Ì „Ê›ﬁ ‰»ÊœÂ
+        attempts++;
+        delay_ms(1000);
     }
-    glcd_outtextxy(0, 0, buffer);  // »«Ìœ ò· Œ—ÊÃÌ "+CSQ: 11,0" Ê "OK" ç«Å ‘Êœ 
-    delay_ms(500);
 
-
-
-if (extract_field_after_keyword(buffer, "+CREG:", 1, value, sizeof(value))) {
-
-    // If we reach here, it means getting the IP address failed
-    return 1; // Failure
+    // »⁄œ «“ 3 »«—  ·«‘ ‰«„Ê›ﬁ
+    glcd_clear();
+    glcd_outtextxy(0, 0, "No IP");
+    return 0; // ‰«„Ê›ﬁ
 }
 
 
 void gprs_keep_alive(void) {
     glcd_clear();
-    glcd_outtextxy(0, 0, "Checking Internet...");
+    glcd_outtextxy(0, 0, "Checking Internet...");  
+
+    uart_buffer_reset();
+    send_at_command("AT+HTTPTERM");
+    delay_ms(100);
 
     // --- ‘—Ê⁄ HTTP ---
     uart_buffer_reset();
     send_at_command("AT+HTTPINIT");
-    delay_ms(200);
+    delay_ms(100);
 
     // --- «‰ Œ«» ò«‰ò‘‰ GPRS ---
     uart_buffer_reset();
     send_at_command("AT+HTTPPARA=\"CID\",1");
-    delay_ms(200);
+    delay_ms(100);
 
     // ---  ‰ŸÌ„ URL ---
     uart_buffer_reset();
     send_at_command("AT+HTTPPARA=\"URL\",\"http://www.google.com\"");
-    delay_ms(200);
+    delay_ms(100);
 
     // --- «—”«· œ—ŒÊ«”  GET ---
     uart_buffer_reset();
     send_at_command("AT+HTTPACTION=0"); // 0=GET
-    delay_ms(200); // ’»— »—«Ì Å«”Œ HTTP
+    delay_ms(100); // ’»— »—«Ì Å«”Œ HTTP
 
     // --- »——”Ì Å«”Œ ---
     uart_buffer_reset();
-    if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 10000, "HTTPACTION:")) {
+    if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION:")) {
         // „À«· Œ—ÊÃÌ: +HTTPACTION:0,200,1256
         int status = 0;
         char *p = strchr(buffer, ',');  // «Ê·Ì‰ ò«„«
