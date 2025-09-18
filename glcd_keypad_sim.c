@@ -23,14 +23,18 @@ volatile unsigned long millis_counter = 0;
 const char APN[] = "mcinet";
 
 unsigned long last_time = 0;
-
+int device_id = 1;
 
 #define glcd_pixel(x, y, color) glcd_setpixel(x, y)
 #define read_flash_byte(p) (*(p))
 
+//#define BUFFER_SIZE 512
 #define HTTP_TIMEOUT_MS 5000
 
 char ip_address_buffer[16];
+
+char value[16];
+char buffer[BUFFER_SIZE];
 
 volatile bit sms_received = 0;
 
@@ -159,12 +163,11 @@ unsigned long millis(void)
 
 
 
-
-unsigned char send_json_post(const char* base_url, const char* phone_number) {
+///////////////////////////////////////////////////////////////////////////////
+unsigned char send_data(const char* base_url, const char* phone_number, int product_id, int device_id) {
     // C??C? ?EU???C (C89)
-    char cmd[256];
-    char response[256];
-    char full_url[256];
+    char cmd[100];
+    char full_url[255];
     char *action_ptr;
     int method = 0, status_code = 0, data_len = 0;
 
@@ -172,83 +175,140 @@ unsigned char send_json_post(const char* base_url, const char* phone_number) {
     glcd_clear();
     draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
 
-    // 0) ??O ??I? EC?? UART
-    rx_wr_index0 = rx_rd_index0 = 0;
-    rx_counter0 = 0;
-    rx_buffer_overflow0 = 0;
+    uart_buffer_reset();
+    send_at_command("AT+HTTPTERM");
+    delay_ms(100);
 
-    // 1) Initialize HTTP service
+    // --- ‘—Ê⁄ HTTP ---
+    uart_buffer_reset();
     send_at_command("AT+HTTPINIT");
-    if (!read_serial_response(response, sizeof(response), 2000, "OK")) {
-        // C?? I??E ?C? ???I? terminate ? I???
-        send_at_command("AT+HTTPTERM");
-        read_serial_response(response, sizeof(response), 1000, "OK");
-        return 0;
-    }
+    delay_ms(100);
 
-    // 2) Set CID to bearer profile 1
+    // --- «‰ Œ«» ò«‰ò‘‰ GPRS ---
+    uart_buffer_reset();
     send_at_command("AT+HTTPPARA=\"CID\",1");
-    if (!read_serial_response(response, sizeof(response), 1000, "OK")) {
-        send_at_command("AT+HTTPTERM");
-        read_serial_response(response, sizeof(response), 1000, "OK");
-        return 0;
-    }
-
-    // 3) Build the full URL with query parameter
-    sprintf(full_url, "%s?phone_number=%s", base_url, phone_number);
-
-    // 4) Set the target URL
+    delay_ms(100);
+    
+    // ---  ‰ŸÌ„ URL ---
+    uart_buffer_reset();
+    snprintf(full_url, sizeof(full_url), 
+             "%s?phone_number=%s&device_id=%d&product_id=%d", 
+             base_url, phone_number, device_id, product_id);
+             
     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
     send_at_command(cmd);
-    if (!read_serial_response(response, sizeof(response), 2000, "OK")) {
-        send_at_command("AT+HTTPTERM");
-        read_serial_response(response, sizeof(response), 1000, "OK");
-        return 0;
+    delay_ms(100); 
+
+    glcd_clear();
+    glcd_outtextxy(0,10,full_url);
+    delay_ms(500);   
+
+    // --- «—”«· œ—ŒÊ«”  GET ---
+    uart_buffer_reset();
+    send_at_command("AT+HTTPACTION=1"); // 0=GET
+    delay_ms(100); // ’»— »—«Ì Å«”Œ HTTP
+    
+    // --- »——”Ì Å«”Œ ---
+    uart_buffer_reset();
+    if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION")) {
+        // „À«· Œ—ÊÃÌ: +HTTPACTION:0,200,1256
+//        glcd_clear();
+//        glcd_outtextxy(0,10,value);
+//        delay_ms(500);
+        if (extract_field_after_keyword(buffer, "+HTTPACTION:", 1, value, sizeof(value))) {
+            glcd_clear();
+            glcd_outtextxy(0,10,value);
+            delay_ms(500);        
+        } 
     }
 
-    // 5) Start POST action
-    // ??O EC?? ?E? C? HTTPACTION
-    rx_wr_index0 = rx_rd_index0 = 0;
-    rx_counter0 = 0;
-    send_at_command("AT+HTTPACTION=1");
-    if (!read_serial_response(response, sizeof(response), HTTP_TIMEOUT_MS, "+HTTPACTION:")) {
-        glcd_clear();
-        glcd_outtextxy(0, 0, "No Action Resp");
-        delay_ms(500);
-        // terminate ? I???
-        send_at_command("AT+HTTPTERM");
-        read_serial_response(response, sizeof(response), 1000, "OK");
-        return 0;
-    }
-
-    // 6) Parse status code from response
-    action_ptr = strstr(response, "+HTTPACTION:");
-    if (action_ptr == NULL ||
-        sscanf(action_ptr, "+HTTPACTION: %d,%d,%d", &method, &status_code, &data_len) != 3) {
-        send_at_command("AT+HTTPTERM");
-        read_serial_response(response, sizeof(response), 1000, "OK");
-        return 0;
-    }
-
-    // 7) Read server response if needed
-    send_at_command("AT+HTTPREAD");
-    // ??O EC?? ?E? C? HTTPREAD
-    rx_wr_index0 = rx_rd_index0 = 0;
-    rx_counter0 = 0;
-    read_serial_response(response, sizeof(response), 3000, "OK");
-
-    // 8) Terminate HTTP service
+//
+//    // 8) Terminate HTTP service
+    uart_buffer_reset();
     send_at_command("AT+HTTPTERM");
-    read_serial_response(response, sizeof(response), 1000, "OK");
+    delay_ms(100);
 
     // 9) ?E???
-    return (status_code == 200) ? 1 : 0;
+    return (atoi(value) == 200) ? 1 : 0;
+}
+/////////////////////////////////////////////////////////////////////////////////
+
+
+
+unsigned char get_data(const char* base_url, const char* phone_number) {
+    // C??C? ?EU???C (C89)
+    char cmd[100];
+    char full_url[255];
+    char *action_ptr;
+    int method = 0, status_code = 0, data_len = 0;
+
+    // ??C?O ??C? ??? GLCD
+    glcd_clear();
+    draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
+
+    uart_buffer_reset();
+    send_at_command("AT+HTTPTERM");
+    delay_ms(100);
+
+    // --- ‘—Ê⁄ HTTP ---
+    uart_buffer_reset();
+    send_at_command("AT+HTTPINIT");
+    delay_ms(100);
+
+    // --- «‰ Œ«» ò«‰ò‘‰ GPRS ---
+    uart_buffer_reset();
+    send_at_command("AT+HTTPPARA=\"CID\",1");
+    delay_ms(100);
+    
+    // ---  ‰ŸÌ„ URL ---
+    uart_buffer_reset();
+    sprintf(full_url, "%s?phone_number=%s", base_url, phone_number);
+    snprintf(full_url, sizeof(full_url), 
+             "%s?phone_number=%s", 
+             base_url, phone_number);
+    sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
+    send_at_command(cmd);
+    delay_ms(100);    
+
+
+    glcd_clear();
+    glcd_outtextxy(0,10,full_url);
+    delay_ms(500);  
+
+
+    // --- «—”«· œ—ŒÊ«”  GET ---
+    uart_buffer_reset();
+    send_at_command("AT+HTTPACTION=0"); // 0=GET
+    delay_ms(100); // ’»— »—«Ì Å«”Œ HTTP
+    
+    // --- »——”Ì Å«”Œ ---
+    uart_buffer_reset();
+    if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION")) {
+        // „À«· Œ—ÊÃÌ: +HTTPACTION:0,200,1256
+//        glcd_clear();
+//        glcd_outtextxy(0,10,value);
+//        delay_ms(500);
+        if (extract_field_after_keyword(buffer, "+HTTPACTION:", 1, value, sizeof(value))) {
+            glcd_clear();
+            glcd_outtextxy(0,10,value);
+            delay_ms(500);        
+        } 
+    }
+
+//
+//    // 8) Terminate HTTP service
+    uart_buffer_reset();
+    send_at_command("AT+HTTPTERM");
+    delay_ms(100);
+
+    // 9) ?E???
+    return (atoi(value) == 200) ? 1 : 0;
 }
 
 
 void handle_sms(void)
 {
-    const char* server_url = "http://193.5.44.191/home/post/";
+    const char* server_url_post = "http://185.8.173.17:8000/home/post/";
     int product_id = 0;
     int timeout_counter = 0;
     char key_pressed;
@@ -262,16 +322,17 @@ void handle_sms(void)
     glcd_outtextxy(0,0,"SMS from:");
     glcd_outtextxy(0,10,phone);
     glcd_outtextxy(0,20,content_buffer);
-    delay_ms(2000);
+    delay_ms(200);
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-
-//    if (content_buffer == '1' || content_buffer == '2' || content_buffer == '3')
     if (strcmp(content_buffer, "1") == 0 || strcmp(content_buffer, "2") == 0 || strcmp(content_buffer, "3") == 0)
-    {
+    {   
+//        product_id = 1;
+//        device_id = 1;
+//        send_data(server_url_post, phone, product_id, device_id);
 
-        if (send_json_post(server_url, phone))
+        if (get_data(server_url_post, phone))
         {
             glcd_clear();                            
             
@@ -301,6 +362,7 @@ void handle_sms(void)
                     glcd_clear(); 
                     product_id = content_buffer[0] - '0';
                     activate_motor(product_id);
+                    send_data(server_url_post, phone, product_id, device_id);
                 }
                 else
                 {
@@ -314,7 +376,6 @@ void handle_sms(void)
         else
         {
             glcd_clear();
-//                        glcd_outtextxy(0, 25, "You are not authorized!");
             draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
             delay_ms(300);
         }

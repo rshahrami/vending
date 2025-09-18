@@ -1,70 +1,181 @@
-#include "common.h"
 #include <stdlib.h>
 #include <stdint.h>
 #include <glcd.h>
 #include <delay.h>
 #include <string.h>
+#include "common.h"
+#include "sim800.h"
 
-#define BUFFER_SIZE 512
+//#define BUFFER_SIZE 512
 #define MAX_RETRY   3   // Õœ«òÀ—  ⁄œ«œ  ·«‘
 
 
 
-char value[16];
-char at_command[30];
+//char value[16];
 
-char buffer[BUFFER_SIZE];
+char at_command[30];
+char sim_number[15];
+
+//char buffer[BUFFER_SIZE];
+uint8_t attempts = 0;
+
 
 
 void sim800_restart(void) {
-
     glcd_clear();
     glcd_outtextxy(0, 0, "Restarting SIM800...");
 
-    // --- —Ì”  »«›— UART ---
-    uart_buffer_reset(); 
-    
-    send_at_command("AT+SAPBR=2,1"); 
-    delay_ms(100);
-
-
-    send_at_command("AT+CGATT=0"); 
-    delay_ms(100);
-    
-    
-    send_at_command("AT+CGATT=1"); 
-    delay_ms(100);
-
-    // --- ‰—„ù«›“«— —Ì”  „«éÊ· («Œ Ì«—Ì) ---                      // “„«‰ »—«Ì —Ìù«” «— 
-
-    send_at_command("AT+CRESET");
-    delay_ms(500);
-
-    send_at_command("AT+CFUN=0");  // —Ìù«” «—  „«éÊ·
-    delay_ms(500);                       // “„«‰ »—«Ì —Ìù«” «— 
-    
-  
-    send_at_command("AT+CFUN=1");  // —Ìù«” «—  „«éÊ·
-    delay_ms(500);                       // “„«‰ »—«Ì —Ìù«” «— 
-
-
-//    send_at_command("AT+CFUN=1,1");  // —Ìù«” «—  „«éÊ·
-//    delay_ms(2000); 
-
-    // --- Œ«„Ê‘ ò—œ‰ Echo ---
-    uart_buffer_reset();
-    send_at_command("ATE0");
-    delay_ms(100);
-
-    // --- »——”Ì ¬„«œÂ »Êœ‰ „«éÊ· ---
-    uart_buffer_reset();
-    send_at_command("AT");
-    if (!read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) {
-        glcd_outtextxy(0, 10, "SIM800 not responding!");
-        return;  // ‘ò”  œ— —«Âù«‰œ«“Ì
+    // --- 1) »” ‰ HTTP («ê— ›⁄«· «” ) ---
+    while (1) {
+        uart_buffer_reset();
+        send_at_command("AT+HTTPTERM");
+        // «ê— OK Ì« ERROR ¬„œ° œÌê— «œ«„Â „ÌùœÂÌ„ («ê— HTTP »” Â ‰»Êœ ERROR „Ìù¬Ìœ)
+        if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
+        if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 1000, "ERROR")) break;
+        glcd_outtextxy(0, 10, "Waiting HTTPTERM...");
+        delay_ms(500);
     }
-    
+
+    // --- 2) »” ‰ SAPBR (bearer) ---
+    while (1) {
+        uart_buffer_reset();
+        send_at_command("AT+SAPBR=0,1");   // close bearer
+        if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 3000, "OK")) break;
+        glcd_outtextxy(0, 10, "Waiting SAPBR=0,1...");
+        delay_ms(500);
+    }
+
+    // --- 3) çò ò‰ òÂ SAPBR »” Â ‘œÂ («Œ Ì«—Ì «„« „›Ìœ) ---
+    {
+        int ok = 0;
+        while (!ok) {
+            uart_buffer_reset();
+            send_at_command("AT+SAPBR=2,1"); // query
+            if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "SAPBR")) {
+                // «‰ Ÿ«— œ«—Ì„ ›Ì·œÌ „À· +SAPBR: 1,3,"0.0.0.0" Ì« +SAPBR: 1,0,"0.0.0.0"
+                // «ê— IP 0.0.0.0 Ì« status != 1 »«‘Â Ì⁄‰Ì »” Â «” 
+                if (strstr(buffer, "0.0.0.0") || strstr(buffer, ",0,") || strstr(buffer, ",3,")) {
+                    ok = 1; // œ— ⁄„· »” Â Ì« œ— Õ«·  €Ì— connected «” 
+                    break;
+                }
+            }
+            // «ê— ÂÌç Å«”ŒÌ ‰ÌÊ„œ Ì« Â‰Ê“ Connected «”  „‰ Ÿ— Ê œÊ»«—Â  ·«‘ ò‰
+            glcd_outtextxy(0, 10, "Checking SAPBR closed...");
+            delay_ms(500);
+        }
+    }
+
+    // --- 4) detach «“ GPRS ---
+    while (1) {
+        uart_buffer_reset();
+        send_at_command("AT+CGATT=0");     // detach
+        if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 3000, "OK")) break;
+        glcd_outtextxy(0, 10, "Waiting CGATT=0...");
+        delay_ms(500);
+    }
+
+    // --- 5) —Ì”  ò«„· ‰—„ù«›“«—Ì (CFUN=1,1) Ê ”Å” ’»—  « „«éÊ· »«·« »Ì«Ìœ ---
+    // «Ì‰ œ” Ê— „„ò‰ «”  »«⁄À —Ì»Ê  ‘Êœ∫ ¬‰ —« »›—”  Ê ”Å”  « “„«‰Ì òÂ „«éÊ· »Â AT Å«”Œ œÂœ ’»— ò‰.
+    while (1) {
+        uart_buffer_reset();
+        send_at_command("AT+CFUN=1,1");
+        // „„ò‰ «”  OK »«“ê—œœ Ì« ‰Â∫ œ— Â— ’Ê—  »⁄œ «“ “œ‰ —Ì” ° „‰ Ÿ— »«·« ¬„œ‰ „«éÊ· „Ìù‘ÊÌ„.
+        // «» œ« «ê— OK ¬„œ «“ ¬‰ ⁄»Ê— ò‰° ”Å” „‰ Ÿ— "AT" Å«”Œ œÂÌ„.
+        read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK"); // (»ÌùŒÿ— «ê— ‰Ì«Ìœ)
+        // «ò‰Ê‰ „‰ Ÿ— ‘Ê  « „œ«Ê„« »Â AT Å«”Œ œÂœ
+        glcd_outtextxy(0, 10, "Rebooting, wait for AT...");
+        while (1) {
+            uart_buffer_reset();
+            send_at_command("AT");
+            if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) {
+                // „«éÊ· »«·« ¬„œÂ Ê ¬„«œÂ «” 
+                goto after_reboot;
+            }
+            // «ê— ŒÊ«” Ì „Ì  Ê«‰Ì «Ì‰Ã« ÅÌ«„ Ê÷⁄Ì  Ê delay ÿÊ·«‰Ìù — »–«—Ì
+            delay_ms(500);
+        }
+    }
+after_reboot:
+
+    // --- 6) Œ«„Ê‘ ò—œ‰ Echo ---
+    while (1) {
+        uart_buffer_reset();
+        send_at_command("ATE0");
+        if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
+        glcd_outtextxy(0, 10, "Waiting ATE0...");
+        delay_ms(500);
+    }
+
+    // --- 7)  ”  ‰Â«ÌÌ „«éÊ· ---
+    while (1) {
+        uart_buffer_reset();
+        send_at_command("AT");
+        if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
+        glcd_outtextxy(0, 10, "Final AT check...");
+        delay_ms(500);
+    }
+
+    glcd_outtextxy(0, 20, "Restart Done!");
 }
+
+
+
+
+
+
+//void sim800_restart(void) {
+//
+//    glcd_clear();
+//    glcd_outtextxy(0, 0, "Restarting SIM800...");
+//
+//    // --- —Ì”  »«›— UART ---
+//    send_at_command("AT+HTTPTERM");
+//    delay_ms(50); 
+//
+//    send_at_command("AT+SAPBR=0,1");   // »” ‰ ò«‰ò‘‰ GPRS
+//    delay_ms(50);
+//    
+//    send_at_command("AT+SAPBR=2,1"); 
+//    delay_ms(50);
+//
+//
+//    send_at_command("AT+CGATT=0"); 
+//    delay_ms(50);
+//    
+////    
+////    send_at_command("AT+CGATT=1"); 
+////    delay_ms(50);
+//
+//    // --- ‰—„ù«›“«— —Ì”  „«éÊ· («Œ Ì«—Ì) ---                      // “„«‰ »—«Ì —Ìù«” «— 
+//
+////    send_at_command("AT+CRESET");
+////    delay_ms(100);
+//
+//    send_at_command("AT+CFUN=0");  // —Ìù«” «—  „«éÊ·
+//    delay_ms(100);                       // “„«‰ »—«Ì —Ìù«” «— 
+//    
+//  
+//    send_at_command("AT+CFUN=1");  // —Ìù«” «—  „«éÊ·
+//    delay_ms(100);                       // “„«‰ »—«Ì —Ìù«” «— 
+//
+//
+////    send_at_command("AT+CFUN=1,1");  // —Ìù«” «—  „«éÊ·
+////    delay_ms(2000); 
+//
+//    // --- Œ«„Ê‘ ò—œ‰ Echo ---
+//    uart_buffer_reset();
+//    send_at_command("ATE0");
+//    delay_ms(50);
+//
+//    // --- »——”Ì ¬„«œÂ »Êœ‰ „«éÊ· ---
+//    uart_buffer_reset();
+//    send_at_command("AT");
+//    if (!read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) {
+//        glcd_outtextxy(0, 10, "SIM800 not responding!");
+//        return;  // ‘ò”  œ— —«Âù«‰œ«“Ì
+//    }
+//    
+//}
 
 
 unsigned char check_sim(void) {
@@ -76,12 +187,12 @@ unsigned char check_sim(void) {
     uart_buffer_reset();
     send_at_command("AT+CPIN?");
     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "CPIN")) {
-        glcd_outtextxy(0, 0, buffer); 
-        delay_ms(1000); 
-//        if (extract_field_after_keyword(buffer, "+CPIN:", value, sizeof(value))) {
-//            glcd_outtextxy(0, 16, value);  // ›ﬁÿ READY Ì« PIN
-//        }   
-//        delay_ms(1000);
+//        glcd_outtextxy(0, 0, buffer); 
+//        delay_ms(5000); 
+        if (extract_field_after_keyword(buffer, "+CPIN:", 0, value, sizeof(value))) {
+            glcd_outtextxy(0, 16, value);  // ›ﬁÿ READY Ì« PIN
+        }   
+        delay_ms(100);
     } 
     
 //    uart_buffer_reset();
@@ -104,9 +215,9 @@ unsigned char check_sim(void) {
             
             if (extract_field_after_keyword(buffer, "+CREG:", 1, value, sizeof(value))) { 
                 glcd_outtextxy(0, 10, value); 
-                delay_ms(1000);
-                stat = atoi(value);
-                if (stat == 1) break;
+                delay_ms(100);
+//                stat = atoi(value);
+                if (atoi(value) == 1) break;
             }
         }
         glcd_outtextxy(0, 15, "Waiting for network...");
@@ -114,7 +225,21 @@ unsigned char check_sim(void) {
     } while (1);
 
     glcd_outtextxy(0, 20, "Network OK!");
-    delay_ms(500);
+    delay_ms(100);
+
+//    uart_buffer_reset();
+//    send_at_command("AT+CUSD=1,\"*733*2#\"");
+//    if (read_until_keyword_keep_all(buffer, sizeof(buffer), 3000, "CUSD")) {
+//        glcd_clear();
+//        glcd_outtextxy(0, 0, buffer);  // ‘„«—Â —ÊÌ GLCD ‰„«Ì‘ œ«œÂ „Ìù‘Êœ  
+//        delay_ms(1000);        // «” Œ—«Ã ‘„«—Â  ·›‰ 
+//        
+//        if (extract_field_after_keyword(buffer, "+CUSD:", 1, sim_number, sizeof(sim_number))){
+//            glcd_clear();
+//            glcd_outtextxy(0, 0, sim_number);  // ‘„«—Â —ÊÌ GLCD ‰„«Ì‘ œ«œÂ „Ìù‘Êœ  
+//            delay_ms(1000); 
+//        }
+//    }
 
     return 1;  // „Ê›ﬁÌ 
 
@@ -128,13 +253,14 @@ unsigned char check_signal_quality(void) {
     send_at_command("AT+CSQ");
 
     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "CSQ")) {
-        glcd_clear();
-        glcd_outtextxy(0, 0, buffer);  
+//        glcd_clear();
+//        glcd_outtextxy(0, 0, buffer);  
 
         if (extract_field_after_keyword(buffer, "+CSQ:", 0, value, sizeof(value))) {
 //            int csq = atoi(value);  //  »œÌ· —‘ Â »Â ⁄œœ
-//            glcd_outtextxy(0, 16, value);  // ‰„«Ì‘ „ﬁœ«— ”Ìê‰«· 
-//            delay_ms(200);
+            glcd_clear();
+            glcd_outtextxy(0, 16, value);  // ‰„«Ì‘ „ﬁœ«— ”Ìê‰«· 
+            delay_ms(500);
             //stat = atoi(value);
             if (atoi(value) < 5) {
                 // ”Ìê‰«· ÷⁄Ì› => ‰Ì«“ »Â —Ì” 
@@ -199,23 +325,23 @@ unsigned char init_sms(void)
 
 unsigned char init_GPRS(void)
 {
-    uint8_t attempts = 0;
+    
     glcd_clear();
     glcd_outtextxy(0, 0, "Connecting to GPRS...");
 
     send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
-    delay_ms(150);
+    delay_ms(100);
 
     sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
     send_at_command(at_command);
-    delay_ms(150);
+    delay_ms(100);
     
     uart_buffer_reset();
     
     send_at_command("AT+SAPBR=1,1");
-    if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 10000, "OK")) {
+    if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "OK")) {
         glcd_outtextxy(0, 0, buffer);  // »«Ìœ ò· Œ—ÊÃÌ "+CSQ: 11,0" Ê "OK" ç«Å ‘Êœ   
-        delay_ms(500);
+        delay_ms(100);
     }
     
     glcd_clear();
@@ -233,6 +359,7 @@ unsigned char init_GPRS(void)
                     if (extract_field_after_keyword(buffer, "+SAPBR:", 2, value, sizeof(value))) {
                         glcd_clear();
                         glcd_outtextxy(0, 0, value);
+                        delay_ms(300);
                         return 1; // „Ê›ﬁ
                     }
                 }
@@ -241,7 +368,7 @@ unsigned char init_GPRS(void)
 
         // «ê— »Â «Ì‰Ã« —”Ìœ Ì⁄‰Ì „Ê›ﬁ ‰»ÊœÂ
         attempts++;
-        delay_ms(1000);
+        delay_ms(100);
     }
 
     // »⁄œ «“ 3 »«—  ·«‘ ‰«„Ê›ﬁ
@@ -283,18 +410,22 @@ void gprs_keep_alive(void) {
     uart_buffer_reset();
     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION:")) {
         // „À«· Œ—ÊÃÌ: +HTTPACTION:0,200,1256
-        int status = 0;
-        char *p = strchr(buffer, ',');  // «Ê·Ì‰ ò«„«
-        if (p) {
-            status = atoi(p + 1);      // ⁄œœ »⁄œ «“ «Ê·Ì‰ ò«„« = òœ Ê÷⁄Ì  HTTP
-        }
+//        int status = 0;
 
-        if (status == 200) {
-            glcd_outtextxy(0, 16, "Internet OK");
+        // ›Ì·œ œÊ„ »⁄œ «“ +HTTPACTION: Â„«‰ òœ Ê÷⁄Ì  HTTP «” 
+        if (extract_field_after_keyword(buffer, "+HTTPACTION", 1, value, sizeof(value))) {
+//            status = atoi(value);  //  »œÌ· —‘ Â »Â ⁄œœ
+
+            if (atoi(value) == 200) {
+                glcd_outtextxy(0, 16, "Internet OK");
+            } else {
+                glcd_outtextxy(0, 16, "Internet Failed");
+            }
         } else {
-            glcd_outtextxy(0, 16, "Internet Failed");
+            glcd_outtextxy(0, 16, "Parsing Error!");
         }
-    } else {
+    } 
+    else {
         glcd_outtextxy(0, 16, "No response!");
     }
 

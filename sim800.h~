@@ -7,8 +7,14 @@ unsigned char check_signal_quality(void);
 unsigned char check_signal_with_restart();
 
 unsigned char check_sim(void);
+void gprs_keep_alive(void);
+
 void sim800_restart(void);
 unsigned char init_sms(void);
 unsigned char init_GPRS(void);
+
+extern char value[16];
+extern char buffer[BUFFER_SIZE];
+extern BUFFER_SIZE;
 
 #endif

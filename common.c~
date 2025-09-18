@@ -116,6 +116,8 @@ int extract_value_after_keyword(const char* input, const char* keyword, char* ou
     return 0;  // íÏÇ äÔÏ
 }
 
+
+
 int extract_field_after_keyword(const char* input, const char* keyword, int field_index, char* out_value, int out_size)
 {
     int current_field = 0;
@@ -126,8 +128,6 @@ int extract_field_after_keyword(const char* input, const char* keyword, int fiel
 
     p += strlen(keyword);      // ÈÑæ ÈÚÏ ÇÒ ˜áíÏæÇå
     while (*p == ' ' || *p == '\t') p++; // ÑÏ ˜ÑÏä İÇÕáååÇ
-
-
 
     while (*p && current_field <= field_index)
     {

@@ -4,6 +4,8 @@
 #include <mega64a.h>
 #include <stdio.h>
 
+#define BUFFER_SIZE 256
+
 // --- ÊæÇÈÚ UART / AT ---
 void send_at_command(char *command);
 void uart_flush0(void);

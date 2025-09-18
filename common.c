@@ -117,7 +117,6 @@ int extract_value_after_keyword(const char* input, const char* keyword, char* ou
 }
 
 
-
 int extract_field_after_keyword(const char* input, const char* keyword, int field_index, char* out_value, int out_size)
 {
     int current_field = 0;
@@ -127,13 +126,15 @@ int extract_field_after_keyword(const char* input, const char* keyword, int fiel
     if (!p) return 0; // ˜áíÏæÇå íÏÇ äÔÏ
 
     p += strlen(keyword);      // ÈÑæ ÈÚÏ ÇÒ ˜áíÏæÇå
-    while (*p == ' ' || *p == '\t') p++; // ÑÏ ˜ÑÏä İÇÕáååÇ
+
+    // ÑÏ ˜ÑÏä İÇÕáååÇ æ ÊÈåÇ ŞÈá ÇÒ Çæáíä İíáÏ
+    while (*p == ' ' || *p == '\t') p++;
 
     while (*p && current_field <= field_index)
     {
         if (current_field == field_index)
         {
-            // ˜í ˜ÑÏä ãŞÏÇÑ İÚáí ÊÇ ˜ÇãÇ íÇ CRLF íÇ ÇÓíÓ
+            // ˜í ˜ÑÏä ãŞÏÇÑ İÚáí ÊÇ ˜ÇãÇ¡ CR, LF íÇ space
             while (*p && *p != ',' && *p != '\r' && *p != '\n' && i < out_size - 1)
             {
                 out_value[i++] = *p++;
@@ -142,14 +143,50 @@ int extract_field_after_keyword(const char* input, const char* keyword, int fiel
             return 1; // ãæİŞ
         }
 
-        // ÑİÊä Èå ˜ÇãÇí ÈÚÏí
+        // ÑİÊä Èå ˜ÇãÇí ÈÚÏí æ ÑÏ ˜ÑÏä İÇÕáååÇí ÇÖÇİí
         while (*p && *p != ',') p++;
-        if (*p == ',') p++; // ÑÏ ˜ÑÏä ˜ÇãÇ
+        if (*p == ',') p++;  // ÑÏ ˜ÑÏä ˜ÇãÇ
+        while (*p == ' ' || *p == '\t') p++; // ÑÏ ˜ÑÏä İÇÕáå ÈÚÏ ÇÒ ˜ÇãÇ
         current_field++;
     }
 
     return 0; // İíáÏ ãæÑÏäÙÑ íÏÇ äÔÏ
 }
+
+
+//
+//int extract_field_after_keyword(const char* input, const char* keyword, int field_index, char* out_value, int out_size)
+//{
+//    int current_field = 0;
+//    int i = 0;
+//    const char* p = strstr(input, keyword);
+//    
+//    if (!p) return 0; // ˜áíÏæÇå íÏÇ äÔÏ
+//
+//    p += strlen(keyword);      // ÈÑæ ÈÚÏ ÇÒ ˜áíÏæÇå
+//    while (*p == ' ' || *p == '\t') p++; // ÑÏ ˜ÑÏä İÇÕáååÇ
+//
+//    while (*p && current_field <= field_index)
+//    {
+//        if (current_field == field_index)
+//        {
+//            // ˜í ˜ÑÏä ãŞÏÇÑ İÚáí ÊÇ ˜ÇãÇ íÇ CRLF íÇ ÇÓíÓ
+//            while (*p && *p != ',' && *p != '\r' && *p != '\n' && i < out_size - 1)
+//            {
+//                out_value[i++] = *p++;
+//            }
+//            out_value[i] = '\0';
+//            return 1; // ãæİŞ
+//        }
+//
+//        // ÑİÊä Èå ˜ÇãÇí ÈÚÏí
+//        while (*p && *p != ',') p++;
+//        if (*p == ',') p++; // ÑÏ ˜ÑÏä ˜ÇãÇ
+//        current_field++;
+//    }
+//
+//    return 0; // İíáÏ ãæÑÏäÙÑ íÏÇ äÔÏ
+//}
 
 
 
