@@ -174,23 +174,23 @@ unsigned char init_sms(void)
     glcd_outtextxy(0, 0, "Setting SMS Mode...");        
     
     send_at_command("AT+CFUN=1");
-    delay_ms(500);
+    delay_ms(50);
 
     send_at_command("AT+CSCLK=0");
-    delay_ms(200);
+    delay_ms(50);
 
     //  ‰ŸÌ„ SMS
     send_at_command("AT+CMGF=1");
-    delay_ms(200);
+    delay_ms(50);
 
     send_at_command("AT+CNMI=2,2,0,0,0");
-    delay_ms(200);
+    delay_ms(50);
 
     send_at_command("AT+CMGDA=\"DEL ALL\"");
-    delay_ms(300);
+    delay_ms(50);
 
     glcd_outtextxy(0, 10, "SMS Ready.");
-    delay_ms(300);
+    delay_ms(50);
 
     return 1;
 }

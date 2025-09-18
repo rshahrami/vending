@@ -267,7 +267,8 @@ void handle_sms(void)
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    if (content_buffer == '1' || content_buffer == '2' || content_buffer == '3')
+//    if (content_buffer == '1' || content_buffer == '2' || content_buffer == '3')
+    if (strcmp(content_buffer, "1") == 0 || strcmp(content_buffer, "2") == 0 || strcmp(content_buffer, "3") == 0)
     {
 
         if (send_json_post(server_url, phone))
@@ -323,12 +324,11 @@ void handle_sms(void)
     {
         glcd_clear();
         draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
-        delay_ms(300);
+        delay_ms(200);
+        glcd_clear();
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-
-
     sms_received = 0;  // A?CI? E?C? ??C? E?I?
 }
 
@@ -502,7 +502,7 @@ void main(void)
             // ÇÑ äÇãæÝÞ ÈæÏ
             glcd_clear();
             glcd_outtextxy(0, 0, "GPRS Init Failed!");
-            delay_ms(2000);  // ˜ãí ÕÈÑ ˜äå
+            delay_ms(100);  // ˜ãí ÕÈÑ ˜äå
             // æ ÏæÈÇÑå ÍáÞå Ê˜ÑÇÑ ãíÔå
         }
     }
@@ -512,14 +512,17 @@ void main(void)
     glcd_clear();
 
     while (1){
-    
-        draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
-        process_uart_data();
+        static uint8_t processing_sms = 0;
+        draw_bitmap(0, 0, kode_mahsol_payamak_konid, 128, 64);
+        process_uart_data(); 
+        
         if (sms_received) {
-            handle_sms();        // ECE?? ?? header_buffer ? content_buffer ?C ??C?O ???I?I
+            processing_sms = 1;   // ÔÑæÚ ÑÏÇÒÔ íÇã˜
+            handle_sms();
+            processing_sms = 0;   // ÇíÇä ÑÏÇÒÔ íÇã˜
         } 
         
-        if (millis() - last_time > 50000) {
+        if (!processing_sms && (millis() - last_time > 50000)) {
             gprs_keep_alive();
             last_time = millis();
             glcd_clear();
