@@ -28,6 +28,13 @@ void uart_flush0(void)
 }
 
 
+void uart_buffer_reset(void) {
+    rx_wr_index0 = rx_rd_index0 = 0;
+    rx_counter0 = 0;
+    rx_buffer_overflow0 = 0;
+}
+
+
 unsigned char read_serial_timeout_simple(char* buffer, int buffer_size, unsigned long timeout_ms) {
     int i = 0;
     unsigned long elapsed = 0;
@@ -53,6 +60,9 @@ unsigned char read_serial_timeout_simple(char* buffer, int buffer_size, unsigned
     return (i > 0); // 1 ÇÑ ÍÏÇŞá í˜ ˜ÇÑÇ˜ÊÑ ÏÑíÇİÊ ÔÏå ÈÇÔÏ
 }
 
+
+
+// ÈåÊÑíä ÊÇÈÚ ÈÑÇí Çíä ˜ÇÑ
 unsigned char read_until_keyword_keep_all(char* buffer, int buffer_size, unsigned long timeout_ms, const char* keyword) {
     int i = 0;
     unsigned long elapsed = 0;
@@ -87,6 +97,61 @@ unsigned char read_until_keyword_keep_all(char* buffer, int buffer_size, unsigne
 
     return (i > 0);
 }
+
+// ÊÇÈÚ ÏÑíÇİÊ ãŞÇÏíÑ Ìáæí ÏÓÊæÑÇÊ
+int extract_value_after_keyword(const char* input, const char* keyword, char* out_value, int out_size) {
+    const char* p = strstr(input, keyword);
+    int i = 0;
+    if (p) {
+        p += strlen(keyword);  // ÈÑæ ÈÚÏ ÇÒ ˜áíÏæÇå
+        while (*p == ' ' || *p == '\t') p++;  // ÑÏ ˜ÑÏä İÇÕáååÇ
+
+        // ˜í ˜ÑÏä ãŞÏÇÑ ÊÇ Çæáíä ÌÏÇ˜ääÏå (, íÇ ÇÓíÓ íÇ CRLF)
+        while (*p && *p != ',' && *p != '\r' && *p != '\n' && *p != ' ' && i < out_size - 1) {
+            out_value[i++] = *p++;
+        }
+        out_value[i] = '\0';
+        return 1;  // ãæİŞ
+    }
+    return 0;  // íÏÇ äÔÏ
+}
+
+
+
+int extract_field_after_keyword(const char* input, const char* keyword, int field_index, char* out_value, int out_size)
+{
+    int current_field = 0;
+    int i = 0;
+    const char* p = strstr(input, keyword);
+    
+    if (!p) return 0; // ˜áíÏæÇå íÏÇ äÔÏ
+
+    p += strlen(keyword);      // ÈÑæ ÈÚÏ ÇÒ ˜áíÏæÇå
+    while (*p == ' ' || *p == '\t') p++; // ÑÏ ˜ÑÏä İÇÕáååÇ
+
+    while (*p && current_field <= field_index)
+    {
+        if (current_field == field_index)
+        {
+            // ˜í ˜ÑÏä ãŞÏÇÑ İÚáí ÊÇ ˜ÇãÇ íÇ CRLF íÇ ÇÓíÓ
+            while (*p && *p != ',' && *p != '\r' && *p != '\n' && i < out_size - 1)
+            {
+                out_value[i++] = *p++;
+            }
+            out_value[i] = '\0';
+            return 1; // ãæİŞ
+        }
+
+        // ÑİÊä Èå ˜ÇãÇí ÈÚÏí
+        while (*p && *p != ',') p++;
+        if (*p == ',') p++; // ÑÏ ˜ÑÏä ˜ÇãÇ
+        current_field++;
+    }
+
+    return 0; // İíáÏ ãæÑÏäÙÑ íÏÇ äÔÏ
+}
+
+
 
 //unsigned char read_serial_response(char* buffer, int buffer_size, int timeout_ms, const char* end_pattern) {
 //    int i = 0;

@@ -18,8 +18,11 @@ typedef unsigned char uint8_t;
 typedef unsigned int  uint16_t;
 typedef signed char   int8_t;
 
+volatile unsigned long millis_counter = 0;
+//#define APN "mcinet" // APN C??CE?? I?I ?C ?C?I ???I
+const char APN[] = "mcinet";
 
-#define APN "mcinet" // APN C??CE?? I?I ?C ?C?I ???I
+unsigned long last_time = 0;
 
 
 #define glcd_pixel(x, y, color) glcd_setpixel(x, y)
@@ -111,7 +114,8 @@ char getchar(void)
 // Timer 0 overflow interrupt service routine
 interrupt [TIM0_OVF] void timer0_ovf_isr(void)
 {
-// Place your code here
+    // ÊÇíãÑ 0 ÏÑ ãÏ ÝÚáí åÑ ~32.768ms ÓÑÑíÒ ãí˜äå
+    millis_counter += 33;  // ÍÏæÏí (ãíÊæäí ÏÞíÞÊÑ ÈÇ ãÍÇÓÈå prescaler ÏÑÓÊÔ ˜äí)
 
 }
 
@@ -141,6 +145,18 @@ void draw_bitmap(uint8_t x, uint8_t y, __flash unsigned char* bmp, uint8_t width
         }
     }
 }
+
+
+
+unsigned long millis(void)
+{
+    unsigned long ms;
+    #asm("cli")
+    ms = millis_counter;
+    #asm("sei")
+    return ms;
+}
+
 
 
 
@@ -560,14 +576,15 @@ void main(void)
     glcd_outtextxy(0, 0, "Module Init...");
     delay_ms(500);
 
-    send_at_command("ATE0");
-    delay_ms(100);
-    send_at_command("AT");
-    delay_ms(100);
-
     sim800_restart();
-//    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
-//    if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
+    check_sim();
+
+//    
+    if (!check_signal_with_restart()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }  
+    
+    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
+    if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
+    gprs_keep_alive();
 
 
 
@@ -575,9 +592,18 @@ void main(void)
     draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
 
     while (1){
+    
+        draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
         process_uart_data();
         if (sms_received) {
             handle_sms();        // ECE?? ?? header_buffer ? content_buffer ?C ??C?O ???I?I
+        } 
+        
+        if (millis() - last_time > 50000) {
+            gprs_keep_alive();
+            last_time = millis();
+            glcd_clear();
         }
+
     }
 }

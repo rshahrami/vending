@@ -42,8 +42,11 @@
 ;typedef unsigned int  uint16_t;
 ;typedef signed char   int8_t;
 ;
+;volatile unsigned long millis_counter = 0;
+;//#define APN "mcinet" // APN C??CE?? I?I ?C ?C?I ???I
+;const char APN[] = "mcinet";
 ;
-;#define APN "mcinet" // APN C??CE?? I?I ?C ?C?I ???I
+;unsigned long last_time = 0;
 ;
 ;
 ;#define glcd_pixel(x, y, color) glcd_setpixel(x, y)
@@ -88,28 +91,28 @@
 ;
 ;// USART0 Receiver interrupt service routine
 ;interrupt [USART0_RXC] void usart0_rx_isr(void)
-; 0000 0043 {
+; 0000 0046 {
 
 	.CSEG
 ;PCODE: $0000000D VOL: 0
 ;PCODE: $0000000E VOL: 0
-; 0000 0044     char status,data;
-; 0000 0045     status=UCSR0A;
+; 0000 0047     char status,data;
+; 0000 0048     status=UCSR0A;
 ;PCODE: $0000000F VOL: 0
 ;PCODE: $00000010 VOL: 0
 ;	status -> R17
 ;	data -> R16
 ;PCODE: $00000011 VOL: 0
 ;PCODE: $00000012 VOL: 0
-; 0000 0046     data=UDR0;
+; 0000 0049     data=UDR0;
 ;PCODE: $00000013 VOL: 0
 ;PCODE: $00000014 VOL: 0
-; 0000 0047     if ((status & (FRAMING_ERROR | PARITY_ERROR | DATA_OVERRUN))==0)
+; 0000 004A     if ((status & (FRAMING_ERROR | PARITY_ERROR | DATA_OVERRUN))==0)
 ;PCODE: $00000015 VOL: 0
 ;PCODE: $00000016 VOL: 0
 ;PCODE: $00000017 VOL: 0
-; 0000 0048     {
-; 0000 0049         rx_buffer0[rx_wr_index0++]=data;
+; 0000 004B     {
+; 0000 004C         rx_buffer0[rx_wr_index0++]=data;
 ;PCODE: $00000018 VOL: 0
 ;PCODE: $00000019 VOL: 0
 ;PCODE: $0000001A VOL: 0
@@ -117,36 +120,36 @@
 ;PCODE: $0000001C VOL: 0
 ;PCODE: $0000001D VOL: 0
 ;PCODE: $0000001E VOL: 0
-; 0000 004A         #if RX_BUFFER_SIZE0 == 256
-; 0000 004B         // special case for receiver buffer size=256
-; 0000 004C         if (++rx_counter0 == 0) rx_buffer_overflow0=1;
-; 0000 004D         #else
-; 0000 004E         if (rx_wr_index0 == RX_BUFFER_SIZE0) rx_wr_index0=0;
+; 0000 004D         #if RX_BUFFER_SIZE0 == 256
+; 0000 004E         // special case for receiver buffer size=256
+; 0000 004F         if (++rx_counter0 == 0) rx_buffer_overflow0=1;
+; 0000 0050         #else
+; 0000 0051         if (rx_wr_index0 == RX_BUFFER_SIZE0) rx_wr_index0=0;
 ;PCODE: $0000001F VOL: 0
 ;PCODE: $00000020 VOL: 0
 ;PCODE: $00000021 VOL: 0
 ;PCODE: $00000022 VOL: 0
 ;PCODE: $00000023 VOL: 0
-; 0000 004F         if (++rx_counter0 == RX_BUFFER_SIZE0)
+; 0000 0052         if (++rx_counter0 == RX_BUFFER_SIZE0)
 ;PCODE: $00000024 VOL: 0
 ;PCODE: $00000025 VOL: 0
 ;PCODE: $00000026 VOL: 0
 ;PCODE: $00000027 VOL: 0
 ;PCODE: $00000028 VOL: 0
 ;PCODE: $00000029 VOL: 0
-; 0000 0050             {
-; 0000 0051             rx_counter0=0;
+; 0000 0053             {
+; 0000 0054             rx_counter0=0;
 ;PCODE: $0000002A VOL: 0
 ;PCODE: $0000002B VOL: 0
-; 0000 0052             rx_buffer_overflow0=1;
+; 0000 0055             rx_buffer_overflow0=1;
 ;PCODE: $0000002C VOL: 0
 ;PCODE: $0000002D VOL: 0
 ;PCODE: $0000002E VOL: 0
-; 0000 0053             }
-; 0000 0054         #endif
-; 0000 0055     }
+; 0000 0056             }
+; 0000 0057         #endif
+; 0000 0058     }
 ;PCODE: $0000002F VOL: 0
-; 0000 0056 }
+; 0000 0059 }
 ;PCODE: $00000030 VOL: 0
 ;PCODE: $00000031 VOL: 0
 ;PCODE: $00000032 VOL: 0
@@ -158,11 +161,11 @@
 ;#define _ALTERNATE_GETCHAR_
 ;#pragma used+
 ;char getchar(void)
-; 0000 005D {
+; 0000 0060 {
 ;PCODE: $00000035 VOL: 0
 ;PCODE: $00000036 VOL: 0
-; 0000 005E     char data;
-; 0000 005F     while (rx_counter0==0);
+; 0000 0061     char data;
+; 0000 0062     while (rx_counter0==0);
 ;PCODE: $00000037 VOL: 0
 ;	data -> R17
 ;PCODE: $00000038 VOL: 0
@@ -171,7 +174,7 @@
 ;PCODE: $0000003B VOL: 0
 ;PCODE: $0000003C VOL: 0
 ;PCODE: $0000003D VOL: 0
-; 0000 0060     data=rx_buffer0[rx_rd_index0++];
+; 0000 0063     data=rx_buffer0[rx_rd_index0++];
 ;PCODE: $0000003E VOL: 0
 ;PCODE: $0000003F VOL: 0
 ;PCODE: $00000040 VOL: 0
@@ -179,32 +182,32 @@
 ;PCODE: $00000042 VOL: 0
 ;PCODE: $00000043 VOL: 0
 ;PCODE: $00000044 VOL: 0
-; 0000 0061     #if RX_BUFFER_SIZE0 != 256
-; 0000 0062     if (rx_rd_index0 == RX_BUFFER_SIZE0) rx_rd_index0=0;
+; 0000 0064     #if RX_BUFFER_SIZE0 != 256
+; 0000 0065     if (rx_rd_index0 == RX_BUFFER_SIZE0) rx_rd_index0=0;
 ;PCODE: $00000045 VOL: 0
 ;PCODE: $00000046 VOL: 0
 ;PCODE: $00000047 VOL: 0
 ;PCODE: $00000048 VOL: 0
 ;PCODE: $00000049 VOL: 0
-; 0000 0063     #endif
-; 0000 0064     #asm("cli")
+; 0000 0066     #endif
+; 0000 0067     #asm("cli")
 ;PCODE: $0000004A VOL: 0
 ;PCODE: $0000004B VOL: 0
 	cli
 ;PCODE: $0000004C VOL: 0
-; 0000 0065     --rx_counter0;
+; 0000 0068     --rx_counter0;
 ;PCODE: $0000004D VOL: 0
 ;PCODE: $0000004E VOL: 0
 ;PCODE: $0000004F VOL: 0
-; 0000 0066     #asm("sei")
+; 0000 0069     #asm("sei")
 ;PCODE: $00000050 VOL: 0
 	sei
 ;PCODE: $00000051 VOL: 0
-; 0000 0067     return data;
+; 0000 006A     return data;
 ;PCODE: $00000052 VOL: 0
 ;PCODE: $00000053 VOL: 0
 ;PCODE: $00000054 VOL: 0
-; 0000 0068 }
+; 0000 006B }
 ;PCODE: $00000055 VOL: 0
 ;#pragma used-
 ;#endif
@@ -214,34 +217,38 @@
 ;
 ;// Timer 0 overflow interrupt service routine
 ;interrupt [TIM0_OVF] void timer0_ovf_isr(void)
-; 0000 0071 {
+; 0000 0074 {
 ;PCODE: $00000056 VOL: 0
 ;PCODE: $00000057 VOL: 0
-; 0000 0072 // Place your code here
-; 0000 0073 
-; 0000 0074 }
-;PCODE: $00000058 VOL: 0
+; 0000 0075     // ÊÇíãÑ 0 ÏÑ ãÏ ÝÚáí åÑ ~32.768ms ÓÑÑíÒ ãí˜äå
+; 0000 0076     millis_counter += 33;  // ÍÏæÏí (ãíÊæäí ÏÞíÞÊÑ ÈÇ ãÍÇÓÈå prescaler ÏÑÓÊÔ ˜äí)
+;PCODE: $00000058 VOL: 1
 ;PCODE: $00000059 VOL: 0
-;PCODE: $0000005A VOL: 0
+;PCODE: $0000005A VOL: 1
+; 0000 0077 
+; 0000 0078 }
+;PCODE: $0000005B VOL: 0
+;PCODE: $0000005C VOL: 0
+;PCODE: $0000005D VOL: 0
 ;
 ;////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ;
 ;
 ;void draw_bitmap(uint8_t x, uint8_t y, __flash unsigned char* bmp, uint8_t width, uint8_t height)
-; 0000 007A {
-;PCODE: $0000005B VOL: 0
-;PCODE: $0000005C VOL: 0
-; 0000 007B     uint16_t byte_index;
-; 0000 007C     uint8_t page;
-; 0000 007D     uint8_t col;
-; 0000 007E     uint8_t bit_pos;
-; 0000 007F     uint8_t data;
-; 0000 0080     uint8_t pages;
-; 0000 0081 
-; 0000 0082     byte_index = 0;
-;PCODE: $0000005D VOL: 0
+; 0000 007E {
 ;PCODE: $0000005E VOL: 0
 ;PCODE: $0000005F VOL: 0
+; 0000 007F     uint16_t byte_index;
+; 0000 0080     uint8_t page;
+; 0000 0081     uint8_t col;
+; 0000 0082     uint8_t bit_pos;
+; 0000 0083     uint8_t data;
+; 0000 0084     uint8_t pages;
+; 0000 0085 
+; 0000 0086     byte_index = 0;
+;PCODE: $00000060 VOL: 0
+;PCODE: $00000061 VOL: 0
+;PCODE: $00000062 VOL: 0
 ;	x -> Y+12
 ;	y -> Y+11
 ;	*bmp -> Y+9
@@ -253,65 +260,62 @@
 ;	bit_pos -> R21
 ;	data -> R20
 ;	pages -> Y+6
-;PCODE: $00000060 VOL: 0
-;PCODE: $00000061 VOL: 0
-; 0000 0083     pages = height / 8;
-;PCODE: $00000062 VOL: 0
 ;PCODE: $00000063 VOL: 0
 ;PCODE: $00000064 VOL: 0
+; 0000 0087     pages = height / 8;
 ;PCODE: $00000065 VOL: 0
 ;PCODE: $00000066 VOL: 0
-; 0000 0084 
-; 0000 0085     for (page = 0; page < pages; page++) {
 ;PCODE: $00000067 VOL: 0
 ;PCODE: $00000068 VOL: 0
 ;PCODE: $00000069 VOL: 0
+; 0000 0088 
+; 0000 0089     for (page = 0; page < pages; page++) {
 ;PCODE: $0000006A VOL: 0
 ;PCODE: $0000006B VOL: 0
 ;PCODE: $0000006C VOL: 0
 ;PCODE: $0000006D VOL: 0
 ;PCODE: $0000006E VOL: 0
 ;PCODE: $0000006F VOL: 0
-; 0000 0086         for (col = 0; col < width; col++) {
 ;PCODE: $00000070 VOL: 0
 ;PCODE: $00000071 VOL: 0
 ;PCODE: $00000072 VOL: 0
+; 0000 008A         for (col = 0; col < width; col++) {
 ;PCODE: $00000073 VOL: 0
 ;PCODE: $00000074 VOL: 0
 ;PCODE: $00000075 VOL: 0
 ;PCODE: $00000076 VOL: 0
 ;PCODE: $00000077 VOL: 0
 ;PCODE: $00000078 VOL: 0
-; 0000 0087             data = read_flash_byte(&bmp[byte_index++]);
 ;PCODE: $00000079 VOL: 0
 ;PCODE: $0000007A VOL: 0
 ;PCODE: $0000007B VOL: 0
+; 0000 008B             data = read_flash_byte(&bmp[byte_index++]);
 ;PCODE: $0000007C VOL: 0
 ;PCODE: $0000007D VOL: 0
 ;PCODE: $0000007E VOL: 0
-; 0000 0088             for (bit_pos = 0; bit_pos < 8; bit_pos++) {
 ;PCODE: $0000007F VOL: 0
 ;PCODE: $00000080 VOL: 0
 ;PCODE: $00000081 VOL: 0
+; 0000 008C             for (bit_pos = 0; bit_pos < 8; bit_pos++) {
 ;PCODE: $00000082 VOL: 0
 ;PCODE: $00000083 VOL: 0
 ;PCODE: $00000084 VOL: 0
 ;PCODE: $00000085 VOL: 0
 ;PCODE: $00000086 VOL: 0
 ;PCODE: $00000087 VOL: 0
-; 0000 0089                 if (data & (1 << bit_pos)) {
 ;PCODE: $00000088 VOL: 0
 ;PCODE: $00000089 VOL: 0
 ;PCODE: $0000008A VOL: 0
+; 0000 008D                 if (data & (1 << bit_pos)) {
 ;PCODE: $0000008B VOL: 0
 ;PCODE: $0000008C VOL: 0
 ;PCODE: $0000008D VOL: 0
 ;PCODE: $0000008E VOL: 0
 ;PCODE: $0000008F VOL: 0
-; 0000 008A                     glcd_pixel(x + col, y + (page * 8) + bit_pos, 1);
 ;PCODE: $00000090 VOL: 0
 ;PCODE: $00000091 VOL: 0
 ;PCODE: $00000092 VOL: 0
+; 0000 008E                     glcd_pixel(x + col, y + (page * 8) + bit_pos, 1);
 ;PCODE: $00000093 VOL: 0
 ;PCODE: $00000094 VOL: 0
 ;PCODE: $00000095 VOL: 0
@@ -320,54 +324,85 @@
 ;PCODE: $00000098 VOL: 0
 ;PCODE: $00000099 VOL: 0
 ;PCODE: $0000009A VOL: 0
-; 0000 008B                 }
-; 0000 008C             }
 ;PCODE: $0000009B VOL: 0
 ;PCODE: $0000009C VOL: 0
 ;PCODE: $0000009D VOL: 0
+; 0000 008F                 }
+; 0000 0090             }
 ;PCODE: $0000009E VOL: 0
 ;PCODE: $0000009F VOL: 0
 ;PCODE: $000000A0 VOL: 0
-; 0000 008D         }
 ;PCODE: $000000A1 VOL: 0
 ;PCODE: $000000A2 VOL: 0
 ;PCODE: $000000A3 VOL: 0
+; 0000 0091         }
 ;PCODE: $000000A4 VOL: 0
 ;PCODE: $000000A5 VOL: 0
-; 0000 008E     }
 ;PCODE: $000000A6 VOL: 0
 ;PCODE: $000000A7 VOL: 0
 ;PCODE: $000000A8 VOL: 0
+; 0000 0092     }
 ;PCODE: $000000A9 VOL: 0
 ;PCODE: $000000AA VOL: 0
-; 0000 008F }
 ;PCODE: $000000AB VOL: 0
 ;PCODE: $000000AC VOL: 0
 ;PCODE: $000000AD VOL: 0
+; 0000 0093 }
 ;PCODE: $000000AE VOL: 0
+;PCODE: $000000AF VOL: 0
+;PCODE: $000000B0 VOL: 0
+;PCODE: $000000B1 VOL: 0
+;
+;
+;
+;unsigned long millis(void)
+; 0000 0098 {
+;PCODE: $000000B2 VOL: 0
+;PCODE: $000000B3 VOL: 0
+; 0000 0099     unsigned long ms;
+; 0000 009A     #asm("cli")
+;PCODE: $000000B4 VOL: 0
+;	ms -> Y+0
+;PCODE: $000000B5 VOL: 0
+	cli
+;PCODE: $000000B6 VOL: 0
+; 0000 009B     ms = millis_counter;
+;PCODE: $000000B7 VOL: 1
+;PCODE: $000000B8 VOL: 0
+; 0000 009C     #asm("sei")
+;PCODE: $000000B9 VOL: 0
+	sei
+;PCODE: $000000BA VOL: 0
+; 0000 009D     return ms;
+;PCODE: $000000BB VOL: 0
+;PCODE: $000000BC VOL: 0
+;PCODE: $000000BD VOL: 0
+; 0000 009E }
+;PCODE: $000000BE VOL: 0
+;
 ;
 ;
 ;
 ;unsigned char send_json_post(const char* base_url, const char* phone_number) {
-; 0000 0093 unsigned char send_json_post(const char* base_url, const char* phone_number) {
-;PCODE: $000000AF VOL: 0
-;PCODE: $000000B0 VOL: 0
-; 0000 0094     // C??C? ?EU???C (C89)
-; 0000 0095     char cmd[256];
-; 0000 0096     char response[256];
-; 0000 0097     char full_url[256];
-; 0000 0098     char *action_ptr;
-; 0000 0099     int method = 0, status_code = 0, data_len = 0;
-; 0000 009A 
-; 0000 009B     // ??C?O ??C? ??? GLCD
-; 0000 009C     glcd_clear();
-;PCODE: $000000B1 VOL: 0
-;PCODE: $000000B2 VOL: 0
-;PCODE: $000000B3 VOL: 0
-;PCODE: $000000B4 VOL: 0
-;PCODE: $000000B5 VOL: 0
-;PCODE: $000000B6 VOL: 0
-;PCODE: $000000B7 VOL: 0
+; 0000 00A3 unsigned char send_json_post(const char* base_url, const char* phone_number) {
+;PCODE: $000000BF VOL: 0
+;PCODE: $000000C0 VOL: 0
+; 0000 00A4     // C??C? ?EU???C (C89)
+; 0000 00A5     char cmd[256];
+; 0000 00A6     char response[256];
+; 0000 00A7     char full_url[256];
+; 0000 00A8     char *action_ptr;
+; 0000 00A9     int method = 0, status_code = 0, data_len = 0;
+; 0000 00AA 
+; 0000 00AB     // ??C?O ??C? ??? GLCD
+; 0000 00AC     glcd_clear();
+;PCODE: $000000C1 VOL: 0
+;PCODE: $000000C2 VOL: 0
+;PCODE: $000000C3 VOL: 0
+;PCODE: $000000C4 VOL: 0
+;PCODE: $000000C5 VOL: 0
+;PCODE: $000000C6 VOL: 0
+;PCODE: $000000C7 VOL: 0
 ;	*base_url -> Y+778
 ;	*phone_number -> Y+776
 ;	cmd -> Y+520
@@ -377,61 +412,42 @@
 ;	method -> R18,R19
 ;	status_code -> R20,R21
 ;	data_len -> Y+6
-;PCODE: $000000B8 VOL: 0
-;PCODE: $000000B9 VOL: 0
-;PCODE: $000000BA VOL: 0
-;PCODE: $000000BB VOL: 0
-;PCODE: $000000BC VOL: 0
-; 0000 009D     draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
-;PCODE: $000000BD VOL: 0
-;PCODE: $000000BE VOL: 0
-;PCODE: $000000BF VOL: 0
-;PCODE: $000000C0 VOL: 0
-;PCODE: $000000C1 VOL: 0
-;PCODE: $000000C2 VOL: 0
-;PCODE: $000000C3 VOL: 0
-;PCODE: $000000C4 VOL: 0
-;PCODE: $000000C5 VOL: 0
-;PCODE: $000000C6 VOL: 0
-; 0000 009E 
-; 0000 009F     // 0) ??O ??I? EC?? UART
-; 0000 00A0     rx_wr_index0 = rx_rd_index0 = 0;
-;PCODE: $000000C7 VOL: 0
 ;PCODE: $000000C8 VOL: 0
 ;PCODE: $000000C9 VOL: 0
-; 0000 00A1     rx_counter0 = 0;
 ;PCODE: $000000CA VOL: 0
 ;PCODE: $000000CB VOL: 0
-; 0000 00A2     rx_buffer_overflow0 = 0;
 ;PCODE: $000000CC VOL: 0
+; 0000 00AD     draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
 ;PCODE: $000000CD VOL: 0
 ;PCODE: $000000CE VOL: 0
-; 0000 00A3 
-; 0000 00A4     // 1) Initialize HTTP service
-; 0000 00A5     send_at_command("AT+HTTPINIT");
 ;PCODE: $000000CF VOL: 0
 ;PCODE: $000000D0 VOL: 0
 ;PCODE: $000000D1 VOL: 0
-; 0000 00A6     if (!read_serial_response(response, sizeof(response), 2000, "OK")) {
 ;PCODE: $000000D2 VOL: 0
 ;PCODE: $000000D3 VOL: 0
 ;PCODE: $000000D4 VOL: 0
 ;PCODE: $000000D5 VOL: 0
 ;PCODE: $000000D6 VOL: 0
+; 0000 00AE 
+; 0000 00AF     // 0) ??O ??I? EC?? UART
+; 0000 00B0     rx_wr_index0 = rx_rd_index0 = 0;
 ;PCODE: $000000D7 VOL: 0
 ;PCODE: $000000D8 VOL: 0
 ;PCODE: $000000D9 VOL: 0
+; 0000 00B1     rx_counter0 = 0;
 ;PCODE: $000000DA VOL: 0
 ;PCODE: $000000DB VOL: 0
+; 0000 00B2     rx_buffer_overflow0 = 0;
 ;PCODE: $000000DC VOL: 0
-; 0000 00A7         // C?? I??E ?C? ???I? terminate ? I???
-; 0000 00A8         send_at_command("AT+HTTPTERM");
 ;PCODE: $000000DD VOL: 0
 ;PCODE: $000000DE VOL: 0
+; 0000 00B3 
+; 0000 00B4     // 1) Initialize HTTP service
+; 0000 00B5     send_at_command("AT+HTTPINIT");
 ;PCODE: $000000DF VOL: 0
-; 0000 00A9         read_serial_response(response, sizeof(response), 1000, "OK");
 ;PCODE: $000000E0 VOL: 0
 ;PCODE: $000000E1 VOL: 0
+; 0000 00B6     if (!read_serial_response(response, sizeof(response), 2000, "OK")) {
 ;PCODE: $000000E2 VOL: 0
 ;PCODE: $000000E3 VOL: 0
 ;PCODE: $000000E4 VOL: 0
@@ -439,20 +455,17 @@
 ;PCODE: $000000E6 VOL: 0
 ;PCODE: $000000E7 VOL: 0
 ;PCODE: $000000E8 VOL: 0
-; 0000 00AA         return 0;
 ;PCODE: $000000E9 VOL: 0
 ;PCODE: $000000EA VOL: 0
 ;PCODE: $000000EB VOL: 0
 ;PCODE: $000000EC VOL: 0
-; 0000 00AB     }
-; 0000 00AC 
-; 0000 00AD     // 2) Set CID to bearer profile 1
-; 0000 00AE     send_at_command("AT+HTTPPARA=\"CID\",1");
+; 0000 00B7         // C?? I??E ?C? ???I? terminate ? I???
+; 0000 00B8         send_at_command("AT+HTTPTERM");
 ;PCODE: $000000ED VOL: 0
 ;PCODE: $000000EE VOL: 0
 ;PCODE: $000000EF VOL: 0
+; 0000 00B9         read_serial_response(response, sizeof(response), 1000, "OK");
 ;PCODE: $000000F0 VOL: 0
-; 0000 00AF     if (!read_serial_response(response, sizeof(response), 1000, "OK")) {
 ;PCODE: $000000F1 VOL: 0
 ;PCODE: $000000F2 VOL: 0
 ;PCODE: $000000F3 VOL: 0
@@ -461,16 +474,20 @@
 ;PCODE: $000000F6 VOL: 0
 ;PCODE: $000000F7 VOL: 0
 ;PCODE: $000000F8 VOL: 0
+; 0000 00BA         return 0;
 ;PCODE: $000000F9 VOL: 0
 ;PCODE: $000000FA VOL: 0
 ;PCODE: $000000FB VOL: 0
-; 0000 00B0         send_at_command("AT+HTTPTERM");
 ;PCODE: $000000FC VOL: 0
+; 0000 00BB     }
+; 0000 00BC 
+; 0000 00BD     // 2) Set CID to bearer profile 1
+; 0000 00BE     send_at_command("AT+HTTPPARA=\"CID\",1");
 ;PCODE: $000000FD VOL: 0
 ;PCODE: $000000FE VOL: 0
-; 0000 00B1         read_serial_response(response, sizeof(response), 1000, "OK");
 ;PCODE: $000000FF VOL: 0
 ;PCODE: $00000100 VOL: 0
+; 0000 00BF     if (!read_serial_response(response, sizeof(response), 1000, "OK")) {
 ;PCODE: $00000101 VOL: 0
 ;PCODE: $00000102 VOL: 0
 ;PCODE: $00000103 VOL: 0
@@ -478,18 +495,15 @@
 ;PCODE: $00000105 VOL: 0
 ;PCODE: $00000106 VOL: 0
 ;PCODE: $00000107 VOL: 0
-; 0000 00B2         return 0;
 ;PCODE: $00000108 VOL: 0
 ;PCODE: $00000109 VOL: 0
 ;PCODE: $0000010A VOL: 0
 ;PCODE: $0000010B VOL: 0
-; 0000 00B3     }
-; 0000 00B4 
-; 0000 00B5     // 3) Build the full URL with query parameter
-; 0000 00B6     sprintf(full_url, "%s?phone_number=%s", base_url, phone_number);
+; 0000 00C0         send_at_command("AT+HTTPTERM");
 ;PCODE: $0000010C VOL: 0
 ;PCODE: $0000010D VOL: 0
 ;PCODE: $0000010E VOL: 0
+; 0000 00C1         read_serial_response(response, sizeof(response), 1000, "OK");
 ;PCODE: $0000010F VOL: 0
 ;PCODE: $00000110 VOL: 0
 ;PCODE: $00000111 VOL: 0
@@ -499,13 +513,15 @@
 ;PCODE: $00000115 VOL: 0
 ;PCODE: $00000116 VOL: 0
 ;PCODE: $00000117 VOL: 0
+; 0000 00C2         return 0;
 ;PCODE: $00000118 VOL: 0
 ;PCODE: $00000119 VOL: 0
 ;PCODE: $0000011A VOL: 0
 ;PCODE: $0000011B VOL: 0
-; 0000 00B7 
-; 0000 00B8     // 4) Set the target URL
-; 0000 00B9     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
+; 0000 00C3     }
+; 0000 00C4 
+; 0000 00C5     // 3) Build the full URL with query parameter
+; 0000 00C6     sprintf(full_url, "%s?phone_number=%s", base_url, phone_number);
 ;PCODE: $0000011C VOL: 0
 ;PCODE: $0000011D VOL: 0
 ;PCODE: $0000011E VOL: 0
@@ -518,12 +534,13 @@
 ;PCODE: $00000125 VOL: 0
 ;PCODE: $00000126 VOL: 0
 ;PCODE: $00000127 VOL: 0
-; 0000 00BA     send_at_command(cmd);
 ;PCODE: $00000128 VOL: 0
 ;PCODE: $00000129 VOL: 0
-; 0000 00BB     if (!read_serial_response(response, sizeof(response), 2000, "OK")) {
 ;PCODE: $0000012A VOL: 0
 ;PCODE: $0000012B VOL: 0
+; 0000 00C7 
+; 0000 00C8     // 4) Set the target URL
+; 0000 00C9     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
 ;PCODE: $0000012C VOL: 0
 ;PCODE: $0000012D VOL: 0
 ;PCODE: $0000012E VOL: 0
@@ -533,13 +550,13 @@
 ;PCODE: $00000132 VOL: 0
 ;PCODE: $00000133 VOL: 0
 ;PCODE: $00000134 VOL: 0
-; 0000 00BC         send_at_command("AT+HTTPTERM");
 ;PCODE: $00000135 VOL: 0
 ;PCODE: $00000136 VOL: 0
 ;PCODE: $00000137 VOL: 0
-; 0000 00BD         read_serial_response(response, sizeof(response), 1000, "OK");
+; 0000 00CA     send_at_command(cmd);
 ;PCODE: $00000138 VOL: 0
 ;PCODE: $00000139 VOL: 0
+; 0000 00CB     if (!read_serial_response(response, sizeof(response), 2000, "OK")) {
 ;PCODE: $0000013A VOL: 0
 ;PCODE: $0000013B VOL: 0
 ;PCODE: $0000013C VOL: 0
@@ -547,94 +564,94 @@
 ;PCODE: $0000013E VOL: 0
 ;PCODE: $0000013F VOL: 0
 ;PCODE: $00000140 VOL: 0
-; 0000 00BE         return 0;
 ;PCODE: $00000141 VOL: 0
 ;PCODE: $00000142 VOL: 0
 ;PCODE: $00000143 VOL: 0
 ;PCODE: $00000144 VOL: 0
-; 0000 00BF     }
-; 0000 00C0 
-; 0000 00C1     // 5) Start POST action
-; 0000 00C2     // ??O EC?? ?E? C? HTTPACTION
-; 0000 00C3     rx_wr_index0 = rx_rd_index0 = 0;
+; 0000 00CC         send_at_command("AT+HTTPTERM");
 ;PCODE: $00000145 VOL: 0
 ;PCODE: $00000146 VOL: 0
 ;PCODE: $00000147 VOL: 0
+; 0000 00CD         read_serial_response(response, sizeof(response), 1000, "OK");
 ;PCODE: $00000148 VOL: 0
-; 0000 00C4     rx_counter0 = 0;
 ;PCODE: $00000149 VOL: 0
 ;PCODE: $0000014A VOL: 0
-; 0000 00C5     send_at_command("AT+HTTPACTION=1");
 ;PCODE: $0000014B VOL: 0
 ;PCODE: $0000014C VOL: 0
 ;PCODE: $0000014D VOL: 0
-; 0000 00C6     if (!read_serial_response(response, sizeof(response), HTTP_TIMEOUT_MS, "+HTTPACTION:")) {
 ;PCODE: $0000014E VOL: 0
 ;PCODE: $0000014F VOL: 0
 ;PCODE: $00000150 VOL: 0
+; 0000 00CE         return 0;
 ;PCODE: $00000151 VOL: 0
 ;PCODE: $00000152 VOL: 0
 ;PCODE: $00000153 VOL: 0
 ;PCODE: $00000154 VOL: 0
+; 0000 00CF     }
+; 0000 00D0 
+; 0000 00D1     // 5) Start POST action
+; 0000 00D2     // ??O EC?? ?E? C? HTTPACTION
+; 0000 00D3     rx_wr_index0 = rx_rd_index0 = 0;
 ;PCODE: $00000155 VOL: 0
 ;PCODE: $00000156 VOL: 0
 ;PCODE: $00000157 VOL: 0
 ;PCODE: $00000158 VOL: 0
-; 0000 00C7         glcd_clear();
+; 0000 00D4     rx_counter0 = 0;
 ;PCODE: $00000159 VOL: 0
-; 0000 00C8         glcd_outtextxy(0, 0, "No Action Resp");
 ;PCODE: $0000015A VOL: 0
+; 0000 00D5     send_at_command("AT+HTTPACTION=1");
 ;PCODE: $0000015B VOL: 0
 ;PCODE: $0000015C VOL: 0
 ;PCODE: $0000015D VOL: 0
+; 0000 00D6     if (!read_serial_response(response, sizeof(response), HTTP_TIMEOUT_MS, "+HTTPACTION:")) {
 ;PCODE: $0000015E VOL: 0
 ;PCODE: $0000015F VOL: 0
 ;PCODE: $00000160 VOL: 0
-; 0000 00C9         delay_ms(500);
 ;PCODE: $00000161 VOL: 0
 ;PCODE: $00000162 VOL: 0
-; 0000 00CA         // terminate ? I???
-; 0000 00CB         send_at_command("AT+HTTPTERM");
 ;PCODE: $00000163 VOL: 0
 ;PCODE: $00000164 VOL: 0
 ;PCODE: $00000165 VOL: 0
-; 0000 00CC         read_serial_response(response, sizeof(response), 1000, "OK");
 ;PCODE: $00000166 VOL: 0
 ;PCODE: $00000167 VOL: 0
 ;PCODE: $00000168 VOL: 0
+; 0000 00D7         glcd_clear();
 ;PCODE: $00000169 VOL: 0
+; 0000 00D8         glcd_outtextxy(0, 0, "No Action Resp");
 ;PCODE: $0000016A VOL: 0
 ;PCODE: $0000016B VOL: 0
 ;PCODE: $0000016C VOL: 0
 ;PCODE: $0000016D VOL: 0
 ;PCODE: $0000016E VOL: 0
-; 0000 00CD         return 0;
 ;PCODE: $0000016F VOL: 0
 ;PCODE: $00000170 VOL: 0
+; 0000 00D9         delay_ms(500);
 ;PCODE: $00000171 VOL: 0
 ;PCODE: $00000172 VOL: 0
-; 0000 00CE     }
-; 0000 00CF 
-; 0000 00D0     // 6) Parse status code from response
-; 0000 00D1     action_ptr = strstr(response, "+HTTPACTION:");
+; 0000 00DA         // terminate ? I???
+; 0000 00DB         send_at_command("AT+HTTPTERM");
 ;PCODE: $00000173 VOL: 0
 ;PCODE: $00000174 VOL: 0
 ;PCODE: $00000175 VOL: 0
+; 0000 00DC         read_serial_response(response, sizeof(response), 1000, "OK");
 ;PCODE: $00000176 VOL: 0
 ;PCODE: $00000177 VOL: 0
 ;PCODE: $00000178 VOL: 0
 ;PCODE: $00000179 VOL: 0
-; 0000 00D2     if (action_ptr == NULL ||
-; 0000 00D3         sscanf(action_ptr, "+HTTPACTION: %d,%d,%d", &method, &status_code, &data_len) != 3) {
 ;PCODE: $0000017A VOL: 0
 ;PCODE: $0000017B VOL: 0
 ;PCODE: $0000017C VOL: 0
 ;PCODE: $0000017D VOL: 0
 ;PCODE: $0000017E VOL: 0
+; 0000 00DD         return 0;
 ;PCODE: $0000017F VOL: 0
 ;PCODE: $00000180 VOL: 0
 ;PCODE: $00000181 VOL: 0
 ;PCODE: $00000182 VOL: 0
+; 0000 00DE     }
+; 0000 00DF 
+; 0000 00E0     // 6) Parse status code from response
+; 0000 00E1     action_ptr = strstr(response, "+HTTPACTION:");
 ;PCODE: $00000183 VOL: 0
 ;PCODE: $00000184 VOL: 0
 ;PCODE: $00000185 VOL: 0
@@ -642,6 +659,8 @@
 ;PCODE: $00000187 VOL: 0
 ;PCODE: $00000188 VOL: 0
 ;PCODE: $00000189 VOL: 0
+; 0000 00E2     if (action_ptr == NULL ||
+; 0000 00E3         sscanf(action_ptr, "+HTTPACTION: %d,%d,%d", &method, &status_code, &data_len) != 3) {
 ;PCODE: $0000018A VOL: 0
 ;PCODE: $0000018B VOL: 0
 ;PCODE: $0000018C VOL: 0
@@ -657,11 +676,9 @@
 ;PCODE: $00000196 VOL: 0
 ;PCODE: $00000197 VOL: 0
 ;PCODE: $00000198 VOL: 0
-; 0000 00D4         send_at_command("AT+HTTPTERM");
 ;PCODE: $00000199 VOL: 0
 ;PCODE: $0000019A VOL: 0
 ;PCODE: $0000019B VOL: 0
-; 0000 00D5         read_serial_response(response, sizeof(response), 1000, "OK");
 ;PCODE: $0000019C VOL: 0
 ;PCODE: $0000019D VOL: 0
 ;PCODE: $0000019E VOL: 0
@@ -671,96 +688,75 @@
 ;PCODE: $000001A2 VOL: 0
 ;PCODE: $000001A3 VOL: 0
 ;PCODE: $000001A4 VOL: 0
-; 0000 00D6         return 0;
 ;PCODE: $000001A5 VOL: 0
 ;PCODE: $000001A6 VOL: 0
 ;PCODE: $000001A7 VOL: 0
 ;PCODE: $000001A8 VOL: 0
-; 0000 00D7     }
-; 0000 00D8 
-; 0000 00D9     // 7) Read server response if needed
-; 0000 00DA     send_at_command("AT+HTTPREAD");
+; 0000 00E4         send_at_command("AT+HTTPTERM");
 ;PCODE: $000001A9 VOL: 0
 ;PCODE: $000001AA VOL: 0
 ;PCODE: $000001AB VOL: 0
+; 0000 00E5         read_serial_response(response, sizeof(response), 1000, "OK");
 ;PCODE: $000001AC VOL: 0
-; 0000 00DB     // ??O EC?? ?E? C? HTTPREAD
-; 0000 00DC     rx_wr_index0 = rx_rd_index0 = 0;
 ;PCODE: $000001AD VOL: 0
 ;PCODE: $000001AE VOL: 0
 ;PCODE: $000001AF VOL: 0
-; 0000 00DD     rx_counter0 = 0;
 ;PCODE: $000001B0 VOL: 0
 ;PCODE: $000001B1 VOL: 0
-; 0000 00DE     read_serial_response(response, sizeof(response), 3000, "OK");
 ;PCODE: $000001B2 VOL: 0
 ;PCODE: $000001B3 VOL: 0
 ;PCODE: $000001B4 VOL: 0
+; 0000 00E6         return 0;
 ;PCODE: $000001B5 VOL: 0
 ;PCODE: $000001B6 VOL: 0
 ;PCODE: $000001B7 VOL: 0
 ;PCODE: $000001B8 VOL: 0
+; 0000 00E7     }
+; 0000 00E8 
+; 0000 00E9     // 7) Read server response if needed
+; 0000 00EA     send_at_command("AT+HTTPREAD");
 ;PCODE: $000001B9 VOL: 0
 ;PCODE: $000001BA VOL: 0
-; 0000 00DF 
-; 0000 00E0     // 8) Terminate HTTP service
-; 0000 00E1     send_at_command("AT+HTTPTERM");
 ;PCODE: $000001BB VOL: 0
 ;PCODE: $000001BC VOL: 0
+; 0000 00EB     // ??O EC?? ?E? C? HTTPREAD
+; 0000 00EC     rx_wr_index0 = rx_rd_index0 = 0;
 ;PCODE: $000001BD VOL: 0
-; 0000 00E2     read_serial_response(response, sizeof(response), 1000, "OK");
 ;PCODE: $000001BE VOL: 0
 ;PCODE: $000001BF VOL: 0
+; 0000 00ED     rx_counter0 = 0;
 ;PCODE: $000001C0 VOL: 0
 ;PCODE: $000001C1 VOL: 0
+; 0000 00EE     read_serial_response(response, sizeof(response), 3000, "OK");
 ;PCODE: $000001C2 VOL: 0
 ;PCODE: $000001C3 VOL: 0
 ;PCODE: $000001C4 VOL: 0
 ;PCODE: $000001C5 VOL: 0
 ;PCODE: $000001C6 VOL: 0
-; 0000 00E3 
-; 0000 00E4     // 9) ?E???
-; 0000 00E5     return (status_code == 200) ? 1 : 0;
 ;PCODE: $000001C7 VOL: 0
 ;PCODE: $000001C8 VOL: 0
 ;PCODE: $000001C9 VOL: 0
 ;PCODE: $000001CA VOL: 0
+; 0000 00EF 
+; 0000 00F0     // 8) Terminate HTTP service
+; 0000 00F1     send_at_command("AT+HTTPTERM");
 ;PCODE: $000001CB VOL: 0
 ;PCODE: $000001CC VOL: 0
 ;PCODE: $000001CD VOL: 0
+; 0000 00F2     read_serial_response(response, sizeof(response), 1000, "OK");
 ;PCODE: $000001CE VOL: 0
 ;PCODE: $000001CF VOL: 0
 ;PCODE: $000001D0 VOL: 0
 ;PCODE: $000001D1 VOL: 0
 ;PCODE: $000001D2 VOL: 0
-; 0000 00E6 }
 ;PCODE: $000001D3 VOL: 0
-
-	.DSEG
-_0x14:
-	.BYTE 0xCB
-;
-;
-;void handle_sms(void)
-; 0000 00EA {
-
-	.CSEG
 ;PCODE: $000001D4 VOL: 0
 ;PCODE: $000001D5 VOL: 0
-; 0000 00EB     const char* server_url = "http://193.5.44.191/home/post/";
-; 0000 00EC     int product_id = 0;
-; 0000 00ED     int timeout_counter = 0;
-; 0000 00EE     char key_pressed;
-; 0000 00EF     char *tok, phone[32];
-; 0000 00F0     tok = strtok(header_buffer, "\"");      // ?IC ??I? +CMT:
 ;PCODE: $000001D6 VOL: 0
+; 0000 00F3 
+; 0000 00F4     // 9) ?E???
+; 0000 00F5     return (status_code == 200) ? 1 : 0;
 ;PCODE: $000001D7 VOL: 0
-;	*server_url -> R16,R17
-;	product_id -> R18,R19
-;	timeout_counter -> R20,R21
-;	key_pressed -> Y+40
-;	*tok -> Y+38
-;	phone -> Y+6
 ;PCODE: $000001D8 VOL: 0
 ;PCODE: $000001D9 VOL: 0
 ;PCODE: $000001DA VOL: 0
@@ -772,16 +768,37 @@ _0x14:
 ;PCODE: $000001E0 VOL: 0
 ;PCODE: $000001E1 VOL: 0
 ;PCODE: $000001E2 VOL: 0
+; 0000 00F6 }
 ;PCODE: $000001E3 VOL: 0
+
+	.DSEG
+_0x14:
+	.BYTE 0xCB
+;
+;
+;void handle_sms(void)
+; 0000 00FA {
+
+	.CSEG
 ;PCODE: $000001E4 VOL: 0
-; 0000 00F1     tok = strtok(NULL, "\"");               // C???EC? O?C?? ICI? ??E?O?
 ;PCODE: $000001E5 VOL: 0
+; 0000 00FB     const char* server_url = "http://193.5.44.191/home/post/";
+; 0000 00FC     int product_id = 0;
+; 0000 00FD     int timeout_counter = 0;
+; 0000 00FE     char key_pressed;
+; 0000 00FF     char *tok, phone[32];
+; 0000 0100     tok = strtok(header_buffer, "\"");      // ?IC ??I? +CMT:
 ;PCODE: $000001E6 VOL: 0
 ;PCODE: $000001E7 VOL: 0
+;	*server_url -> R16,R17
+;	product_id -> R18,R19
+;	timeout_counter -> R20,R21
+;	key_pressed -> Y+40
+;	*tok -> Y+38
+;	phone -> Y+6
 ;PCODE: $000001E8 VOL: 0
 ;PCODE: $000001E9 VOL: 0
 ;PCODE: $000001EA VOL: 0
-; 0000 00F2     if (tok) strcpy(phone, tok);
 ;PCODE: $000001EB VOL: 0
 ;PCODE: $000001EC VOL: 0
 ;PCODE: $000001ED VOL: 0
@@ -789,19 +806,17 @@ _0x14:
 ;PCODE: $000001EF VOL: 0
 ;PCODE: $000001F0 VOL: 0
 ;PCODE: $000001F1 VOL: 0
-; 0000 00F3     else    strcpy(phone, "unknown");
 ;PCODE: $000001F2 VOL: 0
 ;PCODE: $000001F3 VOL: 0
 ;PCODE: $000001F4 VOL: 0
+; 0000 0101     tok = strtok(NULL, "\"");               // C???EC? O?C?? ICI? ??E?O?
 ;PCODE: $000001F5 VOL: 0
 ;PCODE: $000001F6 VOL: 0
 ;PCODE: $000001F7 VOL: 0
 ;PCODE: $000001F8 VOL: 0
-; 0000 00F4 
-; 0000 00F5     glcd_clear();
 ;PCODE: $000001F9 VOL: 0
 ;PCODE: $000001FA VOL: 0
-; 0000 00F6     glcd_outtextxy(0,0,"SMS from:");
+; 0000 0102     if (tok) strcpy(phone, tok);
 ;PCODE: $000001FB VOL: 0
 ;PCODE: $000001FC VOL: 0
 ;PCODE: $000001FD VOL: 0
@@ -809,52 +824,49 @@ _0x14:
 ;PCODE: $000001FF VOL: 0
 ;PCODE: $00000200 VOL: 0
 ;PCODE: $00000201 VOL: 0
-; 0000 00F7     glcd_outtextxy(0,10,phone);
+; 0000 0103     else    strcpy(phone, "unknown");
 ;PCODE: $00000202 VOL: 0
 ;PCODE: $00000203 VOL: 0
 ;PCODE: $00000204 VOL: 0
 ;PCODE: $00000205 VOL: 0
 ;PCODE: $00000206 VOL: 0
 ;PCODE: $00000207 VOL: 0
-; 0000 00F8     glcd_outtextxy(0,20,content_buffer);
 ;PCODE: $00000208 VOL: 0
+; 0000 0104 
+; 0000 0105     glcd_clear();
 ;PCODE: $00000209 VOL: 0
 ;PCODE: $0000020A VOL: 0
+; 0000 0106     glcd_outtextxy(0,0,"SMS from:");
 ;PCODE: $0000020B VOL: 0
 ;PCODE: $0000020C VOL: 0
 ;PCODE: $0000020D VOL: 0
-; 0000 00F9     delay_ms(2000);
 ;PCODE: $0000020E VOL: 0
 ;PCODE: $0000020F VOL: 0
-; 0000 00FA 
-; 0000 00FB //////////////////////////////////////////////////////////////////////////////////////////////
-; 0000 00FC 
-; 0000 00FD 
-; 0000 00FE     if (content_buffer == '1' || content_buffer == '2' || content_buffer == '3')
 ;PCODE: $00000210 VOL: 0
 ;PCODE: $00000211 VOL: 0
+; 0000 0107     glcd_outtextxy(0,10,phone);
 ;PCODE: $00000212 VOL: 0
 ;PCODE: $00000213 VOL: 0
 ;PCODE: $00000214 VOL: 0
 ;PCODE: $00000215 VOL: 0
 ;PCODE: $00000216 VOL: 0
 ;PCODE: $00000217 VOL: 0
+; 0000 0108     glcd_outtextxy(0,20,content_buffer);
 ;PCODE: $00000218 VOL: 0
 ;PCODE: $00000219 VOL: 0
 ;PCODE: $0000021A VOL: 0
-; 0000 00FF     {
-; 0000 0100 
-; 0000 0101         if (send_json_post(server_url, phone))
 ;PCODE: $0000021B VOL: 0
 ;PCODE: $0000021C VOL: 0
 ;PCODE: $0000021D VOL: 0
+; 0000 0109     delay_ms(2000);
 ;PCODE: $0000021E VOL: 0
 ;PCODE: $0000021F VOL: 0
-; 0000 0102         {
-; 0000 0103             glcd_clear();
+; 0000 010A 
+; 0000 010B //////////////////////////////////////////////////////////////////////////////////////////////
+; 0000 010C 
+; 0000 010D 
+; 0000 010E     if (content_buffer == '1' || content_buffer == '2' || content_buffer == '3')
 ;PCODE: $00000220 VOL: 0
-; 0000 0104 
-; 0000 0105             draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
 ;PCODE: $00000221 VOL: 0
 ;PCODE: $00000222 VOL: 0
 ;PCODE: $00000223 VOL: 0
@@ -865,29 +877,32 @@ _0x14:
 ;PCODE: $00000228 VOL: 0
 ;PCODE: $00000229 VOL: 0
 ;PCODE: $0000022A VOL: 0
-; 0000 0106             draw_bitmap(0, 32, square, 128, 32);
+; 0000 010F     {
+; 0000 0110 
+; 0000 0111         if (send_json_post(server_url, phone))
 ;PCODE: $0000022B VOL: 0
 ;PCODE: $0000022C VOL: 0
 ;PCODE: $0000022D VOL: 0
 ;PCODE: $0000022E VOL: 0
 ;PCODE: $0000022F VOL: 0
+; 0000 0112         {
+; 0000 0113             glcd_clear();
 ;PCODE: $00000230 VOL: 0
+; 0000 0114 
+; 0000 0115             draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
 ;PCODE: $00000231 VOL: 0
 ;PCODE: $00000232 VOL: 0
 ;PCODE: $00000233 VOL: 0
 ;PCODE: $00000234 VOL: 0
-; 0000 0107             glcd_outtextxy(64, 42, content_buffer);
 ;PCODE: $00000235 VOL: 0
 ;PCODE: $00000236 VOL: 0
 ;PCODE: $00000237 VOL: 0
 ;PCODE: $00000238 VOL: 0
 ;PCODE: $00000239 VOL: 0
 ;PCODE: $0000023A VOL: 0
-; 0000 0108 
-; 0000 0109             key_pressed = 0;
+; 0000 0116             draw_bitmap(0, 32, square, 128, 32);
 ;PCODE: $0000023B VOL: 0
 ;PCODE: $0000023C VOL: 0
-; 0000 010A             for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
 ;PCODE: $0000023D VOL: 0
 ;PCODE: $0000023E VOL: 0
 ;PCODE: $0000023F VOL: 0
@@ -896,105 +911,100 @@ _0x14:
 ;PCODE: $00000242 VOL: 0
 ;PCODE: $00000243 VOL: 0
 ;PCODE: $00000244 VOL: 0
+; 0000 0117             glcd_outtextxy(64, 42, content_buffer);
 ;PCODE: $00000245 VOL: 0
-; 0000 010B             {
-; 0000 010C                 key_pressed = get_key();
 ;PCODE: $00000246 VOL: 0
 ;PCODE: $00000247 VOL: 0
-; 0000 010D                 if (key_pressed != 0) break;
 ;PCODE: $00000248 VOL: 0
 ;PCODE: $00000249 VOL: 0
 ;PCODE: $0000024A VOL: 0
+; 0000 0118 
+; 0000 0119             key_pressed = 0;
 ;PCODE: $0000024B VOL: 0
-; 0000 010E                 delay_ms(10);
 ;PCODE: $0000024C VOL: 0
+; 0000 011A             for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
 ;PCODE: $0000024D VOL: 0
 ;PCODE: $0000024E VOL: 0
 ;PCODE: $0000024F VOL: 0
-; 0000 010F             }
 ;PCODE: $00000250 VOL: 0
 ;PCODE: $00000251 VOL: 0
 ;PCODE: $00000252 VOL: 0
 ;PCODE: $00000253 VOL: 0
 ;PCODE: $00000254 VOL: 0
-; 0000 0110 
-; 0000 0111             if (key_pressed == 0)
 ;PCODE: $00000255 VOL: 0
+; 0000 011B             {
+; 0000 011C                 key_pressed = get_key();
 ;PCODE: $00000256 VOL: 0
 ;PCODE: $00000257 VOL: 0
-; 0000 0112             {
-; 0000 0113                 glcd_clear();
+; 0000 011D                 if (key_pressed != 0) break;
 ;PCODE: $00000258 VOL: 0
-; 0000 0114                 glcd_outtextxy(10, 25, "Timeout! Try again.");
 ;PCODE: $00000259 VOL: 0
 ;PCODE: $0000025A VOL: 0
 ;PCODE: $0000025B VOL: 0
+; 0000 011E                 delay_ms(10);
 ;PCODE: $0000025C VOL: 0
 ;PCODE: $0000025D VOL: 0
 ;PCODE: $0000025E VOL: 0
 ;PCODE: $0000025F VOL: 0
-; 0000 0115                 delay_ms(200);
+; 0000 011F             }
 ;PCODE: $00000260 VOL: 0
 ;PCODE: $00000261 VOL: 0
 ;PCODE: $00000262 VOL: 0
-; 0000 0116             }
-; 0000 0117             else
 ;PCODE: $00000263 VOL: 0
 ;PCODE: $00000264 VOL: 0
-; 0000 0118             {
-; 0000 0119 
-; 0000 011A                 if (key_pressed == content_buffer)
+; 0000 0120 
+; 0000 0121             if (key_pressed == 0)
 ;PCODE: $00000265 VOL: 0
 ;PCODE: $00000266 VOL: 0
 ;PCODE: $00000267 VOL: 0
+; 0000 0122             {
+; 0000 0123                 glcd_clear();
 ;PCODE: $00000268 VOL: 0
+; 0000 0124                 glcd_outtextxy(10, 25, "Timeout! Try again.");
 ;PCODE: $00000269 VOL: 0
-; 0000 011B                 {
-; 0000 011C                     glcd_clear();
 ;PCODE: $0000026A VOL: 0
-; 0000 011D                     product_id = content_buffer[0] - '0';
 ;PCODE: $0000026B VOL: 0
 ;PCODE: $0000026C VOL: 0
 ;PCODE: $0000026D VOL: 0
 ;PCODE: $0000026E VOL: 0
-; 0000 011E                     activate_motor(product_id);
 ;PCODE: $0000026F VOL: 0
+; 0000 0125                 delay_ms(200);
 ;PCODE: $00000270 VOL: 0
-; 0000 011F                 }
-; 0000 0120                 else
 ;PCODE: $00000271 VOL: 0
 ;PCODE: $00000272 VOL: 0
-; 0000 0121                 {
-; 0000 0122                     glcd_clear();
+; 0000 0126             }
+; 0000 0127             else
 ;PCODE: $00000273 VOL: 0
-; 0000 0123 //                                    glcd_outtextxy(5, 25, "Error in entry!");
-; 0000 0124                     draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
 ;PCODE: $00000274 VOL: 0
+; 0000 0128             {
+; 0000 0129 
+; 0000 012A                 if (key_pressed == content_buffer)
 ;PCODE: $00000275 VOL: 0
 ;PCODE: $00000276 VOL: 0
 ;PCODE: $00000277 VOL: 0
 ;PCODE: $00000278 VOL: 0
 ;PCODE: $00000279 VOL: 0
+; 0000 012B                 {
+; 0000 012C                     glcd_clear();
 ;PCODE: $0000027A VOL: 0
+; 0000 012D                     product_id = content_buffer[0] - '0';
 ;PCODE: $0000027B VOL: 0
 ;PCODE: $0000027C VOL: 0
 ;PCODE: $0000027D VOL: 0
-; 0000 0125                     delay_ms(300);
 ;PCODE: $0000027E VOL: 0
+; 0000 012E                     activate_motor(product_id);
 ;PCODE: $0000027F VOL: 0
-; 0000 0126                 }
 ;PCODE: $00000280 VOL: 0
-; 0000 0127             }
+; 0000 012F                 }
+; 0000 0130                 else
 ;PCODE: $00000281 VOL: 0
-; 0000 0128         }
-; 0000 0129         else
 ;PCODE: $00000282 VOL: 0
+; 0000 0131                 {
+; 0000 0132                     glcd_clear();
 ;PCODE: $00000283 VOL: 0
-; 0000 012A         {
-; 0000 012B             glcd_clear();
+; 0000 0133 //                                    glcd_outtextxy(5, 25, "Error in entry!");
+; 0000 0134                     draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
 ;PCODE: $00000284 VOL: 0
-; 0000 012C //                        glcd_outtextxy(0, 25, "You are not authorized!");
-; 0000 012D             draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
 ;PCODE: $00000285 VOL: 0
 ;PCODE: $00000286 VOL: 0
 ;PCODE: $00000287 VOL: 0
@@ -1004,21 +1014,22 @@ _0x14:
 ;PCODE: $0000028B VOL: 0
 ;PCODE: $0000028C VOL: 0
 ;PCODE: $0000028D VOL: 0
+; 0000 0135                     delay_ms(300);
 ;PCODE: $0000028E VOL: 0
-; 0000 012E             delay_ms(300);
 ;PCODE: $0000028F VOL: 0
+; 0000 0136                 }
 ;PCODE: $00000290 VOL: 0
-; 0000 012F         }
+; 0000 0137             }
 ;PCODE: $00000291 VOL: 0
-; 0000 0130     }
-; 0000 0131 
-; 0000 0132     else
+; 0000 0138         }
+; 0000 0139         else
 ;PCODE: $00000292 VOL: 0
 ;PCODE: $00000293 VOL: 0
-; 0000 0133     {
-; 0000 0134         glcd_clear();
+; 0000 013A         {
+; 0000 013B             glcd_clear();
 ;PCODE: $00000294 VOL: 0
-; 0000 0135         draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
+; 0000 013C //                        glcd_outtextxy(0, 25, "You are not authorized!");
+; 0000 013D             draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
 ;PCODE: $00000295 VOL: 0
 ;PCODE: $00000296 VOL: 0
 ;PCODE: $00000297 VOL: 0
@@ -1029,24 +1040,48 @@ _0x14:
 ;PCODE: $0000029C VOL: 0
 ;PCODE: $0000029D VOL: 0
 ;PCODE: $0000029E VOL: 0
-; 0000 0136         delay_ms(300);
+; 0000 013E             delay_ms(300);
 ;PCODE: $0000029F VOL: 0
 ;PCODE: $000002A0 VOL: 0
-; 0000 0137     }
+; 0000 013F         }
 ;PCODE: $000002A1 VOL: 0
-; 0000 0138 
-; 0000 0139 ////////////////////////////////////////////////////////////////////////////////////////////
-; 0000 013A 
-; 0000 013B 
-; 0000 013C     sms_received = 0;  // A?CI? E?C? ??C? E?I?
+; 0000 0140     }
+; 0000 0141 
+; 0000 0142     else
 ;PCODE: $000002A2 VOL: 0
 ;PCODE: $000002A3 VOL: 0
+; 0000 0143     {
+; 0000 0144         glcd_clear();
 ;PCODE: $000002A4 VOL: 0
-; 0000 013D }
+; 0000 0145         draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
 ;PCODE: $000002A5 VOL: 0
 ;PCODE: $000002A6 VOL: 0
 ;PCODE: $000002A7 VOL: 0
 ;PCODE: $000002A8 VOL: 0
+;PCODE: $000002A9 VOL: 0
+;PCODE: $000002AA VOL: 0
+;PCODE: $000002AB VOL: 0
+;PCODE: $000002AC VOL: 0
+;PCODE: $000002AD VOL: 0
+;PCODE: $000002AE VOL: 0
+; 0000 0146         delay_ms(300);
+;PCODE: $000002AF VOL: 0
+;PCODE: $000002B0 VOL: 0
+; 0000 0147     }
+;PCODE: $000002B1 VOL: 0
+; 0000 0148 
+; 0000 0149 ////////////////////////////////////////////////////////////////////////////////////////////
+; 0000 014A 
+; 0000 014B 
+; 0000 014C     sms_received = 0;  // A?CI? E?C? ??C? E?I?
+;PCODE: $000002B2 VOL: 0
+;PCODE: $000002B3 VOL: 0
+;PCODE: $000002B4 VOL: 0
+; 0000 014D }
+;PCODE: $000002B5 VOL: 0
+;PCODE: $000002B6 VOL: 0
+;PCODE: $000002B7 VOL: 0
+;PCODE: $000002B8 VOL: 0
 
 	.DSEG
 _0x1F:
@@ -1054,154 +1089,154 @@ _0x1F:
 ;
 ;
 ;void process_uart_data(void)
-; 0000 0141 {
+; 0000 0151 {
 
 	.CSEG
-;PCODE: $000002A9 VOL: 0
-;PCODE: $000002AA VOL: 0
-; 0000 0142     static uint8_t phase = 0;   // 0=I?C?I? ?I?? 1=I?C?I? ??E?C
-; 0000 0143     static uint8_t h_idx = 0;
-; 0000 0144     static uint8_t c_idx = 0;
-; 0000 0145     char d;
-; 0000 0146 
-; 0000 0147     while (rx_counter0 > 0 && !sms_received) {
-;PCODE: $000002AB VOL: 0
-;	d -> R17
-;PCODE: $000002AC VOL: 0
-;PCODE: $000002AD VOL: 0
-;PCODE: $000002AE VOL: 0
-;PCODE: $000002AF VOL: 0
-;PCODE: $000002B0 VOL: 0
-;PCODE: $000002B1 VOL: 0
-;PCODE: $000002B2 VOL: 0
-;PCODE: $000002B3 VOL: 0
-;PCODE: $000002B4 VOL: 0
-;PCODE: $000002B5 VOL: 0
-;PCODE: $000002B6 VOL: 0
-; 0000 0148         d = getchar();
-;PCODE: $000002B7 VOL: 0
-;PCODE: $000002B8 VOL: 0
-; 0000 0149 
-; 0000 014A         if (phase == 0) {
 ;PCODE: $000002B9 VOL: 0
 ;PCODE: $000002BA VOL: 0
+; 0000 0152     static uint8_t phase = 0;   // 0=I?C?I? ?I?? 1=I?C?I? ??E?C
+; 0000 0153     static uint8_t h_idx = 0;
+; 0000 0154     static uint8_t c_idx = 0;
+; 0000 0155     char d;
+; 0000 0156 
+; 0000 0157     while (rx_counter0 > 0 && !sms_received) {
 ;PCODE: $000002BB VOL: 0
-; 0000 014B             // -- I?C?I? ?I? EC '\n' --
-; 0000 014C             if (d == '\n') {
+;	d -> R17
 ;PCODE: $000002BC VOL: 0
 ;PCODE: $000002BD VOL: 0
 ;PCODE: $000002BE VOL: 0
-; 0000 014D                 header_buffer[h_idx] = '\0';
 ;PCODE: $000002BF VOL: 0
 ;PCODE: $000002C0 VOL: 0
 ;PCODE: $000002C1 VOL: 0
 ;PCODE: $000002C2 VOL: 0
 ;PCODE: $000002C3 VOL: 0
-; 0000 014E                 // ??? C?? ?I? ?C??? SMS ECOI? E??? ??CU I?C?I? ??E?C
-; 0000 014F                 if (strstr(header_buffer, "+CMT:") != NULL) {
 ;PCODE: $000002C4 VOL: 0
 ;PCODE: $000002C5 VOL: 0
 ;PCODE: $000002C6 VOL: 0
+; 0000 0158         d = getchar();
 ;PCODE: $000002C7 VOL: 0
 ;PCODE: $000002C8 VOL: 0
+; 0000 0159 
+; 0000 015A         if (phase == 0) {
 ;PCODE: $000002C9 VOL: 0
 ;PCODE: $000002CA VOL: 0
-; 0000 0150                     phase = 1;
 ;PCODE: $000002CB VOL: 0
+; 0000 015B             // -- I?C?I? ?I? EC '\n' --
+; 0000 015C             if (d == '\n') {
 ;PCODE: $000002CC VOL: 0
-; 0000 0151                     c_idx = 0;  // A?CI? E?C? ?? ??I? content_buffer
 ;PCODE: $000002CD VOL: 0
 ;PCODE: $000002CE VOL: 0
-; 0000 0152                 }
-; 0000 0153                 // ???O? h_idx ?C ???E ?? EC I??? E?I? C? C?? ?? O??I
-; 0000 0154                 h_idx = 0;
+; 0000 015D                 header_buffer[h_idx] = '\0';
 ;PCODE: $000002CF VOL: 0
 ;PCODE: $000002D0 VOL: 0
 ;PCODE: $000002D1 VOL: 0
-; 0000 0155             }
-; 0000 0156             else if (d != '\r') {
 ;PCODE: $000002D2 VOL: 0
 ;PCODE: $000002D3 VOL: 0
+; 0000 015E                 // ??? C?? ?I? ?C??? SMS ECOI? E??? ??CU I?C?I? ??E?C
+; 0000 015F                 if (strstr(header_buffer, "+CMT:") != NULL) {
 ;PCODE: $000002D4 VOL: 0
 ;PCODE: $000002D5 VOL: 0
 ;PCODE: $000002D6 VOL: 0
-; 0000 0157                 // ?I???? ?C?C?E? I? header_buffer
-; 0000 0158                 if (h_idx < sizeof(header_buffer) - 1)
 ;PCODE: $000002D7 VOL: 0
 ;PCODE: $000002D8 VOL: 0
 ;PCODE: $000002D9 VOL: 0
-; 0000 0159                     header_buffer[h_idx++] = d;
 ;PCODE: $000002DA VOL: 0
+; 0000 0160                     phase = 1;
 ;PCODE: $000002DB VOL: 0
 ;PCODE: $000002DC VOL: 0
+; 0000 0161                     c_idx = 0;  // A?CI? E?C? ?? ??I? content_buffer
 ;PCODE: $000002DD VOL: 0
 ;PCODE: $000002DE VOL: 0
+; 0000 0162                 }
+; 0000 0163                 // ???O? h_idx ?C ???E ?? EC I??? E?I? C? C?? ?? O??I
+; 0000 0164                 h_idx = 0;
 ;PCODE: $000002DF VOL: 0
 ;PCODE: $000002E0 VOL: 0
-; 0000 015A             }
 ;PCODE: $000002E1 VOL: 0
-; 0000 015B         }
+; 0000 0165             }
+; 0000 0166             else if (d != '\r') {
 ;PCODE: $000002E2 VOL: 0
 ;PCODE: $000002E3 VOL: 0
-; 0000 015C         else {
 ;PCODE: $000002E4 VOL: 0
 ;PCODE: $000002E5 VOL: 0
-; 0000 015D             // -- I?C?I? ??E?C EC '\n' --
-; 0000 015E             if (d == '\n') {
 ;PCODE: $000002E6 VOL: 0
+; 0000 0167                 // ?I???? ?C?C?E? I? header_buffer
+; 0000 0168                 if (h_idx < sizeof(header_buffer) - 1)
 ;PCODE: $000002E7 VOL: 0
 ;PCODE: $000002E8 VOL: 0
-; 0000 015F                 content_buffer[c_idx] = '\0';
 ;PCODE: $000002E9 VOL: 0
+; 0000 0169                     header_buffer[h_idx++] = d;
 ;PCODE: $000002EA VOL: 0
 ;PCODE: $000002EB VOL: 0
 ;PCODE: $000002EC VOL: 0
 ;PCODE: $000002ED VOL: 0
-; 0000 0160                 sms_received = 1;    // ?? SMS ?C?? I??C?E OI
 ;PCODE: $000002EE VOL: 0
 ;PCODE: $000002EF VOL: 0
 ;PCODE: $000002F0 VOL: 0
-; 0000 0161                 phase = 0;           // E?C? ??C? E?I? I?EC?? E??????I?? E? ?C? 0
+; 0000 016A             }
 ;PCODE: $000002F1 VOL: 0
+; 0000 016B         }
 ;PCODE: $000002F2 VOL: 0
-; 0000 0162                 h_idx = 0;           // C??I????C ?C ?? ?C? ???????
 ;PCODE: $000002F3 VOL: 0
+; 0000 016C         else {
 ;PCODE: $000002F4 VOL: 0
-; 0000 0163                 c_idx = 0;
 ;PCODE: $000002F5 VOL: 0
+; 0000 016D             // -- I?C?I? ??E?C EC '\n' --
+; 0000 016E             if (d == '\n') {
 ;PCODE: $000002F6 VOL: 0
-; 0000 0164             }
-; 0000 0165             else if (d != '\r') {
 ;PCODE: $000002F7 VOL: 0
 ;PCODE: $000002F8 VOL: 0
+; 0000 016F                 content_buffer[c_idx] = '\0';
 ;PCODE: $000002F9 VOL: 0
 ;PCODE: $000002FA VOL: 0
 ;PCODE: $000002FB VOL: 0
-; 0000 0166                 if (c_idx < sizeof(content_buffer) - 1)
 ;PCODE: $000002FC VOL: 0
 ;PCODE: $000002FD VOL: 0
+; 0000 0170                 sms_received = 1;    // ?? SMS ?C?? I??C?E OI
 ;PCODE: $000002FE VOL: 0
-; 0000 0167                     content_buffer[c_idx++] = d;
 ;PCODE: $000002FF VOL: 0
 ;PCODE: $00000300 VOL: 0
+; 0000 0171                 phase = 0;           // E?C? ??C? E?I? I?EC?? E??????I?? E? ?C? 0
 ;PCODE: $00000301 VOL: 0
 ;PCODE: $00000302 VOL: 0
+; 0000 0172                 h_idx = 0;           // C??I????C ?C ?? ?C? ???????
 ;PCODE: $00000303 VOL: 0
 ;PCODE: $00000304 VOL: 0
+; 0000 0173                 c_idx = 0;
 ;PCODE: $00000305 VOL: 0
-; 0000 0168             }
 ;PCODE: $00000306 VOL: 0
-; 0000 0169         }
+; 0000 0174             }
+; 0000 0175             else if (d != '\r') {
 ;PCODE: $00000307 VOL: 0
 ;PCODE: $00000308 VOL: 0
 ;PCODE: $00000309 VOL: 0
-; 0000 016A     }
 ;PCODE: $0000030A VOL: 0
 ;PCODE: $0000030B VOL: 0
-; 0000 016B }
+; 0000 0176                 if (c_idx < sizeof(content_buffer) - 1)
 ;PCODE: $0000030C VOL: 0
 ;PCODE: $0000030D VOL: 0
 ;PCODE: $0000030E VOL: 0
+; 0000 0177                     content_buffer[c_idx++] = d;
+;PCODE: $0000030F VOL: 0
+;PCODE: $00000310 VOL: 0
+;PCODE: $00000311 VOL: 0
+;PCODE: $00000312 VOL: 0
+;PCODE: $00000313 VOL: 0
+;PCODE: $00000314 VOL: 0
+;PCODE: $00000315 VOL: 0
+; 0000 0178             }
+;PCODE: $00000316 VOL: 0
+; 0000 0179         }
+;PCODE: $00000317 VOL: 0
+;PCODE: $00000318 VOL: 0
+;PCODE: $00000319 VOL: 0
+; 0000 017A     }
+;PCODE: $0000031A VOL: 0
+;PCODE: $0000031B VOL: 0
+; 0000 017B }
+;PCODE: $0000031C VOL: 0
+;PCODE: $0000031D VOL: 0
+;PCODE: $0000031E VOL: 0
 
 	.DSEG
 _0x38:
@@ -1302,323 +1337,374 @@ _0x38:
 ;
 ;
 ;void main(void)
-; 0000 01CC {
+; 0000 01DC {
 
 	.CSEG
-;PCODE: $0000030F VOL: 0
-; 0000 01CD 
-; 0000 01CE     GLCDINIT_t glcd_init_data;
-; 0000 01CF 
-; 0000 01D0 
-; 0000 01D1     DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (0<<DDA1) | (0<<DDA0);
-;PCODE: $00000310 VOL: 0
-;	glcd_init_data -> Y+0
-;PCODE: $00000311 VOL: 0
-;PCODE: $00000312 VOL: 0
-; 0000 01D2     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
-;PCODE: $00000313 VOL: 0
-;PCODE: $00000314 VOL: 0
-; 0000 01D3 
-; 0000 01D4     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
-;PCODE: $00000315 VOL: 0
-;PCODE: $00000316 VOL: 0
-; 0000 01D5     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
-;PCODE: $00000317 VOL: 0
-;PCODE: $00000318 VOL: 0
-; 0000 01D6 
-; 0000 01D7     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
-;PCODE: $00000319 VOL: 0
-;PCODE: $0000031A VOL: 0
-; 0000 01D8     PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
-;PCODE: $0000031B VOL: 0
-;PCODE: $0000031C VOL: 0
-; 0000 01D9 
-; 0000 01DA     DDRD=(0<<DDD7) | (0<<DDD6) | (0<<DDD5) | (0<<DDD4) | (0<<DDD3) | (0<<DDD2) | (0<<DDD1) | (0<<DDD0);
-;PCODE: $0000031D VOL: 0
-;PCODE: $0000031E VOL: 0
-; 0000 01DB     PORTD=(0<<PORTD7) | (0<<PORTD6) | (0<<PORTD5) | (0<<PORTD4) | (0<<PORTD3) | (0<<PORTD2) | (1<<PORTD1) | (0<<PORTD0);
 ;PCODE: $0000031F VOL: 0
+; 0000 01DD 
+; 0000 01DE     GLCDINIT_t glcd_init_data;
+; 0000 01DF 
+; 0000 01E0 
+; 0000 01E1     DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (0<<DDA1) | (0<<DDA0);
 ;PCODE: $00000320 VOL: 0
-; 0000 01DC 
-; 0000 01DD     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
+;	glcd_init_data -> Y+0
 ;PCODE: $00000321 VOL: 0
 ;PCODE: $00000322 VOL: 0
-; 0000 01DE     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
+; 0000 01E2     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
 ;PCODE: $00000323 VOL: 0
 ;PCODE: $00000324 VOL: 0
-; 0000 01DF 
-; 0000 01E0     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
+; 0000 01E3 
+; 0000 01E4     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
 ;PCODE: $00000325 VOL: 0
 ;PCODE: $00000326 VOL: 0
-; 0000 01E1     PORTF=(0<<PORTF7) | (0<<PORTF6) | (0<<PORTF5) | (0<<PORTF4) | (0<<PORTF3) | (0<<PORTF2) | (0<<PORTF1) | (0<<PORTF0);
+; 0000 01E5     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
 ;PCODE: $00000327 VOL: 0
 ;PCODE: $00000328 VOL: 0
-; 0000 01E2 
-; 0000 01E3     DDRG=(0<<DDG4) | (0<<DDG3) | (0<<DDG2) | (0<<DDG1) | (0<<DDG0);
+; 0000 01E6 
+; 0000 01E7     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
 ;PCODE: $00000329 VOL: 0
 ;PCODE: $0000032A VOL: 0
-; 0000 01E4     PORTG=(0<<PORTG4) | (0<<PORTG3) | (0<<PORTG2) | (0<<PORTG1) | (0<<PORTG0);
+; 0000 01E8     PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
 ;PCODE: $0000032B VOL: 0
 ;PCODE: $0000032C VOL: 0
-; 0000 01E5 
-; 0000 01E6     // Timer Period: 32.768 ms
-; 0000 01E7     ASSR=0<<AS0;
+; 0000 01E9 
+; 0000 01EA     DDRD=(0<<DDD7) | (0<<DDD6) | (0<<DDD5) | (0<<DDD4) | (0<<DDD3) | (0<<DDD2) | (0<<DDD1) | (0<<DDD0);
 ;PCODE: $0000032D VOL: 0
 ;PCODE: $0000032E VOL: 0
-; 0000 01E8     TCCR0=(0<<WGM00) | (0<<COM01) | (0<<COM00) | (0<<WGM01) | (1<<CS02) | (1<<CS01) | (1<<CS00);
+; 0000 01EB     PORTD=(0<<PORTD7) | (0<<PORTD6) | (0<<PORTD5) | (0<<PORTD4) | (0<<PORTD3) | (0<<PORTD2) | (1<<PORTD1) | (0<<PORTD0);
 ;PCODE: $0000032F VOL: 0
 ;PCODE: $00000330 VOL: 0
-; 0000 01E9     TCNT0=0x00;
+; 0000 01EC 
+; 0000 01ED     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
 ;PCODE: $00000331 VOL: 0
 ;PCODE: $00000332 VOL: 0
-; 0000 01EA     OCR0=0x00;
+; 0000 01EE     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
 ;PCODE: $00000333 VOL: 0
 ;PCODE: $00000334 VOL: 0
-; 0000 01EB 
-; 0000 01EC     TCCR1A=(0<<COM1A1) | (0<<COM1A0) | (0<<COM1B1) | (0<<COM1B0) | (0<<COM1C1) | (0<<COM1C0) | (0<<WGM11) | (0<<WGM10);
+; 0000 01EF 
+; 0000 01F0     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
 ;PCODE: $00000335 VOL: 0
 ;PCODE: $00000336 VOL: 0
-; 0000 01ED     TCCR1B=(0<<ICNC1) | (0<<ICES1) | (0<<WGM13) | (0<<WGM12) | (0<<CS12) | (0<<CS11) | (0<<CS10);
+; 0000 01F1     PORTF=(0<<PORTF7) | (0<<PORTF6) | (0<<PORTF5) | (0<<PORTF4) | (0<<PORTF3) | (0<<PORTF2) | (0<<PORTF1) | (0<<PORTF0);
 ;PCODE: $00000337 VOL: 0
 ;PCODE: $00000338 VOL: 0
-; 0000 01EE     TCNT1H=0x00;
+; 0000 01F2 
+; 0000 01F3     DDRG=(0<<DDG4) | (0<<DDG3) | (0<<DDG2) | (0<<DDG1) | (0<<DDG0);
 ;PCODE: $00000339 VOL: 0
 ;PCODE: $0000033A VOL: 0
-; 0000 01EF     TCNT1L=0x00;
+; 0000 01F4     PORTG=(0<<PORTG4) | (0<<PORTG3) | (0<<PORTG2) | (0<<PORTG1) | (0<<PORTG0);
 ;PCODE: $0000033B VOL: 0
 ;PCODE: $0000033C VOL: 0
-; 0000 01F0     ICR1H=0x00;
+; 0000 01F5 
+; 0000 01F6     // Timer Period: 32.768 ms
+; 0000 01F7     ASSR=0<<AS0;
 ;PCODE: $0000033D VOL: 0
 ;PCODE: $0000033E VOL: 0
-; 0000 01F1     ICR1L=0x00;
+; 0000 01F8     TCCR0=(0<<WGM00) | (0<<COM01) | (0<<COM00) | (0<<WGM01) | (1<<CS02) | (1<<CS01) | (1<<CS00);
 ;PCODE: $0000033F VOL: 0
 ;PCODE: $00000340 VOL: 0
-; 0000 01F2     OCR1AH=0x00;
+; 0000 01F9     TCNT0=0x00;
 ;PCODE: $00000341 VOL: 0
 ;PCODE: $00000342 VOL: 0
-; 0000 01F3     OCR1AL=0x00;
+; 0000 01FA     OCR0=0x00;
 ;PCODE: $00000343 VOL: 0
 ;PCODE: $00000344 VOL: 0
-; 0000 01F4     OCR1BH=0x00;
+; 0000 01FB 
+; 0000 01FC     TCCR1A=(0<<COM1A1) | (0<<COM1A0) | (0<<COM1B1) | (0<<COM1B0) | (0<<COM1C1) | (0<<COM1C0) | (0<<WGM11) | (0<<WGM10);
 ;PCODE: $00000345 VOL: 0
 ;PCODE: $00000346 VOL: 0
-; 0000 01F5     OCR1BL=0x00;
+; 0000 01FD     TCCR1B=(0<<ICNC1) | (0<<ICES1) | (0<<WGM13) | (0<<WGM12) | (0<<CS12) | (0<<CS11) | (0<<CS10);
 ;PCODE: $00000347 VOL: 0
 ;PCODE: $00000348 VOL: 0
-; 0000 01F6     OCR1CH=0x00;
+; 0000 01FE     TCNT1H=0x00;
 ;PCODE: $00000349 VOL: 0
 ;PCODE: $0000034A VOL: 0
-; 0000 01F7     OCR1CL=0x00;
+; 0000 01FF     TCNT1L=0x00;
 ;PCODE: $0000034B VOL: 0
 ;PCODE: $0000034C VOL: 0
-; 0000 01F8 
-; 0000 01F9     TCCR2=(0<<WGM20) | (0<<COM21) | (0<<COM20) | (0<<WGM21) | (0<<CS22) | (0<<CS21) | (0<<CS20);
+; 0000 0200     ICR1H=0x00;
 ;PCODE: $0000034D VOL: 0
 ;PCODE: $0000034E VOL: 0
-; 0000 01FA     TCNT2=0x00;
+; 0000 0201     ICR1L=0x00;
 ;PCODE: $0000034F VOL: 0
 ;PCODE: $00000350 VOL: 0
-; 0000 01FB     OCR2=0x00;
+; 0000 0202     OCR1AH=0x00;
 ;PCODE: $00000351 VOL: 0
 ;PCODE: $00000352 VOL: 0
-; 0000 01FC 
-; 0000 01FD 
-; 0000 01FE     TCCR3A=(0<<COM3A1) | (0<<COM3A0) | (0<<COM3B1) | (0<<COM3B0) | (0<<COM3C1) | (0<<COM3C0) | (0<<WGM31) | (0<<WGM30);
+; 0000 0203     OCR1AL=0x00;
 ;PCODE: $00000353 VOL: 0
 ;PCODE: $00000354 VOL: 0
-; 0000 01FF     TCCR3B=(0<<ICNC3) | (0<<ICES3) | (0<<WGM33) | (0<<WGM32) | (0<<CS32) | (0<<CS31) | (0<<CS30);
+; 0000 0204     OCR1BH=0x00;
 ;PCODE: $00000355 VOL: 0
 ;PCODE: $00000356 VOL: 0
-; 0000 0200     TCNT3H=0x00;
+; 0000 0205     OCR1BL=0x00;
 ;PCODE: $00000357 VOL: 0
 ;PCODE: $00000358 VOL: 0
-; 0000 0201     TCNT3L=0x00;
+; 0000 0206     OCR1CH=0x00;
 ;PCODE: $00000359 VOL: 0
 ;PCODE: $0000035A VOL: 0
-; 0000 0202     ICR3H=0x00;
+; 0000 0207     OCR1CL=0x00;
 ;PCODE: $0000035B VOL: 0
 ;PCODE: $0000035C VOL: 0
-; 0000 0203     ICR3L=0x00;
+; 0000 0208 
+; 0000 0209     TCCR2=(0<<WGM20) | (0<<COM21) | (0<<COM20) | (0<<WGM21) | (0<<CS22) | (0<<CS21) | (0<<CS20);
 ;PCODE: $0000035D VOL: 0
 ;PCODE: $0000035E VOL: 0
-; 0000 0204     OCR3AH=0x00;
+; 0000 020A     TCNT2=0x00;
 ;PCODE: $0000035F VOL: 0
 ;PCODE: $00000360 VOL: 0
-; 0000 0205     OCR3AL=0x00;
+; 0000 020B     OCR2=0x00;
 ;PCODE: $00000361 VOL: 0
 ;PCODE: $00000362 VOL: 0
-; 0000 0206     OCR3BH=0x00;
+; 0000 020C 
+; 0000 020D 
+; 0000 020E     TCCR3A=(0<<COM3A1) | (0<<COM3A0) | (0<<COM3B1) | (0<<COM3B0) | (0<<COM3C1) | (0<<COM3C0) | (0<<WGM31) | (0<<WGM30);
 ;PCODE: $00000363 VOL: 0
 ;PCODE: $00000364 VOL: 0
-; 0000 0207     OCR3BL=0x00;
+; 0000 020F     TCCR3B=(0<<ICNC3) | (0<<ICES3) | (0<<WGM33) | (0<<WGM32) | (0<<CS32) | (0<<CS31) | (0<<CS30);
 ;PCODE: $00000365 VOL: 0
 ;PCODE: $00000366 VOL: 0
-; 0000 0208     OCR3CH=0x00;
+; 0000 0210     TCNT3H=0x00;
 ;PCODE: $00000367 VOL: 0
 ;PCODE: $00000368 VOL: 0
-; 0000 0209     OCR3CL=0x00;
+; 0000 0211     TCNT3L=0x00;
 ;PCODE: $00000369 VOL: 0
 ;PCODE: $0000036A VOL: 0
-; 0000 020A 
-; 0000 020B     TIMSK=(0<<OCIE2) | (0<<TOIE2) | (0<<TICIE1) | (0<<OCIE1A) | (0<<OCIE1B) | (0<<TOIE1) | (0<<OCIE0) | (1<<TOIE0);
+; 0000 0212     ICR3H=0x00;
 ;PCODE: $0000036B VOL: 0
 ;PCODE: $0000036C VOL: 0
-; 0000 020C     ETIMSK=(0<<TICIE3) | (0<<OCIE3A) | (0<<OCIE3B) | (0<<TOIE3) | (0<<OCIE3C) | (0<<OCIE1C);
+; 0000 0213     ICR3L=0x00;
 ;PCODE: $0000036D VOL: 0
 ;PCODE: $0000036E VOL: 0
-; 0000 020D 
-; 0000 020E     EICRA=(0<<ISC31) | (0<<ISC30) | (0<<ISC21) | (0<<ISC20) | (0<<ISC11) | (0<<ISC10) | (0<<ISC01) | (0<<ISC00);
+; 0000 0214     OCR3AH=0x00;
 ;PCODE: $0000036F VOL: 0
 ;PCODE: $00000370 VOL: 0
-; 0000 020F     EICRB=(0<<ISC71) | (0<<ISC70) | (0<<ISC61) | (0<<ISC60) | (0<<ISC51) | (0<<ISC50) | (0<<ISC41) | (0<<ISC40);
+; 0000 0215     OCR3AL=0x00;
 ;PCODE: $00000371 VOL: 0
 ;PCODE: $00000372 VOL: 0
-; 0000 0210     EIMSK=(0<<INT7) | (0<<INT6) | (0<<INT5) | (0<<INT4) | (0<<INT3) | (0<<INT2) | (0<<INT1) | (0<<INT0);
+; 0000 0216     OCR3BH=0x00;
 ;PCODE: $00000373 VOL: 0
 ;PCODE: $00000374 VOL: 0
-; 0000 0211 
-; 0000 0212     UCSR0A=(0<<RXC0) | (0<<TXC0) | (0<<UDRE0) | (0<<FE0) | (0<<DOR0) | (0<<UPE0) | (0<<U2X0) | (0<<MPCM0);
+; 0000 0217     OCR3BL=0x00;
 ;PCODE: $00000375 VOL: 0
 ;PCODE: $00000376 VOL: 0
-; 0000 0213     UCSR0B=(1<<RXCIE0) | (0<<TXCIE0) | (0<<UDRIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02) | (0<<RXB80) | (0<<TXB80);
+; 0000 0218     OCR3CH=0x00;
 ;PCODE: $00000377 VOL: 0
 ;PCODE: $00000378 VOL: 0
-; 0000 0214     UCSR0C=(0<<UMSEL0) | (0<<UPM01) | (0<<UPM00) | (0<<USBS0) | (1<<UCSZ01) | (1<<UCSZ00) | (0<<UCPOL0);
+; 0000 0219     OCR3CL=0x00;
 ;PCODE: $00000379 VOL: 0
 ;PCODE: $0000037A VOL: 0
-; 0000 0215     UBRR0H=0x00;
+; 0000 021A 
+; 0000 021B     TIMSK=(0<<OCIE2) | (0<<TOIE2) | (0<<TICIE1) | (0<<OCIE1A) | (0<<OCIE1B) | (0<<TOIE1) | (0<<OCIE0) | (1<<TOIE0);
 ;PCODE: $0000037B VOL: 0
 ;PCODE: $0000037C VOL: 0
-; 0000 0216     UBRR0L=0x33;
+; 0000 021C     ETIMSK=(0<<TICIE3) | (0<<OCIE3A) | (0<<OCIE3B) | (0<<TOIE3) | (0<<OCIE3C) | (0<<OCIE1C);
 ;PCODE: $0000037D VOL: 0
 ;PCODE: $0000037E VOL: 0
-; 0000 0217 
-; 0000 0218     UCSR1B=(0<<RXCIE1) | (0<<TXCIE1) | (0<<UDRIE1) | (0<<RXEN1) | (0<<TXEN1) | (0<<UCSZ12) | (0<<RXB81) | (0<<TXB81);
+; 0000 021D 
+; 0000 021E     EICRA=(0<<ISC31) | (0<<ISC30) | (0<<ISC21) | (0<<ISC20) | (0<<ISC11) | (0<<ISC10) | (0<<ISC01) | (0<<ISC00);
 ;PCODE: $0000037F VOL: 0
 ;PCODE: $00000380 VOL: 0
-; 0000 0219 
-; 0000 021A     ACSR=(1<<ACD) | (0<<ACBG) | (0<<ACO) | (0<<ACI) | (0<<ACIE) | (0<<ACIC) | (0<<ACIS1) | (0<<ACIS0);
+; 0000 021F     EICRB=(0<<ISC71) | (0<<ISC70) | (0<<ISC61) | (0<<ISC60) | (0<<ISC51) | (0<<ISC50) | (0<<ISC41) | (0<<ISC40);
 ;PCODE: $00000381 VOL: 0
 ;PCODE: $00000382 VOL: 0
-; 0000 021B     SFIOR=(0<<ACME);
+; 0000 0220     EIMSK=(0<<INT7) | (0<<INT6) | (0<<INT5) | (0<<INT4) | (0<<INT3) | (0<<INT2) | (0<<INT1) | (0<<INT0);
 ;PCODE: $00000383 VOL: 0
 ;PCODE: $00000384 VOL: 0
-; 0000 021C 
-; 0000 021D     ADCSRA=(0<<ADEN) | (0<<ADSC) | (0<<ADFR) | (0<<ADIF) | (0<<ADIE) | (0<<ADPS2) | (0<<ADPS1) | (0<<ADPS0);
+; 0000 0221 
+; 0000 0222     UCSR0A=(0<<RXC0) | (0<<TXC0) | (0<<UDRE0) | (0<<FE0) | (0<<DOR0) | (0<<UPE0) | (0<<U2X0) | (0<<MPCM0);
 ;PCODE: $00000385 VOL: 0
 ;PCODE: $00000386 VOL: 0
-; 0000 021E 
-; 0000 021F     SPCR=(0<<SPIE) | (0<<SPE) | (0<<DORD) | (0<<MSTR) | (0<<CPOL) | (0<<CPHA) | (0<<SPR1) | (0<<SPR0);
+; 0000 0223     UCSR0B=(1<<RXCIE0) | (0<<TXCIE0) | (0<<UDRIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02) | (0<<RXB80) | (0<<TXB80);
 ;PCODE: $00000387 VOL: 0
 ;PCODE: $00000388 VOL: 0
-; 0000 0220 
-; 0000 0221     TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
+; 0000 0224     UCSR0C=(0<<UMSEL0) | (0<<UPM01) | (0<<UPM00) | (0<<USBS0) | (1<<UCSZ01) | (1<<UCSZ00) | (0<<UCPOL0);
 ;PCODE: $00000389 VOL: 0
 ;PCODE: $0000038A VOL: 0
-; 0000 0222 
-; 0000 0223     MCUCSR = (1 << JTD);
+; 0000 0225     UBRR0H=0x00;
 ;PCODE: $0000038B VOL: 0
 ;PCODE: $0000038C VOL: 0
-; 0000 0224     MCUCSR = (1 << JTD);
+; 0000 0226     UBRR0L=0x33;
 ;PCODE: $0000038D VOL: 0
 ;PCODE: $0000038E VOL: 0
-; 0000 0225 
-; 0000 0226     glcd_init_data.font=font5x7;
+; 0000 0227 
+; 0000 0228     UCSR1B=(0<<RXCIE1) | (0<<TXCIE1) | (0<<UDRIE1) | (0<<RXEN1) | (0<<TXEN1) | (0<<UCSZ12) | (0<<RXB81) | (0<<TXB81);
 ;PCODE: $0000038F VOL: 0
 ;PCODE: $00000390 VOL: 0
-; 0000 0227     glcd_init_data.readxmem=NULL;
+; 0000 0229 
+; 0000 022A     ACSR=(1<<ACD) | (0<<ACBG) | (0<<ACO) | (0<<ACI) | (0<<ACIE) | (0<<ACIC) | (0<<ACIS1) | (0<<ACIS0);
 ;PCODE: $00000391 VOL: 0
 ;PCODE: $00000392 VOL: 0
-; 0000 0228     glcd_init_data.writexmem=NULL;
+; 0000 022B     SFIOR=(0<<ACME);
 ;PCODE: $00000393 VOL: 0
 ;PCODE: $00000394 VOL: 0
-; 0000 0229     glcd_init(&glcd_init_data);
+; 0000 022C 
+; 0000 022D     ADCSRA=(0<<ADEN) | (0<<ADSC) | (0<<ADFR) | (0<<ADIF) | (0<<ADIE) | (0<<ADPS2) | (0<<ADPS1) | (0<<ADPS0);
 ;PCODE: $00000395 VOL: 0
 ;PCODE: $00000396 VOL: 0
-; 0000 022A     glcd_setfont(font5x7);
+; 0000 022E 
+; 0000 022F     SPCR=(0<<SPIE) | (0<<SPE) | (0<<DORD) | (0<<MSTR) | (0<<CPOL) | (0<<CPHA) | (0<<SPR1) | (0<<SPR0);
 ;PCODE: $00000397 VOL: 0
 ;PCODE: $00000398 VOL: 0
+; 0000 0230 
+; 0000 0231     TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
 ;PCODE: $00000399 VOL: 0
-; 0000 022B 
-; 0000 022C     // Global enable interrupts
-; 0000 022D     #asm("sei")
 ;PCODE: $0000039A VOL: 0
-	sei
+; 0000 0232 
+; 0000 0233     MCUCSR = (1 << JTD);
 ;PCODE: $0000039B VOL: 0
-; 0000 022E 
-; 0000 022F     glcd_clear();
 ;PCODE: $0000039C VOL: 0
-; 0000 0230     glcd_outtextxy(0, 0, "Module Init...");
+; 0000 0234     MCUCSR = (1 << JTD);
 ;PCODE: $0000039D VOL: 0
 ;PCODE: $0000039E VOL: 0
+; 0000 0235 
+; 0000 0236     glcd_init_data.font=font5x7;
 ;PCODE: $0000039F VOL: 0
 ;PCODE: $000003A0 VOL: 0
+; 0000 0237     glcd_init_data.readxmem=NULL;
 ;PCODE: $000003A1 VOL: 0
 ;PCODE: $000003A2 VOL: 0
+; 0000 0238     glcd_init_data.writexmem=NULL;
 ;PCODE: $000003A3 VOL: 0
-; 0000 0231     delay_ms(500);
 ;PCODE: $000003A4 VOL: 0
+; 0000 0239     glcd_init(&glcd_init_data);
 ;PCODE: $000003A5 VOL: 0
-; 0000 0232 
-; 0000 0233     send_at_command("ATE0");
 ;PCODE: $000003A6 VOL: 0
+; 0000 023A     glcd_setfont(font5x7);
 ;PCODE: $000003A7 VOL: 0
 ;PCODE: $000003A8 VOL: 0
-; 0000 0234     delay_ms(100);
 ;PCODE: $000003A9 VOL: 0
+; 0000 023B 
+; 0000 023C     // Global enable interrupts
+; 0000 023D     #asm("sei")
 ;PCODE: $000003AA VOL: 0
+	sei
 ;PCODE: $000003AB VOL: 0
-; 0000 0235     send_at_command("AT");
+; 0000 023E 
+; 0000 023F     glcd_clear();
 ;PCODE: $000003AC VOL: 0
+; 0000 0240     glcd_outtextxy(0, 0, "Module Init...");
 ;PCODE: $000003AD VOL: 0
 ;PCODE: $000003AE VOL: 0
-; 0000 0236     delay_ms(100);
 ;PCODE: $000003AF VOL: 0
 ;PCODE: $000003B0 VOL: 0
 ;PCODE: $000003B1 VOL: 0
-; 0000 0237 
-; 0000 0238     sim800_restart();
 ;PCODE: $000003B2 VOL: 0
-; 0000 0239 //    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
-; 0000 023A //    if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
-; 0000 023B 
-; 0000 023C 
-; 0000 023D 
-; 0000 023E     glcd_clear();
 ;PCODE: $000003B3 VOL: 0
-; 0000 023F     draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
+; 0000 0241     delay_ms(500);
 ;PCODE: $000003B4 VOL: 0
 ;PCODE: $000003B5 VOL: 0
+; 0000 0242 
+; 0000 0243     sim800_restart();
 ;PCODE: $000003B6 VOL: 0
+; 0000 0244     check_sim();
 ;PCODE: $000003B7 VOL: 0
+; 0000 0245 
+; 0000 0246 //
+; 0000 0247     if (!check_signal_with_restart()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
 ;PCODE: $000003B8 VOL: 0
 ;PCODE: $000003B9 VOL: 0
 ;PCODE: $000003BA VOL: 0
 ;PCODE: $000003BB VOL: 0
 ;PCODE: $000003BC VOL: 0
 ;PCODE: $000003BD VOL: 0
-; 0000 0240 
-; 0000 0241     while (1){
 ;PCODE: $000003BE VOL: 0
-; 0000 0242         process_uart_data();
 ;PCODE: $000003BF VOL: 0
-; 0000 0243         if (sms_received) {
 ;PCODE: $000003C0 VOL: 0
 ;PCODE: $000003C1 VOL: 0
 ;PCODE: $000003C2 VOL: 0
-; 0000 0244             handle_sms();        // ECE?? ?? header_buffer ? content_buffer ?C ??C?O ???I?I
 ;PCODE: $000003C3 VOL: 0
-; 0000 0245         }
-; 0000 0246     }
 ;PCODE: $000003C4 VOL: 0
+; 0000 0248 
+; 0000 0249     if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
 ;PCODE: $000003C5 VOL: 0
 ;PCODE: $000003C6 VOL: 0
-; 0000 0247 }
 ;PCODE: $000003C7 VOL: 0
 ;PCODE: $000003C8 VOL: 0
 ;PCODE: $000003C9 VOL: 0
 ;PCODE: $000003CA VOL: 0
+;PCODE: $000003CB VOL: 0
+;PCODE: $000003CC VOL: 0
+;PCODE: $000003CD VOL: 0
+;PCODE: $000003CE VOL: 0
+;PCODE: $000003CF VOL: 0
+;PCODE: $000003D0 VOL: 0
+;PCODE: $000003D1 VOL: 0
+;PCODE: $000003D2 VOL: 0
+; 0000 024A     if (!init_GPRS()) { glcd_outtextxy(0, 10, "GPRS Init Failed!"); while(1); }
+;PCODE: $000003D3 VOL: 0
+;PCODE: $000003D4 VOL: 0
+;PCODE: $000003D5 VOL: 0
+;PCODE: $000003D6 VOL: 0
+;PCODE: $000003D7 VOL: 0
+;PCODE: $000003D8 VOL: 0
+;PCODE: $000003D9 VOL: 0
+;PCODE: $000003DA VOL: 0
+;PCODE: $000003DB VOL: 0
+;PCODE: $000003DC VOL: 0
+;PCODE: $000003DD VOL: 0
+;PCODE: $000003DE VOL: 0
+;PCODE: $000003DF VOL: 0
+;PCODE: $000003E0 VOL: 0
+; 0000 024B     gprs_keep_alive();
+;PCODE: $000003E1 VOL: 0
+;PCODE: $000003E2 VOL: 0
+; 0000 024C 
+; 0000 024D 
+; 0000 024E 
+; 0000 024F     glcd_clear();
+;PCODE: $000003E3 VOL: 0
+; 0000 0250     draw_bitmap(0, 0, shomare_soton_ra_payamak, 128, 64);
+;PCODE: $000003E4 VOL: 0
+;PCODE: $000003E5 VOL: 0
+;PCODE: $000003E6 VOL: 0
+;PCODE: $000003E7 VOL: 0
+;PCODE: $000003E8 VOL: 0
+;PCODE: $000003E9 VOL: 0
+;PCODE: $000003EA VOL: 0
+;PCODE: $000003EB VOL: 0
+;PCODE: $000003EC VOL: 0
+;PCODE: $000003ED VOL: 0
+; 0000 0251 
+; 0000 0252     while (1){
+;PCODE: $000003EE VOL: 0
+; 0000 0253 
+; 0000 0254 
+; 0000 0255         process_uart_data();
+;PCODE: $000003EF VOL: 0
+; 0000 0256         if (sms_received) {
+;PCODE: $000003F0 VOL: 0
+;PCODE: $000003F1 VOL: 0
+;PCODE: $000003F2 VOL: 0
+; 0000 0257             handle_sms();        // ECE?? ?? header_buffer ? content_buffer ?C ??C?O ???I?I
+;PCODE: $000003F3 VOL: 0
+; 0000 0258         }
+; 0000 0259 
+; 0000 025A         if (millis() - last_time > 50000) {
+;PCODE: $000003F4 VOL: 0
+;PCODE: $000003F5 VOL: 0
+;PCODE: $000003F6 VOL: 0
+;PCODE: $000003F7 VOL: 0
+;PCODE: $000003F8 VOL: 0
+;PCODE: $000003F9 VOL: 0
+;PCODE: $000003FA VOL: 0
+; 0000 025B             gprs_keep_alive();
+;PCODE: $000003FB VOL: 0
+; 0000 025C             last_time = millis();
+;PCODE: $000003FC VOL: 0
+;PCODE: $000003FD VOL: 0
+; 0000 025D         }
+; 0000 025E 
+; 0000 025F     }
+;PCODE: $000003FE VOL: 0
+;PCODE: $000003FF VOL: 0
+;PCODE: $00000400 VOL: 0
+; 0000 0260 }
+;PCODE: $00000401 VOL: 0
+;PCODE: $00000402 VOL: 0
+;PCODE: $00000403 VOL: 0
+;PCODE: $00000404 VOL: 0
 
 	.DSEG
 _0x41:
-	.BYTE 0x17
+	.BYTE 0x43
