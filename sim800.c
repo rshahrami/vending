@@ -33,7 +33,7 @@ void sim800_restart(void) {
         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 1000, "ERROR")) break;
         glcd_outtextxy(0, 10, "Waiting HTTPTERM...");
-        delay_ms(500);
+        delay_ms(100);
     }
 
     // --- 2) »” ‰ SAPBR (bearer) ---
@@ -42,7 +42,7 @@ void sim800_restart(void) {
         send_at_command("AT+SAPBR=0,1");   // close bearer
         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 3000, "OK")) break;
         glcd_outtextxy(0, 10, "Waiting SAPBR=0,1...");
-        delay_ms(500);
+        delay_ms(100);
     }
 
     // --- 3) çò ò‰ òÂ SAPBR »” Â ‘œÂ («Œ Ì«—Ì «„« „›Ìœ) ---
@@ -61,7 +61,7 @@ void sim800_restart(void) {
             }
             // «ê— ÂÌç Å«”ŒÌ ‰ÌÊ„œ Ì« Â‰Ê“ Connected «”  „‰ Ÿ— Ê œÊ»«—Â  ·«‘ ò‰
             glcd_outtextxy(0, 10, "Checking SAPBR closed...");
-            delay_ms(500);
+            delay_ms(100);
         }
     }
 
@@ -71,7 +71,7 @@ void sim800_restart(void) {
         send_at_command("AT+CGATT=0");     // detach
         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 3000, "OK")) break;
         glcd_outtextxy(0, 10, "Waiting CGATT=0...");
-        delay_ms(500);
+        delay_ms(100);
     }
 
     // --- 5) —Ì”  ò«„· ‰—„ù«›“«—Ì (CFUN=1,1) Ê ”Å” ’»—  « „«éÊ· »«·« »Ì«Ìœ ---
@@ -92,7 +92,7 @@ void sim800_restart(void) {
                 goto after_reboot;
             }
             // «ê— ŒÊ«” Ì „Ì  Ê«‰Ì «Ì‰Ã« ÅÌ«„ Ê÷⁄Ì  Ê delay ÿÊ·«‰Ìù — »–«—Ì
-            delay_ms(500);
+            delay_ms(100);
         }
     }
 after_reboot:
@@ -103,7 +103,7 @@ after_reboot:
         send_at_command("ATE0");
         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
         glcd_outtextxy(0, 10, "Waiting ATE0...");
-        delay_ms(500);
+        delay_ms(100);
     }
 
     // --- 7)  ”  ‰Â«ÌÌ „«éÊ· ---
@@ -112,7 +112,7 @@ after_reboot:
         send_at_command("AT");
         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
         glcd_outtextxy(0, 10, "Final AT check...");
-        delay_ms(500);
+        delay_ms(100);
     }
 
     glcd_outtextxy(0, 20, "Restart Done!");
@@ -204,9 +204,10 @@ unsigned char check_sim(void) {
 //        }   
 //    } 
 
-    // --- »——”Ì Ê÷⁄Ì  ‘»òÂ  « “„«‰ « ’«· ---
+    // --- »——”Ì Ê÷⁄Ì  ‘»òÂ  « “„«‰ « ’«· --- 
+    glcd_clear();
     do { 
-        glcd_clear();
+        //glcd_clear();
         uart_buffer_reset();
         send_at_command("AT+CREG?");
         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "CREG")) {
@@ -214,8 +215,8 @@ unsigned char check_sim(void) {
             
             
             if (extract_field_after_keyword(buffer, "+CREG:", 1, value, sizeof(value))) { 
-                glcd_outtextxy(0, 10, value); 
-                delay_ms(100);
+//                glcd_outtextxy(0, 10, value); 
+//                delay_ms(100);
 //                stat = atoi(value);
                 if (atoi(value) == 1) break;
             }
@@ -379,8 +380,8 @@ unsigned char init_GPRS(void)
 
 
 void gprs_keep_alive(void) {
-    glcd_clear();
-    glcd_outtextxy(0, 0, "Checking Internet...");  
+//    glcd_clear();
+//    glcd_outtextxy(0, 0, "Checking Internet...");  
 
     uart_buffer_reset();
     send_at_command("AT+HTTPTERM");
@@ -408,28 +409,31 @@ void gprs_keep_alive(void) {
 
     // --- »——”Ì Å«”Œ ---
     uart_buffer_reset();
-    if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION:")) {
+    if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION")) {
         // „À«· Œ—ÊÃÌ: +HTTPACTION:0,200,1256
 //        int status = 0;
 
         // ›Ì·œ œÊ„ »⁄œ «“ +HTTPACTION: Â„«‰ òœ Ê÷⁄Ì  HTTP «” 
         if (extract_field_after_keyword(buffer, "+HTTPACTION", 1, value, sizeof(value))) {
 //            status = atoi(value);  //  »œÌ· —‘ Â »Â ⁄œœ
-
-            if (atoi(value) == 200) {
-                glcd_outtextxy(0, 16, "Internet OK");
-            } else {
-                glcd_outtextxy(0, 16, "Internet Failed");
-            }
-        } else {
-            glcd_outtextxy(0, 16, "Parsing Error!");
-        }
+            glcd_outtextxy(0, 16, value);
+            delay_ms(100);
+//
+//            if (atoi(value) == 200) {
+//                glcd_outtextxy(0, 16, "Internet OK");
+//            } else {
+//                glcd_outtextxy(0, 16, "Internet Failed");
+//            }
+        } 
+//        else {
+//            glcd_outtextxy(0, 16, "Parsing Error!");
+//        }
     } 
-    else {
-        glcd_outtextxy(0, 16, "No response!");
-    }
+//    else {
+//        glcd_outtextxy(0, 16, "No response!");
+//    }
 
-    delay_ms(100);
+    
 
     // --- Å«Ì«‰ HTTP ---
     uart_buffer_reset();

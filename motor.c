@@ -1,4 +1,5 @@
 #include "motor.h"
+#include "common.h"
 
 void activate_motor(int product_id)
 {
@@ -19,11 +20,12 @@ void activate_motor(int product_id)
     glcd_outtextxy(10, 20, motor_msg);
     MOTOR_PORT |= (1 << motor_pin);
     
-    while (!(PIND & (1 << PIND1)) && timeout > 0)
+    while ((PIND & (1 << PIND1)) && timeout > 0)
     {
         delay_ms(1);
         timeout--;
     }
  
     MOTOR_PORT &= ~(1 << motor_pin);
+    
 }

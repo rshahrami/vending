@@ -4,6 +4,8 @@
 #include <mega64a.h>
 #include <glcd.h>
 
+#define glcd_pixel(x, y, color) glcd_setpixel(x, y)
+#define read_flash_byte(p) (*(p))
 
 // --- «—”«· œ” Ê— AT ---
 void send_at_command(char *command)
@@ -35,30 +37,30 @@ void uart_buffer_reset(void) {
 }
 
 
-unsigned char read_serial_timeout_simple(char* buffer, int buffer_size, unsigned long timeout_ms) {
-    int i = 0;
-    unsigned long elapsed = 0;
-
-    // »«›— „Õ·Ì —« ’›— „Ìùò‰Ì„
-    memset(buffer, 0, buffer_size);
-
-    //  «Ì„ù«Ê   ﬁ—Ì»Ì »— Õ”» Õ·ﬁÂ Ê delay
-    while (elapsed < timeout_ms && i < buffer_size - 1) {
-        // «ê— œ«œÂù«Ì œ— UART ¬„œÂ »«‘œ
-        while (rx_counter0 > 0 && i < buffer_size - 1) {
-            char c = getchar();  // ŒÊ«‰œ‰ Ìò ò«—«ò — «“ UART
-            buffer[i++] = c;
-            buffer[i] = '\0';
-
-            // ‰„«Ì‘ “‰œÂ —ÊÌ GLCD
-            glcd_outtextxy(0, 0, buffer);
-        }
-        delay_ms(1);
-        elapsed++;
-    }
-
-    return (i > 0); // 1 «ê— Õœ«ﬁ· Ìò ò«—«ò — œ—Ì«›  ‘œÂ »«‘œ
-}
+//unsigned char read_serial_timeout_simple(char* buffer, int buffer_size, unsigned long timeout_ms) {
+//    int i = 0;
+//    unsigned long elapsed = 0;
+//
+//    // »«›— „Õ·Ì —« ’›— „Ìùò‰Ì„
+//    memset(buffer, 0, buffer_size);
+//
+//    //  «Ì„ù«Ê   ﬁ—Ì»Ì »— Õ”» Õ·ﬁÂ Ê delay
+//    while (elapsed < timeout_ms && i < buffer_size - 1) {
+//        // «ê— œ«œÂù«Ì œ— UART ¬„œÂ »«‘œ
+//        while (rx_counter0 > 0 && i < buffer_size - 1) {
+//            char c = getchar();  // ŒÊ«‰œ‰ Ìò ò«—«ò — «“ UART
+//            buffer[i++] = c;
+//            buffer[i] = '\0';
+//
+//            // ‰„«Ì‘ “‰œÂ —ÊÌ GLCD
+//            glcd_outtextxy(0, 0, buffer);
+//        }
+//        delay_ms(1);
+//        elapsed++;
+//    }
+//
+//    return (i > 0); // 1 «ê— Õœ«ﬁ· Ìò ò«—«ò — œ—Ì«›  ‘œÂ »«‘œ
+//}
 
 
 
@@ -98,23 +100,23 @@ unsigned char read_until_keyword_keep_all(char* buffer, int buffer_size, unsigne
     return (i > 0);
 }
 
-//  «»⁄ œ—Ì«›  „ﬁ«œÌ— Ã·ÊÌ œ” Ê—« 
-int extract_value_after_keyword(const char* input, const char* keyword, char* out_value, int out_size) {
-    const char* p = strstr(input, keyword);
-    int i = 0;
-    if (p) {
-        p += strlen(keyword);  // »—Ê »⁄œ «“ ò·ÌœÊ«éÂ
-        while (*p == ' ' || *p == '\t') p++;  // —œ ò—œ‰ ›«’·ÂùÂ«
-
-        // òÅÌ ò—œ‰ „ﬁœ«—  « «Ê·Ì‰ Ãœ«ò‰‰œÂ (, Ì« «”ÅÌ” Ì« CRLF)
-        while (*p && *p != ',' && *p != '\r' && *p != '\n' && *p != ' ' && i < out_size - 1) {
-            out_value[i++] = *p++;
-        }
-        out_value[i] = '\0';
-        return 1;  // „Ê›ﬁ
-    }
-    return 0;  // ÅÌœ« ‰‘œ
-}
+////  «»⁄ œ—Ì«›  „ﬁ«œÌ— Ã·ÊÌ œ” Ê—« 
+//int extract_value_after_keyword(const char* input, const char* keyword, char* out_value, int out_size) {
+//    const char* p = strstr(input, keyword);
+//    int i = 0;
+//    if (p) {
+//        p += strlen(keyword);  // »—Ê »⁄œ «“ ò·ÌœÊ«éÂ
+//        while (*p == ' ' || *p == '\t') p++;  // —œ ò—œ‰ ›«’·ÂùÂ«
+//
+//        // òÅÌ ò—œ‰ „ﬁœ«—  « «Ê·Ì‰ Ãœ«ò‰‰œÂ (, Ì« «”ÅÌ” Ì« CRLF)
+//        while (*p && *p != ',' && *p != '\r' && *p != '\n' && *p != ' ' && i < out_size - 1) {
+//            out_value[i++] = *p++;
+//        }
+//        out_value[i] = '\0';
+//        return 1;  // „Ê›ﬁ
+//    }
+//    return 0;  // ÅÌœ« ‰‘œ
+//}
 
 
 int extract_field_after_keyword(const char* input, const char* keyword, int field_index, char* out_value, int out_size)
@@ -220,26 +222,29 @@ int extract_field_after_keyword(const char* input, const char* keyword, int fiel
 //    return (i > 0);
 //}
 
+
 //// --- ŒÊ«‰œ‰ Å«”Œ ”—Ì«· »« timeout ---
-unsigned char read_serial_response(char* buffer, int buffer_size, int timeout_ms, const char* expected_response) {
-    int i = 0;
-    unsigned int elapsed = 0;
+//unsigned char read_serial_response(char* buffer, int buffer_size, int timeout_ms, const char* expected_response) {
+//    int i = 0;
+//    unsigned int elapsed = 0;
+//
+//    // ?C? ??I? EC?? ?C?E?
+//    memset(buffer, 0, buffer_size);
+//
+//    while (elapsed < (unsigned)timeout_ms) {
+//        // ?? EC?? E?C? EC?E??C? I? I?E?? ????? UART ?C EI?C??I
+//        while (rx_counter0 > 0 && i < buffer_size - 1) {
+//            buffer[i++] = getchar();  // getchar C? ????? EC?? ???A?I
+//        }
+//        // C?? C?EUC??C? ?C I?I??? ??I E???I??
+//        if (strstr(buffer, expected_response)) {
+//            return 1;
+//        }
+//        delay_ms(1);
+//        elapsed++;
+//    }
+//    // ?? C? ?C?C? EC???C?E ?? ??EC? I??? ?? ???????
+//    return (strstr(buffer, expected_response) != NULL);
+//}
 
-    // ?C? ??I? EC?? ?C?E?
-    memset(buffer, 0, buffer_size);
 
-    while (elapsed < (unsigned)timeout_ms) {
-        // ?? EC?? E?C? EC?E??C? I? I?E?? ????? UART ?C EI?C??I
-        while (rx_counter0 > 0 && i < buffer_size - 1) {
-            buffer[i++] = getchar();  // getchar C? ????? EC?? ???A?I
-        }
-        // C?? C?EUC??C? ?C I?I??? ??I E???I??
-        if (strstr(buffer, expected_response)) {
-            return 1;
-        }
-        delay_ms(1);
-        elapsed++;
-    }
-    // ?? C? ?C?C? EC???C?E ?? ??EC? I??? ?? ???????
-    return (strstr(buffer, expected_response) != NULL);
-}

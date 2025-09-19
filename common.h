@@ -3,6 +3,7 @@
 
 #include <mega64a.h>
 #include <stdio.h>
+#include <stdint.h>
 
 #define BUFFER_SIZE 256
 
@@ -15,6 +16,7 @@ unsigned char read_serial_timeout_simple(char* buffer, int buffer_size, unsigned
 unsigned char read_until_keyword_keep_all(char* buffer, int buffer_size, unsigned long timeout_ms, const char* keyword);
 int extract_value_after_keyword(const char* input, const char* keyword, char* out_value, int out_size);
 int extract_field_after_keyword(const char* input, const char* keyword, int field_index, char* out_value, int out_size);
+
 
 // --- ãÊÛíÑåÇí ÎÇÑÌí USART0 ˜å Çíä ÊæÇÈÚ ÇÓÊİÇÏå ãí˜ääÏ ---
 extern unsigned char rx_counter0;

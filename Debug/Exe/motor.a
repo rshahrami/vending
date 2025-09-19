@@ -23,18 +23,19 @@
 	#endif
 ;PCODE: $0000000B VOL: 0
 ;PCODE: $0000000C VOL: 0
+;#include "common.h"
 ;
 ;void activate_motor(int product_id)
-; 0003 0004 {
+; 0003 0005 {
 
 	.CSEG
 ;PCODE: $0000000D VOL: 0
 ;PCODE: $0000000E VOL: 0
-; 0003 0005     unsigned char motor_pin;
-; 0003 0006     char motor_msg[20];
-; 0003 0007     int timeout = 1000;
-; 0003 0008 
-; 0003 0009     switch (product_id)
+; 0003 0006     unsigned char motor_pin;
+; 0003 0007     char motor_msg[20];
+; 0003 0008     int timeout = 1000;
+; 0003 0009 
+; 0003 000A     switch (product_id)
 ;PCODE: $0000000F VOL: 0
 ;PCODE: $00000010 VOL: 0
 ;PCODE: $00000011 VOL: 0
@@ -45,36 +46,36 @@
 ;PCODE: $00000012 VOL: 0
 ;PCODE: $00000013 VOL: 0
 ;PCODE: $00000014 VOL: 0
-; 0003 000A     {
-; 0003 000B         case 1: motor_pin = MOTOR_PIN_1; break;
+; 0003 000B     {
+; 0003 000C         case 1: motor_pin = MOTOR_PIN_1; break;
 ;PCODE: $00000015 VOL: 0
 ;PCODE: $00000016 VOL: 0
 ;PCODE: $00000017 VOL: 0
 ;PCODE: $00000018 VOL: 0
 ;PCODE: $00000019 VOL: 0
-; 0003 000C         case 2: motor_pin = MOTOR_PIN_2; break;
+; 0003 000D         case 2: motor_pin = MOTOR_PIN_2; break;
 ;PCODE: $0000001A VOL: 0
 ;PCODE: $0000001B VOL: 0
 ;PCODE: $0000001C VOL: 0
 ;PCODE: $0000001D VOL: 0
 ;PCODE: $0000001E VOL: 0
 ;PCODE: $0000001F VOL: 0
-; 0003 000D         case 3: motor_pin = MOTOR_PIN_3; break;
+; 0003 000E         case 3: motor_pin = MOTOR_PIN_3; break;
 ;PCODE: $00000020 VOL: 0
 ;PCODE: $00000021 VOL: 0
 ;PCODE: $00000022 VOL: 0
 ;PCODE: $00000023 VOL: 0
 ;PCODE: $00000024 VOL: 0
 ;PCODE: $00000025 VOL: 0
-; 0003 000E         default: return;
+; 0003 000F         default: return;
 ;PCODE: $00000026 VOL: 0
 ;PCODE: $00000027 VOL: 0
 ;PCODE: $00000028 VOL: 0
 ;PCODE: $00000029 VOL: 0
-; 0003 000F     }
+; 0003 0010     }
 ;PCODE: $0000002A VOL: 0
-; 0003 0010 
-; 0003 0011     sprintf(motor_msg, "MOTOR %d ON!", product_id);
+; 0003 0011 
+; 0003 0012     sprintf(motor_msg, "MOTOR %d ON!", product_id);
 ;PCODE: $0000002B VOL: 0
 ;PCODE: $0000002C VOL: 0
 ;PCODE: $0000002D VOL: 0
@@ -87,16 +88,16 @@
 ;PCODE: $00000034 VOL: 0
 ;PCODE: $00000035 VOL: 0
 ;PCODE: $00000036 VOL: 0
-; 0003 0012     glcd_clear();
+; 0003 0013     glcd_clear();
 ;PCODE: $00000037 VOL: 0
-; 0003 0013     glcd_outtextxy(10, 20, motor_msg);
+; 0003 0014     glcd_outtextxy(10, 20, motor_msg);
 ;PCODE: $00000038 VOL: 0
 ;PCODE: $00000039 VOL: 0
 ;PCODE: $0000003A VOL: 0
 ;PCODE: $0000003B VOL: 0
 ;PCODE: $0000003C VOL: 0
 ;PCODE: $0000003D VOL: 0
-; 0003 0014     MOTOR_PORT |= (1 << motor_pin);
+; 0003 0015     MOTOR_PORT |= (1 << motor_pin);
 ;PCODE: $0000003E VOL: 0
 ;PCODE: $0000003F VOL: 0
 ;PCODE: $00000040 VOL: 0
@@ -104,8 +105,8 @@
 ;PCODE: $00000042 VOL: 0
 ;PCODE: $00000043 VOL: 0
 ;PCODE: $00000044 VOL: 0
-; 0003 0015 
-; 0003 0016     while (!(PIND & (1 << PIND1)) && timeout > 0)
+; 0003 0016 
+; 0003 0017     while ((PIND & (1 << PIND1)) && timeout > 0)
 ;PCODE: $00000045 VOL: 0
 ;PCODE: $00000046 VOL: 0
 ;PCODE: $00000047 VOL: 0
@@ -116,19 +117,19 @@
 ;PCODE: $0000004C VOL: 0
 ;PCODE: $0000004D VOL: 0
 ;PCODE: $0000004E VOL: 0
-; 0003 0017     {
-; 0003 0018         delay_ms(1);
+; 0003 0018     {
+; 0003 0019         delay_ms(1);
 ;PCODE: $0000004F VOL: 0
 ;PCODE: $00000050 VOL: 0
 ;PCODE: $00000051 VOL: 0
-; 0003 0019         timeout--;
+; 0003 001A         timeout--;
 ;PCODE: $00000052 VOL: 0
 ;PCODE: $00000053 VOL: 0
-; 0003 001A     }
+; 0003 001B     }
 ;PCODE: $00000054 VOL: 0
 ;PCODE: $00000055 VOL: 0
-; 0003 001B 
-; 0003 001C     MOTOR_PORT &= ~(1 << motor_pin);
+; 0003 001C 
+; 0003 001D     MOTOR_PORT &= ~(1 << motor_pin);
 ;PCODE: $00000056 VOL: 0
 ;PCODE: $00000057 VOL: 0
 ;PCODE: $00000058 VOL: 0
@@ -137,7 +138,8 @@
 ;PCODE: $0000005B VOL: 0
 ;PCODE: $0000005C VOL: 0
 ;PCODE: $0000005D VOL: 0
-; 0003 001D }
+; 0003 001E 
+; 0003 001F }
 ;PCODE: $0000005E VOL: 0
 ;PCODE: $0000005F VOL: 0
 ;PCODE: $00000060 VOL: 0

@@ -23,25 +23,36 @@
 	#endif
 ;PCODE: $0000000B VOL: 0
 ;PCODE: $0000000C VOL: 0
+;#include "common.h"
+;#include <glcd.h>
+;#include <font5x7.h>
+;
 ;
 ;char get_key(void)
-; 0002 0004 {
+; 0002 0008 {
 
 	.CSEG
 ;PCODE: $0000000D VOL: 0
 ;PCODE: $0000000E VOL: 0
-; 0002 0005     unsigned char row, col;
-; 0002 0006     const unsigned char column_pins[3] = {COL1_PIN, COL2_PIN, COL3_PIN};
-; 0002 0007     const unsigned char row_pins[4] = {ROW1_PIN, ROW2_PIN, ROW3_PIN, ROW4_PIN};
-; 0002 0008 
-; 0002 0009     const char key_map[4][3] = {
-; 0002 000A         {'1', '2', '3'},
-; 0002 000B         {'4', '5', '6'},
-; 0002 000C         {'7', '8', '9'},
-; 0002 000D         {'*', '0', '#'}
-; 0002 000E     };
-; 0002 000F 
-; 0002 0010     for (col = 0; col < 3; col++)
+; 0002 0009     unsigned char row, col;
+; 0002 000A     const unsigned char column_pins[3] = {COL1_PIN, COL2_PIN, COL3_PIN};
+; 0002 000B     const unsigned char row_pins[4] = {ROW1_PIN, ROW2_PIN, ROW3_PIN, ROW4_PIN};
+; 0002 000C 
+; 0002 000D //    const char key_map[4][3] = {
+; 0002 000E //        {'1', '2', '3'},
+; 0002 000F //        {'4', '5', '6'},
+; 0002 0010 //        {'7', '8', '9'},
+; 0002 0011 //        {'*', '0', '#'}
+; 0002 0012 //    };
+; 0002 0013 
+; 0002 0014     const char key_map[4][3] = {
+; 0002 0015         {'#', '0', '*'},  // —œÌ› 1
+; 0002 0016         {'9', '8', '7'},  // —œÌ› 2
+; 0002 0017         {'6', '5', '4'},  // —œÌ› 3
+; 0002 0018         {'3', '2', '1'}   // —œÌ› 4
+; 0002 0019     };
+; 0002 001A 
+; 0002 001B     for (col = 0; col < 3; col++)
 ;PCODE: $0000000F VOL: 0
 ;PCODE: $00000010 VOL: 0
 ;PCODE: $00000011 VOL: 0
@@ -63,12 +74,12 @@
 ;PCODE: $0000001C VOL: 0
 ;PCODE: $0000001D VOL: 0
 ;PCODE: $0000001E VOL: 0
-; 0002 0011     {
-; 0002 0012         KEYPAD_PORT |= (1 << COL1_PIN) | (1 << COL2_PIN) | (1 << COL3_PIN);
+; 0002 001C     {
+; 0002 001D         KEYPAD_PORT |= (1 << COL1_PIN) | (1 << COL2_PIN) | (1 << COL3_PIN);
 ;PCODE: $0000001F VOL: 0
 ;PCODE: $00000020 VOL: 0
 ;PCODE: $00000021 VOL: 0
-; 0002 0013         KEYPAD_PORT &= ~(1 << column_pins[col]);
+; 0002 001E         KEYPAD_PORT &= ~(1 << column_pins[col]);
 ;PCODE: $00000022 VOL: 0
 ;PCODE: $00000023 VOL: 0
 ;PCODE: $00000024 VOL: 0
@@ -81,8 +92,8 @@
 ;PCODE: $0000002B VOL: 0
 ;PCODE: $0000002C VOL: 0
 ;PCODE: $0000002D VOL: 0
-; 0002 0014 
-; 0002 0015         for (row = 0; row < 4; row++)
+; 0002 001F 
+; 0002 0020         for (row = 0; row < 4; row++)
 ;PCODE: $0000002E VOL: 0
 ;PCODE: $0000002F VOL: 0
 ;PCODE: $00000030 VOL: 0
@@ -92,8 +103,8 @@
 ;PCODE: $00000034 VOL: 0
 ;PCODE: $00000035 VOL: 0
 ;PCODE: $00000036 VOL: 0
-; 0002 0016         {
-; 0002 0017             if (!(KEYPAD_PIN & (1 << row_pins[row])))
+; 0002 0021         {
+; 0002 0022             if (!(KEYPAD_PIN & (1 << row_pins[row])))
 ;PCODE: $00000037 VOL: 0
 ;PCODE: $00000038 VOL: 0
 ;PCODE: $00000039 VOL: 0
@@ -108,12 +119,12 @@
 ;PCODE: $00000042 VOL: 0
 ;PCODE: $00000043 VOL: 0
 ;PCODE: $00000044 VOL: 0
-; 0002 0018             {
-; 0002 0019                 delay_ms(10);
+; 0002 0023             {
+; 0002 0024                 delay_ms(10);
 ;PCODE: $00000045 VOL: 0
 ;PCODE: $00000046 VOL: 0
 ;PCODE: $00000047 VOL: 0
-; 0002 001A                 if (!(KEYPAD_PIN & (1 << row_pins[row])))
+; 0002 0025                 if (!(KEYPAD_PIN & (1 << row_pins[row])))
 ;PCODE: $00000048 VOL: 0
 ;PCODE: $00000049 VOL: 0
 ;PCODE: $0000004A VOL: 0
@@ -128,8 +139,8 @@
 ;PCODE: $00000053 VOL: 0
 ;PCODE: $00000054 VOL: 0
 ;PCODE: $00000055 VOL: 0
-; 0002 001B                 {
-; 0002 001C                     while (!(KEYPAD_PIN & (1 << row_pins[row])));
+; 0002 0026                 {
+; 0002 0027                     while (!(KEYPAD_PIN & (1 << row_pins[row])));
 ;PCODE: $00000056 VOL: 0
 ;PCODE: $00000057 VOL: 0
 ;PCODE: $00000058 VOL: 0
@@ -147,7 +158,7 @@
 ;PCODE: $00000064 VOL: 0
 ;PCODE: $00000065 VOL: 0
 ;PCODE: $00000066 VOL: 0
-; 0002 001D                     return key_map[row][col];
+; 0002 0028                     return key_map[row][col];
 ;PCODE: $00000067 VOL: 0
 ;PCODE: $00000068 VOL: 0
 ;PCODE: $00000069 VOL: 0
@@ -160,24 +171,24 @@
 ;PCODE: $00000070 VOL: 0
 ;PCODE: $00000071 VOL: 0
 ;PCODE: $00000072 VOL: 0
-; 0002 001E                 }
-; 0002 001F             }
+; 0002 0029                 }
+; 0002 002A             }
 ;PCODE: $00000073 VOL: 0
-; 0002 0020         }
+; 0002 002B         }
 ;PCODE: $00000074 VOL: 0
 ;PCODE: $00000075 VOL: 0
 ;PCODE: $00000076 VOL: 0
 ;PCODE: $00000077 VOL: 0
 ;PCODE: $00000078 VOL: 0
 ;PCODE: $00000079 VOL: 0
-; 0002 0021     }
+; 0002 002C     }
 ;PCODE: $0000007A VOL: 0
 ;PCODE: $0000007B VOL: 0
 ;PCODE: $0000007C VOL: 0
 ;PCODE: $0000007D VOL: 0
 ;PCODE: $0000007E VOL: 0
-; 0002 0022 
-; 0002 0023     return 0;
+; 0002 002D 
+; 0002 002E     return 0;
 ;PCODE: $0000007F VOL: 0
 ;PCODE: $00000080 VOL: 0
 ;PCODE: $00000081 VOL: 0
@@ -185,5 +196,84 @@
 ;PCODE: $00000083 VOL: 0
 ;PCODE: $00000084 VOL: 0
 ;PCODE: $00000085 VOL: 0
-; 0002 0024 }
+; 0002 002F }
 ;PCODE: $00000086 VOL: 0
+;
+;
+;
+;void test_keypad(void)
+; 0002 0034 {
+;PCODE: $00000087 VOL: 0
+;PCODE: $00000088 VOL: 0
+; 0002 0035     char key;
+; 0002 0036     char buf[2];
+; 0002 0037 
+; 0002 0038 
+; 0002 0039     glcd_clear();
+;PCODE: $00000089 VOL: 0
+;PCODE: $0000008A VOL: 0
+;	key -> R17
+;	buf -> Y+1
+;PCODE: $0000008B VOL: 0
+; 0002 003A     glcd_outtextxy(0, 0, "Press a key...");
+;PCODE: $0000008C VOL: 0
+;PCODE: $0000008D VOL: 0
+;PCODE: $0000008E VOL: 0
+;PCODE: $0000008F VOL: 0
+;PCODE: $00000090 VOL: 0
+;PCODE: $00000091 VOL: 0
+;PCODE: $00000092 VOL: 0
+; 0002 003B 
+; 0002 003C     while (1)
+;PCODE: $00000093 VOL: 0
+; 0002 003D     {
+; 0002 003E         key = get_key();  //  «»⁄Ì òÂ òÌùÅœ —Ê „ÌùŒÊ‰Â
+;PCODE: $00000094 VOL: 0
+;PCODE: $00000095 VOL: 0
+; 0002 003F         if (key != 0)
+;PCODE: $00000096 VOL: 0
+;PCODE: $00000097 VOL: 0
+; 0002 0040         {
+; 0002 0041             glcd_clear();
+;PCODE: $00000098 VOL: 0
+; 0002 0042             glcd_outtextxy(0, 0, "Key Pressed:");
+;PCODE: $00000099 VOL: 0
+;PCODE: $0000009A VOL: 0
+;PCODE: $0000009B VOL: 0
+;PCODE: $0000009C VOL: 0
+;PCODE: $0000009D VOL: 0
+;PCODE: $0000009E VOL: 0
+;PCODE: $0000009F VOL: 0
+; 0002 0043 
+; 0002 0044             buf[0] = key;  // ò«—«ò — ò·Ìœ
+;PCODE: $000000A0 VOL: 0
+;PCODE: $000000A1 VOL: 0
+; 0002 0045             buf[1] = '\0';
+;PCODE: $000000A2 VOL: 0
+;PCODE: $000000A3 VOL: 0
+; 0002 0046 
+; 0002 0047             glcd_outtextxy(0, 16, buf);  // ‰„«Ì‘ —ÊÌ GLCD
+;PCODE: $000000A4 VOL: 0
+;PCODE: $000000A5 VOL: 0
+;PCODE: $000000A6 VOL: 0
+;PCODE: $000000A7 VOL: 0
+;PCODE: $000000A8 VOL: 0
+;PCODE: $000000A9 VOL: 0
+; 0002 0048             delay_ms(500);               // ò„Ì „òÀ »—«Ì œÌœ‰
+;PCODE: $000000AA VOL: 0
+;PCODE: $000000AB VOL: 0
+; 0002 0049         }
+; 0002 004A     }
+;PCODE: $000000AC VOL: 0
+;PCODE: $000000AD VOL: 0
+;PCODE: $000000AE VOL: 0
+; 0002 004B }
+;PCODE: $000000AF VOL: 0
+;PCODE: $000000B0 VOL: 0
+;PCODE: $000000B1 VOL: 0
+;PCODE: $000000B2 VOL: 0
+;PCODE: $000000B3 VOL: 0
+
+	.DSEG
+_0x4000F:
+	.BYTE 0x1C

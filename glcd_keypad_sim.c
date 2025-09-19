@@ -172,8 +172,8 @@ unsigned char send_data(const char* base_url, const char* phone_number, int prod
     int method = 0, status_code = 0, data_len = 0;
 
     // ??C?O ??C? ??? GLCD
-    glcd_clear();
-    draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
+//    glcd_clear();
+//    draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
 
     uart_buffer_reset();
     send_at_command("AT+HTTPTERM");
@@ -199,9 +199,9 @@ unsigned char send_data(const char* base_url, const char* phone_number, int prod
     send_at_command(cmd);
     delay_ms(100); 
 
-    glcd_clear();
-    glcd_outtextxy(0,10,full_url);
-    delay_ms(500);   
+//    glcd_clear();
+//    glcd_outtextxy(0,10,full_url);
+//    delay_ms(500);   
 
     // --- ÇÑÓÇá ÏÑÎæÇÓÊ GET ---
     uart_buffer_reset();
@@ -216,9 +216,9 @@ unsigned char send_data(const char* base_url, const char* phone_number, int prod
 //        glcd_outtextxy(0,10,value);
 //        delay_ms(500);
         if (extract_field_after_keyword(buffer, "+HTTPACTION:", 1, value, sizeof(value))) {
-            glcd_clear();
-            glcd_outtextxy(0,10,value);
-            delay_ms(500);        
+//            glcd_clear();
+//            glcd_outtextxy(0,10,value);
+//            delay_ms(500);        
         } 
     }
 
@@ -271,9 +271,9 @@ unsigned char get_data(const char* base_url, const char* phone_number) {
     delay_ms(100);    
 
 
-    glcd_clear();
-    glcd_outtextxy(0,10,full_url);
-    delay_ms(500);  
+//    glcd_clear();
+//    glcd_outtextxy(0,10,full_url);
+//    delay_ms(500);  
 
 
     // --- ÇÑÓÇá ÏÑÎæÇÓÊ GET ---
@@ -289,9 +289,9 @@ unsigned char get_data(const char* base_url, const char* phone_number) {
 //        glcd_outtextxy(0,10,value);
 //        delay_ms(500);
         if (extract_field_after_keyword(buffer, "+HTTPACTION:", 1, value, sizeof(value))) {
-            glcd_clear();
-            glcd_outtextxy(0,10,value);
-            delay_ms(500);        
+//            glcd_clear();
+//            glcd_outtextxy(0,10,value);
+//            delay_ms(500);        
         } 
     }
 
@@ -308,6 +308,7 @@ unsigned char get_data(const char* base_url, const char* phone_number) {
 
 void handle_sms(void)
 {
+    char tmp[2];
     const char* server_url_post = "http://185.8.173.17:8000/home/post/";
     int product_id = 0;
     int timeout_counter = 0;
@@ -356,19 +357,37 @@ void handle_sms(void)
             }
             else
             {
-
-                if (key_pressed == content_buffer)
+//                glcd_clear();
+//                tmp[0] = content_buffer[0];
+//                tmp[1] = '\0';
+//                glcd_outtextxy(5, 25, tmp);
+//
+//                // äãÇíÔ key_pressed
+//                tmp[0] = key_pressed;
+//                tmp[1] = '\0';
+//                glcd_outtextxy(5, 45, tmp);
+//                delay_ms(1000);
+                // æÞÊí ˜áíÏåÇ 0..9 Èå ÕæÑÊ ÚÏÏ ÈÑãíÑÏä
+//                if (key_pressed >= 0 && key_pressed <= 9) {
+//                    key_pressed = '0' + key_pressed;   // ÊÈÏíá Èå ˜ÇÑÇ˜ÊÑ '0'..'9'
+//                }
+                if (key_pressed == content_buffer[0])
                 {
-                    glcd_clear(); 
+                    glcd_clear();
+                    glcd_outtextxy(5, 25, "test 3!");
+                    delay_ms(300); 
                     product_id = content_buffer[0] - '0';
                     activate_motor(product_id);
+                    glcd_clear();
+                    draw_bitmap(0, 32, mahsol_ra_bardarid, 128, 32);
                     send_data(server_url_post, phone, product_id, device_id);
                 }
                 else
                 {
+
                     glcd_clear();
-//                                    glcd_outtextxy(5, 25, "Error in entry!");
-                    draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
+                    glcd_outtextxy(5, 25, "test 2!");
+//                    draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
                     delay_ms(300);
                 }
             }
@@ -438,6 +457,7 @@ void process_uart_data(void)
         }
     }
 }
+
 
 
 
@@ -574,19 +594,22 @@ void main(void)
 
     while (1){
         static uint8_t processing_sms = 0;
-        draw_bitmap(0, 0, kode_mahsol_payamak_konid, 128, 64);
+        draw_bitmap(0, 0, kode_mahsol_payamak_konid, 128, 64); 
+        //test_keypad();
         process_uart_data(); 
         
         if (sms_received) {
             processing_sms = 1;   // ÔÑæÚ ÑÏÇÒÔ íÇã˜
             handle_sms();
-            processing_sms = 0;   // ÇíÇä ÑÏÇÒÔ íÇã˜ 
+            processing_sms = 0;   // ÇíÇä ÑÏÇÒÔ íÇã˜
+            uart_buffer_reset(); 
             glcd_clear();
         } 
         
         if (!processing_sms && (millis() - last_time > 50000)) {
             gprs_keep_alive();
             last_time = millis();
+            uart_buffer_reset();
             glcd_clear();
         }
 

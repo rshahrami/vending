@@ -4,6 +4,8 @@
 #include <mega64a.h>
 #include <delay.h>
 
+
+
 #define KEYPAD_PORT PORTC
 #define KEYPAD_DDR DDRC
 #define KEYPAD_PIN PINC
@@ -16,5 +18,6 @@
 #define ROW4_PIN 4
 
 char get_key(void);
+void test_keypad(void);
 
 #endif
