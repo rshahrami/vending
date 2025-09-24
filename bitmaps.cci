@@ -1,0 +1,11 @@
+VERSION:3 SOURCE_TIMESTAMP:5B33208F
+NODE:I LEVEL:0 LINE:1 "D:\project\vending\code\full\glcd_keypad_sim\bitmaps.h"
+NODE:V LEVEL:0 LINE:3 "kode_mahsol_payamak_konid -> RAM:????"
+NODE:V LEVEL:0 LINE:134 "shomare_soton_ra_payamak -> RAM:????"
+NODE:V LEVEL:0 LINE:265 "mahsol_ra_bardarid -> RAM:????"
+NODE:V LEVEL:0 LINE:396 "adad_ra_vared_namaeid -> RAM:????"
+NODE:V LEVEL:0 LINE:527 "lotfan_montazer_bemanid -> RAM:????"
+NODE:V LEVEL:0 LINE:658 "shomare_dorost_payamak_nashode -> RAM:????"
+NODE:V LEVEL:0 LINE:789 "shomare_soton_dorost_vared_nashode -> RAM:????"
+NODE:V LEVEL:0 LINE:920 "tedad_bish_az_had -> RAM:????"
+NODE:V LEVEL:0 LINE:1051 "square -> RAM:????"

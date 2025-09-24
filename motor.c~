@@ -1,8 +1,6 @@
 #include "motor.h"
 #include "common.h"
 
-
-
 void activate_motor(int product_id)
 {
     unsigned char motor_pin;

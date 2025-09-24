@@ -6,10 +6,10 @@ CV=3.14 Advanced
 A=
 C=
 D=8/7/2025
-Files=5
-OpenedFiles=3
+Files=4
+OpenedFiles=10
 OF1=glcd_keypad_sim.c
-Active1=0
+Active1=1
 DebugOutputListFilesDirectory=Debug\List
 DebugOutputObjectFilesDirectory=Debug
 DebugOutputExecutableFilesDirectory=Debug\Exe
@@ -18,7 +18,7 @@ OutputListFilesDirectory=Release\List
 OutputObjectFilesDirectory=Release
 OutputExecutableFilesDirectory=Release\Exe
 OutputLinkerFilesDirectory=Release\Exe
-AllowDisplayFunctionCallTree=0
+AllowDisplayFunctionCallTree=1
 CleanUp=2
 EditorPanelMode=0
 ActiveEditorPanel=0
@@ -26,23 +26,57 @@ Active0=0
 EditorPanel0=0
 PageIndex0=0
 EditorPanel1=0
-TimeStamp1=1529947201
+TimeStamp1=1530103074
 PageIndex1=1
 OF2=sim800.c
-Active2=1
+Active2=0
 EditorPanel2=0
-TimeStamp2=1529947125
+TimeStamp2=1530079365
 PageIndex2=2
 OF3=sim800.h
 Active3=0
 EditorPanel3=0
-TimeStamp3=1529946714
+TimeStamp3=1530079299
 PageIndex3=3
+OF4=common.c
+Active4=0
+EditorPanel4=0
+TimeStamp4=1530078122
+PageIndex4=4
+OF5=common.h
+Active5=0
+EditorPanel5=0
+TimeStamp5=1530077931
+PageIndex5=5
+OF6=motor.c
+Active6=0
+EditorPanel6=0
+TimeStamp6=1530102059
+PageIndex6=6
+OF7=keypad.c
+Active7=0
+EditorPanel7=0
+TimeStamp7=1530075608
+PageIndex7=8
+OF8=keypad.h
+Active8=0
+EditorPanel8=0
+TimeStamp8=1530075570
+PageIndex8=9
+OF9=bitmaps.h
+Active9=0
+EditorPanel9=0
+TimeStamp9=1530077903
+PageIndex9=10
 F1=glcd_keypad_sim.c
 F2=common.c
 F3=keypad.c
-F4=motor.c
-F5=sim800.c
+F4=sim800.c
+OF10=motor.h
+Active10=0
+EditorPanel10=0
+TimeStamp10=1530102080
+PageIndex10=7
 [CompilerDebug]
 Chip=ATmega64A
 CPUClock=8000000
@@ -141,8 +175,8 @@ WatchAVR8LAutoVariables=0
 UseEEPROMLocation0=1
 RebuildAll=0
 LinkageInformationPresent=1
-COFFileTimeStamp=1530078855
-Build=181
+COFFileTimeStamp=1530103128
+Build=186
 [DefinedSymbolsDebug]
 Count=0
 [Compiler]
@@ -244,7 +278,7 @@ UseEEPROMLocation0=1
 RebuildAll=1
 LinkageInformationPresent=0
 COFFileTimeStamp=-1
-Build=181
+Build=186
 IncludePath0=
 IncludePath1=
 IncludePath2=
@@ -517,10 +551,10 @@ L13=Enhanced function parameters passing: Yes
 L14=Automatic register allocation: Yes
 L15=Smart register allocation: Yes
 L16=
-L17=Build: 181
-L18=37575 line(s) compiled
+L17=Build: 185
+L18=34289 line(s) compiled
 L19=No errors
-L20=25 warning(s)
+L20=26 warning(s)
 L21=
 L22=Bit variables area: 0x2 to 0x2
 L23=Bit variables size: 1 byte(s)
@@ -529,30 +563,30 @@ L25=Data Stack area: 0x100 to 0x4FF
 L26=Data Stack size: 1024 byte(s)
 L27=Estimated Data Stack usage: 464 byte(s)
 L28=
-L29=RAM Global variables area: 0x500 to 0xBE4
-L30=RAM Global variables size: 1765 byte(s)
+L29=RAM Global variables area: 0x500 to 0xBDC
+L30=RAM Global variables size: 1757 byte(s)
 L31=
-L32=Hardware Stack area: 0xBE5 to 0x10FF
-L33=Hardware Stack size: 1307 byte(s)
+L32=Hardware Stack area: 0xBDD to 0x10FF
+L33=Hardware Stack size: 1315 byte(s)
 L34=
 L35=Heap size: 0 byte(s)
 Lines=39
 L36=
 L37=EEPROM usage: 0 byte(s), 0.0% of EEPROM
 L38=Program size: 9357 words (18714 bytes), 28.6% of FLASH
-L39=667 words (1334 bytes), 6.7% reduced by Code Compression
+L39=662 words (1324 bytes), 6.6% reduced by Code Compression
 [BuildInfoAssembler]
 Lines=12
 L1=AVRASM: AVR macro assembler 2.1.30 (build 592 Nov  7 2008 12:38:17)
 L2=Copyright (C) 1995-2008 ATMEL Corporation
 L3=
-L4=D:\project\vending\code\full\glcd_keypad_sim\Debug\List\glcd_keypad_sim.asm(9182): No EEPROM data, deleting D:\project\vending\code\full\glcd_keypad_sim\Debug\Exe\glcd_keypad_sim.eep
+L4=D:\project\vending\code\full\glcd_keypad_sim\Debug\List\glcd_keypad_sim.asm(9204): No EEPROM data, deleting D:\project\vending\code\full\glcd_keypad_sim\Debug\Exe\glcd_keypad_sim.eep
 L5=
 L6=ATmega64A memory use summary [bytes]:
 L7=Segment   Begin    End      Code   Data   Used    Size   Use%
 L8=---------------------------------------------------------------
-L9=[.cseg] 0x000000 0x00491a   9818   8896  18714   65536  28.6%
-L10=[.dseg] 0x000100 0x000be5      0   1765   1765    4096  43.1%
+L9=[.cseg] 0x000000 0x00491a   9834   8880  18714   65536  28.6%
+L10=[.dseg] 0x000100 0x000bdd      0   1757   1757    4096  42.9%
 L11=[.eseg] 0x000000 0x000000      0      0      0    2048   0.0%
 L12=
 [BookmarksFoldedCode]
@@ -579,11 +613,11 @@ F19=sim800.c
 F20=motor.c
 F21=D:\project\vending\code\full\glcd_keypad_sim\bitmaps.c
 [Bookmarks1]
-TimeStamp=1530042096
-Row=136
-Column=25
+TimeStamp=1530077903
+Row=269
+Column=40
 ScrollPosX=0
-ScrollPosY=119
+ScrollPosY=0
 BK0=-1
 BK1=-1
 BK2=-1
@@ -617,13 +651,13 @@ Row=0
 Column=0
 ScrollPosX=0
 ScrollPosY=0
-TimeStamp=1529955245
+TimeStamp=1530103373
 [Bookmarks3]
-TimeStamp=1529947201
-Row=588
-Column=28
+TimeStamp=1530103074
+Row=200
+Column=40
 ScrollPosX=0
-ScrollPosY=574
+ScrollPosY=639
 BK0=-1
 BK1=-1
 BK2=-1
@@ -671,11 +705,11 @@ BK9=-1
 [FoldedCode5]
 Blocks=0
 [Bookmarks6]
-TimeStamp=1529614512
-Row=9
-Column=0
+TimeStamp=1530077931
+Row=22
+Column=42
 ScrollPosX=0
-ScrollPosY=1
+ScrollPosY=17
 BK0=-1
 BK1=-1
 BK2=-1
@@ -687,11 +721,11 @@ BK7=-1
 BK8=-1
 BK9=-1
 [Bookmarks7]
-TimeStamp=1529588899
-Row=37
-Column=26
+TimeStamp=1530078122
+Row=0
+Column=19
 ScrollPosX=0
-ScrollPosY=25
+ScrollPosY=0
 BK0=-1
 BK1=-1
 BK2=-1
@@ -757,11 +791,11 @@ BK9=-1
 [FoldedCode10]
 Blocks=0
 [Bookmarks11]
-TimeStamp=1529585303
-Row=0
-Column=0
+TimeStamp=1530075608
+Row=1
+Column=19
 ScrollPosX=0
-ScrollPosY=28
+ScrollPosY=0
 BK0=-1
 BK1=-1
 BK2=-1
@@ -772,14 +806,12 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
-[FoldedCode11]
-Blocks=0
 [Bookmarks12]
-TimeStamp=1529585357
-Row=0
+TimeStamp=1530075570
+Row=6
 Column=0
 ScrollPosX=0
-ScrollPosY=0
+ScrollPosY=6
 BK0=-1
 BK1=-1
 BK2=-1
@@ -791,8 +823,8 @@ BK7=-1
 BK8=-1
 BK9=-1
 [Bookmarks13]
-TimeStamp=1529585458
-Row=0
+TimeStamp=1530102080
+Row=8
 Column=0
 ScrollPosX=0
 ScrollPosY=0
@@ -806,8 +838,6 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
-[FoldedCode13]
-Blocks=0
 [Bookmarks14]
 TimeStamp=1529586085
 Row=8
@@ -862,8 +892,6 @@ BK8=-1
 BK9=-1
 [FoldedCode16]
 Blocks=0
-[FoldedCode7]
-Blocks=0
 [Bookmarks17]
 TimeStamp=1529873576
 Row=5
@@ -880,14 +908,10 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
-[FoldedCode12]
-Blocks=0
-[FoldedCode6]
-Blocks=0
 [Bookmarks18]
-TimeStamp=1529946714
-Row=9
-Column=27
+TimeStamp=1530079299
+Row=14
+Column=20
 ScrollPosX=0
 ScrollPosY=0
 BK0=-1
@@ -902,14 +926,12 @@ BK8=-1
 BK9=-1
 [FoldedCode17]
 Blocks=0
-[FoldedCode3]
-Blocks=0
 [Bookmarks19]
-TimeStamp=1529947125
-Row=248
-Column=42
+TimeStamp=1530079365
+Row=445
+Column=0
 ScrollPosX=0
-ScrollPosY=238
+ScrollPosY=445
 BK0=-1
 BK1=-1
 BK2=-1
@@ -920,14 +942,10 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
-[FoldedCode19]
-Blocks=0
-[FoldedCode18]
-Blocks=0
 [Bookmarks20]
-TimeStamp=1529585474
-Row=2
-Column=19
+TimeStamp=1530102059
+Row=4
+Column=0
 ScrollPosX=0
 ScrollPosY=0
 BK0=-1
@@ -940,16 +958,6 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
-[FoldedCode20]
-Blocks=0
-[FoldedCode1]
-Line1=139
-Line2=270
-Line3=402
-Line4=534
-Line5=666
-Line6=798
-Blocks=6
 [Bookmarks21]
 TimeStamp=1530077327
 Row=2
@@ -977,12 +985,11 @@ Line7=920
 Line8=1051
 Blocks=8
 [HeadersList]
-Files=5
+Files=4
 F1=D:\project\vending\code\full\glcd_keypad_sim\glcd_keypad_sim.c
 F2=D:\project\vending\code\full\glcd_keypad_sim\common.c
 F3=D:\project\vending\code\full\glcd_keypad_sim\keypad.c
-F4=D:\project\vending\code\full\glcd_keypad_sim\motor.c
-F5=D:\project\vending\code\full\glcd_keypad_sim\sim800.c
+F4=D:\project\vending\code\full\glcd_keypad_sim\sim800.c
 [Header1]
 Files=21
 F1=C:\cvavr\inc\mega64a.h
@@ -1040,22 +1047,6 @@ F13=C:\cvavr\inc\stdbool.h
 F14=C:\cvavr\inc\graphics.h
 F15=C:\cvavr\inc\font5x7.h
 [Header4]
-Files=14
-F1=motor.h
-F2=C:\cvavr\inc\mega64a.h
-F3=C:\cvavr\inc\mega128_bits.h
-F4=C:\cvavr\inc\glcd.h
-F5=C:\cvavr\inc\glcd_ks0108.h
-F6=C:\cvavr\inc\glcd_types.h
-F7=C:\cvavr\inc\stdbool.h
-F8=C:\cvavr\inc\graphics.h
-F9=C:\cvavr\inc\stdio.h
-F10=C:\cvavr\inc\io.h
-F11=C:\cvavr\inc\stdarg.h
-F12=C:\cvavr\inc\delay.h
-F13=common.h
-F14=C:\cvavr\inc\stdint.h
-[Header5]
 Files=16
 F1=C:\cvavr\inc\stdlib.h
 F2=C:\cvavr\inc\stdint.h
@@ -1073,3 +1064,25 @@ F13=C:\cvavr\inc\stdio.h
 F14=C:\cvavr\inc\io.h
 F15=C:\cvavr\inc\stdarg.h
 F16=sim800.h
+[FoldedCode3]
+Blocks=0
+[FoldedCode19]
+Blocks=0
+[FoldedCode18]
+Blocks=0
+[FoldedCode7]
+Blocks=0
+[FoldedCode6]
+Blocks=0
+[FoldedCode20]
+Blocks=0
+[FoldedCode13]
+Blocks=0
+[FoldedCode11]
+Blocks=0
+[FoldedCode12]
+Blocks=0
+[FoldedCode1]
+Line1=6
+Line2=139
+Blocks=2

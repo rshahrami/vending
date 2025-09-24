@@ -12,6 +12,7 @@ void gprs_keep_alive(void);
 void sim800_restart(void);
 unsigned char init_sms(void);
 unsigned char init_GPRS(void);
+void full_check(void);
 
 extern char value[16];
 extern char buffer[BUFFER_SIZE];

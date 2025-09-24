@@ -2059,47 +2059,47 @@ __REG_VARS:
 	.DB  0x0,0x0,0x0,0x0
 
 _0x0:
-	.DB  0x41,0x54,0x2B,0x48,0x54,0x54,0x50,0x54
-	.DB  0x45,0x52,0x4D,0x0,0x41,0x54,0x2B,0x48
-	.DB  0x54,0x54,0x50,0x49,0x4E,0x49,0x54,0x0
-	.DB  0x41,0x54,0x2B,0x48,0x54,0x54,0x50,0x50
-	.DB  0x41,0x52,0x41,0x3D,0x22,0x43,0x49,0x44
-	.DB  0x22,0x2C,0x31,0x0,0x25,0x73,0x3F,0x70
-	.DB  0x68,0x6F,0x6E,0x65,0x5F,0x6E,0x75,0x6D
-	.DB  0x62,0x65,0x72,0x3D,0x25,0x73,0x26,0x64
-	.DB  0x65,0x76,0x69,0x63,0x65,0x5F,0x69,0x64
-	.DB  0x3D,0x25,0x64,0x26,0x70,0x72,0x6F,0x64
-	.DB  0x75,0x63,0x74,0x5F,0x69,0x64,0x3D,0x25
-	.DB  0x64,0x0,0x41,0x54,0x2B,0x48,0x54,0x54
-	.DB  0x50,0x50,0x41,0x52,0x41,0x3D,0x22,0x55
-	.DB  0x52,0x4C,0x22,0x2C,0x22,0x25,0x73,0x22
+	.DB  0x4D,0x4F,0x54,0x4F,0x52,0x20,0x25,0x64
+	.DB  0x20,0x4F,0x4E,0x21,0x0,0x41,0x54,0x2B
+	.DB  0x48,0x54,0x54,0x50,0x54,0x45,0x52,0x4D
 	.DB  0x0,0x41,0x54,0x2B,0x48,0x54,0x54,0x50
-	.DB  0x41,0x43,0x54,0x49,0x4F,0x4E,0x3D,0x31
-	.DB  0x0,0x48,0x54,0x54,0x50,0x41,0x43,0x54
-	.DB  0x49,0x4F,0x4E,0x0,0x2B,0x48,0x54,0x54
-	.DB  0x50,0x41,0x43,0x54,0x49,0x4F,0x4E,0x3A
+	.DB  0x49,0x4E,0x49,0x54,0x0,0x41,0x54,0x2B
+	.DB  0x48,0x54,0x54,0x50,0x50,0x41,0x52,0x41
+	.DB  0x3D,0x22,0x43,0x49,0x44,0x22,0x2C,0x31
 	.DB  0x0,0x25,0x73,0x3F,0x70,0x68,0x6F,0x6E
 	.DB  0x65,0x5F,0x6E,0x75,0x6D,0x62,0x65,0x72
-	.DB  0x3D,0x25,0x73,0x0,0x41,0x54,0x2B,0x48
-	.DB  0x54,0x54,0x50,0x41,0x43,0x54,0x49,0x4F
-	.DB  0x4E,0x3D,0x30,0x0,0x68,0x74,0x74,0x70
-	.DB  0x3A,0x2F,0x2F,0x31,0x38,0x35,0x2E,0x38
-	.DB  0x2E,0x31,0x37,0x33,0x2E,0x31,0x37,0x3A
-	.DB  0x38,0x30,0x30,0x30,0x2F,0x68,0x6F,0x6D
-	.DB  0x65,0x2F,0x70,0x6F,0x73,0x74,0x2F,0x0
-	.DB  0x75,0x6E,0x6B,0x6E,0x6F,0x77,0x6E,0x0
-	.DB  0x53,0x4D,0x53,0x20,0x66,0x72,0x6F,0x6D
-	.DB  0x3A,0x0,0x32,0x0,0x33,0x0,0x54,0x69
-	.DB  0x6D,0x65,0x6F,0x75,0x74,0x21,0x20,0x54
-	.DB  0x72,0x79,0x20,0x61,0x67,0x61,0x69,0x6E
-	.DB  0x2E,0x0,0x74,0x65,0x73,0x74,0x20,0x33
-	.DB  0x21,0x0,0x74,0x65,0x73,0x74,0x20,0x32
-	.DB  0x21,0x0,0x2B,0x43,0x4D,0x54,0x3A,0x0
-	.DB  0x4D,0x6F,0x64,0x75,0x6C,0x65,0x20,0x49
-	.DB  0x6E,0x69,0x74,0x2E,0x2E,0x2E,0x0,0x47
-	.DB  0x50,0x52,0x53,0x20,0x49,0x6E,0x69,0x74
-	.DB  0x20,0x46,0x61,0x69,0x6C,0x65,0x64,0x21
-	.DB  0x0
+	.DB  0x3D,0x25,0x73,0x26,0x64,0x65,0x76,0x69
+	.DB  0x63,0x65,0x5F,0x69,0x64,0x3D,0x25,0x64
+	.DB  0x26,0x70,0x72,0x6F,0x64,0x75,0x63,0x74
+	.DB  0x5F,0x69,0x64,0x3D,0x25,0x64,0x0,0x41
+	.DB  0x54,0x2B,0x48,0x54,0x54,0x50,0x50,0x41
+	.DB  0x52,0x41,0x3D,0x22,0x55,0x52,0x4C,0x22
+	.DB  0x2C,0x22,0x25,0x73,0x22,0x0,0x41,0x54
+	.DB  0x2B,0x48,0x54,0x54,0x50,0x41,0x43,0x54
+	.DB  0x49,0x4F,0x4E,0x3D,0x31,0x0,0x48,0x54
+	.DB  0x54,0x50,0x41,0x43,0x54,0x49,0x4F,0x4E
+	.DB  0x0,0x2B,0x48,0x54,0x54,0x50,0x41,0x43
+	.DB  0x54,0x49,0x4F,0x4E,0x3A,0x0,0x25,0x73
+	.DB  0x3F,0x70,0x68,0x6F,0x6E,0x65,0x5F,0x6E
+	.DB  0x75,0x6D,0x62,0x65,0x72,0x3D,0x25,0x73
+	.DB  0x0,0x41,0x54,0x2B,0x48,0x54,0x54,0x50
+	.DB  0x41,0x43,0x54,0x49,0x4F,0x4E,0x3D,0x30
+	.DB  0x0,0x68,0x74,0x74,0x70,0x3A,0x2F,0x2F
+	.DB  0x31,0x38,0x35,0x2E,0x38,0x2E,0x31,0x37
+	.DB  0x33,0x2E,0x31,0x37,0x3A,0x38,0x30,0x30
+	.DB  0x30,0x2F,0x68,0x6F,0x6D,0x65,0x2F,0x70
+	.DB  0x6F,0x73,0x74,0x2F,0x0,0x75,0x6E,0x6B
+	.DB  0x6E,0x6F,0x77,0x6E,0x0,0x53,0x4D,0x53
+	.DB  0x20,0x66,0x72,0x6F,0x6D,0x3A,0x0,0x32
+	.DB  0x0,0x33,0x0,0x54,0x69,0x6D,0x65,0x6F
+	.DB  0x75,0x74,0x21,0x20,0x54,0x72,0x79,0x20
+	.DB  0x61,0x67,0x61,0x69,0x6E,0x2E,0x0,0x74
+	.DB  0x65,0x73,0x74,0x20,0x32,0x21,0x0,0x2B
+	.DB  0x43,0x4D,0x54,0x3A,0x0,0x4D,0x6F,0x64
+	.DB  0x75,0x6C,0x65,0x20,0x49,0x6E,0x69,0x74
+	.DB  0x2E,0x2E,0x2E,0x0,0x47,0x50,0x52,0x53
+	.DB  0x20,0x49,0x6E,0x69,0x74,0x20,0x46,0x61
+	.DB  0x69,0x6C,0x65,0x64,0x21,0x0
 _0x20000:
 	.DB  0x25,0x73,0xD,0xA,0x0
 _0x40003:
@@ -2112,9 +2112,6 @@ _0x40000:
 	.DB  0x65,0x79,0x20,0x50,0x72,0x65,0x73,0x73
 	.DB  0x65,0x64,0x3A,0x0
 _0x60000:
-	.DB  0x4D,0x4F,0x54,0x4F,0x52,0x20,0x25,0x64
-	.DB  0x20,0x4F,0x4E,0x21,0x0
-_0x80000:
 	.DB  0x52,0x65,0x73,0x74,0x61,0x72,0x74,0x69
 	.DB  0x6E,0x67,0x20,0x53,0x49,0x4D,0x38,0x30
 	.DB  0x30,0x2E,0x2E,0x2E,0x0,0x41,0x54,0x2B
@@ -2223,108 +2220,104 @@ __GLOBAL_INI_TBL:
 	.DW  __REG_VARS*2
 
 	.DW  0x0C
-	.DW  _0x14
-	.DW  _0x0*2
+	.DW  _0x20
+	.DW  _0x0*2+13
 
 	.DW  0x0C
-	.DW  _0x14+12
-	.DW  _0x0*2+12
+	.DW  _0x20+12
+	.DW  _0x0*2+25
 
 	.DW  0x14
-	.DW  _0x14+24
-	.DW  _0x0*2+24
+	.DW  _0x20+24
+	.DW  _0x0*2+37
 
 	.DW  0x10
-	.DW  _0x14+44
-	.DW  _0x0*2+113
+	.DW  _0x20+44
+	.DW  _0x0*2+126
 
 	.DW  0x0B
-	.DW  _0x14+60
-	.DW  _0x0*2+129
+	.DW  _0x20+60
+	.DW  _0x0*2+142
 
 	.DW  0x0D
-	.DW  _0x14+71
-	.DW  _0x0*2+140
+	.DW  _0x20+71
+	.DW  _0x0*2+153
 
 	.DW  0x0C
-	.DW  _0x14+84
-	.DW  _0x0*2
+	.DW  _0x20+84
+	.DW  _0x0*2+13
 
 	.DW  0x0C
-	.DW  _0x1A
-	.DW  _0x0*2
+	.DW  _0x26
+	.DW  _0x0*2+13
 
 	.DW  0x0C
-	.DW  _0x1A+12
-	.DW  _0x0*2+12
+	.DW  _0x26+12
+	.DW  _0x0*2+25
 
 	.DW  0x14
-	.DW  _0x1A+24
-	.DW  _0x0*2+24
+	.DW  _0x26+24
+	.DW  _0x0*2+37
 
 	.DW  0x10
-	.DW  _0x1A+44
-	.DW  _0x0*2+172
+	.DW  _0x26+44
+	.DW  _0x0*2+185
 
 	.DW  0x0B
-	.DW  _0x1A+60
-	.DW  _0x0*2+129
+	.DW  _0x26+60
+	.DW  _0x0*2+142
 
 	.DW  0x0D
-	.DW  _0x1A+71
-	.DW  _0x0*2+140
+	.DW  _0x26+71
+	.DW  _0x0*2+153
 
 	.DW  0x0C
-	.DW  _0x1A+84
-	.DW  _0x0*2
+	.DW  _0x26+84
+	.DW  _0x0*2+13
 
 	.DW  0x24
-	.DW  _0x20
-	.DW  _0x0*2+188
+	.DW  _0x2C
+	.DW  _0x0*2+201
 
 	.DW  0x08
-	.DW  _0x20+36
-	.DW  _0x0*2+224
+	.DW  _0x2C+36
+	.DW  _0x0*2+237
 
 	.DW  0x0A
-	.DW  _0x20+44
-	.DW  _0x0*2+232
+	.DW  _0x2C+44
+	.DW  _0x0*2+245
 
 	.DW  0x02
-	.DW  _0x20+54
-	.DW  _0x0*2+42
+	.DW  _0x2C+54
+	.DW  _0x0*2+55
 
 	.DW  0x02
-	.DW  _0x20+56
-	.DW  _0x0*2+242
+	.DW  _0x2C+56
+	.DW  _0x0*2+255
 
 	.DW  0x02
-	.DW  _0x20+58
-	.DW  _0x0*2+244
+	.DW  _0x2C+58
+	.DW  _0x0*2+257
 
 	.DW  0x14
-	.DW  _0x20+60
-	.DW  _0x0*2+246
+	.DW  _0x2C+60
+	.DW  _0x0*2+259
 
 	.DW  0x08
-	.DW  _0x20+80
-	.DW  _0x0*2+266
-
-	.DW  0x08
-	.DW  _0x20+88
-	.DW  _0x0*2+274
+	.DW  _0x2C+80
+	.DW  _0x0*2+279
 
 	.DW  0x06
-	.DW  _0x39
-	.DW  _0x0*2+282
+	.DW  _0x45
+	.DW  _0x0*2+287
 
 	.DW  0x0F
-	.DW  _0x42
-	.DW  _0x0*2+288
+	.DW  _0x4E
+	.DW  _0x0*2+293
 
 	.DW  0x12
-	.DW  _0x42+15
-	.DW  _0x0*2+303
+	.DW  _0x4E+15
+	.DW  _0x0*2+308
 
 	.DW  0x0F
 	.DW  _0x4000F
@@ -2335,264 +2328,264 @@ __GLOBAL_INI_TBL:
 	.DW  _0x40000*2+15
 
 	.DW  0x15
-	.DW  _0x80003
-	.DW  _0x80000*2
+	.DW  _0x60003
+	.DW  _0x60000*2
 
 	.DW  0x0C
-	.DW  _0x80003+21
-	.DW  _0x80000*2+21
+	.DW  _0x60003+21
+	.DW  _0x60000*2+21
 
 	.DW  0x03
-	.DW  _0x80003+33
-	.DW  _0x80000*2+33
+	.DW  _0x60003+33
+	.DW  _0x60000*2+33
 
 	.DW  0x06
-	.DW  _0x80003+36
-	.DW  _0x80000*2+36
+	.DW  _0x60003+36
+	.DW  _0x60000*2+36
 
 	.DW  0x14
-	.DW  _0x80003+42
-	.DW  _0x80000*2+42
+	.DW  _0x60003+42
+	.DW  _0x60000*2+42
 
 	.DW  0x0D
-	.DW  _0x80003+62
-	.DW  _0x80000*2+62
+	.DW  _0x60003+62
+	.DW  _0x60000*2+62
 
 	.DW  0x03
-	.DW  _0x80003+75
-	.DW  _0x80000*2+33
+	.DW  _0x60003+75
+	.DW  _0x60000*2+33
 
 	.DW  0x15
-	.DW  _0x80003+78
-	.DW  _0x80000*2+75
+	.DW  _0x60003+78
+	.DW  _0x60000*2+75
 
 	.DW  0x0D
-	.DW  _0x80003+99
-	.DW  _0x80000*2+96
+	.DW  _0x60003+99
+	.DW  _0x60000*2+96
 
 	.DW  0x06
-	.DW  _0x80003+112
-	.DW  _0x80000*2+109
+	.DW  _0x60003+112
+	.DW  _0x60000*2+109
 
 	.DW  0x08
-	.DW  _0x80003+118
-	.DW  _0x80000*2+115
+	.DW  _0x60003+118
+	.DW  _0x60000*2+115
 
 	.DW  0x04
-	.DW  _0x80003+126
-	.DW  _0x80000*2+123
+	.DW  _0x60003+126
+	.DW  _0x60000*2+123
 
 	.DW  0x04
-	.DW  _0x80003+130
-	.DW  _0x80000*2+127
+	.DW  _0x60003+130
+	.DW  _0x60000*2+127
 
 	.DW  0x19
-	.DW  _0x80003+134
-	.DW  _0x80000*2+131
+	.DW  _0x60003+134
+	.DW  _0x60000*2+131
 
 	.DW  0x0B
-	.DW  _0x80003+159
-	.DW  _0x80000*2+156
+	.DW  _0x60003+159
+	.DW  _0x60000*2+156
 
 	.DW  0x03
-	.DW  _0x80003+170
-	.DW  _0x80000*2+33
+	.DW  _0x60003+170
+	.DW  _0x60000*2+33
 
 	.DW  0x13
-	.DW  _0x80003+173
-	.DW  _0x80000*2+167
+	.DW  _0x60003+173
+	.DW  _0x60000*2+167
 
 	.DW  0x0C
-	.DW  _0x80003+192
-	.DW  _0x80000*2+186
+	.DW  _0x60003+192
+	.DW  _0x60000*2+186
 
 	.DW  0x03
-	.DW  _0x80003+204
-	.DW  _0x80000*2+33
+	.DW  _0x60003+204
+	.DW  _0x60000*2+33
 
 	.DW  0x1A
-	.DW  _0x80003+207
-	.DW  _0x80000*2+198
+	.DW  _0x60003+207
+	.DW  _0x60000*2+198
 
 	.DW  0x03
-	.DW  _0x80003+233
-	.DW  _0x80000*2+224
+	.DW  _0x60003+233
+	.DW  _0x60000*2+224
 
 	.DW  0x03
-	.DW  _0x80003+236
-	.DW  _0x80000*2+33
+	.DW  _0x60003+236
+	.DW  _0x60000*2+33
 
 	.DW  0x05
-	.DW  _0x80003+239
-	.DW  _0x80000*2+227
+	.DW  _0x60003+239
+	.DW  _0x60000*2+227
 
 	.DW  0x03
-	.DW  _0x80003+244
-	.DW  _0x80000*2+33
+	.DW  _0x60003+244
+	.DW  _0x60000*2+33
 
 	.DW  0x10
-	.DW  _0x80003+247
-	.DW  _0x80000*2+232
+	.DW  _0x60003+247
+	.DW  _0x60000*2+232
 
 	.DW  0x03
-	.DW  _0x80003+263
-	.DW  _0x80000*2+224
+	.DW  _0x60003+263
+	.DW  _0x60000*2+224
 
 	.DW  0x03
-	.DW  _0x80003+266
-	.DW  _0x80000*2+33
+	.DW  _0x60003+266
+	.DW  _0x60000*2+33
 
 	.DW  0x12
-	.DW  _0x80003+269
-	.DW  _0x80000*2+248
+	.DW  _0x60003+269
+	.DW  _0x60000*2+248
 
 	.DW  0x0E
-	.DW  _0x80003+287
-	.DW  _0x80000*2+266
+	.DW  _0x60003+287
+	.DW  _0x60000*2+266
 
 	.DW  0x09
-	.DW  _0x80028
-	.DW  _0x80000*2+280
+	.DW  _0x60028
+	.DW  _0x60000*2+280
 
 	.DW  0x05
-	.DW  _0x80028+9
-	.DW  _0x80000*2+289
+	.DW  _0x60028+9
+	.DW  _0x60000*2+289
 
 	.DW  0x07
-	.DW  _0x80028+14
-	.DW  _0x80000*2+294
+	.DW  _0x60028+14
+	.DW  _0x60000*2+294
 
 	.DW  0x09
-	.DW  _0x80028+21
-	.DW  _0x80000*2+301
+	.DW  _0x60028+21
+	.DW  _0x60000*2+301
 
 	.DW  0x05
-	.DW  _0x80028+30
-	.DW  _0x80000*2+310
+	.DW  _0x60028+30
+	.DW  _0x60000*2+310
 
 	.DW  0x07
-	.DW  _0x80028+35
-	.DW  _0x80000*2+315
+	.DW  _0x60028+35
+	.DW  _0x60000*2+315
 
 	.DW  0x17
-	.DW  _0x80028+42
-	.DW  _0x80000*2+322
+	.DW  _0x60028+42
+	.DW  _0x60000*2+322
 
 	.DW  0x0C
-	.DW  _0x80028+65
-	.DW  _0x80000*2+345
+	.DW  _0x60028+65
+	.DW  _0x60000*2+345
 
 	.DW  0x07
-	.DW  _0x80031
-	.DW  _0x80000*2+357
+	.DW  _0x60031
+	.DW  _0x60000*2+357
 
 	.DW  0x04
-	.DW  _0x80031+7
-	.DW  _0x80000*2+360
+	.DW  _0x60031+7
+	.DW  _0x60000*2+360
 
 	.DW  0x06
-	.DW  _0x80031+11
-	.DW  _0x80000*2+364
+	.DW  _0x60031+11
+	.DW  _0x60000*2+364
 
 	.DW  0x14
-	.DW  _0x8003A
-	.DW  _0x80000*2+399
+	.DW  _0x6003A
+	.DW  _0x60000*2+399
 
 	.DW  0x0A
-	.DW  _0x8003A+20
-	.DW  _0x80000*2+419
+	.DW  _0x6003A+20
+	.DW  _0x60000*2+419
 
 	.DW  0x0B
-	.DW  _0x8003A+30
-	.DW  _0x80000*2+429
+	.DW  _0x6003A+30
+	.DW  _0x60000*2+429
 
 	.DW  0x0A
-	.DW  _0x8003A+41
-	.DW  _0x80000*2+440
+	.DW  _0x6003A+41
+	.DW  _0x60000*2+440
 
 	.DW  0x12
-	.DW  _0x8003A+51
-	.DW  _0x80000*2+450
+	.DW  _0x6003A+51
+	.DW  _0x60000*2+450
 
 	.DW  0x13
-	.DW  _0x8003A+69
-	.DW  _0x80000*2+468
+	.DW  _0x6003A+69
+	.DW  _0x60000*2+468
 
 	.DW  0x0B
-	.DW  _0x8003A+88
-	.DW  _0x80000*2+487
+	.DW  _0x6003A+88
+	.DW  _0x60000*2+487
 
 	.DW  0x16
-	.DW  _0x8003B
-	.DW  _0x80000*2+498
+	.DW  _0x6003B
+	.DW  _0x60000*2+498
 
 	.DW  0x1E
-	.DW  _0x8003B+22
-	.DW  _0x80000*2+520
+	.DW  _0x6003B+22
+	.DW  _0x60000*2+520
 
 	.DW  0x0D
-	.DW  _0x8003B+52
-	.DW  _0x80000*2+574
+	.DW  _0x6003B+52
+	.DW  _0x60000*2+574
 
 	.DW  0x03
-	.DW  _0x8003B+65
-	.DW  _0x80000*2+33
+	.DW  _0x6003B+65
+	.DW  _0x60000*2+33
 
 	.DW  0x0F
-	.DW  _0x8003B+68
-	.DW  _0x80000*2+587
+	.DW  _0x6003B+68
+	.DW  _0x60000*2+587
 
 	.DW  0x0D
-	.DW  _0x8003B+83
-	.DW  _0x80000*2+96
+	.DW  _0x6003B+83
+	.DW  _0x60000*2+96
 
 	.DW  0x06
-	.DW  _0x8003B+96
-	.DW  _0x80000*2+109
+	.DW  _0x6003B+96
+	.DW  _0x60000*2+109
 
 	.DW  0x08
-	.DW  _0x8003B+102
-	.DW  _0x80000*2+602
+	.DW  _0x6003B+102
+	.DW  _0x60000*2+602
 
 	.DW  0x08
-	.DW  _0x8003B+110
-	.DW  _0x80000*2+602
+	.DW  _0x6003B+110
+	.DW  _0x60000*2+602
 
 	.DW  0x06
-	.DW  _0x8003B+118
-	.DW  _0x80000*2+610
+	.DW  _0x6003B+118
+	.DW  _0x60000*2+610
 
 	.DW  0x0C
-	.DW  _0x80044
-	.DW  _0x80000*2+21
+	.DW  _0x60044
+	.DW  _0x60000*2+21
 
 	.DW  0x0C
-	.DW  _0x80044+12
-	.DW  _0x80000*2+616
+	.DW  _0x60044+12
+	.DW  _0x60000*2+616
 
 	.DW  0x14
-	.DW  _0x80044+24
-	.DW  _0x80000*2+628
+	.DW  _0x60044+24
+	.DW  _0x60000*2+628
 
 	.DW  0x2A
-	.DW  _0x80044+44
-	.DW  _0x80000*2+648
+	.DW  _0x60044+44
+	.DW  _0x60000*2+648
 
 	.DW  0x10
-	.DW  _0x80044+86
-	.DW  _0x80000*2+690
+	.DW  _0x60044+86
+	.DW  _0x60000*2+690
 
 	.DW  0x0B
-	.DW  _0x80044+102
-	.DW  _0x80000*2+706
+	.DW  _0x60044+102
+	.DW  _0x60000*2+706
 
 	.DW  0x0C
-	.DW  _0x80044+113
-	.DW  _0x80000*2+717
+	.DW  _0x60044+113
+	.DW  _0x60000*2+717
 
 	.DW  0x0C
-	.DW  _0x80044+125
-	.DW  _0x80000*2+21
+	.DW  _0x60044+125
+	.DW  _0x60000*2+21
 
 	.DW  0x01
 	.DW  __seed_G105
@@ -2720,6 +2713,13 @@ __GLOBAL_INI_END:
 ;//#define BUFFER_SIZE 512
 ;#define HTTP_TIMEOUT_MS 5000
 ;
+;
+;#define MOTOR_DDR DDRE
+;#define MOTOR_PORT PORTE
+;#define MOTOR_PIN_1 2
+;#define MOTOR_PIN_2 3
+;#define MOTOR_PIN_3 4
+;
 ;char ip_address_buffer[16];
 ;
 ;char value[16];
@@ -2760,7 +2760,7 @@ __GLOBAL_INI_END:
 ;
 ;// USART0 Receiver interrupt service routine
 ;interrupt [USART0_RXC] void usart0_rx_isr(void)
-; 0000 004A {
+; 0000 0051 {
 
 	.CSEG
 _usart0_rx_isr:
@@ -2770,21 +2770,21 @@ _usart0_rx_isr:
 	ST   -Y,R31
 	IN   R30,SREG
 	ST   -Y,R30
-; 0000 004B     char status,data;
-; 0000 004C     status=UCSR0A;
+; 0000 0052     char status,data;
+; 0000 0053     status=UCSR0A;
 	ST   -Y,R17
 	ST   -Y,R16
 ;	status -> R17
 ;	data -> R16
 	IN   R17,11
-; 0000 004D     data=UDR0;
+; 0000 0054     data=UDR0;
 	IN   R16,12
-; 0000 004E     if ((status & (FRAMING_ERROR | PARITY_ERROR | DATA_OVERRUN))==0)
+; 0000 0055     if ((status & (FRAMING_ERROR | PARITY_ERROR | DATA_OVERRUN))==0)
 	MOV  R30,R17
 	ANDI R30,LOW(0x1C)
 	BRNE _0x3
-; 0000 004F     {
-; 0000 0050         rx_buffer0[rx_wr_index0++]=data;
+; 0000 0056     {
+; 0000 0057         rx_buffer0[rx_wr_index0++]=data;
 	LDS  R30,_rx_wr_index0
 	SUBI R30,-LOW(1)
 	STS  _rx_wr_index0,R30
@@ -2793,35 +2793,35 @@ _usart0_rx_isr:
 	SUBI R30,LOW(-_rx_buffer0)
 	SBCI R31,HIGH(-_rx_buffer0)
 	ST   Z,R16
-; 0000 0051         #if RX_BUFFER_SIZE0 == 256
-; 0000 0052         // special case for receiver buffer size=256
-; 0000 0053         if (++rx_counter0 == 0) rx_buffer_overflow0=1;
-; 0000 0054         #else
-; 0000 0055         if (rx_wr_index0 == RX_BUFFER_SIZE0) rx_wr_index0=0;
+; 0000 0058         #if RX_BUFFER_SIZE0 == 256
+; 0000 0059         // special case for receiver buffer size=256
+; 0000 005A         if (++rx_counter0 == 0) rx_buffer_overflow0=1;
+; 0000 005B         #else
+; 0000 005C         if (rx_wr_index0 == RX_BUFFER_SIZE0) rx_wr_index0=0;
 	LDS  R26,_rx_wr_index0
 	CPI  R26,LOW(0x64)
 	BRNE _0x4
 	LDI  R30,LOW(0)
 	STS  _rx_wr_index0,R30
-; 0000 0056         if (++rx_counter0 == RX_BUFFER_SIZE0)
+; 0000 005D         if (++rx_counter0 == RX_BUFFER_SIZE0)
 _0x4:
 	LDS  R26,_rx_counter0
 	SUBI R26,-LOW(1)
 	STS  _rx_counter0,R26
 	CPI  R26,LOW(0x64)
 	BRNE _0x5
-; 0000 0057             {
-; 0000 0058             rx_counter0=0;
+; 0000 005E             {
+; 0000 005F             rx_counter0=0;
 	LDI  R30,LOW(0)
 	STS  _rx_counter0,R30
-; 0000 0059             rx_buffer_overflow0=1;
+; 0000 0060             rx_buffer_overflow0=1;
 	SET
 	BLD  R2,0
-; 0000 005A             }
-; 0000 005B         #endif
-; 0000 005C     }
+; 0000 0061             }
+; 0000 0062         #endif
+; 0000 0063     }
 _0x5:
-; 0000 005D }
+; 0000 0064 }
 _0x3:
 	LD   R16,Y+
 	LD   R17,Y+
@@ -2838,18 +2838,18 @@ _0x3:
 ;#define _ALTERNATE_GETCHAR_
 ;#pragma used+
 ;char getchar(void)
-; 0000 0064 {
+; 0000 006B {
 _getchar:
 ; .FSTART _getchar
-; 0000 0065     char data;
-; 0000 0066     while (rx_counter0==0);
+; 0000 006C     char data;
+; 0000 006D     while (rx_counter0==0);
 	ST   -Y,R17
 ;	data -> R17
 _0x6:
 	LDS  R30,_rx_counter0
 	CPI  R30,0
 	BREQ _0x6
-; 0000 0067     data=rx_buffer0[rx_rd_index0++];
+; 0000 006E     data=rx_buffer0[rx_rd_index0++];
 	LDS  R30,_rx_rd_index0
 	SUBI R30,-LOW(1)
 	STS  _rx_rd_index0,R30
@@ -2858,28 +2858,28 @@ _0x6:
 	SUBI R30,LOW(-_rx_buffer0)
 	SBCI R31,HIGH(-_rx_buffer0)
 	LD   R17,Z
-; 0000 0068     #if RX_BUFFER_SIZE0 != 256
-; 0000 0069     if (rx_rd_index0 == RX_BUFFER_SIZE0) rx_rd_index0=0;
+; 0000 006F     #if RX_BUFFER_SIZE0 != 256
+; 0000 0070     if (rx_rd_index0 == RX_BUFFER_SIZE0) rx_rd_index0=0;
 	LDS  R26,_rx_rd_index0
 	CPI  R26,LOW(0x64)
 	BRNE _0x9
 	LDI  R30,LOW(0)
 	STS  _rx_rd_index0,R30
-; 0000 006A     #endif
-; 0000 006B     #asm("cli")
+; 0000 0071     #endif
+; 0000 0072     #asm("cli")
 _0x9:
 	cli
-; 0000 006C     --rx_counter0;
+; 0000 0073     --rx_counter0;
 	LDS  R30,_rx_counter0
 	SUBI R30,LOW(1)
 	STS  _rx_counter0,R30
-; 0000 006D     #asm("sei")
+; 0000 0074     #asm("sei")
 	sei
-; 0000 006E     return data;
+; 0000 0075     return data;
 	MOV  R30,R17
 	LD   R17,Y+
 	RET
-; 0000 006F }
+; 0000 0076 }
 ; .FEND
 ;#pragma used-
 ;#endif
@@ -2889,7 +2889,7 @@ _0x9:
 ;
 ;// Timer 0 overflow interrupt service routine
 ;interrupt [TIM0_OVF] void timer0_ovf_isr(void)
-; 0000 0078 {
+; 0000 007F {
 _timer0_ovf_isr:
 ; .FSTART _timer0_ovf_isr
 	ST   -Y,R22
@@ -2898,16 +2898,16 @@ _timer0_ovf_isr:
 	ST   -Y,R31
 	IN   R30,SREG
 	ST   -Y,R30
-; 0000 0079     //  «Ì„— 0 œ— „œ ›⁄·Ì Â— ~32.768ms ”——Ì“ „Ìùò‰Â
-; 0000 007A     millis_counter += 33;  // ÕœÊœÌ („Ìù Ê‰Ì œﬁÌﬁù — »« „Õ«”»Â prescaler œ—” ‘ ò‰Ì)
+; 0000 0080     //  «Ì„— 0 œ— „œ ›⁄·Ì Â— ~32.768ms ”——Ì“ „Ìùò‰Â
+; 0000 0081     millis_counter += 33;  // ÕœÊœÌ („Ìù Ê‰Ì œﬁÌﬁù — »« „Õ«”»Â prescaler œ—” ‘ ò‰Ì)
 	CALL SUBOPT_0x0
 	__ADDD1N 33
 	STS  _millis_counter,R30
 	STS  _millis_counter+1,R31
 	STS  _millis_counter+2,R22
 	STS  _millis_counter+3,R23
-; 0000 007B 
-; 0000 007C }
+; 0000 0082 
+; 0000 0083 }
 	LD   R30,Y+
 	OUT  SREG,R30
 	LD   R31,Y+
@@ -2921,17 +2921,17 @@ _timer0_ovf_isr:
 ;
 ;
 ;void draw_bitmap(uint8_t x, uint8_t y, __flash unsigned char* bmp, uint8_t width, uint8_t height)
-; 0000 0082 {
+; 0000 0089 {
 _draw_bitmap:
 ; .FSTART _draw_bitmap
-; 0000 0083     uint16_t byte_index;
-; 0000 0084     uint8_t page;
-; 0000 0085     uint8_t col;
-; 0000 0086     uint8_t bit_pos;
-; 0000 0087     uint8_t data;
-; 0000 0088     uint8_t pages;
-; 0000 0089 
-; 0000 008A     byte_index = 0;
+; 0000 008A     uint16_t byte_index;
+; 0000 008B     uint8_t page;
+; 0000 008C     uint8_t col;
+; 0000 008D     uint8_t bit_pos;
+; 0000 008E     uint8_t data;
+; 0000 008F     uint8_t pages;
+; 0000 0090 
+; 0000 0091     byte_index = 0;
 	ST   -Y,R26
 	SBIW R28,1
 	CALL SUBOPT_0x1
@@ -2946,27 +2946,27 @@ _draw_bitmap:
 ;	bit_pos -> R21
 ;	data -> R20
 ;	pages -> Y+6
-; 0000 008B     pages = height / 8;
+; 0000 0092     pages = height / 8;
 	LDD  R26,Y+7
 	LDI  R27,0
 	LDI  R30,LOW(8)
 	LDI  R31,HIGH(8)
 	CALL __DIVW21
 	STD  Y+6,R30
-; 0000 008C 
-; 0000 008D     for (page = 0; page < pages; page++) {
+; 0000 0093 
+; 0000 0094     for (page = 0; page < pages; page++) {
 	LDI  R19,LOW(0)
 _0xB:
 	LDD  R30,Y+6
 	CP   R19,R30
 	BRSH _0xC
-; 0000 008E         for (col = 0; col < width; col++) {
+; 0000 0095         for (col = 0; col < width; col++) {
 	LDI  R18,LOW(0)
 _0xE:
 	LDD  R30,Y+8
 	CP   R18,R30
 	BRSH _0xF
-; 0000 008F             data = read_flash_byte(&bmp[byte_index++]);
+; 0000 0096             data = read_flash_byte(&bmp[byte_index++]);
 	MOVW R30,R16
 	__ADDWRN 16,17,1
 	LDD  R26,Y+9
@@ -2974,18 +2974,18 @@ _0xE:
 	ADD  R30,R26
 	ADC  R31,R27
 	LPM  R20,Z
-; 0000 0090             for (bit_pos = 0; bit_pos < 8; bit_pos++) {
+; 0000 0097             for (bit_pos = 0; bit_pos < 8; bit_pos++) {
 	LDI  R21,LOW(0)
 _0x11:
 	CPI  R21,8
 	BRSH _0x12
-; 0000 0091                 if (data & (1 << bit_pos)) {
+; 0000 0098                 if (data & (1 << bit_pos)) {
 	MOV  R30,R21
 	CALL SUBOPT_0x2
 	MOV  R26,R20
 	CALL SUBOPT_0x3
 	BREQ _0x13
-; 0000 0092                     glcd_pixel(x + col, y + (page * 8) + bit_pos, 1);
+; 0000 0099                     glcd_pixel(x + col, y + (page * 8) + bit_pos, 1);
 	MOV  R30,R18
 	LDD  R26,Y+12
 	ADD  R30,R26
@@ -2999,21 +2999,21 @@ _0x11:
 	ADD  R30,R21
 	MOV  R26,R30
 	CALL _glcd_setpixel
-; 0000 0093                 }
-; 0000 0094             }
+; 0000 009A                 }
+; 0000 009B             }
 _0x13:
 	SUBI R21,-1
 	RJMP _0x11
 _0x12:
-; 0000 0095         }
+; 0000 009C         }
 	SUBI R18,-1
 	RJMP _0xE
 _0xF:
-; 0000 0096     }
+; 0000 009D     }
 	SUBI R19,-1
 	RJMP _0xB
 _0xC:
-; 0000 0097 }
+; 0000 009E }
 	CALL __LOADLOCR6
 	ADIW R28,13
 	RET
@@ -3022,45 +3022,171 @@ _0xC:
 ;
 ;
 ;unsigned long millis(void)
-; 0000 009C {
+; 0000 00A3 {
 _millis:
 ; .FSTART _millis
-; 0000 009D     unsigned long ms;
-; 0000 009E     #asm("cli")
+; 0000 00A4     unsigned long ms;
+; 0000 00A5     #asm("cli")
 	SBIW R28,4
 ;	ms -> Y+0
 	cli
-; 0000 009F     ms = millis_counter;
+; 0000 00A6     ms = millis_counter;
 	CALL SUBOPT_0x0
 	CALL __PUTD1S0
-; 0000 00A0     #asm("sei")
+; 0000 00A7     #asm("sei")
 	sei
-; 0000 00A1     return ms;
+; 0000 00A8     return ms;
 	CALL __GETD1S0
 	ADIW R28,4
 	RET
-; 0000 00A2 }
+; 0000 00A9 }
 ; .FEND
 ;
+;
+;void activate_motor(int product_id)
+; 0000 00AD {
+_activate_motor:
+; .FSTART _activate_motor
+; 0000 00AE     unsigned char motor_pin;
+; 0000 00AF     char motor_msg[20];
+; 0000 00B0     int timeout = 1000;
+; 0000 00B1 
+; 0000 00B2     switch (product_id)
+	ST   -Y,R27
+	ST   -Y,R26
+	SBIW R28,20
+	CALL __SAVELOCR4
+;	product_id -> Y+24
+;	motor_pin -> R17
+;	motor_msg -> Y+4
+;	timeout -> R18,R19
+	__GETWRN 18,19,1000
+	LDD  R30,Y+24
+	LDD  R31,Y+24+1
+; 0000 00B3     {
+; 0000 00B4         case 1: motor_pin = MOTOR_PIN_1; break;
+	CPI  R30,LOW(0x1)
+	LDI  R26,HIGH(0x1)
+	CPC  R31,R26
+	BRNE _0x17
+	LDI  R17,LOW(2)
+	RJMP _0x16
+; 0000 00B5         case 2: motor_pin = MOTOR_PIN_2; break;
+_0x17:
+	CPI  R30,LOW(0x2)
+	LDI  R26,HIGH(0x2)
+	CPC  R31,R26
+	BRNE _0x18
+	LDI  R17,LOW(3)
+	RJMP _0x16
+; 0000 00B6         case 3: motor_pin = MOTOR_PIN_3; break;
+_0x18:
+	CPI  R30,LOW(0x3)
+	LDI  R26,HIGH(0x3)
+	CPC  R31,R26
+	BRNE _0x1A
+	LDI  R17,LOW(4)
+	RJMP _0x16
+; 0000 00B7         default: return;
+_0x1A:
+	RJMP _0x2120017
+; 0000 00B8     }
+_0x16:
+; 0000 00B9 
+; 0000 00BA     sprintf(motor_msg, "MOTOR %d ON!", product_id);
+	MOVW R30,R28
+	ADIW R30,4
+	ST   -Y,R31
+	ST   -Y,R30
+	__POINTW1FN _0x0,0
+	ST   -Y,R31
+	ST   -Y,R30
+	LDD  R30,Y+28
+	LDD  R31,Y+28+1
+	CALL SUBOPT_0x4
+	CALL SUBOPT_0x5
+; 0000 00BB     glcd_clear();
+	CALL _glcd_clear
+; 0000 00BC     glcd_outtextxy(10, 20, motor_msg);
+	LDI  R30,LOW(10)
+	ST   -Y,R30
+	LDI  R30,LOW(20)
+	ST   -Y,R30
+	MOVW R26,R28
+	ADIW R26,6
+	CALL _glcd_outtextxy
+; 0000 00BD     MOTOR_PORT |= (1 << motor_pin);
+	IN   R1,3
+	MOV  R30,R17
+	LDI  R26,LOW(1)
+	CALL __LSLB12
+	OR   R30,R1
+	OUT  0x3,R30
+; 0000 00BE 
+; 0000 00BF     while (!(PIND & (1 << PIND1)) && timeout > 0)
+_0x1B:
+	SBIC 0x10,1
+	RJMP _0x1E
+	CLR  R0
+	CP   R0,R18
+	CPC  R0,R19
+	BRLT _0x1F
+_0x1E:
+	RJMP _0x1D
+_0x1F:
+; 0000 00C0     {
+; 0000 00C1         delay_ms(1);
+	LDI  R26,LOW(1)
+	LDI  R27,0
+	CALL _delay_ms
+; 0000 00C2         timeout--;
+	__SUBWRN 18,19,1
+; 0000 00C3     }
+	RJMP _0x1B
+_0x1D:
+; 0000 00C4 
+; 0000 00C5     MOTOR_PORT &= ~(1 << motor_pin);
+	IN   R1,3
+	MOV  R30,R17
+	LDI  R26,LOW(1)
+	CALL SUBOPT_0x6
+	OUT  0x3,R30
+; 0000 00C6 //    glcd_clear();
+; 0000 00C7 //    glcd_outtextxy(10, 20, motor_msg);
+; 0000 00C8 
+; 0000 00C9     glcd_clear();
+	CALL SUBOPT_0x7
+; 0000 00CA     draw_bitmap(0, 0, mahsol_ra_bardarid, 128, 64);
+	CALL SUBOPT_0x8
+	LDI  R26,LOW(64)
+	RCALL _draw_bitmap
+; 0000 00CB     delay_ms(500);
+	CALL SUBOPT_0x9
+; 0000 00CC }
+_0x2120017:
+	CALL __LOADLOCR4
+	ADIW R28,26
+	RET
+; .FEND
 ;
 ;
 ;///////////////////////////////////////////////////////////////////////////////
 ;unsigned char send_data(const char* base_url, const char* phone_number, int product_id, int device_id) {
-; 0000 00A7 unsigned char send_data(const char* base_url, const char* phone_number, int product_id, int device_id) {
+; 0000 00D0 unsigned char send_data(const char* base_url, const char* phone_number, int product_id, int device_id) {
 _send_data:
 ; .FSTART _send_data
-; 0000 00A8     // C??C? ?EU???C (C89)
-; 0000 00A9     char cmd[100];
-; 0000 00AA     char full_url[255];
-; 0000 00AB     char *action_ptr;
-; 0000 00AC     int method = 0, status_code = 0, data_len = 0;
-; 0000 00AD 
-; 0000 00AE     // ??C?O ??C? ??? GLCD
-; 0000 00AF //    glcd_clear();
-; 0000 00B0 //    draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
-; 0000 00B1 
-; 0000 00B2     uart_buffer_reset();
-	CALL SUBOPT_0x4
+; 0000 00D1     // C??C? ?EU???C (C89)
+; 0000 00D2     char cmd[100];
+; 0000 00D3     char full_url[255];
+; 0000 00D4     char *action_ptr;
+; 0000 00D5     int method = 0, status_code = 0, data_len = 0;
+; 0000 00D6 
+; 0000 00D7     // ??C?O ??C? ??? GLCD
+; 0000 00D8 //    glcd_clear();
+; 0000 00D9 //    draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
+; 0000 00DA 
+; 0000 00DB     uart_buffer_reset();
+	CALL SUBOPT_0xA
 ;	*base_url -> Y+369
 ;	*phone_number -> Y+367
 ;	product_id -> Y+365
@@ -3072,135 +3198,139 @@ _send_data:
 ;	status_code -> R20,R21
 ;	data_len -> Y+6
 	CALL _uart_buffer_reset
-; 0000 00B3     send_at_command("AT+HTTPTERM");
-	__POINTW2MN _0x14,0
-	CALL SUBOPT_0x5
-; 0000 00B4     delay_ms(100);
-; 0000 00B5 
-; 0000 00B6     // --- ‘—Ê⁄ HTTP ---
-; 0000 00B7     uart_buffer_reset();
-; 0000 00B8     send_at_command("AT+HTTPINIT");
-	__POINTW2MN _0x14,12
-	CALL SUBOPT_0x5
-; 0000 00B9     delay_ms(100);
-; 0000 00BA 
-; 0000 00BB     // --- «‰ Œ«» ò«‰ò‘‰ GPRS ---
-; 0000 00BC     uart_buffer_reset();
-; 0000 00BD     send_at_command("AT+HTTPPARA=\"CID\",1");
-	__POINTW2MN _0x14,24
-	CALL SUBOPT_0x5
-; 0000 00BE     delay_ms(100);
-; 0000 00BF 
-; 0000 00C0     // ---  ‰ŸÌ„ URL ---
-; 0000 00C1     uart_buffer_reset();
-; 0000 00C2     snprintf(full_url, sizeof(full_url),
-; 0000 00C3              "%s?phone_number=%s&device_id=%d&product_id=%d",
-; 0000 00C4              base_url, phone_number, device_id, product_id);
-	CALL SUBOPT_0x6
+; 0000 00DC     send_at_command("AT+HTTPTERM");
+	__POINTW2MN _0x20,0
+	CALL SUBOPT_0xB
+; 0000 00DD     delay_ms(100);
+; 0000 00DE 
+; 0000 00DF     // --- ‘—Ê⁄ HTTP ---
+; 0000 00E0     uart_buffer_reset();
+; 0000 00E1     send_at_command("AT+HTTPINIT");
+	__POINTW2MN _0x20,12
+	CALL SUBOPT_0xB
+; 0000 00E2     delay_ms(100);
+; 0000 00E3 
+; 0000 00E4     // --- «‰ Œ«» ò«‰ò‘‰ GPRS ---
+; 0000 00E5     uart_buffer_reset();
+; 0000 00E6     send_at_command("AT+HTTPPARA=\"CID\",1");
+	__POINTW2MN _0x20,24
+	CALL SUBOPT_0xB
+; 0000 00E7     delay_ms(100);
+; 0000 00E8 
+; 0000 00E9     // ---  ‰ŸÌ„ URL ---
+; 0000 00EA     uart_buffer_reset();
+; 0000 00EB     snprintf(full_url, sizeof(full_url),
+; 0000 00EC              "%s?phone_number=%s&device_id=%d&product_id=%d",
+; 0000 00ED              base_url, phone_number, device_id, product_id);
+	CALL SUBOPT_0xC
 	LDI  R30,LOW(255)
 	LDI  R31,HIGH(255)
 	ST   -Y,R31
 	ST   -Y,R30
-	__POINTW1FN _0x0,44
+	__POINTW1FN _0x0,57
 	ST   -Y,R31
 	ST   -Y,R30
 	__GETW1SX 375
-	CALL SUBOPT_0x7
-	CALL SUBOPT_0x7
-	CALL SUBOPT_0x8
+	CALL SUBOPT_0xD
+	CALL SUBOPT_0xD
+	CALL SUBOPT_0x4
 	__GETW1SX 383
-	CALL SUBOPT_0x8
+	CALL SUBOPT_0x4
 	LDI  R24,16
 	CALL _snprintf
 	ADIW R28,22
-; 0000 00C5 
-; 0000 00C6     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
-	CALL SUBOPT_0x9
-; 0000 00C7     send_at_command(cmd);
-; 0000 00C8     delay_ms(100);
-; 0000 00C9 
-; 0000 00CA //    glcd_clear();
-; 0000 00CB //    glcd_outtextxy(0,10,full_url);
-; 0000 00CC //    delay_ms(500);
-; 0000 00CD 
-; 0000 00CE     // --- «—”«· œ—ŒÊ«”  GET ---
-; 0000 00CF     uart_buffer_reset();
-; 0000 00D0     send_at_command("AT+HTTPACTION=1"); // 0=GET
-	__POINTW2MN _0x14,44
-	CALL SUBOPT_0x5
-; 0000 00D1     delay_ms(100); // ’»— »—«Ì Å«”Œ HTTP
-; 0000 00D2 
-; 0000 00D3     // --- »——”Ì Å«”Œ ---
-; 0000 00D4     uart_buffer_reset();
-; 0000 00D5     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION")) {
-	CALL SUBOPT_0xA
+; 0000 00EE 
+; 0000 00EF     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
+	CALL SUBOPT_0xE
+; 0000 00F0     send_at_command(cmd);
+	MOVW R26,R28
+	SUBI R26,LOW(-(263))
+	SBCI R27,HIGH(-(263))
 	CALL SUBOPT_0xB
-	__POINTW2MN _0x14,60
+; 0000 00F1     delay_ms(100);
+; 0000 00F2 
+; 0000 00F3 //    glcd_clear();
+; 0000 00F4 //    glcd_outtextxy(0,10,full_url);
+; 0000 00F5 //    delay_ms(500);
+; 0000 00F6 
+; 0000 00F7     // --- «—”«· œ—ŒÊ«”  GET ---
+; 0000 00F8     uart_buffer_reset();
+; 0000 00F9     send_at_command("AT+HTTPACTION=1"); // 0=GET
+	__POINTW2MN _0x20,44
+	CALL SUBOPT_0xB
+; 0000 00FA     delay_ms(100); // ’»— »—«Ì Å«”Œ HTTP
+; 0000 00FB 
+; 0000 00FC     // --- »——”Ì Å«”Œ ---
+; 0000 00FD     uart_buffer_reset();
+; 0000 00FE     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION")) {
+	CALL SUBOPT_0xF
+	CALL SUBOPT_0x10
+	__POINTW2MN _0x20,60
 	RCALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BREQ _0x15
-; 0000 00D6         // „À«· Œ—ÊÃÌ: +HTTPACTION:0,200,1256
-; 0000 00D7 //        glcd_clear();
-; 0000 00D8 //        glcd_outtextxy(0,10,value);
-; 0000 00D9 //        delay_ms(500);
-; 0000 00DA         if (extract_field_after_keyword(buffer, "+HTTPACTION:", 1, value, sizeof(value))) {
-	CALL SUBOPT_0xA
-	__POINTW1MN _0x14,71
-	CALL SUBOPT_0xC
-; 0000 00DB //            glcd_clear();
-; 0000 00DC //            glcd_outtextxy(0,10,value);
-; 0000 00DD //            delay_ms(500);
-; 0000 00DE         }
-; 0000 00DF     }
-; 0000 00E0 
-; 0000 00E1 //
-; 0000 00E2 //    // 8) Terminate HTTP service
-; 0000 00E3     uart_buffer_reset();
-_0x15:
+	BREQ _0x21
+; 0000 00FF         // „À«· Œ—ÊÃÌ: +HTTPACTION:0,200,1256
+; 0000 0100 //        glcd_clear();
+; 0000 0101 //        glcd_outtextxy(0,10,value);
+; 0000 0102 //        delay_ms(500);
+; 0000 0103         if (extract_field_after_keyword(buffer, "+HTTPACTION:", 1, value, sizeof(value))) {
+	CALL SUBOPT_0xF
+	__POINTW1MN _0x20,71
+	CALL SUBOPT_0x11
+; 0000 0104 //            glcd_clear();
+; 0000 0105 //            glcd_outtextxy(0,10,value);
+; 0000 0106 //            delay_ms(500);
+; 0000 0107         }
+; 0000 0108     }
+; 0000 0109 
+; 0000 010A //
+; 0000 010B //    // 8) Terminate HTTP service
+; 0000 010C     uart_buffer_reset();
+_0x21:
 	RCALL _uart_buffer_reset
-; 0000 00E4     send_at_command("AT+HTTPTERM");
-	__POINTW2MN _0x14,84
-	CALL SUBOPT_0xD
-; 0000 00E5     delay_ms(100);
-; 0000 00E6 
-; 0000 00E7     // 9) ?E???
-; 0000 00E8     return (atoi(value) == 200) ? 1 : 0;
-	BRNE _0x17
+; 0000 010D     send_at_command("AT+HTTPTERM");
+	__POINTW2MN _0x20,84
+	CALL SUBOPT_0x12
+; 0000 010E     delay_ms(100);
+; 0000 010F 
+; 0000 0110     // 9) ?E???
+; 0000 0111     return (atoi(value) == 200) ? 1 : 0;
+	BRNE _0x23
 	LDI  R30,LOW(1)
-	RJMP _0x18
-_0x17:
+	RJMP _0x24
+_0x23:
 	LDI  R30,LOW(0)
-_0x18:
+_0x24:
 	CALL __LOADLOCR6
 	ADIW R28,63
 	ADIW R28,52
 	SUBI R29,-1
 	RET
-; 0000 00E9 }
+; 0000 0112 }
 ; .FEND
 
 	.DSEG
-_0x14:
+_0x20:
 	.BYTE 0x60
 ;/////////////////////////////////////////////////////////////////////////////////
 ;
 ;
 ;
 ;unsigned char get_data(const char* base_url, const char* phone_number) {
-; 0000 00EE unsigned char get_data(const char* base_url, const char* phone_number) {
+; 0000 0117 unsigned char get_data(const char* base_url, const char* phone_number) {
 
 	.CSEG
 _get_data:
 ; .FSTART _get_data
-; 0000 00EF     // C??C? ?EU???C (C89)
-; 0000 00F0     char cmd[100];
-; 0000 00F1     char full_url[255];
-; 0000 00F2     char *action_ptr;
-; 0000 00F3     int method = 0, status_code = 0, data_len = 0;
-; 0000 00F4 
-; 0000 00F5     // ??C?O ??C? ??? GLCD
-; 0000 00F6     glcd_clear();
-	CALL SUBOPT_0x4
+; 0000 0118     // C??C? ?EU???C (C89)
+; 0000 0119     char cmd[100];
+; 0000 011A     char full_url[255];
+; 0000 011B     char *action_ptr;
+; 0000 011C     int method = 0, status_code = 0, data_len = 0;
+; 0000 011D 
+; 0000 011E     // ??C?O ??C? ??? GLCD
+; 0000 011F     glcd_clear();
+	CALL SUBOPT_0xA
 ;	*base_url -> Y+365
 ;	*phone_number -> Y+363
 ;	cmd -> Y+263
@@ -3209,148 +3339,152 @@ _get_data:
 ;	method -> R18,R19
 ;	status_code -> R20,R21
 ;	data_len -> Y+6
-	CALL SUBOPT_0xE
-; 0000 00F7     draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
+	CALL SUBOPT_0x7
+; 0000 0120     draw_bitmap(0, 0, lotfan_montazer_bemanid, 128, 64);
 	LDI  R30,LOW(_lotfan_montazer_bemanid*2)
 	LDI  R31,HIGH(_lotfan_montazer_bemanid*2)
-	CALL SUBOPT_0xF
-; 0000 00F8 
-; 0000 00F9     uart_buffer_reset();
+	CALL SUBOPT_0x13
+; 0000 0121 
+; 0000 0122     uart_buffer_reset();
 	RCALL _uart_buffer_reset
-; 0000 00FA     send_at_command("AT+HTTPTERM");
-	__POINTW2MN _0x1A,0
-	CALL SUBOPT_0x5
-; 0000 00FB     delay_ms(100);
-; 0000 00FC 
-; 0000 00FD     // --- ‘—Ê⁄ HTTP ---
-; 0000 00FE     uart_buffer_reset();
-; 0000 00FF     send_at_command("AT+HTTPINIT");
-	__POINTW2MN _0x1A,12
-	CALL SUBOPT_0x5
-; 0000 0100     delay_ms(100);
-; 0000 0101 
-; 0000 0102     // --- «‰ Œ«» ò«‰ò‘‰ GPRS ---
-; 0000 0103     uart_buffer_reset();
-; 0000 0104     send_at_command("AT+HTTPPARA=\"CID\",1");
-	__POINTW2MN _0x1A,24
-	CALL SUBOPT_0x5
-; 0000 0105     delay_ms(100);
-; 0000 0106 
-; 0000 0107     // ---  ‰ŸÌ„ URL ---
-; 0000 0108     uart_buffer_reset();
-; 0000 0109     sprintf(full_url, "%s?phone_number=%s", base_url, phone_number);
-	CALL SUBOPT_0x6
-	__POINTW1FN _0x0,153
+; 0000 0123     send_at_command("AT+HTTPTERM");
+	__POINTW2MN _0x26,0
+	CALL SUBOPT_0xB
+; 0000 0124     delay_ms(100);
+; 0000 0125 
+; 0000 0126     // --- ‘—Ê⁄ HTTP ---
+; 0000 0127     uart_buffer_reset();
+; 0000 0128     send_at_command("AT+HTTPINIT");
+	__POINTW2MN _0x26,12
+	CALL SUBOPT_0xB
+; 0000 0129     delay_ms(100);
+; 0000 012A 
+; 0000 012B     // --- «‰ Œ«» ò«‰ò‘‰ GPRS ---
+; 0000 012C     uart_buffer_reset();
+; 0000 012D     send_at_command("AT+HTTPPARA=\"CID\",1");
+	__POINTW2MN _0x26,24
+	CALL SUBOPT_0xB
+; 0000 012E     delay_ms(100);
+; 0000 012F 
+; 0000 0130     // ---  ‰ŸÌ„ URL ---
+; 0000 0131     uart_buffer_reset();
+; 0000 0132     sprintf(full_url, "%s?phone_number=%s", base_url, phone_number);
+	CALL SUBOPT_0xC
+	__POINTW1FN _0x0,166
 	ST   -Y,R31
 	ST   -Y,R30
 	__GETW1SX 369
-	CALL SUBOPT_0x10
-	CALL SUBOPT_0x11
+	CALL SUBOPT_0x14
+	CALL SUBOPT_0x15
 	LDI  R24,8
 	CALL _sprintf
 	ADIW R28,12
-; 0000 010A     snprintf(full_url, sizeof(full_url),
-; 0000 010B              "%s?phone_number=%s",
-; 0000 010C              base_url, phone_number);
-	CALL SUBOPT_0x6
+; 0000 0133     snprintf(full_url, sizeof(full_url),
+; 0000 0134              "%s?phone_number=%s",
+; 0000 0135              base_url, phone_number);
+	CALL SUBOPT_0xC
 	LDI  R30,LOW(255)
 	LDI  R31,HIGH(255)
 	ST   -Y,R31
 	ST   -Y,R30
-	__POINTW1FN _0x0,153
+	__POINTW1FN _0x0,166
 	ST   -Y,R31
 	ST   -Y,R30
-	CALL SUBOPT_0x11
+	CALL SUBOPT_0x15
 	__GETW1SX 373
-	CALL SUBOPT_0x10
+	CALL SUBOPT_0x14
 	LDI  R24,8
 	CALL _snprintf
 	ADIW R28,14
-; 0000 010D     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
-	CALL SUBOPT_0x9
-; 0000 010E     send_at_command(cmd);
-; 0000 010F     delay_ms(100);
-; 0000 0110 
-; 0000 0111 
-; 0000 0112 //    glcd_clear();
-; 0000 0113 //    glcd_outtextxy(0,10,full_url);
-; 0000 0114 //    delay_ms(500);
-; 0000 0115 
-; 0000 0116 
-; 0000 0117     // --- «—”«· œ—ŒÊ«”  GET ---
-; 0000 0118     uart_buffer_reset();
-; 0000 0119     send_at_command("AT+HTTPACTION=0"); // 0=GET
-	__POINTW2MN _0x1A,44
-	CALL SUBOPT_0x5
-; 0000 011A     delay_ms(100); // ’»— »—«Ì Å«”Œ HTTP
-; 0000 011B 
-; 0000 011C     // --- »——”Ì Å«”Œ ---
-; 0000 011D     uart_buffer_reset();
-; 0000 011E     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION")) {
-	CALL SUBOPT_0xA
+; 0000 0136     sprintf(cmd, "AT+HTTPPARA=\"URL\",\"%s\"", full_url);
+	CALL SUBOPT_0xE
+; 0000 0137     send_at_command(cmd);
+	MOVW R26,R28
+	SUBI R26,LOW(-(263))
+	SBCI R27,HIGH(-(263))
 	CALL SUBOPT_0xB
-	__POINTW2MN _0x1A,60
+; 0000 0138     delay_ms(100);
+; 0000 0139 
+; 0000 013A 
+; 0000 013B //    glcd_clear();
+; 0000 013C //    glcd_outtextxy(0,10,full_url);
+; 0000 013D //    delay_ms(500);
+; 0000 013E 
+; 0000 013F 
+; 0000 0140     // --- «—”«· œ—ŒÊ«”  GET ---
+; 0000 0141     uart_buffer_reset();
+; 0000 0142     send_at_command("AT+HTTPACTION=0"); // 0=GET
+	__POINTW2MN _0x26,44
+	CALL SUBOPT_0xB
+; 0000 0143     delay_ms(100); // ’»— »—«Ì Å«”Œ HTTP
+; 0000 0144 
+; 0000 0145     // --- »——”Ì Å«”Œ ---
+; 0000 0146     uart_buffer_reset();
+; 0000 0147     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION")) {
+	CALL SUBOPT_0xF
+	CALL SUBOPT_0x10
+	__POINTW2MN _0x26,60
 	RCALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BREQ _0x1B
-; 0000 011F         // „À«· Œ—ÊÃÌ: +HTTPACTION:0,200,1256
-; 0000 0120 //        glcd_clear();
-; 0000 0121 //        glcd_outtextxy(0,10,value);
-; 0000 0122 //        delay_ms(500);
-; 0000 0123         if (extract_field_after_keyword(buffer, "+HTTPACTION:", 1, value, sizeof(value))) {
-	CALL SUBOPT_0xA
-	__POINTW1MN _0x1A,71
-	CALL SUBOPT_0xC
-; 0000 0124 //            glcd_clear();
-; 0000 0125 //            glcd_outtextxy(0,10,value);
-; 0000 0126 //            delay_ms(500);
-; 0000 0127         }
-; 0000 0128     }
-; 0000 0129 
-; 0000 012A //
-; 0000 012B //    // 8) Terminate HTTP service
-; 0000 012C     uart_buffer_reset();
-_0x1B:
+	BREQ _0x27
+; 0000 0148         // „À«· Œ—ÊÃÌ: +HTTPACTION:0,200,1256
+; 0000 0149 //        glcd_clear();
+; 0000 014A //        glcd_outtextxy(0,10,value);
+; 0000 014B //        delay_ms(500);
+; 0000 014C         if (extract_field_after_keyword(buffer, "+HTTPACTION:", 1, value, sizeof(value))) {
+	CALL SUBOPT_0xF
+	__POINTW1MN _0x26,71
+	CALL SUBOPT_0x11
+; 0000 014D //            glcd_clear();
+; 0000 014E //            glcd_outtextxy(0,10,value);
+; 0000 014F //            delay_ms(500);
+; 0000 0150         }
+; 0000 0151     }
+; 0000 0152 
+; 0000 0153 //
+; 0000 0154 //    // 8) Terminate HTTP service
+; 0000 0155     uart_buffer_reset();
+_0x27:
 	RCALL _uart_buffer_reset
-; 0000 012D     send_at_command("AT+HTTPTERM");
-	__POINTW2MN _0x1A,84
-	CALL SUBOPT_0xD
-; 0000 012E     delay_ms(100);
-; 0000 012F 
-; 0000 0130     // 9) ?E???
-; 0000 0131     return (atoi(value) == 200) ? 1 : 0;
-	BRNE _0x1D
+; 0000 0156     send_at_command("AT+HTTPTERM");
+	__POINTW2MN _0x26,84
+	CALL SUBOPT_0x12
+; 0000 0157     delay_ms(100);
+; 0000 0158 
+; 0000 0159     // 9) ?E???
+; 0000 015A     return (atoi(value) == 200) ? 1 : 0;
+	BRNE _0x29
 	LDI  R30,LOW(1)
-	RJMP _0x1E
-_0x1D:
+	RJMP _0x2A
+_0x29:
 	LDI  R30,LOW(0)
-_0x1E:
+_0x2A:
 	CALL __LOADLOCR6
 	ADIW R28,63
 	ADIW R28,48
 	SUBI R29,-1
 	RET
-; 0000 0132 }
+; 0000 015B }
 ; .FEND
 
 	.DSEG
-_0x1A:
+_0x26:
 	.BYTE 0x60
 ;
 ;
 ;void handle_sms(void)
-; 0000 0136 {
+; 0000 015F {
 
 	.CSEG
 _handle_sms:
 ; .FSTART _handle_sms
-; 0000 0137     char tmp[2];
-; 0000 0138     const char* server_url_post = "http://185.8.173.17:8000/home/post/";
-; 0000 0139     int product_id = 0;
-; 0000 013A     int timeout_counter = 0;
-; 0000 013B     char key_pressed;
-; 0000 013C     char *tok, phone[32];
-; 0000 013D     tok = strtok(header_buffer, "\"");      // ?IC ??I? +CMT:
+; 0000 0160     char tmp[2];
+; 0000 0161     const char* server_url_post = "http://185.8.173.17:8000/home/post/";
+; 0000 0162     int product_id = 0;
+; 0000 0163     int timeout_counter = 0;
+; 0000 0164     char key_pressed;
+; 0000 0165     char *tok, phone[32];
+; 0000 0166     tok = strtok(header_buffer, "\"");      // ?IC ??I? +CMT:
 	SBIW R28,37
 	CALL __SAVELOCR6
 ;	tmp -> Y+41
@@ -3360,84 +3494,84 @@ _handle_sms:
 ;	key_pressed -> Y+40
 ;	*tok -> Y+38
 ;	phone -> Y+6
-	__POINTWRMN 16,17,_0x20,0
+	__POINTWRMN 16,17,_0x2C,0
 	__GETWRN 18,19,0
 	__GETWRN 20,21,0
 	LDI  R30,LOW(_header_buffer)
 	LDI  R31,HIGH(_header_buffer)
-	CALL SUBOPT_0x12
-; 0000 013E     tok = strtok(NULL, "\"");               // C???EC? O?C?? ICI? ??E?O?
+	CALL SUBOPT_0x16
+; 0000 0167     tok = strtok(NULL, "\"");               // C???EC? O?C?? ICI? ??E?O?
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
-	CALL SUBOPT_0x12
-; 0000 013F     if (tok) strcpy(phone, tok);
+	CALL SUBOPT_0x16
+; 0000 0168     if (tok) strcpy(phone, tok);
 	LDD  R30,Y+38
 	LDD  R31,Y+38+1
 	SBIW R30,0
-	BREQ _0x21
+	BREQ _0x2D
 	MOVW R30,R28
 	ADIW R30,6
 	ST   -Y,R31
 	ST   -Y,R30
 	LDD  R26,Y+40
 	LDD  R27,Y+40+1
-	RJMP _0x50
-; 0000 0140     else    strcpy(phone, "unknown");
-_0x21:
+	RJMP _0x5C
+; 0000 0169     else    strcpy(phone, "unknown");
+_0x2D:
 	MOVW R30,R28
 	ADIW R30,6
 	ST   -Y,R31
 	ST   -Y,R30
-	__POINTW2MN _0x20,36
-_0x50:
+	__POINTW2MN _0x2C,36
+_0x5C:
 	CALL _strcpy
-; 0000 0141 
-; 0000 0142     glcd_clear();
-	CALL SUBOPT_0xE
-; 0000 0143     glcd_outtextxy(0,0,"SMS from:");
-	__POINTW2MN _0x20,44
+; 0000 016A 
+; 0000 016B     glcd_clear();
+	CALL SUBOPT_0x7
+; 0000 016C     glcd_outtextxy(0,0,"SMS from:");
+	__POINTW2MN _0x2C,44
 	CALL _glcd_outtextxy
-; 0000 0144     glcd_outtextxy(0,10,phone);
-	CALL SUBOPT_0x13
+; 0000 016D     glcd_outtextxy(0,10,phone);
+	CALL SUBOPT_0x17
 	MOVW R26,R28
 	ADIW R26,8
 	CALL _glcd_outtextxy
-; 0000 0145     glcd_outtextxy(0,20,content_buffer);
-	CALL SUBOPT_0x14
+; 0000 016E     glcd_outtextxy(0,20,content_buffer);
+	CALL SUBOPT_0x18
 	LDI  R26,LOW(_content_buffer)
 	LDI  R27,HIGH(_content_buffer)
 	CALL _glcd_outtextxy
-; 0000 0146     delay_ms(200);
+; 0000 016F     delay_ms(200);
 	LDI  R26,LOW(200)
 	LDI  R27,0
 	CALL _delay_ms
-; 0000 0147 
-; 0000 0148 //////////////////////////////////////////////////////////////////////////////////////////////
-; 0000 0149 
-; 0000 014A     if (strcmp(content_buffer, "1") == 0 || strcmp(content_buffer, "2") == 0 || strcmp(content_buffer, "3") == 0)
-	CALL SUBOPT_0x15
-	__POINTW2MN _0x20,54
+; 0000 0170 
+; 0000 0171 //////////////////////////////////////////////////////////////////////////////////////////////
+; 0000 0172 
+; 0000 0173     if (strcmp(content_buffer, "1") == 0 || strcmp(content_buffer, "2") == 0 || strcmp(content_buffer, "3") == 0)
+	CALL SUBOPT_0x19
+	__POINTW2MN _0x2C,54
 	CALL _strcmp
 	CPI  R30,0
-	BREQ _0x24
-	CALL SUBOPT_0x15
-	__POINTW2MN _0x20,56
+	BREQ _0x30
+	CALL SUBOPT_0x19
+	__POINTW2MN _0x2C,56
 	CALL _strcmp
 	CPI  R30,0
-	BREQ _0x24
-	CALL SUBOPT_0x15
-	__POINTW2MN _0x20,58
+	BREQ _0x30
+	CALL SUBOPT_0x19
+	__POINTW2MN _0x2C,58
 	CALL _strcmp
 	CPI  R30,0
-	BREQ _0x24
-	RJMP _0x23
-_0x24:
-; 0000 014B     {
-; 0000 014C //        product_id = 1;
-; 0000 014D //        device_id = 1;
-; 0000 014E //        send_data(server_url_post, phone, product_id, device_id);
-; 0000 014F 
-; 0000 0150         if (get_data(server_url_post, phone))
+	BREQ _0x30
+	RJMP _0x2F
+_0x30:
+; 0000 0174     {
+; 0000 0175 //        product_id = 1;
+; 0000 0176 //        device_id = 1;
+; 0000 0177 //        send_data(server_url_post, phone, product_id, device_id);
+; 0000 0178 
+; 0000 0179         if (get_data(server_url_post, phone))
 	ST   -Y,R17
 	ST   -Y,R16
 	MOVW R26,R28
@@ -3445,24 +3579,29 @@ _0x24:
 	RCALL _get_data
 	CPI  R30,0
 	BRNE PC+2
-	RJMP _0x26
-; 0000 0151         {
-; 0000 0152             glcd_clear();
-	CALL SUBOPT_0xE
-; 0000 0153 
-; 0000 0154             draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
+	RJMP _0x32
+; 0000 017A         {
+; 0000 017B             glcd_clear();
+	CALL SUBOPT_0x7
+; 0000 017C 
+; 0000 017D             draw_bitmap(0, 0, adad_ra_vared_namaeid, 128, 64);
 	LDI  R30,LOW(_adad_ra_vared_namaeid*2)
 	LDI  R31,HIGH(_adad_ra_vared_namaeid*2)
-	CALL SUBOPT_0xF
-; 0000 0155             draw_bitmap(0, 32, square, 128, 32);
+	CALL SUBOPT_0x13
+; 0000 017E             draw_bitmap(0, 32, square, 128, 32);
 	LDI  R30,LOW(0)
 	ST   -Y,R30
 	LDI  R30,LOW(32)
 	ST   -Y,R30
 	LDI  R30,LOW(_square*2)
 	LDI  R31,HIGH(_square*2)
-	CALL SUBOPT_0x16
-; 0000 0156             glcd_outtextxy(64, 42, content_buffer);
+	ST   -Y,R31
+	ST   -Y,R30
+	LDI  R30,LOW(128)
+	ST   -Y,R30
+	LDI  R26,LOW(32)
+	RCALL _draw_bitmap
+; 0000 017F             glcd_outtextxy(64, 42, content_buffer);
 	LDI  R30,LOW(64)
 	ST   -Y,R30
 	LDI  R30,LOW(42)
@@ -3470,616 +3609,619 @@ _0x24:
 	LDI  R26,LOW(_content_buffer)
 	LDI  R27,HIGH(_content_buffer)
 	CALL _glcd_outtextxy
-; 0000 0157 
-; 0000 0158             key_pressed = 0;
+; 0000 0180 
+; 0000 0181             key_pressed = 0;
 	LDI  R30,LOW(0)
 	STD  Y+40,R30
-; 0000 0159             for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
+; 0000 0182             for (timeout_counter = 0; timeout_counter < 200; timeout_counter++)
 	__GETWRN 20,21,0
-_0x28:
+_0x34:
 	__CPWRN 20,21,200
-	BRGE _0x29
-; 0000 015A             {
-; 0000 015B                 key_pressed = get_key();
+	BRGE _0x35
+; 0000 0183             {
+; 0000 0184                 key_pressed = get_key();
 	CALL _get_key
 	STD  Y+40,R30
-; 0000 015C                 if (key_pressed != 0) break;
+; 0000 0185                 if (key_pressed != 0) break;
 	CPI  R30,0
-	BRNE _0x29
-; 0000 015D                 delay_ms(10);
+	BRNE _0x35
+; 0000 0186                 delay_ms(10);
 	LDI  R26,LOW(10)
 	LDI  R27,0
 	CALL _delay_ms
-; 0000 015E             }
+; 0000 0187             }
 	__ADDWRN 20,21,1
-	RJMP _0x28
-_0x29:
-; 0000 015F 
-; 0000 0160             if (key_pressed == 0)
+	RJMP _0x34
+_0x35:
+; 0000 0188 
+; 0000 0189             if (key_pressed == 0)
 	LDD  R30,Y+40
 	CPI  R30,0
-	BRNE _0x2B
-; 0000 0161             {
-; 0000 0162                 glcd_clear();
+	BRNE _0x37
+; 0000 018A             {
+; 0000 018B                 glcd_clear();
 	CALL _glcd_clear
-; 0000 0163                 glcd_outtextxy(10, 25, "Timeout! Try again.");
+; 0000 018C                 glcd_outtextxy(10, 25, "Timeout! Try again.");
 	LDI  R30,LOW(10)
 	ST   -Y,R30
 	LDI  R30,LOW(25)
 	ST   -Y,R30
-	__POINTW2MN _0x20,60
+	__POINTW2MN _0x2C,60
 	CALL _glcd_outtextxy
-; 0000 0164                 delay_ms(200);
+; 0000 018D                 delay_ms(200);
 	LDI  R26,LOW(200)
 	LDI  R27,0
-	RJMP _0x51
-; 0000 0165             }
-; 0000 0166             else
-_0x2B:
-; 0000 0167             {
-; 0000 0168 //                glcd_clear();
-; 0000 0169 //                tmp[0] = content_buffer[0];
-; 0000 016A //                tmp[1] = '\0';
-; 0000 016B //                glcd_outtextxy(5, 25, tmp);
-; 0000 016C //
-; 0000 016D //                // ‰„«Ì‘ key_pressed
-; 0000 016E //                tmp[0] = key_pressed;
-; 0000 016F //                tmp[1] = '\0';
-; 0000 0170 //                glcd_outtextxy(5, 45, tmp);
-; 0000 0171 //                delay_ms(1000);
-; 0000 0172                 // Êﬁ Ì ò·ÌœÂ« 0..9 »Â ’Ê—  ⁄œœ »—„Ìùê—œ‰
-; 0000 0173 //                if (key_pressed >= 0 && key_pressed <= 9) {
-; 0000 0174 //                    key_pressed = '0' + key_pressed;   //  »œÌ· »Â ò«—«ò — '0'..'9'
-; 0000 0175 //                }
-; 0000 0176                 if (key_pressed == content_buffer[0])
+	RJMP _0x5D
+; 0000 018E             }
+; 0000 018F             else
+_0x37:
+; 0000 0190             {
+; 0000 0191 //                glcd_clear();
+; 0000 0192 //                tmp[0] = content_buffer[0];
+; 0000 0193 //                tmp[1] = '\0';
+; 0000 0194 //                glcd_outtextxy(5, 25, tmp);
+; 0000 0195 //
+; 0000 0196 //                // ‰„«Ì‘ key_pressed
+; 0000 0197 //                tmp[0] = key_pressed;
+; 0000 0198 //                tmp[1] = '\0';
+; 0000 0199 //                glcd_outtextxy(5, 45, tmp);
+; 0000 019A //                delay_ms(1000);
+; 0000 019B                 // Êﬁ Ì ò·ÌœÂ« 0..9 »Â ’Ê—  ⁄œœ »—„Ìùê—œ‰
+; 0000 019C //                if (key_pressed >= 0 && key_pressed <= 9) {
+; 0000 019D //                    key_pressed = '0' + key_pressed;   //  »œÌ· »Â ò«—«ò — '0'..'9'
+; 0000 019E //                }
+; 0000 019F                 if (key_pressed == content_buffer[0])
 	LDS  R30,_content_buffer
 	LDD  R26,Y+40
 	CP   R30,R26
-	BRNE _0x2D
-; 0000 0177                 {
-; 0000 0178                     glcd_clear();
-	CALL SUBOPT_0x17
-; 0000 0179                     glcd_outtextxy(5, 25, "test 3!");
-	__POINTW2MN _0x20,80
-	CALL SUBOPT_0x18
-; 0000 017A                     delay_ms(300);
-	CALL _delay_ms
-; 0000 017B                     product_id = content_buffer[0] - '0';
+	BRNE _0x39
+; 0000 01A0                 {
+; 0000 01A1                     glcd_clear();
+	CALL _glcd_clear
+; 0000 01A2 //                    glcd_outtextxy(5, 25, "test 3!");
+; 0000 01A3 //                    delay_ms(300);
+; 0000 01A4                     product_id = content_buffer[0] - '0';
 	LDS  R30,_content_buffer
 	LDI  R31,0
 	SBIW R30,48
 	MOVW R18,R30
-; 0000 017C                     activate_motor(product_id);
+; 0000 01A5                     activate_motor(product_id);
 	MOVW R26,R18
-	CALL _activate_motor
-; 0000 017D                     glcd_clear();
-	CALL _glcd_clear
-; 0000 017E                     draw_bitmap(0, 32, mahsol_ra_bardarid, 128, 32);
+	RCALL _activate_motor
+; 0000 01A6 //                    glcd_clear();
+; 0000 01A7                     draw_bitmap(0, 32, mahsol_ra_bardarid, 128, 32);
 	LDI  R30,LOW(0)
 	ST   -Y,R30
 	LDI  R30,LOW(32)
 	ST   -Y,R30
-	LDI  R30,LOW(_mahsol_ra_bardarid*2)
-	LDI  R31,HIGH(_mahsol_ra_bardarid*2)
-	CALL SUBOPT_0x16
-; 0000 017F                     send_data(server_url_post, phone, product_id, device_id);
+	CALL SUBOPT_0x8
+	LDI  R26,LOW(32)
+	RCALL _draw_bitmap
+; 0000 01A8                     send_data(server_url_post, phone, product_id, device_id);
 	ST   -Y,R17
 	ST   -Y,R16
-	CALL SUBOPT_0x6
+	CALL SUBOPT_0xC
 	ST   -Y,R19
 	ST   -Y,R18
 	MOVW R26,R4
 	RCALL _send_data
-; 0000 0180                 }
-; 0000 0181                 else
-	RJMP _0x2E
-_0x2D:
-; 0000 0182                 {
-; 0000 0183 
-; 0000 0184                     glcd_clear();
-	CALL SUBOPT_0x17
-; 0000 0185                     glcd_outtextxy(5, 25, "test 2!");
-	__POINTW2MN _0x20,88
-	CALL SUBOPT_0x18
-; 0000 0186 //                    draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
-; 0000 0187                     delay_ms(300);
-_0x51:
+; 0000 01A9                 }
+; 0000 01AA                 else
+	RJMP _0x3A
+_0x39:
+; 0000 01AB                 {
+; 0000 01AC 
+; 0000 01AD                     glcd_clear();
+	CALL _glcd_clear
+; 0000 01AE                     glcd_outtextxy(5, 25, "test 2!");
+	LDI  R30,LOW(5)
+	ST   -Y,R30
+	LDI  R30,LOW(25)
+	ST   -Y,R30
+	__POINTW2MN _0x2C,80
+	CALL _glcd_outtextxy
+; 0000 01AF //                    draw_bitmap(0, 0, shomare_soton_dorost_vared_nashode, 128, 32);
+; 0000 01B0                     delay_ms(300);
+	LDI  R26,LOW(300)
+	LDI  R27,HIGH(300)
+_0x5D:
 	CALL _delay_ms
-; 0000 0188                 }
-_0x2E:
-; 0000 0189             }
-; 0000 018A         }
-; 0000 018B         else
-	RJMP _0x2F
-_0x26:
-; 0000 018C         {
-; 0000 018D             glcd_clear();
-	CALL SUBOPT_0xE
-; 0000 018E             draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
+; 0000 01B1                 }
+_0x3A:
+; 0000 01B2             }
+; 0000 01B3         }
+; 0000 01B4         else
+	RJMP _0x3B
+_0x32:
+; 0000 01B5         {
+; 0000 01B6             glcd_clear();
+	CALL SUBOPT_0x7
+; 0000 01B7             draw_bitmap(0, 0, tedad_bish_az_had, 128, 64);
 	LDI  R30,LOW(_tedad_bish_az_had*2)
 	LDI  R31,HIGH(_tedad_bish_az_had*2)
-	CALL SUBOPT_0xF
-; 0000 018F             delay_ms(300);
+	CALL SUBOPT_0x13
+; 0000 01B8             delay_ms(300);
 	LDI  R26,LOW(300)
 	LDI  R27,HIGH(300)
 	CALL _delay_ms
-; 0000 0190         }
+; 0000 01B9         }
+_0x3B:
+; 0000 01BA     }
+; 0000 01BB 
+; 0000 01BC     else
+	RJMP _0x3C
 _0x2F:
-; 0000 0191     }
-; 0000 0192 
-; 0000 0193     else
-	RJMP _0x30
-_0x23:
-; 0000 0194     {
-; 0000 0195         glcd_clear();
-	CALL SUBOPT_0xE
-; 0000 0196         draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
+; 0000 01BD     {
+; 0000 01BE         glcd_clear();
+	CALL SUBOPT_0x7
+; 0000 01BF         draw_bitmap(0, 0, shomare_dorost_payamak_nashode, 128, 64);
 	LDI  R30,LOW(_shomare_dorost_payamak_nashode*2)
 	LDI  R31,HIGH(_shomare_dorost_payamak_nashode*2)
-	CALL SUBOPT_0xF
-; 0000 0197         delay_ms(200);
+	CALL SUBOPT_0x13
+; 0000 01C0         delay_ms(200);
 	LDI  R26,LOW(200)
 	LDI  R27,0
 	CALL _delay_ms
-; 0000 0198 
-; 0000 0199     }
-_0x30:
-; 0000 019A 
-; 0000 019B ////////////////////////////////////////////////////////////////////////////////////////////
-; 0000 019C     sms_received = 0;  // A?CI? E?C? ??C? E?I?
+; 0000 01C1 
+; 0000 01C2     }
+_0x3C:
+; 0000 01C3 
+; 0000 01C4 ////////////////////////////////////////////////////////////////////////////////////////////
+; 0000 01C5     sms_received = 0;  // A?CI? E?C? ??C? E?I?
 	CLT
 	BLD  R2,1
-; 0000 019D }
+; 0000 01C6 }
 	CALL __LOADLOCR6
 	ADIW R28,43
 	RET
 ; .FEND
 
 	.DSEG
-_0x20:
-	.BYTE 0x60
+_0x2C:
+	.BYTE 0x58
 ;
 ;
 ;void process_uart_data(void)
-; 0000 01A1 {
+; 0000 01CA {
 
 	.CSEG
 _process_uart_data:
 ; .FSTART _process_uart_data
-; 0000 01A2     static uint8_t phase = 0;   // 0=I?C?I? ?I?? 1=I?C?I? ??E?C
-; 0000 01A3     static uint8_t h_idx = 0;
-; 0000 01A4     static uint8_t c_idx = 0;
-; 0000 01A5     char d;
-; 0000 01A6 
-; 0000 01A7     while (rx_counter0 > 0 && !sms_received) {
+; 0000 01CB     static uint8_t phase = 0;   // 0=I?C?I? ?I?? 1=I?C?I? ??E?C
+; 0000 01CC     static uint8_t h_idx = 0;
+; 0000 01CD     static uint8_t c_idx = 0;
+; 0000 01CE     char d;
+; 0000 01CF 
+; 0000 01D0     while (rx_counter0 > 0 && !sms_received) {
 	ST   -Y,R17
 ;	d -> R17
-_0x31:
+_0x3D:
 	LDS  R26,_rx_counter0
 	CPI  R26,LOW(0x1)
-	BRLO _0x34
+	BRLO _0x40
 	SBRS R2,1
-	RJMP _0x35
-_0x34:
-	RJMP _0x33
-_0x35:
-; 0000 01A8         d = getchar();
+	RJMP _0x41
+_0x40:
+	RJMP _0x3F
+_0x41:
+; 0000 01D1         d = getchar();
 	RCALL _getchar
 	MOV  R17,R30
-; 0000 01A9 
-; 0000 01AA         if (phase == 0) {
-	LDS  R30,_phase_S0000008000
+; 0000 01D2 
+; 0000 01D3         if (phase == 0) {
+	LDS  R30,_phase_S0000009000
 	CPI  R30,0
-	BRNE _0x36
-; 0000 01AB             // -- I?C?I? ?I? EC '\n' --
-; 0000 01AC             if (d == '\n') {
+	BRNE _0x42
+; 0000 01D4             // -- I?C?I? ?I? EC '\n' --
+; 0000 01D5             if (d == '\n') {
 	CPI  R17,10
-	BRNE _0x37
-; 0000 01AD                 header_buffer[h_idx] = '\0';
-	LDS  R30,_h_idx_S0000008000
+	BRNE _0x43
+; 0000 01D6                 header_buffer[h_idx] = '\0';
+	LDS  R30,_h_idx_S0000009000
 	LDI  R31,0
 	SUBI R30,LOW(-_header_buffer)
 	SBCI R31,HIGH(-_header_buffer)
 	LDI  R26,LOW(0)
 	STD  Z+0,R26
-; 0000 01AE                 // ??? C?? ?I? ?C??? SMS ECOI? E??? ??CU I?C?I? ??E?C
-; 0000 01AF                 if (strstr(header_buffer, "+CMT:") != NULL) {
+; 0000 01D7                 // ??? C?? ?I? ?C??? SMS ECOI? E??? ??CU I?C?I? ??E?C
+; 0000 01D8                 if (strstr(header_buffer, "+CMT:") != NULL) {
 	LDI  R30,LOW(_header_buffer)
 	LDI  R31,HIGH(_header_buffer)
 	ST   -Y,R31
 	ST   -Y,R30
-	__POINTW2MN _0x39,0
+	__POINTW2MN _0x45,0
 	CALL _strstr
 	SBIW R30,0
-	BREQ _0x38
-; 0000 01B0                     phase = 1;
+	BREQ _0x44
+; 0000 01D9                     phase = 1;
 	LDI  R30,LOW(1)
-	STS  _phase_S0000008000,R30
-; 0000 01B1                     c_idx = 0;  // A?CI? E?C? ?? ??I? content_buffer
+	STS  _phase_S0000009000,R30
+; 0000 01DA                     c_idx = 0;  // A?CI? E?C? ?? ??I? content_buffer
 	LDI  R30,LOW(0)
-	STS  _c_idx_S0000008000,R30
-; 0000 01B2                 }
-; 0000 01B3                 // ???O? h_idx ?C ???E ?? EC I??? E?I? C? C?? ?? O??I
-; 0000 01B4                 h_idx = 0;
-_0x38:
+	STS  _c_idx_S0000009000,R30
+; 0000 01DB                 }
+; 0000 01DC                 // ???O? h_idx ?C ???E ?? EC I??? E?I? C? C?? ?? O??I
+; 0000 01DD                 h_idx = 0;
+_0x44:
 	LDI  R30,LOW(0)
-	STS  _h_idx_S0000008000,R30
-; 0000 01B5             }
-; 0000 01B6             else if (d != '\r') {
-	RJMP _0x3A
-_0x37:
+	STS  _h_idx_S0000009000,R30
+; 0000 01DE             }
+; 0000 01DF             else if (d != '\r') {
+	RJMP _0x46
+_0x43:
 	CPI  R17,13
-	BREQ _0x3B
-; 0000 01B7                 // ?I???? ?C?C?E? I? header_buffer
-; 0000 01B8                 if (h_idx < sizeof(header_buffer) - 1)
-	LDS  R26,_h_idx_S0000008000
+	BREQ _0x47
+; 0000 01E0                 // ?I???? ?C?C?E? I? header_buffer
+; 0000 01E1                 if (h_idx < sizeof(header_buffer) - 1)
+	LDS  R26,_h_idx_S0000009000
 	CPI  R26,LOW(0x63)
-	BRSH _0x3C
-; 0000 01B9                     header_buffer[h_idx++] = d;
-	LDS  R30,_h_idx_S0000008000
+	BRSH _0x48
+; 0000 01E2                     header_buffer[h_idx++] = d;
+	LDS  R30,_h_idx_S0000009000
 	SUBI R30,-LOW(1)
-	STS  _h_idx_S0000008000,R30
+	STS  _h_idx_S0000009000,R30
 	SUBI R30,LOW(1)
 	LDI  R31,0
 	SUBI R30,LOW(-_header_buffer)
 	SBCI R31,HIGH(-_header_buffer)
 	ST   Z,R17
-; 0000 01BA             }
-_0x3C:
-; 0000 01BB         }
-_0x3B:
-_0x3A:
-; 0000 01BC         else {
-	RJMP _0x3D
-_0x36:
-; 0000 01BD             // -- I?C?I? ??E?C EC '\n' --
-; 0000 01BE             if (d == '\n') {
+; 0000 01E3             }
+_0x48:
+; 0000 01E4         }
+_0x47:
+_0x46:
+; 0000 01E5         else {
+	RJMP _0x49
+_0x42:
+; 0000 01E6             // -- I?C?I? ??E?C EC '\n' --
+; 0000 01E7             if (d == '\n') {
 	CPI  R17,10
-	BRNE _0x3E
-; 0000 01BF                 content_buffer[c_idx] = '\0';
-	LDS  R30,_c_idx_S0000008000
+	BRNE _0x4A
+; 0000 01E8                 content_buffer[c_idx] = '\0';
+	LDS  R30,_c_idx_S0000009000
 	LDI  R31,0
 	SUBI R30,LOW(-_content_buffer)
 	SBCI R31,HIGH(-_content_buffer)
 	LDI  R26,LOW(0)
 	STD  Z+0,R26
-; 0000 01C0                 sms_received = 1;    // ?? SMS ?C?? I??C?E OI
+; 0000 01E9                 sms_received = 1;    // ?? SMS ?C?? I??C?E OI
 	SET
 	BLD  R2,1
-; 0000 01C1                 phase = 0;           // E?C? ??C? E?I? I?EC?? E??????I?? E? ?C? 0
+; 0000 01EA                 phase = 0;           // E?C? ??C? E?I? I?EC?? E??????I?? E? ?C? 0
 	LDI  R30,LOW(0)
-	STS  _phase_S0000008000,R30
-; 0000 01C2                 h_idx = 0;           // C??I????C ?C ?? ?C? ???????
-	STS  _h_idx_S0000008000,R30
-; 0000 01C3                 c_idx = 0;
-	STS  _c_idx_S0000008000,R30
-; 0000 01C4             }
-; 0000 01C5             else if (d != '\r') {
-	RJMP _0x3F
-_0x3E:
+	STS  _phase_S0000009000,R30
+; 0000 01EB                 h_idx = 0;           // C??I????C ?C ?? ?C? ???????
+	STS  _h_idx_S0000009000,R30
+; 0000 01EC                 c_idx = 0;
+	STS  _c_idx_S0000009000,R30
+; 0000 01ED             }
+; 0000 01EE             else if (d != '\r') {
+	RJMP _0x4B
+_0x4A:
 	CPI  R17,13
-	BREQ _0x40
-; 0000 01C6                 if (c_idx < sizeof(content_buffer) - 1)
-	LDS  R26,_c_idx_S0000008000
+	BREQ _0x4C
+; 0000 01EF                 if (c_idx < sizeof(content_buffer) - 1)
+	LDS  R26,_c_idx_S0000009000
 	CPI  R26,LOW(0x63)
-	BRSH _0x41
-; 0000 01C7                     content_buffer[c_idx++] = d;
-	LDS  R30,_c_idx_S0000008000
+	BRSH _0x4D
+; 0000 01F0                     content_buffer[c_idx++] = d;
+	LDS  R30,_c_idx_S0000009000
 	SUBI R30,-LOW(1)
-	STS  _c_idx_S0000008000,R30
+	STS  _c_idx_S0000009000,R30
 	SUBI R30,LOW(1)
 	LDI  R31,0
 	SUBI R30,LOW(-_content_buffer)
 	SBCI R31,HIGH(-_content_buffer)
 	ST   Z,R17
-; 0000 01C8             }
-_0x41:
-; 0000 01C9         }
-_0x40:
+; 0000 01F1             }
+_0x4D:
+; 0000 01F2         }
+_0x4C:
+_0x4B:
+_0x49:
+; 0000 01F3     }
+	RJMP _0x3D
 _0x3F:
-_0x3D:
-; 0000 01CA     }
-	RJMP _0x31
-_0x33:
-; 0000 01CB }
+; 0000 01F4 }
 	JMP  _0x212000F
 ; .FEND
 
 	.DSEG
-_0x39:
+_0x45:
 	.BYTE 0x6
 ;
 ;
 ;
-;
 ;void main(void)
-; 0000 01D1 {
+; 0000 01F9 {
 
 	.CSEG
 _main:
 ; .FSTART _main
-; 0000 01D2 
-; 0000 01D3     GLCDINIT_t glcd_init_data;
-; 0000 01D4 
-; 0000 01D5 
-; 0000 01D6     DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (0<<DDA1) | (0<<DDA0);
+; 0000 01FA 
+; 0000 01FB     GLCDINIT_t glcd_init_data;
+; 0000 01FC 
+; 0000 01FD 
+; 0000 01FE     DDRA=(0<<DDA7) | (0<<DDA6) | (0<<DDA5) | (0<<DDA4) | (0<<DDA3) | (0<<DDA2) | (0<<DDA1) | (0<<DDA0);
 	SBIW R28,6
 ;	glcd_init_data -> Y+0
 	LDI  R30,LOW(0)
 	OUT  0x1A,R30
-; 0000 01D7     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
+; 0000 01FF     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
 	OUT  0x1B,R30
-; 0000 01D8 
-; 0000 01D9     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
+; 0000 0200 
+; 0000 0201     DDRB=(0<<DDB7) | (0<<DDB6) | (0<<DDB5) | (0<<DDB4) | (0<<DDB3) | (0<<DDB2) | (0<<DDB1) | (0<<DDB0);
 	OUT  0x17,R30
-; 0000 01DA     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
+; 0000 0202     PORTB=(1<<PORTB7) | (1<<PORTB6) | (1<<PORTB5) | (1<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
 	LDI  R30,LOW(240)
 	OUT  0x18,R30
-; 0000 01DB 
-; 0000 01DC     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
+; 0000 0203 
+; 0000 0204     DDRC=(0<<DDC7) | (0<<DDC6) | (0<<DDC5) | (0<<DDC4) | (0<<DDC3) | (1<<DDC2) | (1<<DDC1) | (1<<DDC0);
 	LDI  R30,LOW(7)
 	OUT  0x14,R30
-; 0000 01DD     PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
+; 0000 0205     PORTC=(1<<PORTC7) | (1<<PORTC6) | (1<<PORTC5) | (1<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
 	LDI  R30,LOW(240)
 	OUT  0x15,R30
-; 0000 01DE 
-; 0000 01DF     DDRD=(0<<DDD7) | (0<<DDD6) | (0<<DDD5) | (0<<DDD4) | (0<<DDD3) | (0<<DDD2) | (0<<DDD1) | (0<<DDD0);
+; 0000 0206 
+; 0000 0207     DDRD=(0<<DDD7) | (0<<DDD6) | (0<<DDD5) | (0<<DDD4) | (0<<DDD3) | (0<<DDD2) | (0<<DDD1) | (0<<DDD0);
 	LDI  R30,LOW(0)
 	OUT  0x11,R30
-; 0000 01E0     PORTD=(0<<PORTD7) | (0<<PORTD6) | (0<<PORTD5) | (0<<PORTD4) | (0<<PORTD3) | (0<<PORTD2) | (1<<PORTD1) | (0<<PORTD0);
+; 0000 0208     PORTD=(0<<PORTD7) | (0<<PORTD6) | (0<<PORTD5) | (0<<PORTD4) | (0<<PORTD3) | (0<<PORTD2) | (1<<PORTD1) | (0<<PORTD0);
 	LDI  R30,LOW(2)
 	OUT  0x12,R30
-; 0000 01E1 
-; 0000 01E2     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
+; 0000 0209 
+; 0000 020A     DDRE=(0<<DDE7) | (0<<DDE6) | (1<<DDE5) | (1<<DDE4) | (1<<DDE3) | (1<<DDE2) | (0<<DDE1) | (0<<DDE0);
 	LDI  R30,LOW(60)
 	OUT  0x2,R30
-; 0000 01E3     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
+; 0000 020B     PORTE=(0<<PORTE7) | (0<<PORTE6) | (0<<PORTE5) | (0<<PORTE4) | (0<<PORTE3) | (0<<PORTE2) | (0<<PORTE1) | (0<<PORTE0);
 	LDI  R30,LOW(0)
 	OUT  0x3,R30
-; 0000 01E4 
-; 0000 01E5     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
+; 0000 020C 
+; 0000 020D     DDRF=(0<<DDF7) | (0<<DDF6) | (0<<DDF5) | (0<<DDF4) | (0<<DDF3) | (0<<DDF2) | (0<<DDF1) | (0<<DDF0);
 	STS  97,R30
-; 0000 01E6     PORTF=(0<<PORTF7) | (0<<PORTF6) | (0<<PORTF5) | (0<<PORTF4) | (0<<PORTF3) | (0<<PORTF2) | (0<<PORTF1) | (0<<PORTF0);
+; 0000 020E     PORTF=(0<<PORTF7) | (0<<PORTF6) | (0<<PORTF5) | (0<<PORTF4) | (0<<PORTF3) | (0<<PORTF2) | (0<<PORTF1) | (0<<PORTF0);
 	STS  98,R30
-; 0000 01E7 
-; 0000 01E8     DDRG=(0<<DDG4) | (0<<DDG3) | (0<<DDG2) | (0<<DDG1) | (0<<DDG0);
+; 0000 020F 
+; 0000 0210     DDRG=(0<<DDG4) | (0<<DDG3) | (0<<DDG2) | (0<<DDG1) | (0<<DDG0);
 	STS  100,R30
-; 0000 01E9     PORTG=(0<<PORTG4) | (0<<PORTG3) | (0<<PORTG2) | (0<<PORTG1) | (0<<PORTG0);
+; 0000 0211     PORTG=(0<<PORTG4) | (0<<PORTG3) | (0<<PORTG2) | (0<<PORTG1) | (0<<PORTG0);
 	STS  101,R30
-; 0000 01EA 
-; 0000 01EB     // Timer Period: 32.768 ms
-; 0000 01EC     ASSR=0<<AS0;
+; 0000 0212 
+; 0000 0213     // Timer Period: 32.768 ms
+; 0000 0214     ASSR=0<<AS0;
 	OUT  0x30,R30
-; 0000 01ED     TCCR0=(0<<WGM00) | (0<<COM01) | (0<<COM00) | (0<<WGM01) | (1<<CS02) | (1<<CS01) | (1<<CS00);
+; 0000 0215     TCCR0=(0<<WGM00) | (0<<COM01) | (0<<COM00) | (0<<WGM01) | (1<<CS02) | (1<<CS01) | (1<<CS00);
 	LDI  R30,LOW(7)
 	OUT  0x33,R30
-; 0000 01EE     TCNT0=0x00;
+; 0000 0216     TCNT0=0x00;
 	LDI  R30,LOW(0)
 	OUT  0x32,R30
-; 0000 01EF     OCR0=0x00;
+; 0000 0217     OCR0=0x00;
 	OUT  0x31,R30
-; 0000 01F0 
-; 0000 01F1     TCCR1A=(0<<COM1A1) | (0<<COM1A0) | (0<<COM1B1) | (0<<COM1B0) | (0<<COM1C1) | (0<<COM1C0) | (0<<WGM11) | (0<<WGM10);
+; 0000 0218 
+; 0000 0219     TCCR1A=(0<<COM1A1) | (0<<COM1A0) | (0<<COM1B1) | (0<<COM1B0) | (0<<COM1C1) | (0<<COM1C0) | (0<<WGM11) | (0<<WGM10);
 	OUT  0x2F,R30
-; 0000 01F2     TCCR1B=(0<<ICNC1) | (0<<ICES1) | (0<<WGM13) | (0<<WGM12) | (0<<CS12) | (0<<CS11) | (0<<CS10);
+; 0000 021A     TCCR1B=(0<<ICNC1) | (0<<ICES1) | (0<<WGM13) | (0<<WGM12) | (0<<CS12) | (0<<CS11) | (0<<CS10);
 	OUT  0x2E,R30
-; 0000 01F3     TCNT1H=0x00;
+; 0000 021B     TCNT1H=0x00;
 	OUT  0x2D,R30
-; 0000 01F4     TCNT1L=0x00;
+; 0000 021C     TCNT1L=0x00;
 	OUT  0x2C,R30
-; 0000 01F5     ICR1H=0x00;
+; 0000 021D     ICR1H=0x00;
 	OUT  0x27,R30
-; 0000 01F6     ICR1L=0x00;
+; 0000 021E     ICR1L=0x00;
 	OUT  0x26,R30
-; 0000 01F7     OCR1AH=0x00;
+; 0000 021F     OCR1AH=0x00;
 	OUT  0x2B,R30
-; 0000 01F8     OCR1AL=0x00;
+; 0000 0220     OCR1AL=0x00;
 	OUT  0x2A,R30
-; 0000 01F9     OCR1BH=0x00;
+; 0000 0221     OCR1BH=0x00;
 	OUT  0x29,R30
-; 0000 01FA     OCR1BL=0x00;
+; 0000 0222     OCR1BL=0x00;
 	OUT  0x28,R30
-; 0000 01FB     OCR1CH=0x00;
+; 0000 0223     OCR1CH=0x00;
 	STS  121,R30
-; 0000 01FC     OCR1CL=0x00;
+; 0000 0224     OCR1CL=0x00;
 	STS  120,R30
-; 0000 01FD 
-; 0000 01FE     TCCR2=(0<<WGM20) | (0<<COM21) | (0<<COM20) | (0<<WGM21) | (0<<CS22) | (0<<CS21) | (0<<CS20);
+; 0000 0225 
+; 0000 0226     TCCR2=(0<<WGM20) | (0<<COM21) | (0<<COM20) | (0<<WGM21) | (0<<CS22) | (0<<CS21) | (0<<CS20);
 	OUT  0x25,R30
-; 0000 01FF     TCNT2=0x00;
+; 0000 0227     TCNT2=0x00;
 	OUT  0x24,R30
-; 0000 0200     OCR2=0x00;
+; 0000 0228     OCR2=0x00;
 	OUT  0x23,R30
-; 0000 0201 
-; 0000 0202 
-; 0000 0203     TCCR3A=(0<<COM3A1) | (0<<COM3A0) | (0<<COM3B1) | (0<<COM3B0) | (0<<COM3C1) | (0<<COM3C0) | (0<<WGM31) | (0<<WGM30);
+; 0000 0229 
+; 0000 022A 
+; 0000 022B     TCCR3A=(0<<COM3A1) | (0<<COM3A0) | (0<<COM3B1) | (0<<COM3B0) | (0<<COM3C1) | (0<<COM3C0) | (0<<WGM31) | (0<<WGM30);
 	STS  139,R30
-; 0000 0204     TCCR3B=(0<<ICNC3) | (0<<ICES3) | (0<<WGM33) | (0<<WGM32) | (0<<CS32) | (0<<CS31) | (0<<CS30);
+; 0000 022C     TCCR3B=(0<<ICNC3) | (0<<ICES3) | (0<<WGM33) | (0<<WGM32) | (0<<CS32) | (0<<CS31) | (0<<CS30);
 	STS  138,R30
-; 0000 0205     TCNT3H=0x00;
+; 0000 022D     TCNT3H=0x00;
 	STS  137,R30
-; 0000 0206     TCNT3L=0x00;
+; 0000 022E     TCNT3L=0x00;
 	STS  136,R30
-; 0000 0207     ICR3H=0x00;
+; 0000 022F     ICR3H=0x00;
 	STS  129,R30
-; 0000 0208     ICR3L=0x00;
+; 0000 0230     ICR3L=0x00;
 	STS  128,R30
-; 0000 0209     OCR3AH=0x00;
+; 0000 0231     OCR3AH=0x00;
 	STS  135,R30
-; 0000 020A     OCR3AL=0x00;
+; 0000 0232     OCR3AL=0x00;
 	STS  134,R30
-; 0000 020B     OCR3BH=0x00;
+; 0000 0233     OCR3BH=0x00;
 	STS  133,R30
-; 0000 020C     OCR3BL=0x00;
+; 0000 0234     OCR3BL=0x00;
 	STS  132,R30
-; 0000 020D     OCR3CH=0x00;
+; 0000 0235     OCR3CH=0x00;
 	STS  131,R30
-; 0000 020E     OCR3CL=0x00;
+; 0000 0236     OCR3CL=0x00;
 	STS  130,R30
-; 0000 020F 
-; 0000 0210     TIMSK=(0<<OCIE2) | (0<<TOIE2) | (0<<TICIE1) | (0<<OCIE1A) | (0<<OCIE1B) | (0<<TOIE1) | (0<<OCIE0) | (1<<TOIE0);
+; 0000 0237 
+; 0000 0238     TIMSK=(0<<OCIE2) | (0<<TOIE2) | (0<<TICIE1) | (0<<OCIE1A) | (0<<OCIE1B) | (0<<TOIE1) | (0<<OCIE0) | (1<<TOIE0);
 	LDI  R30,LOW(1)
 	OUT  0x37,R30
-; 0000 0211     ETIMSK=(0<<TICIE3) | (0<<OCIE3A) | (0<<OCIE3B) | (0<<TOIE3) | (0<<OCIE3C) | (0<<OCIE1C);
+; 0000 0239     ETIMSK=(0<<TICIE3) | (0<<OCIE3A) | (0<<OCIE3B) | (0<<TOIE3) | (0<<OCIE3C) | (0<<OCIE1C);
 	LDI  R30,LOW(0)
 	STS  125,R30
-; 0000 0212 
-; 0000 0213     EICRA=(0<<ISC31) | (0<<ISC30) | (0<<ISC21) | (0<<ISC20) | (0<<ISC11) | (0<<ISC10) | (0<<ISC01) | (0<<ISC00);
+; 0000 023A 
+; 0000 023B     EICRA=(0<<ISC31) | (0<<ISC30) | (0<<ISC21) | (0<<ISC20) | (0<<ISC11) | (0<<ISC10) | (0<<ISC01) | (0<<ISC00);
 	STS  106,R30
-; 0000 0214     EICRB=(0<<ISC71) | (0<<ISC70) | (0<<ISC61) | (0<<ISC60) | (0<<ISC51) | (0<<ISC50) | (0<<ISC41) | (0<<ISC40);
+; 0000 023C     EICRB=(0<<ISC71) | (0<<ISC70) | (0<<ISC61) | (0<<ISC60) | (0<<ISC51) | (0<<ISC50) | (0<<ISC41) | (0<<ISC40);
 	OUT  0x3A,R30
-; 0000 0215     EIMSK=(0<<INT7) | (0<<INT6) | (0<<INT5) | (0<<INT4) | (0<<INT3) | (0<<INT2) | (0<<INT1) | (0<<INT0);
+; 0000 023D     EIMSK=(0<<INT7) | (0<<INT6) | (0<<INT5) | (0<<INT4) | (0<<INT3) | (0<<INT2) | (0<<INT1) | (0<<INT0);
 	OUT  0x39,R30
-; 0000 0216 
-; 0000 0217     UCSR0A=(0<<RXC0) | (0<<TXC0) | (0<<UDRE0) | (0<<FE0) | (0<<DOR0) | (0<<UPE0) | (0<<U2X0) | (0<<MPCM0);
+; 0000 023E 
+; 0000 023F     UCSR0A=(0<<RXC0) | (0<<TXC0) | (0<<UDRE0) | (0<<FE0) | (0<<DOR0) | (0<<UPE0) | (0<<U2X0) | (0<<MPCM0);
 	OUT  0xB,R30
-; 0000 0218     UCSR0B=(1<<RXCIE0) | (0<<TXCIE0) | (0<<UDRIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02) | (0<<RXB80) | (0<<TXB80);
+; 0000 0240     UCSR0B=(1<<RXCIE0) | (0<<TXCIE0) | (0<<UDRIE0) | (1<<RXEN0) | (1<<TXEN0) | (0<<UCSZ02) | (0<<RXB80) | (0<<TXB80);
 	LDI  R30,LOW(152)
 	OUT  0xA,R30
-; 0000 0219     UCSR0C=(0<<UMSEL0) | (0<<UPM01) | (0<<UPM00) | (0<<USBS0) | (1<<UCSZ01) | (1<<UCSZ00) | (0<<UCPOL0);
+; 0000 0241     UCSR0C=(0<<UMSEL0) | (0<<UPM01) | (0<<UPM00) | (0<<USBS0) | (1<<UCSZ01) | (1<<UCSZ00) | (0<<UCPOL0);
 	LDI  R30,LOW(6)
 	STS  149,R30
-; 0000 021A     UBRR0H=0x00;
+; 0000 0242     UBRR0H=0x00;
 	LDI  R30,LOW(0)
 	STS  144,R30
-; 0000 021B     UBRR0L=0x33;
+; 0000 0243     UBRR0L=0x33;
 	LDI  R30,LOW(51)
 	OUT  0x9,R30
-; 0000 021C 
-; 0000 021D     UCSR1B=(0<<RXCIE1) | (0<<TXCIE1) | (0<<UDRIE1) | (0<<RXEN1) | (0<<TXEN1) | (0<<UCSZ12) | (0<<RXB81) | (0<<TXB81);
+; 0000 0244 
+; 0000 0245     UCSR1B=(0<<RXCIE1) | (0<<TXCIE1) | (0<<UDRIE1) | (0<<RXEN1) | (0<<TXEN1) | (0<<UCSZ12) | (0<<RXB81) | (0<<TXB81);
 	LDI  R30,LOW(0)
 	STS  154,R30
-; 0000 021E 
-; 0000 021F     ACSR=(1<<ACD) | (0<<ACBG) | (0<<ACO) | (0<<ACI) | (0<<ACIE) | (0<<ACIC) | (0<<ACIS1) | (0<<ACIS0);
+; 0000 0246 
+; 0000 0247     ACSR=(1<<ACD) | (0<<ACBG) | (0<<ACO) | (0<<ACI) | (0<<ACIE) | (0<<ACIC) | (0<<ACIS1) | (0<<ACIS0);
 	LDI  R30,LOW(128)
 	OUT  0x8,R30
-; 0000 0220     SFIOR=(0<<ACME);
+; 0000 0248     SFIOR=(0<<ACME);
 	LDI  R30,LOW(0)
 	OUT  0x20,R30
-; 0000 0221 
-; 0000 0222     ADCSRA=(0<<ADEN) | (0<<ADSC) | (0<<ADFR) | (0<<ADIF) | (0<<ADIE) | (0<<ADPS2) | (0<<ADPS1) | (0<<ADPS0);
+; 0000 0249 
+; 0000 024A     ADCSRA=(0<<ADEN) | (0<<ADSC) | (0<<ADFR) | (0<<ADIF) | (0<<ADIE) | (0<<ADPS2) | (0<<ADPS1) | (0<<ADPS0);
 	OUT  0x6,R30
-; 0000 0223 
-; 0000 0224     SPCR=(0<<SPIE) | (0<<SPE) | (0<<DORD) | (0<<MSTR) | (0<<CPOL) | (0<<CPHA) | (0<<SPR1) | (0<<SPR0);
+; 0000 024B 
+; 0000 024C     SPCR=(0<<SPIE) | (0<<SPE) | (0<<DORD) | (0<<MSTR) | (0<<CPOL) | (0<<CPHA) | (0<<SPR1) | (0<<SPR0);
 	OUT  0xD,R30
-; 0000 0225 
-; 0000 0226     TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
+; 0000 024D 
+; 0000 024E     TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
 	STS  116,R30
-; 0000 0227 
-; 0000 0228     MCUCSR = (1 << JTD);
+; 0000 024F 
+; 0000 0250     MCUCSR = (1 << JTD);
 	LDI  R30,LOW(128)
 	OUT  0x34,R30
-; 0000 0229     MCUCSR = (1 << JTD);
+; 0000 0251     MCUCSR = (1 << JTD);
 	OUT  0x34,R30
-; 0000 022A 
-; 0000 022B     glcd_init_data.font=font5x7;
+; 0000 0252 
+; 0000 0253     glcd_init_data.font=font5x7;
 	LDI  R30,LOW(_font5x7*2)
 	LDI  R31,HIGH(_font5x7*2)
 	ST   Y,R30
 	STD  Y+1,R31
-; 0000 022C     glcd_init_data.readxmem=NULL;
+; 0000 0254     glcd_init_data.readxmem=NULL;
 	LDI  R30,LOW(0)
 	STD  Y+2,R30
 	STD  Y+2+1,R30
-; 0000 022D     glcd_init_data.writexmem=NULL;
+; 0000 0255     glcd_init_data.writexmem=NULL;
 	STD  Y+4,R30
 	STD  Y+4+1,R30
-; 0000 022E     glcd_init(&glcd_init_data);
+; 0000 0256     glcd_init(&glcd_init_data);
 	MOVW R26,R28
 	CALL _glcd_init
-; 0000 022F     glcd_setfont(font5x7);
+; 0000 0257     glcd_setfont(font5x7);
 	LDI  R30,LOW(_font5x7*2)
 	LDI  R31,HIGH(_font5x7*2)
-	CALL SUBOPT_0x19
-; 0000 0230 
-; 0000 0231     // Global enable interrupts
-; 0000 0232     #asm("sei")
-	sei
-; 0000 0233 
-; 0000 0234     glcd_clear();
-	CALL SUBOPT_0xE
-; 0000 0235     glcd_outtextxy(0, 0, "Module Init...");
-	__POINTW2MN _0x42,0
 	CALL SUBOPT_0x1A
-; 0000 0236     delay_ms(500);
-; 0000 0237 
-; 0000 0238 //    sim800_restart();
-; 0000 0239 //    check_sim();
-; 0000 023A //    if (!check_signal_with_restart()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
-; 0000 023B //    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
-; 0000 023C 
-; 0000 023D     while (1) {
-_0x43:
-; 0000 023E         sim800_restart();
+; 0000 0258 
+; 0000 0259     // Global enable interrupts
+; 0000 025A     #asm("sei")
+	sei
+; 0000 025B 
+; 0000 025C     glcd_clear();
+	CALL SUBOPT_0x7
+; 0000 025D     glcd_outtextxy(0, 0, "Module Init...");
+	__POINTW2MN _0x4E,0
+	CALL _glcd_outtextxy
+; 0000 025E     delay_ms(500);
+	CALL SUBOPT_0x9
+; 0000 025F 
+; 0000 0260 //    sim800_restart();
+; 0000 0261 //    check_sim();
+; 0000 0262 //    if (!check_signal_with_restart()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
+; 0000 0263 //    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
+; 0000 0264 
+; 0000 0265     while (1) {
+_0x4F:
+; 0000 0266 //        full_check();
+; 0000 0267         sim800_restart();
 	CALL _sim800_restart
-; 0000 023F         check_sim();
+; 0000 0268         check_sim();
 	CALL _check_sim
-; 0000 0240         check_signal_with_restart();
+; 0000 0269         check_signal_with_restart();
 	CALL _check_signal_with_restart
-; 0000 0241         init_sms();
+; 0000 026A         init_sms();
 	CALL _init_sms
-; 0000 0242 
-; 0000 0243         if (init_GPRS()) {
+; 0000 026B 
+; 0000 026C         if (init_GPRS()) {
 	CALL _init_GPRS
 	CPI  R30,0
-	BRNE _0x45
-; 0000 0244             // «ê— „Ê›ﬁ ‘œ° «“ Õ·ﬁÂ Œ«—Ã »‘Â
-; 0000 0245             break;
-; 0000 0246         } else {
-; 0000 0247             // «ê— ‰«„Ê›ﬁ »Êœ
-; 0000 0248             glcd_clear();
-	CALL SUBOPT_0xE
-; 0000 0249             glcd_outtextxy(0, 0, "GPRS Init Failed!");
-	__POINTW2MN _0x42,15
+	BRNE _0x51
+; 0000 026D             // «ê— „Ê›ﬁ ‘œ° «“ Õ·ﬁÂ Œ«—Ã »‘Â
+; 0000 026E             break;
+; 0000 026F         } else {
+; 0000 0270             // «ê— ‰«„Ê›ﬁ »Êœ
+; 0000 0271             glcd_clear();
+	CALL SUBOPT_0x7
+; 0000 0272             glcd_outtextxy(0, 0, "GPRS Init Failed!");
+	__POINTW2MN _0x4E,15
 	CALL SUBOPT_0x1B
-; 0000 024A             delay_ms(100);  // ò„Ì ’»— ò‰Â
-; 0000 024B             // Ê œÊ»«—Â Õ·ﬁÂ  ò—«— „Ì‘Â
-; 0000 024C         }
-; 0000 024D     }
-	RJMP _0x43
-_0x45:
-; 0000 024E 
-; 0000 024F 
-; 0000 0250 
-; 0000 0251     glcd_clear();
+; 0000 0273             delay_ms(100);  // ò„Ì ’»— ò‰Â
+; 0000 0274             // Ê œÊ»«—Â Õ·ﬁÂ  ò—«— „Ì‘Â
+; 0000 0275         }
+; 0000 0276     }
+	RJMP _0x4F
+_0x51:
+; 0000 0277 
+; 0000 0278 
+; 0000 0279 
+; 0000 027A     glcd_clear();
 	CALL _glcd_clear
-; 0000 0252 
-; 0000 0253     while (1){
-_0x48:
-; 0000 0254         static uint8_t processing_sms = 0;
-; 0000 0255         draw_bitmap(0, 0, kode_mahsol_payamak_konid, 128, 64);
+; 0000 027B 
+; 0000 027C     while (1){
+_0x54:
+; 0000 027D         static uint8_t processing_sms = 0;
+; 0000 027E         draw_bitmap(0, 0, kode_mahsol_payamak_konid, 128, 64);
 	LDI  R30,LOW(0)
 	ST   -Y,R30
 	ST   -Y,R30
 	LDI  R30,LOW(_kode_mahsol_payamak_konid*2)
 	LDI  R31,HIGH(_kode_mahsol_payamak_konid*2)
-	CALL SUBOPT_0xF
-; 0000 0256         //test_keypad();
-; 0000 0257         process_uart_data();
+	CALL SUBOPT_0x13
+; 0000 027F         //test_keypad();
+; 0000 0280         process_uart_data();
 	RCALL _process_uart_data
-; 0000 0258 
-; 0000 0259         if (sms_received) {
+; 0000 0281 
+; 0000 0282         if (sms_received) {
 	SBRS R2,1
-	RJMP _0x4B
-; 0000 025A             processing_sms = 1;   // ‘—Ê⁄ Å—œ«“‘ ÅÌ«„ò
+	RJMP _0x57
+; 0000 0283             processing_sms = 1;   // ‘—Ê⁄ Å—œ«“‘ ÅÌ«„ò
 	LDI  R30,LOW(1)
-	STS  _processing_sms_S0000009001,R30
-; 0000 025B             handle_sms();
+	STS  _processing_sms_S000000A001,R30
+; 0000 0284             handle_sms();
 	RCALL _handle_sms
-; 0000 025C             processing_sms = 0;   // Å«Ì«‰ Å—œ«“‘ ÅÌ«„ò
+; 0000 0285             processing_sms = 0;   // Å«Ì«‰ Å—œ«“‘ ÅÌ«„ò
 	LDI  R30,LOW(0)
-	STS  _processing_sms_S0000009001,R30
-; 0000 025D             uart_buffer_reset();
+	STS  _processing_sms_S000000A001,R30
+; 0000 0286             uart_buffer_reset();
 	RCALL _uart_buffer_reset
-; 0000 025E             glcd_clear();
+; 0000 0287             glcd_clear();
 	CALL _glcd_clear
-; 0000 025F         }
-; 0000 0260 
-; 0000 0261         if (!processing_sms && (millis() - last_time > 50000)) {
-_0x4B:
-	LDS  R30,_processing_sms_S0000009001
+; 0000 0288         }
+; 0000 0289 
+; 0000 028A         if (!processing_sms && (millis() - last_time > 50000)) {
+_0x57:
+	LDS  R30,_processing_sms_S000000A001
 	CPI  R30,0
-	BRNE _0x4D
+	BRNE _0x59
 	RCALL _millis
 	MOVW R26,R30
 	MOVW R24,R22
@@ -4089,34 +4231,34 @@ _0x4B:
 	LDS  R23,_last_time+3
 	CALL __SUBD21
 	__CPD2N 0xC351
-	BRSH _0x4E
-_0x4D:
-	RJMP _0x4C
-_0x4E:
-; 0000 0262             gprs_keep_alive();
+	BRSH _0x5A
+_0x59:
+	RJMP _0x58
+_0x5A:
+; 0000 028B             gprs_keep_alive();
 	CALL _gprs_keep_alive
-; 0000 0263             last_time = millis();
+; 0000 028C             last_time = millis();
 	RCALL _millis
 	STS  _last_time,R30
 	STS  _last_time+1,R31
 	STS  _last_time+2,R22
 	STS  _last_time+3,R23
-; 0000 0264             uart_buffer_reset();
+; 0000 028D             uart_buffer_reset();
 	RCALL _uart_buffer_reset
-; 0000 0265             glcd_clear();
+; 0000 028E             glcd_clear();
 	CALL _glcd_clear
-; 0000 0266         }
-; 0000 0267 
-; 0000 0268     }
-_0x4C:
-	RJMP _0x48
-; 0000 0269 }
-_0x4F:
-	RJMP _0x4F
+; 0000 028F         }
+; 0000 0290 
+; 0000 0291     }
+_0x58:
+	RJMP _0x54
+; 0000 0292 }
+_0x5B:
+	RJMP _0x5B
 ; .FEND
 
 	.DSEG
-_0x42:
+_0x4E:
 	.BYTE 0x21
 ;#include "common.h"
 	#ifndef __SLEEP_DEFINED__
@@ -4154,7 +4296,7 @@ _send_at_command:
 	ST   -Y,R30
 	LDD  R30,Y+2
 	LDD  R31,Y+2+1
-	CALL SUBOPT_0x10
+	CALL SUBOPT_0x14
 	LDI  R24,4
 	CALL _printf
 	ADIW R28,6
@@ -4449,7 +4591,7 @@ _extract_field_after_keyword:
 	MOV  R0,R20
 	OR   R0,R21
 	BRNE _0x20017
-	RJMP _0x2120017
+	RJMP _0x2120016
 ; 0001 0081 
 ; 0001 0082     p += strlen(keyword);      // »—Ê »⁄œ «“ ò·ÌœÊ«éÂ
 _0x20017:
@@ -4550,7 +4692,7 @@ _0x20025:
 ; 0001 0091             return 1; // „Ê›ﬁ
 	LDI  R30,LOW(1)
 	LDI  R31,HIGH(1)
-	RJMP _0x2120016
+	RJMP _0x2120015
 ; 0001 0092         }
 ; 0001 0093 
 ; 0001 0094         // —› ‰ »Â ò«„«Ì »⁄œÌ Ê —œ ò—œ‰ ›«’·ÂùÂ«Ì «÷«›Ì
@@ -4598,10 +4740,10 @@ _0x20030:
 _0x2001F:
 ; 0001 009A 
 ; 0001 009B     return 0; // ›Ì·œ „Ê—œ‰Ÿ— ÅÌœ« ‰‘œ
-_0x2120017:
+_0x2120016:
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
-_0x2120016:
+_0x2120015:
 	CALL __LOADLOCR6
 	ADIW R28,16
 	RET
@@ -4776,7 +4918,7 @@ _0x40005:
 	ADC  R27,R31
 	LD   R30,X
 	LDI  R26,LOW(1)
-	CALL SUBOPT_0x1C
+	CALL SUBOPT_0x6
 	OUT  0x15,R30
 ; 0002 001F 
 ; 0002 0020         for (row = 0; row < 4; row++)
@@ -4786,7 +4928,7 @@ _0x40008:
 	BRSH _0x40009
 ; 0002 0021         {
 ; 0002 0022             if (!(KEYPAD_PIN & (1 << row_pins[row])))
-	CALL SUBOPT_0x1D
+	CALL SUBOPT_0x1C
 	MOV  R26,R1
 	CALL SUBOPT_0x3
 	BRNE _0x4000A
@@ -4796,14 +4938,14 @@ _0x40008:
 	LDI  R27,0
 	CALL _delay_ms
 ; 0002 0025                 if (!(KEYPAD_PIN & (1 << row_pins[row])))
-	CALL SUBOPT_0x1D
+	CALL SUBOPT_0x1C
 	MOV  R26,R1
 	CALL SUBOPT_0x3
 	BRNE _0x4000B
 ; 0002 0026                 {
 ; 0002 0027                     while (!(KEYPAD_PIN & (1 << row_pins[row])));
 _0x4000C:
-	CALL SUBOPT_0x1D
+	CALL SUBOPT_0x1C
 	MOV  R26,R1
 	CALL SUBOPT_0x3
 	BREQ _0x4000C
@@ -4819,7 +4961,7 @@ _0x4000C:
 	ADD  R26,R16
 	ADC  R27,R30
 	LD   R30,X
-	RJMP _0x2120015
+	RJMP _0x2120014
 ; 0002 0029                 }
 ; 0002 002A             }
 _0x4000B:
@@ -4835,7 +4977,7 @@ _0x40006:
 ; 0002 002D 
 ; 0002 002E     return 0;
 	LDI  R30,LOW(0)
-_0x2120015:
+_0x2120014:
 	LDD  R17,Y+1
 	LDD  R16,Y+0
 	ADIW R28,21
@@ -4876,139 +5018,6 @@ _0x2120015:
 	.DSEG
 _0x4000F:
 	.BYTE 0x1C
-;#include "motor.h"
-	#ifndef __SLEEP_DEFINED__
-	#define __SLEEP_DEFINED__
-	.EQU __se_bit=0x20
-	.EQU __sm_mask=0x1C
-	.EQU __sm_powerdown=0x10
-	.EQU __sm_powersave=0x18
-	.EQU __sm_standby=0x14
-	.EQU __sm_ext_standby=0x1C
-	.EQU __sm_adc_noise_red=0x08
-	.SET power_ctrl_reg=mcucr
-	#endif
-;#include "common.h"
-;
-;void activate_motor(int product_id)
-; 0003 0005 {
-
-	.CSEG
-_activate_motor:
-; .FSTART _activate_motor
-; 0003 0006     unsigned char motor_pin;
-; 0003 0007     char motor_msg[20];
-; 0003 0008     int timeout = 1000;
-; 0003 0009 
-; 0003 000A     switch (product_id)
-	ST   -Y,R27
-	ST   -Y,R26
-	SBIW R28,20
-	CALL __SAVELOCR4
-;	product_id -> Y+24
-;	motor_pin -> R17
-;	motor_msg -> Y+4
-;	timeout -> R18,R19
-	__GETWRN 18,19,1000
-	LDD  R30,Y+24
-	LDD  R31,Y+24+1
-; 0003 000B     {
-; 0003 000C         case 1: motor_pin = MOTOR_PIN_1; break;
-	CPI  R30,LOW(0x1)
-	LDI  R26,HIGH(0x1)
-	CPC  R31,R26
-	BRNE _0x60006
-	LDI  R17,LOW(2)
-	RJMP _0x60005
-; 0003 000D         case 2: motor_pin = MOTOR_PIN_2; break;
-_0x60006:
-	CPI  R30,LOW(0x2)
-	LDI  R26,HIGH(0x2)
-	CPC  R31,R26
-	BRNE _0x60007
-	LDI  R17,LOW(3)
-	RJMP _0x60005
-; 0003 000E         case 3: motor_pin = MOTOR_PIN_3; break;
-_0x60007:
-	CPI  R30,LOW(0x3)
-	LDI  R26,HIGH(0x3)
-	CPC  R31,R26
-	BRNE _0x60009
-	LDI  R17,LOW(4)
-	RJMP _0x60005
-; 0003 000F         default: return;
-_0x60009:
-	RJMP _0x2120014
-; 0003 0010     }
-_0x60005:
-; 0003 0011 
-; 0003 0012     sprintf(motor_msg, "MOTOR %d ON!", product_id);
-	MOVW R30,R28
-	ADIW R30,4
-	ST   -Y,R31
-	ST   -Y,R30
-	__POINTW1FN _0x60000,0
-	ST   -Y,R31
-	ST   -Y,R30
-	LDD  R30,Y+28
-	LDD  R31,Y+28+1
-	CALL SUBOPT_0x8
-	LDI  R24,4
-	CALL _sprintf
-	ADIW R28,8
-; 0003 0013     glcd_clear();
-	CALL _glcd_clear
-; 0003 0014     glcd_outtextxy(10, 20, motor_msg);
-	LDI  R30,LOW(10)
-	ST   -Y,R30
-	LDI  R30,LOW(20)
-	ST   -Y,R30
-	MOVW R26,R28
-	ADIW R26,6
-	CALL _glcd_outtextxy
-; 0003 0015     MOTOR_PORT |= (1 << motor_pin);
-	IN   R1,3
-	MOV  R30,R17
-	LDI  R26,LOW(1)
-	CALL __LSLB12
-	OR   R30,R1
-	OUT  0x3,R30
-; 0003 0016 
-; 0003 0017     while ((PIND & (1 << PIND1)) && timeout > 0)
-_0x6000A:
-	SBIS 0x10,1
-	RJMP _0x6000D
-	CLR  R0
-	CP   R0,R18
-	CPC  R0,R19
-	BRLT _0x6000E
-_0x6000D:
-	RJMP _0x6000C
-_0x6000E:
-; 0003 0018     {
-; 0003 0019         delay_ms(1);
-	LDI  R26,LOW(1)
-	LDI  R27,0
-	CALL _delay_ms
-; 0003 001A         timeout--;
-	__SUBWRN 18,19,1
-; 0003 001B     }
-	RJMP _0x6000A
-_0x6000C:
-; 0003 001C 
-; 0003 001D     MOTOR_PORT &= ~(1 << motor_pin);
-	IN   R1,3
-	MOV  R30,R17
-	LDI  R26,LOW(1)
-	CALL SUBOPT_0x1C
-	OUT  0x3,R30
-; 0003 001E 
-; 0003 001F }
-_0x2120014:
-	CALL __LOADLOCR4
-	ADIW R28,26
-	RET
-; .FEND
 ;#include <stdlib.h>
 ;#include <stdint.h>
 ;#include <glcd.h>
@@ -5044,271 +5053,271 @@ _0x2120014:
 ;
 ;
 ;void sim800_restart(void) {
-; 0004 0018 void sim800_restart(void) {
+; 0003 0018 void sim800_restart(void) {
 
 	.CSEG
 _sim800_restart:
 ; .FSTART _sim800_restart
-; 0004 0019     glcd_clear();
-	CALL SUBOPT_0xE
-; 0004 001A     glcd_outtextxy(0, 0, "Restarting SIM800...");
-	__POINTW2MN _0x80003,0
+; 0003 0019     glcd_clear();
+	CALL SUBOPT_0x7
+; 0003 001A     glcd_outtextxy(0, 0, "Restarting SIM800...");
+	__POINTW2MN _0x60003,0
 	CALL _glcd_outtextxy
-; 0004 001B 
-; 0004 001C     // --- 1) »” ‰ HTTP («ê— ›⁄«· «” ) ---
-; 0004 001D     while (1) {
-_0x80004:
-; 0004 001E         uart_buffer_reset();
+; 0003 001B 
+; 0003 001C     // --- 1) »” ‰ HTTP («ê— ›⁄«· «” ) ---
+; 0003 001D     while (1) {
+_0x60004:
+; 0003 001E         uart_buffer_reset();
 	CALL _uart_buffer_reset
-; 0004 001F         send_at_command("AT+HTTPTERM");
-	__POINTW2MN _0x80003,21
+; 0003 001F         send_at_command("AT+HTTPTERM");
+	__POINTW2MN _0x60003,21
+	CALL SUBOPT_0x1D
+; 0003 0020         // «ê— OK Ì« ERROR ¬„œ° œÌê— «œ«„Â „ÌùœÂÌ„ («ê— HTTP »” Â ‰»Êœ ERROR „Ìù¬Ìœ)
+; 0003 0021         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
 	CALL SUBOPT_0x1E
-; 0004 0020         // «ê— OK Ì« ERROR ¬„œ° œÌê— «œ«„Â „ÌùœÂÌ„ («ê— HTTP »” Â ‰»Êœ ERROR „Ìù¬Ìœ)
-; 0004 0021         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
 	CALL SUBOPT_0x1F
-	CALL SUBOPT_0x20
-	__POINTW2MN _0x80003,33
+	__POINTW2MN _0x60003,33
 	CALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BRNE _0x80006
-; 0004 0022         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 1000, "ERROR")) break;
-	CALL SUBOPT_0xA
-	CALL SUBOPT_0x1F
+	BRNE _0x60006
+; 0003 0022         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 1000, "ERROR")) break;
+	CALL SUBOPT_0xF
+	CALL SUBOPT_0x1E
 	__GETD1N 0x3E8
 	CALL __PUTPARD1
-	__POINTW2MN _0x80003,36
+	__POINTW2MN _0x60003,36
 	CALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BRNE _0x80006
-; 0004 0023         glcd_outtextxy(0, 10, "Waiting HTTPTERM...");
-	CALL SUBOPT_0x13
-	__POINTW2MN _0x80003,42
+	BRNE _0x60006
+; 0003 0023         glcd_outtextxy(0, 10, "Waiting HTTPTERM...");
+	CALL SUBOPT_0x17
+	__POINTW2MN _0x60003,42
 	CALL SUBOPT_0x1B
-; 0004 0024         delay_ms(100);
-; 0004 0025     }
-	RJMP _0x80004
-_0x80006:
-; 0004 0026 
-; 0004 0027     // --- 2) »” ‰ SAPBR (bearer) ---
-; 0004 0028     while (1) {
-_0x80009:
-; 0004 0029         uart_buffer_reset();
+; 0003 0024         delay_ms(100);
+; 0003 0025     }
+	RJMP _0x60004
+_0x60006:
+; 0003 0026 
+; 0003 0027     // --- 2) »” ‰ SAPBR (bearer) ---
+; 0003 0028     while (1) {
+_0x60009:
+; 0003 0029         uart_buffer_reset();
 	CALL _uart_buffer_reset
-; 0004 002A         send_at_command("AT+SAPBR=0,1");   // close bearer
-	__POINTW2MN _0x80003,62
+; 0003 002A         send_at_command("AT+SAPBR=0,1");   // close bearer
+	__POINTW2MN _0x60003,62
+	CALL SUBOPT_0x1D
+; 0003 002B         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 3000, "OK")) break;
 	CALL SUBOPT_0x1E
-; 0004 002B         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 3000, "OK")) break;
-	CALL SUBOPT_0x1F
-	CALL SUBOPT_0x21
-	__POINTW2MN _0x80003,75
+	CALL SUBOPT_0x20
+	__POINTW2MN _0x60003,75
 	CALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BRNE _0x8000B
-; 0004 002C         glcd_outtextxy(0, 10, "Waiting SAPBR=0,1...");
-	CALL SUBOPT_0x13
-	__POINTW2MN _0x80003,78
+	BRNE _0x6000B
+; 0003 002C         glcd_outtextxy(0, 10, "Waiting SAPBR=0,1...");
+	CALL SUBOPT_0x17
+	__POINTW2MN _0x60003,78
 	CALL SUBOPT_0x1B
-; 0004 002D         delay_ms(100);
-; 0004 002E     }
-	RJMP _0x80009
-_0x8000B:
-; 0004 002F 
-; 0004 0030     // --- 3) çò ò‰ òÂ SAPBR »” Â ‘œÂ («Œ Ì«—Ì «„« „›Ìœ) ---
-; 0004 0031     {
-; 0004 0032         int ok = 0;
-; 0004 0033         while (!ok) {
+; 0003 002D         delay_ms(100);
+; 0003 002E     }
+	RJMP _0x60009
+_0x6000B:
+; 0003 002F 
+; 0003 0030     // --- 3) çò ò‰ òÂ SAPBR »” Â ‘œÂ («Œ Ì«—Ì «„« „›Ìœ) ---
+; 0003 0031     {
+; 0003 0032         int ok = 0;
+; 0003 0033         while (!ok) {
 	SBIW R28,2
 	LDI  R30,LOW(0)
 	ST   Y,R30
 	STD  Y+1,R30
 ;	ok -> Y+0
-_0x8000D:
+_0x6000D:
 	LD   R30,Y
 	LDD  R31,Y+1
 	SBIW R30,0
-	BRNE _0x8000F
-; 0004 0034             uart_buffer_reset();
+	BRNE _0x6000F
+; 0003 0034             uart_buffer_reset();
 	CALL _uart_buffer_reset
-; 0004 0035             send_at_command("AT+SAPBR=2,1"); // query
-	__POINTW2MN _0x80003,99
+; 0003 0035             send_at_command("AT+SAPBR=2,1"); // query
+	__POINTW2MN _0x60003,99
+	CALL SUBOPT_0x1D
+; 0003 0036             if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "SAPBR")) {
 	CALL SUBOPT_0x1E
-; 0004 0036             if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "SAPBR")) {
 	CALL SUBOPT_0x1F
-	CALL SUBOPT_0x20
-	__POINTW2MN _0x80003,112
+	__POINTW2MN _0x60003,112
 	CALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BREQ _0x80010
-; 0004 0037                 // «‰ Ÿ«— œ«—Ì„ ›Ì·œÌ „À· +SAPBR: 1,3,"0.0.0.0" Ì« +SAPBR: 1,0,"0.0.0.0"
-; 0004 0038                 // «ê— IP 0.0.0.0 Ì« status != 1 »«‘Â Ì⁄‰Ì »” Â «” 
-; 0004 0039                 if (strstr(buffer, "0.0.0.0") || strstr(buffer, ",0,") || strstr(buffer, ",3,")) {
-	CALL SUBOPT_0xA
-	__POINTW2MN _0x80003,118
+	BREQ _0x60010
+; 0003 0037                 // «‰ Ÿ«— œ«—Ì„ ›Ì·œÌ „À· +SAPBR: 1,3,"0.0.0.0" Ì« +SAPBR: 1,0,"0.0.0.0"
+; 0003 0038                 // «ê— IP 0.0.0.0 Ì« status != 1 »«‘Â Ì⁄‰Ì »” Â «” 
+; 0003 0039                 if (strstr(buffer, "0.0.0.0") || strstr(buffer, ",0,") || strstr(buffer, ",3,")) {
+	CALL SUBOPT_0xF
+	__POINTW2MN _0x60003,118
 	CALL _strstr
 	SBIW R30,0
-	BRNE _0x80012
-	CALL SUBOPT_0xA
-	__POINTW2MN _0x80003,126
+	BRNE _0x60012
+	CALL SUBOPT_0xF
+	__POINTW2MN _0x60003,126
 	CALL _strstr
 	SBIW R30,0
-	BRNE _0x80012
-	CALL SUBOPT_0xA
-	__POINTW2MN _0x80003,130
+	BRNE _0x60012
+	CALL SUBOPT_0xF
+	__POINTW2MN _0x60003,130
 	CALL _strstr
 	SBIW R30,0
-	BREQ _0x80011
-_0x80012:
-; 0004 003A                     ok = 1; // œ— ⁄„· »” Â Ì« œ— Õ«·  €Ì— connected «” 
+	BREQ _0x60011
+_0x60012:
+; 0003 003A                     ok = 1; // œ— ⁄„· »” Â Ì« œ— Õ«·  €Ì— connected «” 
 	LDI  R30,LOW(1)
 	LDI  R31,HIGH(1)
 	ST   Y,R30
 	STD  Y+1,R31
-; 0004 003B                     break;
-	RJMP _0x8000F
-; 0004 003C                 }
-; 0004 003D             }
-_0x80011:
-; 0004 003E             // «ê— ÂÌç Å«”ŒÌ ‰ÌÊ„œ Ì« Â‰Ê“ Connected «”  „‰ Ÿ— Ê œÊ»«—Â  ·«‘ ò‰
-; 0004 003F             glcd_outtextxy(0, 10, "Checking SAPBR closed...");
-_0x80010:
-	CALL SUBOPT_0x13
-	__POINTW2MN _0x80003,134
+; 0003 003B                     break;
+	RJMP _0x6000F
+; 0003 003C                 }
+; 0003 003D             }
+_0x60011:
+; 0003 003E             // «ê— ÂÌç Å«”ŒÌ ‰ÌÊ„œ Ì« Â‰Ê“ Connected «”  „‰ Ÿ— Ê œÊ»«—Â  ·«‘ ò‰
+; 0003 003F             glcd_outtextxy(0, 10, "Checking SAPBR closed...");
+_0x60010:
+	CALL SUBOPT_0x17
+	__POINTW2MN _0x60003,134
 	CALL SUBOPT_0x1B
-; 0004 0040             delay_ms(100);
-; 0004 0041         }
-	RJMP _0x8000D
-_0x8000F:
-; 0004 0042     }
+; 0003 0040             delay_ms(100);
+; 0003 0041         }
+	RJMP _0x6000D
+_0x6000F:
+; 0003 0042     }
 	ADIW R28,2
-; 0004 0043 
-; 0004 0044     // --- 4) detach «“ GPRS ---
-; 0004 0045     while (1) {
-_0x80014:
-; 0004 0046         uart_buffer_reset();
+; 0003 0043 
+; 0003 0044     // --- 4) detach «“ GPRS ---
+; 0003 0045     while (1) {
+_0x60014:
+; 0003 0046         uart_buffer_reset();
 	CALL _uart_buffer_reset
-; 0004 0047         send_at_command("AT+CGATT=0");     // detach
-	__POINTW2MN _0x80003,159
+; 0003 0047         send_at_command("AT+CGATT=0");     // detach
+	__POINTW2MN _0x60003,159
+	CALL SUBOPT_0x1D
+; 0003 0048         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 3000, "OK")) break;
 	CALL SUBOPT_0x1E
-; 0004 0048         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 3000, "OK")) break;
+	CALL SUBOPT_0x20
+	__POINTW2MN _0x60003,170
+	CALL _read_until_keyword_keep_all
+	CPI  R30,0
+	BRNE _0x60016
+; 0003 0049         glcd_outtextxy(0, 10, "Waiting CGATT=0...");
+	CALL SUBOPT_0x17
+	__POINTW2MN _0x60003,173
+	CALL SUBOPT_0x1B
+; 0003 004A         delay_ms(100);
+; 0003 004B     }
+	RJMP _0x60014
+_0x60016:
+; 0003 004C 
+; 0003 004D     // --- 5) —Ì”  ò«„· ‰—„ù«›“«—Ì (CFUN=1,1) Ê ”Å” ’»—  « „«éÊ· »«·« »Ì«Ìœ ---
+; 0003 004E     // «Ì‰ œ” Ê— „„ò‰ «”  »«⁄À —Ì»Ê  ‘Êœ∫ ¬‰ —« »›—”  Ê ”Å”  « “„«‰Ì òÂ „«éÊ· »Â AT Å«”Œ œÂœ ’»— ò‰.
+; 0003 004F     while (1) {
+; 0003 0050         uart_buffer_reset();
+	CALL _uart_buffer_reset
+; 0003 0051         send_at_command("AT+CFUN=1,1");
+	__POINTW2MN _0x60003,192
+	CALL SUBOPT_0x1D
+; 0003 0052         // „„ò‰ «”  OK »«“ê—œœ Ì« ‰Â∫ œ— Â— ’Ê—  »⁄œ «“ “œ‰ —Ì” ° „‰ Ÿ— »«·« ¬„œ‰ „«éÊ· „Ìù‘ÊÌ„.
+; 0003 0053         // «» œ« «ê— OK ¬„œ «“ ¬‰ ⁄»Ê— ò‰° ”Å” „‰ Ÿ— "AT" Å«”Œ œÂÌ„.
+; 0003 0054         read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK"); // (»ÌùŒÿ— «ê— ‰Ì«Ìœ)
+	CALL SUBOPT_0x1E
 	CALL SUBOPT_0x1F
+	__POINTW2MN _0x60003,204
+	CALL _read_until_keyword_keep_all
+; 0003 0055         // «ò‰Ê‰ „‰ Ÿ— ‘Ê  « „œ«Ê„« »Â AT Å«”Œ œÂœ
+; 0003 0056         glcd_outtextxy(0, 10, "Rebooting, wait for AT...");
+	CALL SUBOPT_0x17
+	__POINTW2MN _0x60003,207
+	CALL _glcd_outtextxy
+; 0003 0057         while (1) {
+_0x6001B:
+; 0003 0058             uart_buffer_reset();
+	CALL _uart_buffer_reset
+; 0003 0059             send_at_command("AT");
+	__POINTW2MN _0x60003,233
+	CALL SUBOPT_0x1D
+; 0003 005A             if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) {
+	CALL SUBOPT_0x1E
+	CALL SUBOPT_0x1F
+	__POINTW2MN _0x60003,236
+	CALL _read_until_keyword_keep_all
+	CPI  R30,0
+	BRNE _0x6001F
+; 0003 005B                 // „«éÊ· »«·« ¬„œÂ Ê ¬„«œÂ «” 
+; 0003 005C                 goto after_reboot;
+; 0003 005D             }
+; 0003 005E             // «ê— ŒÊ«” Ì „Ì  Ê«‰Ì «Ì‰Ã« ÅÌ«„ Ê÷⁄Ì  Ê delay ÿÊ·«‰Ìù — »–«—Ì
+; 0003 005F             delay_ms(100);
 	CALL SUBOPT_0x21
-	__POINTW2MN _0x80003,170
+; 0003 0060         }
+	RJMP _0x6001B
+; 0003 0061     }
+; 0003 0062 after_reboot:
+_0x6001F:
+; 0003 0063 
+; 0003 0064     // --- 6) Œ«„Ê‘ ò—œ‰ Echo ---
+; 0003 0065     while (1) {
+_0x60020:
+; 0003 0066         uart_buffer_reset();
+	CALL _uart_buffer_reset
+; 0003 0067         send_at_command("ATE0");
+	__POINTW2MN _0x60003,239
+	CALL SUBOPT_0x1D
+; 0003 0068         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
+	CALL SUBOPT_0x1E
+	CALL SUBOPT_0x1F
+	__POINTW2MN _0x60003,244
 	CALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BRNE _0x80016
-; 0004 0049         glcd_outtextxy(0, 10, "Waiting CGATT=0...");
-	CALL SUBOPT_0x13
-	__POINTW2MN _0x80003,173
+	BRNE _0x60022
+; 0003 0069         glcd_outtextxy(0, 10, "Waiting ATE0...");
+	CALL SUBOPT_0x17
+	__POINTW2MN _0x60003,247
 	CALL SUBOPT_0x1B
-; 0004 004A         delay_ms(100);
-; 0004 004B     }
-	RJMP _0x80014
-_0x80016:
-; 0004 004C 
-; 0004 004D     // --- 5) —Ì”  ò«„· ‰—„ù«›“«—Ì (CFUN=1,1) Ê ”Å” ’»—  « „«éÊ· »«·« »Ì«Ìœ ---
-; 0004 004E     // «Ì‰ œ” Ê— „„ò‰ «”  »«⁄À —Ì»Ê  ‘Êœ∫ ¬‰ —« »›—”  Ê ”Å”  « “„«‰Ì òÂ „«éÊ· »Â AT Å«”Œ œÂœ ’»— ò‰.
-; 0004 004F     while (1) {
-; 0004 0050         uart_buffer_reset();
+; 0003 006A         delay_ms(100);
+; 0003 006B     }
+	RJMP _0x60020
+_0x60022:
+; 0003 006C 
+; 0003 006D     // --- 7)  ”  ‰Â«ÌÌ „«éÊ· ---
+; 0003 006E     while (1) {
+_0x60024:
+; 0003 006F         uart_buffer_reset();
 	CALL _uart_buffer_reset
-; 0004 0051         send_at_command("AT+CFUN=1,1");
-	__POINTW2MN _0x80003,192
+; 0003 0070         send_at_command("AT");
+	__POINTW2MN _0x60003,263
+	CALL SUBOPT_0x1D
+; 0003 0071         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
 	CALL SUBOPT_0x1E
-; 0004 0052         // „„ò‰ «”  OK »«“ê—œœ Ì« ‰Â∫ œ— Â— ’Ê—  »⁄œ «“ “œ‰ —Ì” ° „‰ Ÿ— »«·« ¬„œ‰ „«éÊ· „Ìù‘ÊÌ„.
-; 0004 0053         // «» œ« «ê— OK ¬„œ «“ ¬‰ ⁄»Ê— ò‰° ”Å” „‰ Ÿ— "AT" Å«”Œ œÂÌ„.
-; 0004 0054         read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK"); // (»ÌùŒÿ— «ê— ‰Ì«Ìœ)
 	CALL SUBOPT_0x1F
-	CALL SUBOPT_0x20
-	__POINTW2MN _0x80003,204
+	__POINTW2MN _0x60003,266
 	CALL _read_until_keyword_keep_all
-; 0004 0055         // «ò‰Ê‰ „‰ Ÿ— ‘Ê  « „œ«Ê„« »Â AT Å«”Œ œÂœ
-; 0004 0056         glcd_outtextxy(0, 10, "Rebooting, wait for AT...");
-	CALL SUBOPT_0x13
-	__POINTW2MN _0x80003,207
+	CPI  R30,0
+	BRNE _0x60026
+; 0003 0072         glcd_outtextxy(0, 10, "Final AT check...");
+	CALL SUBOPT_0x17
+	__POINTW2MN _0x60003,269
+	CALL SUBOPT_0x1B
+; 0003 0073         delay_ms(100);
+; 0003 0074     }
+	RJMP _0x60024
+_0x60026:
+; 0003 0075 
+; 0003 0076     glcd_outtextxy(0, 20, "Restart Done!");
+	CALL SUBOPT_0x18
+	__POINTW2MN _0x60003,287
 	CALL _glcd_outtextxy
-; 0004 0057         while (1) {
-_0x8001B:
-; 0004 0058             uart_buffer_reset();
-	CALL _uart_buffer_reset
-; 0004 0059             send_at_command("AT");
-	__POINTW2MN _0x80003,233
-	CALL SUBOPT_0x1E
-; 0004 005A             if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) {
-	CALL SUBOPT_0x1F
-	CALL SUBOPT_0x20
-	__POINTW2MN _0x80003,236
-	CALL _read_until_keyword_keep_all
-	CPI  R30,0
-	BRNE _0x8001F
-; 0004 005B                 // „«éÊ· »«·« ¬„œÂ Ê ¬„«œÂ «” 
-; 0004 005C                 goto after_reboot;
-; 0004 005D             }
-; 0004 005E             // «ê— ŒÊ«” Ì „Ì  Ê«‰Ì «Ì‰Ã« ÅÌ«„ Ê÷⁄Ì  Ê delay ÿÊ·«‰Ìù — »–«—Ì
-; 0004 005F             delay_ms(100);
-	CALL SUBOPT_0x22
-; 0004 0060         }
-	RJMP _0x8001B
-; 0004 0061     }
-; 0004 0062 after_reboot:
-_0x8001F:
-; 0004 0063 
-; 0004 0064     // --- 6) Œ«„Ê‘ ò—œ‰ Echo ---
-; 0004 0065     while (1) {
-_0x80020:
-; 0004 0066         uart_buffer_reset();
-	CALL _uart_buffer_reset
-; 0004 0067         send_at_command("ATE0");
-	__POINTW2MN _0x80003,239
-	CALL SUBOPT_0x1E
-; 0004 0068         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
-	CALL SUBOPT_0x1F
-	CALL SUBOPT_0x20
-	__POINTW2MN _0x80003,244
-	CALL _read_until_keyword_keep_all
-	CPI  R30,0
-	BRNE _0x80022
-; 0004 0069         glcd_outtextxy(0, 10, "Waiting ATE0...");
-	CALL SUBOPT_0x13
-	__POINTW2MN _0x80003,247
-	CALL SUBOPT_0x1B
-; 0004 006A         delay_ms(100);
-; 0004 006B     }
-	RJMP _0x80020
-_0x80022:
-; 0004 006C 
-; 0004 006D     // --- 7)  ”  ‰Â«ÌÌ „«éÊ· ---
-; 0004 006E     while (1) {
-_0x80024:
-; 0004 006F         uart_buffer_reset();
-	CALL _uart_buffer_reset
-; 0004 0070         send_at_command("AT");
-	__POINTW2MN _0x80003,263
-	CALL SUBOPT_0x1E
-; 0004 0071         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "OK")) break;
-	CALL SUBOPT_0x1F
-	CALL SUBOPT_0x20
-	__POINTW2MN _0x80003,266
-	CALL _read_until_keyword_keep_all
-	CPI  R30,0
-	BRNE _0x80026
-; 0004 0072         glcd_outtextxy(0, 10, "Final AT check...");
-	CALL SUBOPT_0x13
-	__POINTW2MN _0x80003,269
-	CALL SUBOPT_0x1B
-; 0004 0073         delay_ms(100);
-; 0004 0074     }
-	RJMP _0x80024
-_0x80026:
-; 0004 0075 
-; 0004 0076     glcd_outtextxy(0, 20, "Restart Done!");
-	CALL SUBOPT_0x14
-	__POINTW2MN _0x80003,287
-	CALL _glcd_outtextxy
-; 0004 0077 }
+; 0003 0077 }
 	RET
 ; .FEND
 
 	.DSEG
-_0x80003:
+_0x60003:
 	.BYTE 0x12D
 ;
 ;
@@ -5372,243 +5381,244 @@ _0x80003:
 ;
 ;
 ;unsigned char check_sim(void) {
-; 0004 00B5 unsigned char check_sim(void) {
+; 0003 00B5 unsigned char check_sim(void) {
 
 	.CSEG
 _check_sim:
 ; .FSTART _check_sim
-; 0004 00B6     int stat;
-; 0004 00B7     char *comma;
-; 0004 00B8 
-; 0004 00B9     glcd_clear();
+; 0003 00B6     int stat;
+; 0003 00B7     char *comma;
+; 0003 00B8 
+; 0003 00B9     glcd_clear();
 	CALL __SAVELOCR4
 ;	stat -> R16,R17
 ;	*comma -> R18,R19
 	CALL _glcd_clear
-; 0004 00BA     // --- »——”Ì Ê÷⁄Ì  ”Ì„ùò«—  ---
-; 0004 00BB     uart_buffer_reset();
+; 0003 00BA     // --- »——”Ì Ê÷⁄Ì  ”Ì„ùò«—  ---
+; 0003 00BB     uart_buffer_reset();
 	CALL _uart_buffer_reset
-; 0004 00BC     send_at_command("AT+CPIN?");
-	__POINTW2MN _0x80028,0
-	CALL SUBOPT_0x1E
-; 0004 00BD     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "CPIN")) {
-	CALL SUBOPT_0xB
-	__POINTW2MN _0x80028,9
+; 0003 00BC     send_at_command("AT+CPIN?");
+	__POINTW2MN _0x60028,0
+	CALL SUBOPT_0x1D
+; 0003 00BD     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "CPIN")) {
+	CALL SUBOPT_0x10
+	__POINTW2MN _0x60028,9
 	CALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BREQ _0x80029
-; 0004 00BE //        glcd_outtextxy(0, 0, buffer);
-; 0004 00BF //        delay_ms(5000);
-; 0004 00C0         if (extract_field_after_keyword(buffer, "+CPIN:", 0, value, sizeof(value))) {
-	CALL SUBOPT_0xA
-	__POINTW1MN _0x80028,14
-	CALL SUBOPT_0x23
-	BREQ _0x8002A
-; 0004 00C1             glcd_outtextxy(0, 16, value);  // ›ﬁÿ READY Ì« PIN
-	CALL SUBOPT_0x24
-	CALL _glcd_outtextxy
-; 0004 00C2         }
-; 0004 00C3         delay_ms(100);
-_0x8002A:
+	BREQ _0x60029
+; 0003 00BE //        glcd_outtextxy(0, 0, buffer);
+; 0003 00BF //        delay_ms(5000);
+; 0003 00C0         if (extract_field_after_keyword(buffer, "+CPIN:", 0, value, sizeof(value))) {
+	CALL SUBOPT_0xF
+	__POINTW1MN _0x60028,14
 	CALL SUBOPT_0x22
-; 0004 00C4     }
-; 0004 00C5 
-; 0004 00C6 //    uart_buffer_reset();
-; 0004 00C7 //    send_at_command("AT+CREG?");
-; 0004 00C8 //    if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "+CREG")) {
-; 0004 00C9 //        glcd_outtextxy(0, 0, buffer);
-; 0004 00CA //        if (extract_value_after_keyword(buffer, "+CREG:", value, sizeof(value))) {
-; 0004 00CB //            glcd_outtextxy(0, 16, value);  // ›ﬁÿ READY Ì« PIN
-; 0004 00CC //        }
-; 0004 00CD //    }
-; 0004 00CE 
-; 0004 00CF     // --- »——”Ì Ê÷⁄Ì  ‘»òÂ  « “„«‰ « ’«· ---
-; 0004 00D0     glcd_clear();
-_0x80029:
+	BREQ _0x6002A
+; 0003 00C1             glcd_outtextxy(0, 16, value);  // ›ﬁÿ READY Ì« PIN
+	CALL SUBOPT_0x23
+; 0003 00C2         }
+; 0003 00C3         delay_ms(100);
+_0x6002A:
+	CALL SUBOPT_0x21
+; 0003 00C4     }
+; 0003 00C5 
+; 0003 00C6 //    uart_buffer_reset();
+; 0003 00C7 //    send_at_command("AT+CREG?");
+; 0003 00C8 //    if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "+CREG")) {
+; 0003 00C9 //        glcd_outtextxy(0, 0, buffer);
+; 0003 00CA //        if (extract_value_after_keyword(buffer, "+CREG:", value, sizeof(value))) {
+; 0003 00CB //            glcd_outtextxy(0, 16, value);  // ›ﬁÿ READY Ì« PIN
+; 0003 00CC //        }
+; 0003 00CD //    }
+; 0003 00CE 
+; 0003 00CF     // --- »——”Ì Ê÷⁄Ì  ‘»òÂ  « “„«‰ « ’«· ---
+; 0003 00D0     glcd_clear();
+_0x60029:
 	RCALL _glcd_clear
-; 0004 00D1     do {
-_0x8002C:
-; 0004 00D2         //glcd_clear();
-; 0004 00D3         uart_buffer_reset();
+; 0003 00D1     do {
+_0x6002C:
+; 0003 00D2         //glcd_clear();
+; 0003 00D3         uart_buffer_reset();
 	CALL _uart_buffer_reset
-; 0004 00D4         send_at_command("AT+CREG?");
-	__POINTW2MN _0x80028,21
+; 0003 00D4         send_at_command("AT+CREG?");
+	__POINTW2MN _0x60028,21
+	CALL SUBOPT_0x1D
+; 0003 00D5         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "CREG")) {
 	CALL SUBOPT_0x1E
-; 0004 00D5         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 2000, "CREG")) {
 	CALL SUBOPT_0x1F
-	CALL SUBOPT_0x20
-	__POINTW2MN _0x80028,30
+	__POINTW2MN _0x60028,30
 	CALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BREQ _0x8002E
-; 0004 00D6 //            glcd_outtextxy(0, 10, buffer);  // ‰„«Ì‘ Ê÷⁄Ì  ‘»òÂ
-; 0004 00D7 
-; 0004 00D8 
-; 0004 00D9             if (extract_field_after_keyword(buffer, "+CREG:", 1, value, sizeof(value))) {
-	CALL SUBOPT_0xA
-	__POINTW1MN _0x80028,35
-	CALL SUBOPT_0xC
+	BREQ _0x6002E
+; 0003 00D6 //            glcd_outtextxy(0, 10, buffer);  // ‰„«Ì‘ Ê÷⁄Ì  ‘»òÂ
+; 0003 00D7 
+; 0003 00D8 
+; 0003 00D9             if (extract_field_after_keyword(buffer, "+CREG:", 1, value, sizeof(value))) {
+	CALL SUBOPT_0xF
+	__POINTW1MN _0x60028,35
+	CALL SUBOPT_0x11
 	SBIW R30,0
-	BREQ _0x8002F
-; 0004 00DA //                glcd_outtextxy(0, 10, value);
-; 0004 00DB //                delay_ms(100);
-; 0004 00DC //                stat = atoi(value);
-; 0004 00DD                 if (atoi(value) == 1) break;
-	CALL SUBOPT_0x25
+	BREQ _0x6002F
+; 0003 00DA //                glcd_outtextxy(0, 10, value);
+; 0003 00DB //                delay_ms(100);
+; 0003 00DC //                stat = atoi(value);
+; 0003 00DD                 if (atoi(value) == 1) break;
+	CALL SUBOPT_0x24
 	CPI  R30,LOW(0x1)
 	LDI  R26,HIGH(0x1)
 	CPC  R31,R26
-	BREQ _0x8002D
-; 0004 00DE             }
-; 0004 00DF         }
-_0x8002F:
-; 0004 00E0         glcd_outtextxy(0, 15, "Waiting for network...");
-_0x8002E:
+	BREQ _0x6002D
+; 0003 00DE             }
+; 0003 00DF         }
+_0x6002F:
+; 0003 00E0         glcd_outtextxy(0, 15, "Waiting for network...");
+_0x6002E:
 	LDI  R30,LOW(0)
 	ST   -Y,R30
 	LDI  R30,LOW(15)
 	ST   -Y,R30
-	__POINTW2MN _0x80028,42
+	__POINTW2MN _0x60028,42
 	CALL _glcd_outtextxy
-; 0004 00E1 
-; 0004 00E2     } while (1);
-	RJMP _0x8002C
-_0x8002D:
-; 0004 00E3 
-; 0004 00E4     glcd_outtextxy(0, 20, "Network OK!");
-	CALL SUBOPT_0x14
-	__POINTW2MN _0x80028,65
+; 0003 00E1 
+; 0003 00E2     } while (1);
+	RJMP _0x6002C
+_0x6002D:
+; 0003 00E3 
+; 0003 00E4     glcd_clear();
+	RCALL _glcd_clear
+; 0003 00E5     glcd_outtextxy(0, 20, "Network OK!");
+	CALL SUBOPT_0x18
+	__POINTW2MN _0x60028,65
 	CALL SUBOPT_0x1B
-; 0004 00E5     delay_ms(100);
-; 0004 00E6 
-; 0004 00E7 //    uart_buffer_reset();
-; 0004 00E8 //    send_at_command("AT+CUSD=1,\"*733*2#\"");
-; 0004 00E9 //    if (read_until_keyword_keep_all(buffer, sizeof(buffer), 3000, "CUSD")) {
-; 0004 00EA //        glcd_clear();
-; 0004 00EB //        glcd_outtextxy(0, 0, buffer);  // ‘„«—Â —ÊÌ GLCD ‰„«Ì‘ œ«œÂ „Ìù‘Êœ
-; 0004 00EC //        delay_ms(1000);        // «” Œ—«Ã ‘„«—Â  ·›‰
-; 0004 00ED //
-; 0004 00EE //        if (extract_field_after_keyword(buffer, "+CUSD:", 1, sim_number, sizeof(sim_number))){
-; 0004 00EF //            glcd_clear();
-; 0004 00F0 //            glcd_outtextxy(0, 0, sim_number);  // ‘„«—Â —ÊÌ GLCD ‰„«Ì‘ œ«œÂ „Ìù‘Êœ
-; 0004 00F1 //            delay_ms(1000);
-; 0004 00F2 //        }
-; 0004 00F3 //    }
-; 0004 00F4 
-; 0004 00F5     return 1;  // „Ê›ﬁÌ 
+; 0003 00E6     delay_ms(100);
+; 0003 00E7 
+; 0003 00E8 //    uart_buffer_reset();
+; 0003 00E9 //    send_at_command("AT+CUSD=1,\"*733*2#\"");
+; 0003 00EA //    if (read_until_keyword_keep_all(buffer, sizeof(buffer), 3000, "CUSD")) {
+; 0003 00EB //        glcd_clear();
+; 0003 00EC //        glcd_outtextxy(0, 0, buffer);  // ‘„«—Â —ÊÌ GLCD ‰„«Ì‘ œ«œÂ „Ìù‘Êœ
+; 0003 00ED //        delay_ms(1000);        // «” Œ—«Ã ‘„«—Â  ·›‰
+; 0003 00EE //
+; 0003 00EF //        if (extract_field_after_keyword(buffer, "+CUSD:", 1, sim_number, sizeof(sim_number))){
+; 0003 00F0 //            glcd_clear();
+; 0003 00F1 //            glcd_outtextxy(0, 0, sim_number);  // ‘„«—Â —ÊÌ GLCD ‰„«Ì‘ œ«œÂ „Ìù‘Êœ
+; 0003 00F2 //            delay_ms(1000);
+; 0003 00F3 //        }
+; 0003 00F4 //    }
+; 0003 00F5 
+; 0003 00F6     return 1;  // „Ê›ﬁÌ 
 	LDI  R30,LOW(1)
 	RJMP _0x212000D
-; 0004 00F6 
-; 0004 00F7 }
+; 0003 00F7 
+; 0003 00F8 }
 ; .FEND
 
 	.DSEG
-_0x80028:
+_0x60028:
 	.BYTE 0x4D
 ;
 ;
 ;
 ;unsigned char check_signal_quality(void) {
-; 0004 00FB unsigned char check_signal_quality(void) {
+; 0003 00FC unsigned char check_signal_quality(void) {
 
 	.CSEG
 _check_signal_quality:
 ; .FSTART _check_signal_quality
-; 0004 00FC 
-; 0004 00FD     uart_buffer_reset();
+; 0003 00FD 
+; 0003 00FE     uart_buffer_reset();
 	CALL _uart_buffer_reset
-; 0004 00FE     send_at_command("AT+CSQ");
-	__POINTW2MN _0x80031,0
-	CALL SUBOPT_0x1E
-; 0004 00FF 
-; 0004 0100     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "CSQ")) {
-	CALL SUBOPT_0xB
-	__POINTW2MN _0x80031,7
+; 0003 00FF     send_at_command("AT+CSQ");
+	__POINTW2MN _0x60031,0
+	CALL SUBOPT_0x1D
+; 0003 0100 
+; 0003 0101     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "CSQ")) {
+	CALL SUBOPT_0x10
+	__POINTW2MN _0x60031,7
 	CALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BREQ _0x80032
-; 0004 0101 //        glcd_clear();
-; 0004 0102 //        glcd_outtextxy(0, 0, buffer);
-; 0004 0103 
-; 0004 0104         if (extract_field_after_keyword(buffer, "+CSQ:", 0, value, sizeof(value))) {
-	CALL SUBOPT_0xA
-	__POINTW1MN _0x80031,11
-	CALL SUBOPT_0x23
-	BREQ _0x80033
-; 0004 0105 //            int csq = atoi(value);  //  »œÌ· —‘ Â »Â ⁄œœ
-; 0004 0106             glcd_clear();
+	BREQ _0x60032
+; 0003 0102 //        glcd_clear();
+; 0003 0103 //        glcd_outtextxy(0, 0, buffer);
+; 0003 0104 
+; 0003 0105         if (extract_field_after_keyword(buffer, "+CSQ:", 0, value, sizeof(value))) {
+	CALL SUBOPT_0xF
+	__POINTW1MN _0x60031,11
+	CALL SUBOPT_0x22
+	BREQ _0x60033
+; 0003 0106 //            int csq = atoi(value);  //  »œÌ· —‘ Â »Â ⁄œœ
+; 0003 0107             glcd_clear();
 	RCALL _glcd_clear
-; 0004 0107             glcd_outtextxy(0, 16, value);  // ‰„«Ì‘ „ﬁœ«— ”Ìê‰«·
+; 0003 0108             glcd_outtextxy(0, 16, value);  // ‰„«Ì‘ „ﬁœ«— ”Ìê‰«·
+	CALL SUBOPT_0x23
+; 0003 0109             delay_ms(500);
+	CALL SUBOPT_0x9
+; 0003 010A             //stat = atoi(value);
+; 0003 010B             if (atoi(value) < 5) {
 	CALL SUBOPT_0x24
-	CALL SUBOPT_0x1A
-; 0004 0108             delay_ms(500);
-; 0004 0109             //stat = atoi(value);
-; 0004 010A             if (atoi(value) < 5) {
-	CALL SUBOPT_0x25
 	SBIW R30,5
-	BRGE _0x80034
-; 0004 010B                 // ”Ìê‰«· ÷⁄Ì› => ‰Ì«“ »Â —Ì” 
-; 0004 010C                 return 0;
+	BRGE _0x60034
+; 0003 010C                 // ”Ìê‰«· ÷⁄Ì› => ‰Ì«“ »Â —Ì” 
+; 0003 010D                 return 0;
 	RJMP _0x2120010
-; 0004 010D             } else {
-_0x80034:
-; 0004 010E                 return 1;
+; 0003 010E             } else {
+_0x60034:
+; 0003 010F                 return 1;
 	RJMP _0x2120012
-; 0004 010F             }
-; 0004 0110         }
-; 0004 0111     }
-_0x80033:
-; 0004 0112     return 0; // «ê— «’·« Å«”ŒÌ ‰ê—› Ì„
-_0x80032:
+; 0003 0110             }
+; 0003 0111         }
+; 0003 0112     }
+_0x60033:
+; 0003 0113     return 0; // «ê— «’·« Å«”ŒÌ ‰ê—› Ì„
+_0x60032:
 	RJMP _0x2120010
-; 0004 0113 }
+; 0003 0114 }
 ; .FEND
 
 	.DSEG
-_0x80031:
+_0x60031:
 	.BYTE 0x11
 ;
 ;
 ;
 ;
 ;unsigned char check_signal_with_restart() {
-; 0004 0118 unsigned char check_signal_with_restart() {
+; 0003 0119 unsigned char check_signal_with_restart() {
 
 	.CSEG
 _check_signal_with_restart:
 ; .FSTART _check_signal_with_restart
-; 0004 0119     int i;
-; 0004 011A     for (i = 0; i < MAX_RETRY; i++) {
+; 0003 011A     int i;
+; 0003 011B     for (i = 0; i < MAX_RETRY; i++) {
 	ST   -Y,R17
 	ST   -Y,R16
 ;	i -> R16,R17
 	__GETWRN 16,17,0
-_0x80037:
+_0x60037:
 	__CPWRN 16,17,3
-	BRGE _0x80038
-; 0004 011B         if (check_signal_quality()) {
+	BRGE _0x60038
+; 0003 011C         if (check_signal_quality()) {
 	RCALL _check_signal_quality
 	CPI  R30,0
-	BREQ _0x80039
-; 0004 011C             // ”Ìê‰«· ŒÊ»Â° «“ Õ·ﬁÂ Œ«—Ã ‘Ê
-; 0004 011D             return 1;
+	BREQ _0x60039
+; 0003 011D             // ”Ìê‰«· ŒÊ»Â° «“ Õ·ﬁÂ Œ«—Ã ‘Ê
+; 0003 011E             return 1;
 	LDI  R30,LOW(1)
 	RJMP _0x2120013
-; 0004 011E         }
-; 0004 011F         // «ê— ”Ìê‰«· ‰»Êœ:
-; 0004 0120         sim800_restart();   // —Ìù«” «—  „«éÊ·
-_0x80039:
+; 0003 011F         }
+; 0003 0120         // «ê— ”Ìê‰«· ‰»Êœ:
+; 0003 0121         sim800_restart();   // —Ìù«” «—  „«éÊ·
+_0x60039:
 	RCALL _sim800_restart
-; 0004 0121         check_sim();
+; 0003 0122         check_sim();
 	RCALL _check_sim
-; 0004 0122     }
+; 0003 0123     }
 	__ADDWRN 16,17,1
-	RJMP _0x80037
-_0x80038:
-; 0004 0123     // «ê— «Ì‰Ã« —”Ìœ Ì⁄‰Ì »⁄œ «“ 3 »«— Â„ ”Ìê‰«· œ—”  ‰‘œ
-; 0004 0124     // „Ì Ê‰Ì ·«ê »êÌ—Ì Ì« Â‰œ· Œÿ« ò‰Ì
-; 0004 0125     printf("No signal after %d retries!\n", MAX_RETRY);
-	__POINTW1FN _0x80000,370
+	RJMP _0x60037
+_0x60038:
+; 0003 0124     // «ê— «Ì‰Ã« —”Ìœ Ì⁄‰Ì »⁄œ «“ 3 »«— Â„ ”Ìê‰«· œ—”  ‰‘œ
+; 0003 0125     // „Ì Ê‰Ì ·«ê »êÌ—Ì Ì« Â‰œ· Œÿ« ò‰Ì
+; 0003 0126     printf("No signal after %d retries!\n", MAX_RETRY);
+	__POINTW1FN _0x60000,370
 	ST   -Y,R31
 	ST   -Y,R30
 	__GETD1N 0x3
@@ -5616,7 +5626,7 @@ _0x80038:
 	LDI  R24,4
 	CALL _printf
 	ADIW R28,6
-; 0004 0126 }
+; 0003 0127 }
 _0x2120013:
 	LD   R16,Y+
 	LD   R17,Y+
@@ -5626,161 +5636,160 @@ _0x2120013:
 ;
 ;
 ;unsigned char init_sms(void)
-; 0004 012B {
+; 0003 012C {
 _init_sms:
 ; .FSTART _init_sms
-; 0004 012C     glcd_clear();
-	CALL SUBOPT_0xE
-; 0004 012D     glcd_outtextxy(0, 0, "Setting SMS Mode...");
-	__POINTW2MN _0x8003A,0
+; 0003 012D     glcd_clear();
+	CALL SUBOPT_0x7
+; 0003 012E     glcd_outtextxy(0, 0, "Setting SMS Mode...");
+	__POINTW2MN _0x6003A,0
 	CALL _glcd_outtextxy
-; 0004 012E 
-; 0004 012F     send_at_command("AT+CFUN=1");
-	__POINTW2MN _0x8003A,20
-	CALL SUBOPT_0x26
-; 0004 0130     delay_ms(50);
-; 0004 0131 
-; 0004 0132     send_at_command("AT+CSCLK=0");
-	__POINTW2MN _0x8003A,30
-	CALL SUBOPT_0x26
-; 0004 0133     delay_ms(50);
-; 0004 0134 
-; 0004 0135     //  ‰ŸÌ„ SMS
-; 0004 0136     send_at_command("AT+CMGF=1");
-	__POINTW2MN _0x8003A,41
-	CALL SUBOPT_0x26
-; 0004 0137     delay_ms(50);
-; 0004 0138 
-; 0004 0139     send_at_command("AT+CNMI=2,2,0,0,0");
-	__POINTW2MN _0x8003A,51
-	CALL SUBOPT_0x26
-; 0004 013A     delay_ms(50);
-; 0004 013B 
-; 0004 013C     send_at_command("AT+CMGDA=\"DEL ALL\"");
-	__POINTW2MN _0x8003A,69
-	CALL SUBOPT_0x26
-; 0004 013D     delay_ms(50);
-; 0004 013E 
-; 0004 013F     glcd_outtextxy(0, 10, "SMS Ready.");
-	CALL SUBOPT_0x13
-	__POINTW2MN _0x8003A,88
+; 0003 012F 
+; 0003 0130     send_at_command("AT+CFUN=1");
+	__POINTW2MN _0x6003A,20
+	CALL SUBOPT_0x25
+; 0003 0131     delay_ms(50);
+; 0003 0132 
+; 0003 0133     send_at_command("AT+CSCLK=0");
+	__POINTW2MN _0x6003A,30
+	CALL SUBOPT_0x25
+; 0003 0134     delay_ms(50);
+; 0003 0135 
+; 0003 0136     //  ‰ŸÌ„ SMS
+; 0003 0137     send_at_command("AT+CMGF=1");
+	__POINTW2MN _0x6003A,41
+	CALL SUBOPT_0x25
+; 0003 0138     delay_ms(50);
+; 0003 0139 
+; 0003 013A     send_at_command("AT+CNMI=2,2,0,0,0");
+	__POINTW2MN _0x6003A,51
+	CALL SUBOPT_0x25
+; 0003 013B     delay_ms(50);
+; 0003 013C 
+; 0003 013D     send_at_command("AT+CMGDA=\"DEL ALL\"");
+	__POINTW2MN _0x6003A,69
+	CALL SUBOPT_0x25
+; 0003 013E     delay_ms(50);
+; 0003 013F 
+; 0003 0140     glcd_outtextxy(0, 10, "SMS Ready.");
+	CALL SUBOPT_0x17
+	__POINTW2MN _0x6003A,88
 	CALL _glcd_outtextxy
-; 0004 0140     delay_ms(50);
+; 0003 0141     delay_ms(50);
 	LDI  R26,LOW(50)
 	LDI  R27,0
 	RJMP _0x2120011
-; 0004 0141 
-; 0004 0142     return 1;
-; 0004 0143 }
+; 0003 0142 
+; 0003 0143     return 1;
+; 0003 0144 }
 ; .FEND
 
 	.DSEG
-_0x8003A:
+_0x6003A:
 	.BYTE 0x63
 ;
 ;
 ;
 ;unsigned char init_GPRS(void)
-; 0004 0148 {
+; 0003 0149 {
 
 	.CSEG
 _init_GPRS:
 ; .FSTART _init_GPRS
-; 0004 0149 
-; 0004 014A     glcd_clear();
-	CALL SUBOPT_0xE
-; 0004 014B     glcd_outtextxy(0, 0, "Connecting to GPRS...");
-	__POINTW2MN _0x8003B,0
+; 0003 014A 
+; 0003 014B     glcd_clear();
+	CALL SUBOPT_0x7
+; 0003 014C     glcd_outtextxy(0, 0, "Connecting to GPRS...");
+	__POINTW2MN _0x6003B,0
 	CALL _glcd_outtextxy
-; 0004 014C 
-; 0004 014D     send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
-	__POINTW2MN _0x8003B,22
+; 0003 014D 
+; 0003 014E     send_at_command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"");
+	__POINTW2MN _0x6003B,22
 	CALL _send_at_command
-; 0004 014E     delay_ms(100);
-	CALL SUBOPT_0x22
-; 0004 014F 
-; 0004 0150     sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
+; 0003 014F     delay_ms(100);
+	CALL SUBOPT_0x21
+; 0003 0150 
+; 0003 0151     sprintf(at_command, "AT+SAPBR=3,1,\"APN\",\"%s\"", APN);
 	LDI  R30,LOW(_at_command)
 	LDI  R31,HIGH(_at_command)
 	ST   -Y,R31
 	ST   -Y,R30
-	__POINTW1FN _0x80000,550
+	__POINTW1FN _0x60000,550
 	ST   -Y,R31
 	ST   -Y,R30
 	LDI  R30,LOW(_APN*2)
 	LDI  R31,HIGH(_APN*2)
-	CALL SUBOPT_0x10
-	LDI  R24,4
-	CALL _sprintf
-	ADIW R28,8
-; 0004 0151     send_at_command(at_command);
+	CALL SUBOPT_0x14
+	CALL SUBOPT_0x5
+; 0003 0152     send_at_command(at_command);
 	LDI  R26,LOW(_at_command)
 	LDI  R27,HIGH(_at_command)
-	CALL SUBOPT_0x5
-; 0004 0152     delay_ms(100);
-; 0004 0153 
-; 0004 0154     uart_buffer_reset();
-; 0004 0155 
-; 0004 0156     send_at_command("AT+SAPBR=1,1");
-	__POINTW2MN _0x8003B,52
-	CALL SUBOPT_0x1E
-; 0004 0157     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "OK")) {
 	CALL SUBOPT_0xB
-	__POINTW2MN _0x8003B,65
+; 0003 0153     delay_ms(100);
+; 0003 0154 
+; 0003 0155     uart_buffer_reset();
+; 0003 0156 
+; 0003 0157     send_at_command("AT+SAPBR=1,1");
+	__POINTW2MN _0x6003B,52
+	CALL SUBOPT_0x1D
+; 0003 0158     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "OK")) {
+	CALL SUBOPT_0x10
+	__POINTW2MN _0x6003B,65
 	CALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BREQ _0x8003C
-; 0004 0158         glcd_outtextxy(0, 0, buffer);  // »«Ìœ ò· Œ—ÊÃÌ "+CSQ: 11,0" Ê "OK" ç«Å ‘Êœ
+	BREQ _0x6003C
+; 0003 0159         glcd_outtextxy(0, 0, buffer);  // »«Ìœ ò· Œ—ÊÃÌ "+CSQ: 11,0" Ê "OK" ç«Å ‘Êœ
 	LDI  R30,LOW(0)
 	ST   -Y,R30
 	ST   -Y,R30
 	LDI  R26,LOW(_buffer)
 	LDI  R27,HIGH(_buffer)
 	CALL SUBOPT_0x1B
-; 0004 0159         delay_ms(100);
-; 0004 015A     }
-; 0004 015B 
-; 0004 015C     glcd_clear();
-_0x8003C:
-	CALL SUBOPT_0xE
-; 0004 015D     glcd_outtextxy(0, 0, "Fetching IP...");
-	__POINTW2MN _0x8003B,68
+; 0003 015A         delay_ms(100);
+; 0003 015B     }
+; 0003 015C 
+; 0003 015D     glcd_clear();
+_0x6003C:
+	CALL SUBOPT_0x7
+; 0003 015E     glcd_outtextxy(0, 0, "Fetching IP...");
+	__POINTW2MN _0x6003B,68
 	CALL _glcd_outtextxy
-; 0004 015E 
-; 0004 015F     while (attempts < 3) {
-_0x8003D:
+; 0003 015F 
+; 0003 0160     while (attempts < 3) {
+_0x6003D:
 	LDI  R30,LOW(3)
 	CP   R11,R30
-	BRSH _0x8003F
-; 0004 0160         uart_buffer_reset();
+	BRLO PC+2
+	RJMP _0x6003F
+; 0003 0161         uart_buffer_reset();
 	CALL _uart_buffer_reset
-; 0004 0161         send_at_command("AT+SAPBR=2,1");
-	__POINTW2MN _0x8003B,83
-	CALL SUBOPT_0x1E
-; 0004 0162 
-; 0004 0163         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "SAPBR")) {
-	CALL SUBOPT_0xB
-	__POINTW2MN _0x8003B,96
+; 0003 0162         send_at_command("AT+SAPBR=2,1");
+	__POINTW2MN _0x6003B,83
+	CALL SUBOPT_0x1D
+; 0003 0163 
+; 0003 0164         if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "SAPBR")) {
+	CALL SUBOPT_0x10
+	__POINTW2MN _0x6003B,96
 	CALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BREQ _0x80040
-; 0004 0164             // «” Œ—«Ã status (›Ì·œ œÊ„ »⁄œ «“ +SAPBR:)
-; 0004 0165             if (extract_field_after_keyword(buffer, "+SAPBR:", 1, value, sizeof(value))) {
-	CALL SUBOPT_0xA
-	__POINTW1MN _0x8003B,102
-	CALL SUBOPT_0xC
+	BREQ _0x60040
+; 0003 0165             // «” Œ—«Ã status (›Ì·œ œÊ„ »⁄œ «“ +SAPBR:)
+; 0003 0166             if (extract_field_after_keyword(buffer, "+SAPBR:", 1, value, sizeof(value))) {
+	CALL SUBOPT_0xF
+	__POINTW1MN _0x6003B,102
+	CALL SUBOPT_0x11
 	SBIW R30,0
-	BREQ _0x80041
-; 0004 0166                 if (atoi(value) == 1) {
-	CALL SUBOPT_0x25
+	BREQ _0x60041
+; 0003 0167                 if (atoi(value) == 1) {
+	CALL SUBOPT_0x24
 	CPI  R30,LOW(0x1)
 	LDI  R26,HIGH(0x1)
 	CPC  R31,R26
-	BRNE _0x80042
-; 0004 0167                     // «ê— status=1 »Êœ° ›Ì·œ ”Ê„ Â„Ê‰ IP —Ê ‰‘Ê‰ »œÂ
-; 0004 0168                     if (extract_field_after_keyword(buffer, "+SAPBR:", 2, value, sizeof(value))) {
-	CALL SUBOPT_0xA
-	__POINTW1MN _0x8003B,110
+	BRNE _0x60042
+; 0003 0168                     // «ê— status=1 »Êœ° ›Ì·œ ”Ê„ Â„Ê‰ IP —Ê ‰‘Ê‰ »œÂ
+; 0003 0169                     if (extract_field_after_keyword(buffer, "+SAPBR:", 2, value, sizeof(value))) {
+	CALL SUBOPT_0xF
+	__POINTW1MN _0x6003B,110
 	ST   -Y,R31
 	ST   -Y,R30
 	LDI  R30,LOW(2)
@@ -5795,159 +5804,187 @@ _0x8003D:
 	LDI  R27,0
 	CALL _extract_field_after_keyword
 	SBIW R30,0
-	BREQ _0x80043
-; 0004 0169                         glcd_clear();
-	CALL SUBOPT_0xE
-; 0004 016A                         glcd_outtextxy(0, 0, value);
+	BREQ _0x60043
+; 0003 016A                         glcd_clear();
+	CALL SUBOPT_0x7
+; 0003 016B                         glcd_outtextxy(0, 0, value);
 	LDI  R26,LOW(_value)
 	LDI  R27,HIGH(_value)
-	CALL SUBOPT_0x18
-; 0004 016B                         delay_ms(300);
+	CALL _glcd_outtextxy
+; 0003 016C                         delay_ms(300);
+	LDI  R26,LOW(300)
+	LDI  R27,HIGH(300)
 _0x2120011:
 	CALL _delay_ms
-; 0004 016C                         return 1; // „Ê›ﬁ
+; 0003 016D                         return 1; // „Ê›ﬁ
 _0x2120012:
 	LDI  R30,LOW(1)
 	RET
-; 0004 016D                     }
-; 0004 016E                 }
-_0x80043:
-; 0004 016F             }
-_0x80042:
-; 0004 0170         }
-_0x80041:
-; 0004 0171 
-; 0004 0172         // «ê— »Â «Ì‰Ã« —”Ìœ Ì⁄‰Ì „Ê›ﬁ ‰»ÊœÂ
-; 0004 0173         attempts++;
-_0x80040:
+; 0003 016E                     }
+; 0003 016F                 }
+_0x60043:
+; 0003 0170             }
+_0x60042:
+; 0003 0171         }
+_0x60041:
+; 0003 0172 
+; 0003 0173         // «ê— »Â «Ì‰Ã« —”Ìœ Ì⁄‰Ì „Ê›ﬁ ‰»ÊœÂ
+; 0003 0174         attempts++;
+_0x60040:
 	INC  R11
-; 0004 0174         delay_ms(100);
-	CALL SUBOPT_0x22
-; 0004 0175     }
-	RJMP _0x8003D
-_0x8003F:
-; 0004 0176 
-; 0004 0177     // »⁄œ «“ 3 »«—  ·«‘ ‰«„Ê›ﬁ
-; 0004 0178     glcd_clear();
-	CALL SUBOPT_0xE
-; 0004 0179     glcd_outtextxy(0, 0, "No IP");
-	__POINTW2MN _0x8003B,118
+; 0003 0175         delay_ms(100);
+	CALL SUBOPT_0x21
+; 0003 0176     }
+	RJMP _0x6003D
+_0x6003F:
+; 0003 0177 
+; 0003 0178     // »⁄œ «“ 3 »«—  ·«‘ ‰«„Ê›ﬁ
+; 0003 0179     glcd_clear();
+	CALL SUBOPT_0x7
+; 0003 017A     glcd_outtextxy(0, 0, "No IP");
+	__POINTW2MN _0x6003B,118
 	CALL _glcd_outtextxy
-; 0004 017A     return 0; // ‰«„Ê›ﬁ
+; 0003 017B     return 0; // ‰«„Ê›ﬁ
 _0x2120010:
 	LDI  R30,LOW(0)
 	RET
-; 0004 017B }
+; 0003 017C }
 ; .FEND
 
 	.DSEG
-_0x8003B:
+_0x6003B:
 	.BYTE 0x7C
 ;
 ;
 ;void gprs_keep_alive(void) {
-; 0004 017E void gprs_keep_alive(void) {
+; 0003 017F void gprs_keep_alive(void) {
 
 	.CSEG
 _gprs_keep_alive:
 ; .FSTART _gprs_keep_alive
-; 0004 017F //    glcd_clear();
-; 0004 0180 //    glcd_outtextxy(0, 0, "Checking Internet...");
-; 0004 0181 
-; 0004 0182     uart_buffer_reset();
+; 0003 0180 //    glcd_clear();
+; 0003 0181 //    glcd_outtextxy(0, 0, "Checking Internet...");
+; 0003 0182 
+; 0003 0183     uart_buffer_reset();
 	CALL _uart_buffer_reset
-; 0004 0183     send_at_command("AT+HTTPTERM");
-	__POINTW2MN _0x80044,0
-	CALL SUBOPT_0x5
-; 0004 0184     delay_ms(100);
-; 0004 0185 
-; 0004 0186     // --- ‘—Ê⁄ HTTP ---
-; 0004 0187     uart_buffer_reset();
-; 0004 0188     send_at_command("AT+HTTPINIT");
-	__POINTW2MN _0x80044,12
-	CALL SUBOPT_0x5
-; 0004 0189     delay_ms(100);
-; 0004 018A 
-; 0004 018B     // --- «‰ Œ«» ò«‰ò‘‰ GPRS ---
-; 0004 018C     uart_buffer_reset();
-; 0004 018D     send_at_command("AT+HTTPPARA=\"CID\",1");
-	__POINTW2MN _0x80044,24
-	CALL SUBOPT_0x5
-; 0004 018E     delay_ms(100);
-; 0004 018F 
-; 0004 0190     // ---  ‰ŸÌ„ URL ---
-; 0004 0191     uart_buffer_reset();
-; 0004 0192     send_at_command("AT+HTTPPARA=\"URL\",\"http://www.google.com\"");
-	__POINTW2MN _0x80044,44
-	CALL SUBOPT_0x5
-; 0004 0193     delay_ms(100);
-; 0004 0194 
-; 0004 0195     // --- «—”«· œ—ŒÊ«”  GET ---
-; 0004 0196     uart_buffer_reset();
-; 0004 0197     send_at_command("AT+HTTPACTION=0"); // 0=GET
-	__POINTW2MN _0x80044,86
-	CALL SUBOPT_0x5
-; 0004 0198     delay_ms(100); // ’»— »—«Ì Å«”Œ HTTP
-; 0004 0199 
-; 0004 019A     // --- »——”Ì Å«”Œ ---
-; 0004 019B     uart_buffer_reset();
-; 0004 019C     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION")) {
-	CALL SUBOPT_0xA
+; 0003 0184     send_at_command("AT+HTTPTERM");
+	__POINTW2MN _0x60044,0
 	CALL SUBOPT_0xB
-	__POINTW2MN _0x80044,102
+; 0003 0185     delay_ms(100);
+; 0003 0186 
+; 0003 0187     // --- ‘—Ê⁄ HTTP ---
+; 0003 0188     uart_buffer_reset();
+; 0003 0189     send_at_command("AT+HTTPINIT");
+	__POINTW2MN _0x60044,12
+	CALL SUBOPT_0xB
+; 0003 018A     delay_ms(100);
+; 0003 018B 
+; 0003 018C     // --- «‰ Œ«» ò«‰ò‘‰ GPRS ---
+; 0003 018D     uart_buffer_reset();
+; 0003 018E     send_at_command("AT+HTTPPARA=\"CID\",1");
+	__POINTW2MN _0x60044,24
+	CALL SUBOPT_0xB
+; 0003 018F     delay_ms(100);
+; 0003 0190 
+; 0003 0191     // ---  ‰ŸÌ„ URL ---
+; 0003 0192     uart_buffer_reset();
+; 0003 0193     send_at_command("AT+HTTPPARA=\"URL\",\"http://www.google.com\"");
+	__POINTW2MN _0x60044,44
+	CALL SUBOPT_0xB
+; 0003 0194     delay_ms(100);
+; 0003 0195 
+; 0003 0196     // --- «—”«· œ—ŒÊ«”  GET ---
+; 0003 0197     uart_buffer_reset();
+; 0003 0198     send_at_command("AT+HTTPACTION=0"); // 0=GET
+	__POINTW2MN _0x60044,86
+	CALL SUBOPT_0xB
+; 0003 0199     delay_ms(100); // ’»— »—«Ì Å«”Œ HTTP
+; 0003 019A 
+; 0003 019B     // --- »——”Ì Å«”Œ ---
+; 0003 019C     uart_buffer_reset();
+; 0003 019D     if (read_until_keyword_keep_all(buffer, BUFFER_SIZE, 5000, "HTTPACTION")) {
+	CALL SUBOPT_0xF
+	CALL SUBOPT_0x10
+	__POINTW2MN _0x60044,102
 	CALL _read_until_keyword_keep_all
 	CPI  R30,0
-	BREQ _0x80045
-; 0004 019D         // „À«· Œ—ÊÃÌ: +HTTPACTION:0,200,1256
-; 0004 019E //        int status = 0;
-; 0004 019F 
-; 0004 01A0         // ›Ì·œ œÊ„ »⁄œ «“ +HTTPACTION: Â„«‰ òœ Ê÷⁄Ì  HTTP «” 
-; 0004 01A1         if (extract_field_after_keyword(buffer, "+HTTPACTION", 1, value, sizeof(value))) {
-	CALL SUBOPT_0xA
-	__POINTW1MN _0x80044,113
-	CALL SUBOPT_0xC
+	BREQ _0x60045
+; 0003 019E         // „À«· Œ—ÊÃÌ: +HTTPACTION:0,200,1256
+; 0003 019F //        int status = 0;
+; 0003 01A0 
+; 0003 01A1         // ›Ì·œ œÊ„ »⁄œ «“ +HTTPACTION: Â„«‰ òœ Ê÷⁄Ì  HTTP «” 
+; 0003 01A2         if (extract_field_after_keyword(buffer, "+HTTPACTION", 1, value, sizeof(value))) {
+	CALL SUBOPT_0xF
+	__POINTW1MN _0x60044,113
+	CALL SUBOPT_0x11
 	SBIW R30,0
-	BREQ _0x80046
-; 0004 01A2 //            status = atoi(value);  //  »œÌ· —‘ Â »Â ⁄œœ
-; 0004 01A3             glcd_outtextxy(0, 16, value);
-	CALL SUBOPT_0x24
+	BREQ _0x60046
+; 0003 01A3 //            status = atoi(value);  //  »œÌ· —‘ Â »Â ⁄œœ
+; 0003 01A4             glcd_outtextxy(0, 16, value);
+	LDI  R30,LOW(0)
+	ST   -Y,R30
+	LDI  R30,LOW(16)
+	ST   -Y,R30
+	LDI  R26,LOW(_value)
+	LDI  R27,HIGH(_value)
 	CALL SUBOPT_0x1B
-; 0004 01A4             delay_ms(100);
-; 0004 01A5 //
-; 0004 01A6 //            if (atoi(value) == 200) {
-; 0004 01A7 //                glcd_outtextxy(0, 16, "Internet OK");
-; 0004 01A8 //            } else {
-; 0004 01A9 //                glcd_outtextxy(0, 16, "Internet Failed");
-; 0004 01AA //            }
-; 0004 01AB         }
-; 0004 01AC //        else {
-; 0004 01AD //            glcd_outtextxy(0, 16, "Parsing Error!");
-; 0004 01AE //        }
-; 0004 01AF     }
-_0x80046:
-; 0004 01B0 //    else {
-; 0004 01B1 //        glcd_outtextxy(0, 16, "No response!");
-; 0004 01B2 //    }
-; 0004 01B3 
-; 0004 01B4 
-; 0004 01B5 
-; 0004 01B6     // --- Å«Ì«‰ HTTP ---
-; 0004 01B7     uart_buffer_reset();
-_0x80045:
+; 0003 01A5             delay_ms(100);
+; 0003 01A6 //
+; 0003 01A7 //            if (atoi(value) == 200) {
+; 0003 01A8 //                glcd_outtextxy(0, 16, "Internet OK");
+; 0003 01A9 //            } else {
+; 0003 01AA //                glcd_outtextxy(0, 16, "Internet Failed");
+; 0003 01AB //            }
+; 0003 01AC         }
+; 0003 01AD //        else {
+; 0003 01AE //            glcd_outtextxy(0, 16, "Parsing Error!");
+; 0003 01AF //        }
+; 0003 01B0     }
+_0x60046:
+; 0003 01B1 //    else {
+; 0003 01B2 //        glcd_outtextxy(0, 16, "No response!");
+; 0003 01B3 //    }
+; 0003 01B4 
+; 0003 01B5 
+; 0003 01B6 
+; 0003 01B7     // --- Å«Ì«‰ HTTP ---
+; 0003 01B8     uart_buffer_reset();
+_0x60045:
 	CALL _uart_buffer_reset
-; 0004 01B8     send_at_command("AT+HTTPTERM");
-	__POINTW2MN _0x80044,125
+; 0003 01B9     send_at_command("AT+HTTPTERM");
+	__POINTW2MN _0x60044,125
 	CALL _send_at_command
-; 0004 01B9     delay_ms(100);
-	CALL SUBOPT_0x22
-; 0004 01BA }
+; 0003 01BA     delay_ms(100);
+	CALL SUBOPT_0x21
+; 0003 01BB }
 	RET
 ; .FEND
 
 	.DSEG
-_0x80044:
+_0x60044:
 	.BYTE 0x89
 ;
+;
+;//
+;//void full_check(void){
+;//
+;//        sim800_restart();
+;//        check_sim();
+;//        check_signal_with_restart();
+;//        init_sms();
+;//
+;//        if (init_GPRS()) {
+;//            // «ê— „Ê›ﬁ ‘œ° «“ Õ·ﬁÂ Œ«—Ã »‘Â
+;//            break;
+;//        } else {
+;//            // «ê— ‰«„Ê›ﬁ »Êœ
+;//            glcd_clear();
+;//            glcd_outtextxy(0, 0, "GPRS Init Failed!");
+;//            delay_ms(100);  // ò„Ì ’»— ò‰Â
+;//            // Ê œÊ»«—Â Õ·ﬁÂ  ò—«— „Ì‘Â
+;//        }
+;//
+;//}
 	#ifndef __SLEEP_DEFINED__
 	#define __SLEEP_DEFINED__
 	.EQU __se_bit=0x20
@@ -5974,9 +6011,9 @@ _ks0108_disable_G100:
 ; .FSTART _ks0108_disable_G100
 	LDS  R30,98
 	ANDI R30,0xEF
-	CALL SUBOPT_0x27
+	CALL SUBOPT_0x26
 	ANDI R30,0xDF
-	CALL SUBOPT_0x27
+	CALL SUBOPT_0x26
 	ANDI R30,0xBF
 	STS  98,R30
 	RET
@@ -5998,7 +6035,7 @@ _ks0108_busy_G100:
 ; .FSTART _ks0108_busy_G100
 	ST   -Y,R26
 	ST   -Y,R17
-	CALL SUBOPT_0x28
+	CALL SUBOPT_0x27
 	ANDI R30,0xFB
 	STS  98,R30
 	LDD  R30,Y+1
@@ -6037,7 +6074,7 @@ _ks0108_wrcmd_G100:
 	LDD  R26,Y+1
 	RCALL _ks0108_busy_G100
 	LDS  R30,98
-	CALL SUBOPT_0x29
+	CALL SUBOPT_0x28
 	RJMP _0x212000E
 ; .FEND
 _ks0108_setloc_G100:
@@ -6099,15 +6136,15 @@ _ks0108_wrdata_G100:
 	RCALL _ks0108_busy_G100
 	LDS  R30,98
 	ORI  R30,4
-	CALL SUBOPT_0x27
-	CALL SUBOPT_0x29
+	CALL SUBOPT_0x26
+	CALL SUBOPT_0x28
 	JMP  _0x2120009
 ; .FEND
 _ks0108_rddata_G100:
 ; .FSTART _ks0108_rddata_G100
 	__GETB2MN _ks0108_coord_G100,1
 	RCALL _ks0108_busy_G100
-	CALL SUBOPT_0x28
+	CALL SUBOPT_0x27
 	ORI  R30,4
 	STS  98,R30
 	RCALL _ks0108_rdbus_G100
@@ -6119,7 +6156,7 @@ _ks0108_rdbyte_G100:
 	LDD  R30,Y+1
 	ST   -Y,R30
 	LDD  R30,Y+1
-	CALL SUBOPT_0x2A
+	CALL SUBOPT_0x29
 	RCALL _ks0108_rddata_G100
 	RCALL _ks0108_setloc_G100
 	RCALL _ks0108_rddata_G100
@@ -6134,11 +6171,11 @@ _glcd_init:
 	ST   -Y,R17
 	LDS  R30,97
 	ORI  R30,0x10
-	CALL SUBOPT_0x2B
+	CALL SUBOPT_0x2A
 	ORI  R30,8
-	CALL SUBOPT_0x2B
+	CALL SUBOPT_0x2A
 	ORI  R30,4
-	CALL SUBOPT_0x2B
+	CALL SUBOPT_0x2A
 	ORI  R30,0x80
 	STS  97,R30
 	LDS  R30,98
@@ -6146,14 +6183,14 @@ _glcd_init:
 	STS  98,R30
 	LDS  R30,97
 	ORI  R30,0x20
-	CALL SUBOPT_0x2B
+	CALL SUBOPT_0x2A
 	ORI  R30,0x40
 	STS  97,R30
 	RCALL _ks0108_disable_G100
 	LDS  R30,98
 	ANDI R30,0x7F
 	STS  98,R30
-	CALL SUBOPT_0x22
+	CALL SUBOPT_0x21
 	LDS  R30,98
 	ORI  R30,0x80
 	STS  98,R30
@@ -6181,7 +6218,7 @@ _0x200000E:
 	LDD  R26,Y+1
 	LDD  R27,Y+1+1
 	CALL __GETW1P
-	CALL SUBOPT_0x19
+	CALL SUBOPT_0x1A
 	LDD  R26,Y+1
 	LDD  R27,Y+1+1
 	ADIW R26,2
@@ -6195,7 +6232,7 @@ _0x200000E:
 _0x200000F:
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
-	CALL SUBOPT_0x19
+	CALL SUBOPT_0x1A
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
 	__PUTW1MN _glcd_state,25
@@ -6248,7 +6285,7 @@ _0x2000019:
 	CPI  R26,LOW(0x80)
 	BRSH _0x200001B
 	MOV  R26,R16
-	CALL SUBOPT_0x2C
+	CALL SUBOPT_0x2B
 	RJMP _0x2000019
 _0x200001B:
 	RJMP _0x2000016
@@ -6374,7 +6411,7 @@ _0x2000034:
 	AND  R17,R30
 _0x2000029:
 	MOV  R26,R17
-	CALL SUBOPT_0x2C
+	CALL SUBOPT_0x2B
 	LDD  R17,Y+0
 	JMP  _0x2120005
 ; .FEND
@@ -6468,7 +6505,7 @@ _0x2000044:
 	CALL __MULW12U
 	LDD  R26,Y+10
 	LDD  R27,Y+10+1
-	CALL SUBOPT_0x2D
+	CALL SUBOPT_0x2C
 	LSR  R18
 	LSR  R18
 	LSR  R18
@@ -6486,7 +6523,7 @@ _0x2000049:
 	SUBI R17,1
 	CPI  R30,0
 	BREQ _0x200004B
-	CALL SUBOPT_0x2E
+	CALL SUBOPT_0x2D
 	RJMP _0x2000049
 _0x200004B:
 	RJMP _0x2000046
@@ -6499,7 +6536,7 @@ _0x2000043:
 	LDD  R26,Y+10
 	LDD  R27,Y+10+1
 	LDI  R31,0
-	CALL SUBOPT_0x2D
+	CALL SUBOPT_0x2C
 	LDD  R30,Y+13
 	ANDI R30,LOW(0x7)
 	BREQ _0x200004D
@@ -6521,14 +6558,14 @@ _0x2000051:
 	POP  R26
 	CP   R26,R30
 	BRSH _0x2000053
-	CALL SUBOPT_0x2E
+	CALL SUBOPT_0x2D
 	RJMP _0x2000051
 _0x2000053:
 	LDD  R30,Y+14
 	LDD  R26,Y+6
 	LDD  R27,Y+6+1
 	LDI  R31,0
-	CALL SUBOPT_0x2D
+	CALL SUBOPT_0x2C
 	RJMP _0x200004E
 _0x2000050:
 _0x200004C:
@@ -6587,7 +6624,7 @@ _0x2000066:
 _0x2000067:
 	ST   -Y,R16
 	LDD  R30,Y+16
-	CALL SUBOPT_0x2A
+	CALL SUBOPT_0x29
 _0x200005B:
 _0x2000069:
 	PUSH R17
@@ -6601,7 +6638,7 @@ _0x2000069:
 	BRNE _0x200006C
 	RCALL _ks0108_rddata_G100
 	RCALL _ks0108_setloc_G100
-	CALL SUBOPT_0x2F
+	CALL SUBOPT_0x2E
 	ST   -Y,R31
 	ST   -Y,R30
 	RCALL _ks0108_rddata_G100
@@ -6621,8 +6658,8 @@ _0x2000071:
 	LDI  R21,LOW(255)
 	RJMP _0x2000072
 _0x2000070:
+	CALL SUBOPT_0x2E
 	CALL SUBOPT_0x2F
-	CALL SUBOPT_0x30
 	MOV  R21,R30
 	LDD  R30,Y+9
 	CPI  R30,LOW(0x7)
@@ -6631,7 +6668,7 @@ _0x2000070:
 	BRNE _0x200007A
 _0x2000079:
 _0x2000072:
-	CALL SUBOPT_0x31
+	CALL SUBOPT_0x30
 	MOV  R21,R30
 	RJMP _0x200007B
 _0x200007A:
@@ -6645,10 +6682,10 @@ _0x200007D:
 _0x200007E:
 _0x200007B:
 	MOV  R26,R21
-	CALL SUBOPT_0x2C
+	CALL SUBOPT_0x2B
 	RJMP _0x2000077
 _0x2000080:
-	CALL SUBOPT_0x32
+	CALL SUBOPT_0x31
 	LDI  R30,LOW(255)
 	ST   -Y,R30
 	LDD  R26,Y+13
@@ -6699,18 +6736,18 @@ _0x2000089:
 	POP  R26
 	CP   R26,R30
 	BRSH _0x200008B
-	CALL SUBOPT_0x33
+	CALL SUBOPT_0x32
 	MOV  R26,R30
 	MOV  R30,R19
 	CALL __LSRB12
-	CALL SUBOPT_0x34
+	CALL SUBOPT_0x33
 	MOV  R30,R19
 	MOV  R26,R20
 	CALL __LSRB12
 	COM  R30
 	AND  R30,R1
 	OR   R21,R30
-	CALL SUBOPT_0x2F
+	CALL SUBOPT_0x2E
 	ST   -Y,R31
 	ST   -Y,R30
 	MOV  R26,R21
@@ -6728,7 +6765,7 @@ _0x200008C:
 	BRNE _0x2000093
 	LDI  R21,LOW(255)
 _0x200008D:
-	CALL SUBOPT_0x31
+	CALL SUBOPT_0x30
 	MOV  R26,R30
 	MOV  R30,R19
 	CALL __LSLB12
@@ -6740,7 +6777,7 @@ _0x2000090:
 	POP  R26
 	CP   R26,R30
 	BRSH _0x2000092
-	CALL SUBOPT_0x32
+	CALL SUBOPT_0x31
 	ST   -Y,R20
 	LDI  R26,LOW(0)
 	RCALL _ks0108_wrmasked_G100
@@ -6755,7 +6792,7 @@ _0x2000094:
 	POP  R26
 	CP   R26,R30
 	BRSH _0x2000096
-	CALL SUBOPT_0x35
+	CALL SUBOPT_0x34
 	MOV  R26,R30
 	MOV  R30,R19
 	CALL __LSLB12
@@ -6813,16 +6850,16 @@ _0x200009E:
 	POP  R26
 	CP   R26,R30
 	BRSH _0x20000A0
-	CALL SUBOPT_0x33
+	CALL SUBOPT_0x32
 	MOV  R26,R30
 	MOV  R30,R18
 	CALL __LSLB12
-	CALL SUBOPT_0x34
+	CALL SUBOPT_0x33
 	MOV  R30,R18
 	MOV  R26,R20
-	CALL SUBOPT_0x1C
+	CALL SUBOPT_0x6
 	OR   R21,R30
-	CALL SUBOPT_0x2F
+	CALL SUBOPT_0x2E
 	ST   -Y,R31
 	ST   -Y,R30
 	MOV  R26,R21
@@ -6840,7 +6877,7 @@ _0x20000A1:
 	BRNE _0x20000A8
 	LDI  R21,LOW(255)
 _0x20000A2:
-	CALL SUBOPT_0x31
+	CALL SUBOPT_0x30
 	MOV  R26,R30
 	MOV  R30,R18
 	CALL __LSRB12
@@ -6852,7 +6889,7 @@ _0x20000A5:
 	POP  R26
 	CP   R26,R30
 	BRSH _0x20000A7
-	CALL SUBOPT_0x32
+	CALL SUBOPT_0x31
 	ST   -Y,R20
 	LDI  R26,LOW(0)
 	RCALL _ks0108_wrmasked_G100
@@ -6867,7 +6904,7 @@ _0x20000A9:
 	POP  R26
 	CP   R26,R30
 	BRSH _0x20000AB
-	CALL SUBOPT_0x35
+	CALL SUBOPT_0x34
 	MOV  R26,R30
 	MOV  R30,R18
 	CALL __LSRB12
@@ -6898,7 +6935,7 @@ _0x212000C:
 	.CSEG
 _glcd_clipx:
 ; .FSTART _glcd_clipx
-	CALL SUBOPT_0x36
+	CALL SUBOPT_0x35
 	BRLT _0x2020003
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
@@ -6920,7 +6957,7 @@ _0x2020004:
 ; .FEND
 _glcd_clipy:
 ; .FSTART _glcd_clipy
-	CALL SUBOPT_0x36
+	CALL SUBOPT_0x35
 	BRLT _0x2020005
 	LDI  R30,LOW(0)
 	LDI  R31,HIGH(0)
@@ -6956,7 +6993,7 @@ _glcd_getcharw_G101:
 	ST   -Y,R27
 	ST   -Y,R26
 	SBIW R28,3
-	CALL SUBOPT_0x37
+	CALL SUBOPT_0x36
 	MOVW R16,R30
 	MOV  R0,R16
 	OR   R0,R17
@@ -6965,11 +7002,11 @@ _glcd_getcharw_G101:
 	LDI  R31,HIGH(0)
 	RJMP _0x212000B
 _0x202000B:
-	CALL SUBOPT_0x38
+	CALL SUBOPT_0x37
 	STD  Y+7,R0
-	CALL SUBOPT_0x38
+	CALL SUBOPT_0x37
 	STD  Y+6,R0
-	CALL SUBOPT_0x38
+	CALL SUBOPT_0x37
 	STD  Y+8,R0
 	LDD  R30,Y+11
 	LDD  R26,Y+8
@@ -7067,7 +7104,7 @@ _glcd_new_line_G101:
 	__PUTB1MN _glcd_state,2
 	__GETB2MN _glcd_state,3
 	CLR  R27
-	CALL SUBOPT_0x39
+	CALL SUBOPT_0x38
 	LDI  R31,0
 	ADD  R26,R30
 	ADC  R27,R31
@@ -7083,7 +7120,7 @@ _glcd_putchar:
 ; .FSTART _glcd_putchar
 	ST   -Y,R26
 	SBIW R28,1
-	CALL SUBOPT_0x37
+	CALL SUBOPT_0x36
 	SBIW R30,0
 	BRNE PC+2
 	RJMP _0x202001F
@@ -7124,7 +7161,7 @@ _0x2020023:
 	ST   -Y,R30
 	LDD  R30,Y+8
 	ST   -Y,R30
-	CALL SUBOPT_0x39
+	CALL SUBOPT_0x38
 	ST   -Y,R30
 	LDI  R30,LOW(1)
 	ST   -Y,R30
@@ -7140,17 +7177,17 @@ _0x2020023:
 	ST   -Y,R30
 	__GETB1MN _glcd_state,6
 	ST   -Y,R30
+	CALL SUBOPT_0x38
 	CALL SUBOPT_0x39
-	CALL SUBOPT_0x3A
 	__GETB1MN _glcd_state,2
 	ST   -Y,R30
 	__GETB2MN _glcd_state,3
-	CALL SUBOPT_0x39
+	CALL SUBOPT_0x38
 	ADD  R30,R26
 	ST   -Y,R30
 	ST   -Y,R19
 	__GETB1MN _glcd_state,7
-	CALL SUBOPT_0x3A
+	CALL SUBOPT_0x39
 	LDI  R30,LOW(128)
 	LDI  R31,HIGH(128)
 	CP   R30,R16
@@ -7238,7 +7275,7 @@ _put_usart_G103:
 	RCALL _putchar
 	LD   R26,Y
 	LDD  R27,Y+1
-	CALL SUBOPT_0x3B
+	CALL SUBOPT_0x3A
 	JMP  _0x2120002
 ; .FEND
 _put_buff_G103:
@@ -7270,7 +7307,7 @@ _0x2060012:
 	LDD  R26,Y+2
 	LDD  R27,Y+2+1
 	ADIW R26,2
-	CALL SUBOPT_0x3B
+	CALL SUBOPT_0x3A
 	SBIW R30,1
 	LDD  R26,Y+4
 	STD  Z+0,R26
@@ -7280,7 +7317,7 @@ _0x2060013:
 	CALL __GETW1P
 	TST  R31
 	BRMI _0x2060014
-	CALL SUBOPT_0x3B
+	CALL SUBOPT_0x3A
 _0x2060014:
 	RJMP _0x2060015
 _0x2060010:
@@ -7328,7 +7365,7 @@ _0x2060016:
 	LDI  R17,LOW(1)
 	RJMP _0x206001E
 _0x206001D:
-	CALL SUBOPT_0x3C
+	CALL SUBOPT_0x3B
 _0x206001E:
 	RJMP _0x206001B
 _0x206001C:
@@ -7336,7 +7373,7 @@ _0x206001C:
 	BRNE _0x206001F
 	CPI  R18,37
 	BRNE _0x2060020
-	CALL SUBOPT_0x3C
+	CALL SUBOPT_0x3B
 	RJMP _0x20600CC
 _0x2060020:
 	LDI  R17,LOW(2)
@@ -7393,26 +7430,26 @@ _0x2060029:
 	MOV  R30,R18
 	CPI  R30,LOW(0x63)
 	BRNE _0x206002F
-	CALL SUBOPT_0x3D
+	CALL SUBOPT_0x3C
 	LDD  R30,Y+16
 	LDD  R31,Y+16+1
 	LDD  R26,Z+4
 	ST   -Y,R26
-	CALL SUBOPT_0x3E
+	CALL SUBOPT_0x3D
 	RJMP _0x2060030
 _0x206002F:
 	CPI  R30,LOW(0x73)
 	BRNE _0x2060032
-	CALL SUBOPT_0x3D
-	CALL SUBOPT_0x3F
+	CALL SUBOPT_0x3C
+	CALL SUBOPT_0x3E
 	CALL _strlen
 	MOV  R17,R30
 	RJMP _0x2060033
 _0x2060032:
 	CPI  R30,LOW(0x70)
 	BRNE _0x2060035
-	CALL SUBOPT_0x3D
-	CALL SUBOPT_0x3F
+	CALL SUBOPT_0x3C
+	CALL SUBOPT_0x3E
 	CALL _strlenf
 	MOV  R17,R30
 	ORI  R16,LOW(8)
@@ -7457,8 +7494,8 @@ _0x2060040:
 _0x206003D:
 	SBRS R16,2
 	RJMP _0x2060042
-	CALL SUBOPT_0x3D
-	CALL SUBOPT_0x40
+	CALL SUBOPT_0x3C
+	CALL SUBOPT_0x3F
 	LDD  R26,Y+11
 	TST  R26
 	BRPL _0x2060043
@@ -7478,8 +7515,8 @@ _0x2060044:
 _0x2060045:
 	RJMP _0x2060046
 _0x2060042:
-	CALL SUBOPT_0x3D
-	CALL SUBOPT_0x40
+	CALL SUBOPT_0x3C
+	CALL SUBOPT_0x3F
 _0x2060046:
 _0x2060036:
 	SBRC R16,0
@@ -7502,7 +7539,7 @@ _0x206004D:
 _0x206004B:
 	LDI  R18,LOW(32)
 _0x206004E:
-	CALL SUBOPT_0x3C
+	CALL SUBOPT_0x3B
 	SUBI R21,LOW(1)
 	RJMP _0x2060048
 _0x206004A:
@@ -7528,7 +7565,7 @@ _0x2060053:
 	STD  Y+6,R26
 	STD  Y+6+1,R27
 _0x2060054:
-	CALL SUBOPT_0x3C
+	CALL SUBOPT_0x3B
 	CPI  R21,0
 	BREQ _0x2060055
 	SUBI R21,LOW(1)
@@ -7607,7 +7644,7 @@ _0x20600CD:
 	RJMP _0x206006A
 	ANDI R16,LOW(251)
 	ST   -Y,R20
-	CALL SUBOPT_0x3E
+	CALL SUBOPT_0x3D
 	CPI  R21,0
 	BREQ _0x206006B
 	SUBI R21,LOW(1)
@@ -7615,7 +7652,7 @@ _0x206006B:
 _0x206006A:
 _0x2060069:
 _0x2060061:
-	CALL SUBOPT_0x3C
+	CALL SUBOPT_0x3B
 	CPI  R21,0
 	BREQ _0x206006C
 	SUBI R21,LOW(1)
@@ -7637,7 +7674,7 @@ _0x206006E:
 	SUBI R21,LOW(1)
 	LDI  R30,LOW(32)
 	ST   -Y,R30
-	CALL SUBOPT_0x3E
+	CALL SUBOPT_0x3D
 	RJMP _0x206006E
 _0x2060070:
 _0x206006D:
@@ -7661,7 +7698,7 @@ _sprintf:
 	MOV  R15,R24
 	SBIW R28,6
 	CALL __SAVELOCR4
-	CALL SUBOPT_0x41
+	CALL SUBOPT_0x40
 	SBIW R30,0
 	BRNE _0x2060072
 	LDI  R30,LOW(65535)
@@ -7672,13 +7709,13 @@ _0x2060072:
 	ADIW R26,6
 	CALL __ADDW2R15
 	MOVW R16,R26
-	CALL SUBOPT_0x41
+	CALL SUBOPT_0x40
 	STD  Y+6,R30
 	STD  Y+6+1,R31
 	LDI  R30,LOW(0)
 	STD  Y+8,R30
 	STD  Y+8+1,R30
-	CALL SUBOPT_0x42
+	CALL SUBOPT_0x41
 	RJMP _0x2120008
 ; .FEND
 _snprintf:
@@ -7688,27 +7725,27 @@ _snprintf:
 	SBIW R28,6
 	CALL __SAVELOCR4
 	__GETWRN 18,19,0
-	CALL SUBOPT_0x43
+	CALL SUBOPT_0x42
 	SBIW R30,0
 	BRNE _0x2060073
 	LDI  R30,LOW(65535)
 	LDI  R31,HIGH(65535)
 	RJMP _0x2120007
 _0x2060073:
-	CALL SUBOPT_0x41
+	CALL SUBOPT_0x40
 	SBIW R30,0
 	BREQ _0x2060074
 	MOVW R26,R28
 	ADIW R26,6
 	CALL __ADDW2R15
 	MOVW R16,R26
-	CALL SUBOPT_0x43
+	CALL SUBOPT_0x42
 	STD  Y+6,R30
 	STD  Y+6+1,R31
-	CALL SUBOPT_0x41
+	CALL SUBOPT_0x40
 	STD  Y+8,R30
 	STD  Y+8+1,R31
-	CALL SUBOPT_0x42
+	CALL SUBOPT_0x41
 _0x2060074:
 _0x2120008:
 	MOVW R30,R18
@@ -7966,7 +8003,7 @@ _0x2080004:
 	STD  Y+4,R30
 	STD  Y+4+1,R31
 _0x2080003:
-	CALL SUBOPT_0x44
+	CALL SUBOPT_0x43
 	CALL _strspnf
 	LDD  R26,Y+4
 	LDD  R27,Y+4+1
@@ -7986,7 +8023,7 @@ _0x2080003:
 	LDI  R31,HIGH(0)
 	RJMP _0x2120004
 _0x2080005:
-	CALL SUBOPT_0x44
+	CALL SUBOPT_0x43
 	CALL _strpbrkf
 	MOVW R16,R30
 	SBIW R30,0
@@ -8263,13 +8300,13 @@ _content_buffer:
 	.BYTE 0x64
 _rx_buffer0:
 	.BYTE 0x64
-_phase_S0000008000:
+_phase_S0000009000:
 	.BYTE 0x1
-_h_idx_S0000008000:
+_h_idx_S0000009000:
 	.BYTE 0x1
-_c_idx_S0000008000:
+_c_idx_S0000009000:
 	.BYTE 0x1
-_processing_sms_S0000009001:
+_processing_sms_S000000A001:
 	.BYTE 0x1
 _at_command:
 	.BYTE 0x1E
@@ -8310,8 +8347,52 @@ SUBOPT_0x3:
 	SBIW R30,0
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:10 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
 SUBOPT_0x4:
+	CALL __CWD1
+	CALL __PUTPARD1
+	RET
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:3 WORDS
+SUBOPT_0x5:
+	LDI  R24,4
+	CALL _sprintf
+	ADIW R28,8
+	RET
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
+SUBOPT_0x6:
+	CALL __LSLB12
+	COM  R30
+	AND  R30,R1
+	RET
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 14 TIMES, CODE SIZE REDUCTION:49 WORDS
+SUBOPT_0x7:
+	CALL _glcd_clear
+	LDI  R30,LOW(0)
+	ST   -Y,R30
+	ST   -Y,R30
+	RET
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
+SUBOPT_0x8:
+	LDI  R30,LOW(_mahsol_ra_bardarid*2)
+	LDI  R31,HIGH(_mahsol_ra_bardarid*2)
+	ST   -Y,R31
+	ST   -Y,R30
+	LDI  R30,LOW(128)
+	ST   -Y,R30
+	RET
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
+SUBOPT_0x9:
+	LDI  R26,LOW(500)
+	LDI  R27,HIGH(500)
+	JMP  _delay_ms
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:10 WORDS
+SUBOPT_0xA:
 	ST   -Y,R27
 	ST   -Y,R26
 	SBIW R28,63
@@ -8326,7 +8407,7 @@ SUBOPT_0x4:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 16 TIMES, CODE SIZE REDUCTION:87 WORDS
-SUBOPT_0x5:
+SUBOPT_0xB:
 	CALL _send_at_command
 	LDI  R26,LOW(100)
 	LDI  R27,0
@@ -8334,7 +8415,7 @@ SUBOPT_0x5:
 	JMP  _uart_buffer_reset
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x6:
+SUBOPT_0xC:
 	MOVW R30,R28
 	ADIW R30,8
 	ST   -Y,R31
@@ -8342,27 +8423,21 @@ SUBOPT_0x6:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:5 WORDS
-SUBOPT_0x7:
+SUBOPT_0xD:
 	CLR  R22
 	CLR  R23
 	CALL __PUTPARD1
 	__GETW1SX 377
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x8:
-	CALL __CWD1
-	CALL __PUTPARD1
-	RET
-
-;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:19 WORDS
-SUBOPT_0x9:
+;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:12 WORDS
+SUBOPT_0xE:
 	MOVW R30,R28
 	SUBI R30,LOW(-(263))
 	SBCI R31,HIGH(-(263))
 	ST   -Y,R31
 	ST   -Y,R30
-	__POINTW1FN _0x0,90
+	__POINTW1FN _0x0,103
 	ST   -Y,R31
 	ST   -Y,R30
 	MOVW R30,R28
@@ -8370,16 +8445,10 @@ SUBOPT_0x9:
 	CLR  R22
 	CLR  R23
 	CALL __PUTPARD1
-	LDI  R24,4
-	CALL _sprintf
-	ADIW R28,8
-	MOVW R26,R28
-	SUBI R26,LOW(-(263))
-	SBCI R27,HIGH(-(263))
 	RJMP SUBOPT_0x5
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 28 TIMES, CODE SIZE REDUCTION:51 WORDS
-SUBOPT_0xA:
+SUBOPT_0xF:
 	LDI  R30,LOW(_buffer)
 	LDI  R31,HIGH(_buffer)
 	ST   -Y,R31
@@ -8387,7 +8456,7 @@ SUBOPT_0xA:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:45 WORDS
-SUBOPT_0xB:
+SUBOPT_0x10:
 	LDI  R30,LOW(256)
 	LDI  R31,HIGH(256)
 	ST   -Y,R31
@@ -8397,7 +8466,7 @@ SUBOPT_0xB:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:45 WORDS
-SUBOPT_0xC:
+SUBOPT_0x11:
 	ST   -Y,R31
 	ST   -Y,R30
 	LDI  R30,LOW(1)
@@ -8413,7 +8482,7 @@ SUBOPT_0xC:
 	JMP  _extract_field_after_keyword
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:8 WORDS
-SUBOPT_0xD:
+SUBOPT_0x12:
 	CALL _send_at_command
 	LDI  R26,LOW(100)
 	LDI  R27,0
@@ -8426,16 +8495,8 @@ SUBOPT_0xD:
 	CPC  R31,R26
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 13 TIMES, CODE SIZE REDUCTION:45 WORDS
-SUBOPT_0xE:
-	CALL _glcd_clear
-	LDI  R30,LOW(0)
-	ST   -Y,R30
-	ST   -Y,R30
-	RET
-
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:17 WORDS
-SUBOPT_0xF:
+SUBOPT_0x13:
 	ST   -Y,R31
 	ST   -Y,R30
 	LDI  R30,LOW(128)
@@ -8444,29 +8505,29 @@ SUBOPT_0xF:
 	JMP  _draw_bitmap
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:7 WORDS
-SUBOPT_0x10:
+SUBOPT_0x14:
 	CLR  R22
 	CLR  R23
 	CALL __PUTPARD1
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x11:
+SUBOPT_0x15:
 	__GETW1SX 371
-	RJMP SUBOPT_0x10
+	RJMP SUBOPT_0x14
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x12:
+SUBOPT_0x16:
 	ST   -Y,R31
 	ST   -Y,R30
-	__POINTW2FN _0x0,111
+	__POINTW2FN _0x0,124
 	CALL _strtok
 	STD  Y+38,R30
 	STD  Y+38+1,R31
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 9 TIMES, CODE SIZE REDUCTION:13 WORDS
-SUBOPT_0x13:
+SUBOPT_0x17:
 	LDI  R30,LOW(0)
 	ST   -Y,R30
 	LDI  R30,LOW(10)
@@ -8474,7 +8535,7 @@ SUBOPT_0x13:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x14:
+SUBOPT_0x18:
 	LDI  R30,LOW(0)
 	ST   -Y,R30
 	LDI  R30,LOW(20)
@@ -8482,49 +8543,17 @@ SUBOPT_0x14:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x15:
+SUBOPT_0x19:
 	LDI  R30,LOW(_content_buffer)
 	LDI  R31,HIGH(_content_buffer)
 	ST   -Y,R31
 	ST   -Y,R30
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:2 WORDS
-SUBOPT_0x16:
-	ST   -Y,R31
-	ST   -Y,R30
-	LDI  R30,LOW(128)
-	ST   -Y,R30
-	LDI  R26,LOW(32)
-	JMP  _draw_bitmap
-
-;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x17:
-	CALL _glcd_clear
-	LDI  R30,LOW(5)
-	ST   -Y,R30
-	LDI  R30,LOW(25)
-	ST   -Y,R30
-	RET
-
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x18:
-	CALL _glcd_outtextxy
-	LDI  R26,LOW(300)
-	LDI  R27,HIGH(300)
-	RET
-
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x19:
+SUBOPT_0x1A:
 	__PUTW1MN _glcd_state,4
 	RET
-
-;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x1A:
-	CALL _glcd_outtextxy
-	LDI  R26,LOW(500)
-	LDI  R27,HIGH(500)
-	JMP  _delay_ms
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 10 TIMES, CODE SIZE REDUCTION:33 WORDS
 SUBOPT_0x1B:
@@ -8533,15 +8562,8 @@ SUBOPT_0x1B:
 	LDI  R27,0
 	JMP  _delay_ms
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x1C:
-	CALL __LSLB12
-	COM  R30
-	AND  R30,R1
-	RET
-
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:13 WORDS
-SUBOPT_0x1D:
+SUBOPT_0x1C:
 	IN   R1,19
 	MOV  R30,R17
 	LDI  R31,0
@@ -8553,12 +8575,12 @@ SUBOPT_0x1D:
 	RJMP SUBOPT_0x2
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 13 TIMES, CODE SIZE REDUCTION:21 WORDS
-SUBOPT_0x1E:
+SUBOPT_0x1D:
 	CALL _send_at_command
-	RJMP SUBOPT_0xA
+	RJMP SUBOPT_0xF
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 10 TIMES, CODE SIZE REDUCTION:15 WORDS
-SUBOPT_0x1F:
+SUBOPT_0x1E:
 	LDI  R30,LOW(256)
 	LDI  R31,HIGH(256)
 	ST   -Y,R31
@@ -8566,25 +8588,25 @@ SUBOPT_0x1F:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:21 WORDS
-SUBOPT_0x20:
+SUBOPT_0x1F:
 	__GETD1N 0x7D0
 	CALL __PUTPARD1
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x21:
+SUBOPT_0x20:
 	__GETD1N 0xBB8
 	CALL __PUTPARD1
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:7 WORDS
-SUBOPT_0x22:
+SUBOPT_0x21:
 	LDI  R26,LOW(100)
 	LDI  R27,0
 	JMP  _delay_ms
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:10 WORDS
-SUBOPT_0x23:
+SUBOPT_0x22:
 	ST   -Y,R31
 	ST   -Y,R30
 	LDI  R30,LOW(0)
@@ -8601,45 +8623,45 @@ SUBOPT_0x23:
 	SBIW R30,0
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:5 WORDS
-SUBOPT_0x24:
+;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:3 WORDS
+SUBOPT_0x23:
 	LDI  R30,LOW(0)
 	ST   -Y,R30
 	LDI  R30,LOW(16)
 	ST   -Y,R30
 	LDI  R26,LOW(_value)
 	LDI  R27,HIGH(_value)
-	RET
+	JMP  _glcd_outtextxy
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x25:
+SUBOPT_0x24:
 	LDI  R26,LOW(_value)
 	LDI  R27,HIGH(_value)
 	JMP  _atoi
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:13 WORDS
-SUBOPT_0x26:
+SUBOPT_0x25:
 	CALL _send_at_command
 	LDI  R26,LOW(50)
 	LDI  R27,0
 	JMP  _delay_ms
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:5 WORDS
-SUBOPT_0x27:
+SUBOPT_0x26:
 	STS  98,R30
 	LDS  R30,98
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:2 WORDS
-SUBOPT_0x28:
+SUBOPT_0x27:
 	LDI  R30,LOW(0)
 	OUT  0x1A,R30
 	LDS  R30,98
 	ORI  R30,8
-	RJMP SUBOPT_0x27
+	RJMP SUBOPT_0x26
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:6 WORDS
-SUBOPT_0x29:
+SUBOPT_0x28:
 	ANDI R30,0XF7
 	STS  98,R30
 	LDI  R30,LOW(255)
@@ -8650,7 +8672,7 @@ SUBOPT_0x29:
 	JMP  _ks0108_disable_G100
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x2A:
+SUBOPT_0x29:
 	LSR  R30
 	LSR  R30
 	LSR  R30
@@ -8658,18 +8680,18 @@ SUBOPT_0x2A:
 	JMP  _ks0108_gotoxp_G100
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x2B:
+SUBOPT_0x2A:
 	STS  97,R30
 	LDS  R30,97
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x2C:
+SUBOPT_0x2B:
 	CALL _ks0108_wrdata_G100
 	JMP  _ks0108_nextx_G100
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x2D:
+SUBOPT_0x2C:
 	ADD  R30,R26
 	ADC  R31,R27
 	STD  Y+6,R30
@@ -8677,7 +8699,7 @@ SUBOPT_0x2D:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:8 WORDS
-SUBOPT_0x2E:
+SUBOPT_0x2D:
 	LDD  R30,Y+12
 	ST   -Y,R30
 	LDD  R30,Y+7
@@ -8692,7 +8714,7 @@ SUBOPT_0x2E:
 	JMP  _glcd_writemem
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:15 WORDS
-SUBOPT_0x2F:
+SUBOPT_0x2E:
 	LDD  R30,Y+12
 	ST   -Y,R30
 	LDD  R30,Y+7
@@ -8704,7 +8726,7 @@ SUBOPT_0x2F:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:5 WORDS
-SUBOPT_0x30:
+SUBOPT_0x2F:
 	CLR  R22
 	CLR  R23
 	MOVW R26,R30
@@ -8712,13 +8734,13 @@ SUBOPT_0x30:
 	JMP  _glcd_readmem
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x31:
+SUBOPT_0x30:
 	ST   -Y,R21
 	LDD  R26,Y+10
 	JMP  _glcd_mappixcolor1bit
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x32:
+SUBOPT_0x31:
 	ST   -Y,R16
 	INC  R16
 	LDD  R30,Y+16
@@ -8727,7 +8749,7 @@ SUBOPT_0x32:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x33:
+SUBOPT_0x32:
 	ST   -Y,R16
 	INC  R16
 	LDD  R26,Y+16
@@ -8736,7 +8758,7 @@ SUBOPT_0x33:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:5 WORDS
-SUBOPT_0x34:
+SUBOPT_0x33:
 	MOV  R21,R30
 	LDD  R30,Y+12
 	ST   -Y,R30
@@ -8749,7 +8771,7 @@ SUBOPT_0x34:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:9 WORDS
-SUBOPT_0x35:
+SUBOPT_0x34:
 	ST   -Y,R16
 	INC  R16
 	LDD  R30,Y+16
@@ -8762,10 +8784,10 @@ SUBOPT_0x35:
 	STD  Y+9,R30
 	STD  Y+9+1,R31
 	SBIW R30,1
-	RJMP SUBOPT_0x30
+	RJMP SUBOPT_0x2F
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x36:
+SUBOPT_0x35:
 	ST   -Y,R27
 	ST   -Y,R26
 	LD   R26,Y
@@ -8774,27 +8796,27 @@ SUBOPT_0x36:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x37:
+SUBOPT_0x36:
 	CALL __SAVELOCR6
 	__GETW1MN _glcd_state,4
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x38:
+SUBOPT_0x37:
 	MOVW R30,R16
 	__ADDWRN 16,17,1
 	LPM  R0,Z
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:9 WORDS
-SUBOPT_0x39:
+SUBOPT_0x38:
 	__GETW1MN _glcd_state,4
 	ADIW R30,1
 	LPM  R30,Z
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:5 WORDS
-SUBOPT_0x3A:
+SUBOPT_0x39:
 	ST   -Y,R30
 	LDI  R30,LOW(0)
 	ST   -Y,R30
@@ -8806,7 +8828,7 @@ SUBOPT_0x3A:
 	JMP  _glcd_block
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x3B:
+SUBOPT_0x3A:
 	LD   R30,X+
 	LD   R31,X+
 	ADIW R30,1
@@ -8815,7 +8837,7 @@ SUBOPT_0x3B:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:13 WORDS
-SUBOPT_0x3C:
+SUBOPT_0x3B:
 	ST   -Y,R18
 	LDD  R26,Y+13
 	LDD  R27,Y+13+1
@@ -8825,7 +8847,7 @@ SUBOPT_0x3C:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:9 WORDS
-SUBOPT_0x3D:
+SUBOPT_0x3C:
 	LDD  R30,Y+16
 	LDD  R31,Y+16+1
 	SBIW R30,4
@@ -8834,7 +8856,7 @@ SUBOPT_0x3D:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x3E:
+SUBOPT_0x3D:
 	LDD  R26,Y+13
 	LDD  R27,Y+13+1
 	LDD  R30,Y+15
@@ -8843,7 +8865,7 @@ SUBOPT_0x3E:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:4 WORDS
-SUBOPT_0x3F:
+SUBOPT_0x3E:
 	LDD  R26,Y+16
 	LDD  R27,Y+16+1
 	ADIW R26,4
@@ -8855,7 +8877,7 @@ SUBOPT_0x3F:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:2 WORDS
-SUBOPT_0x40:
+SUBOPT_0x3F:
 	LDD  R26,Y+16
 	LDD  R27,Y+16+1
 	ADIW R26,4
@@ -8865,7 +8887,7 @@ SUBOPT_0x40:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:9 WORDS
-SUBOPT_0x41:
+SUBOPT_0x40:
 	MOVW R26,R28
 	ADIW R26,12
 	CALL __ADDW2R15
@@ -8873,7 +8895,7 @@ SUBOPT_0x41:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:18 WORDS
-SUBOPT_0x42:
+SUBOPT_0x41:
 	MOVW R26,R28
 	ADIW R26,10
 	CALL __ADDW2R15
@@ -8897,7 +8919,7 @@ SUBOPT_0x42:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x43:
+SUBOPT_0x42:
 	MOVW R26,R28
 	ADIW R26,14
 	CALL __ADDW2R15
@@ -8905,7 +8927,7 @@ SUBOPT_0x43:
 	RET
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 2 TIMES, CODE SIZE REDUCTION:1 WORDS
-SUBOPT_0x44:
+SUBOPT_0x43:
 	LDD  R30,Y+4
 	LDD  R31,Y+4+1
 	ST   -Y,R31

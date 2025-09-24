@@ -31,6 +31,13 @@ int device_id = 1;
 //#define BUFFER_SIZE 512
 #define HTTP_TIMEOUT_MS 5000
 
+
+#define MOTOR_DDR DDRE
+#define MOTOR_PORT PORTE
+#define MOTOR_PIN_1 2
+#define MOTOR_PIN_2 3
+#define MOTOR_PIN_3 4
+
 char ip_address_buffer[16];
 
 char value[16];
@@ -161,6 +168,40 @@ unsigned long millis(void)
     return ms;
 }
 
+
+void activate_motor(int product_id)
+{
+    unsigned char motor_pin;
+    char motor_msg[20]; 
+    int timeout = 1000;
+
+    switch (product_id)
+    {
+        case 1: motor_pin = MOTOR_PIN_1; break;
+        case 2: motor_pin = MOTOR_PIN_2; break;
+        case 3: motor_pin = MOTOR_PIN_3; break;
+        default: return;
+    }
+
+    sprintf(motor_msg, "MOTOR %d ON!", product_id);
+    glcd_clear();
+    glcd_outtextxy(10, 20, motor_msg);
+    MOTOR_PORT |= (1 << motor_pin);
+    
+    while (!(PIND & (1 << PIND1)) && timeout > 0)
+    {
+        delay_ms(1);
+        timeout--;
+    }
+ 
+    MOTOR_PORT &= ~(1 << motor_pin); 
+//    glcd_clear();
+//    glcd_outtextxy(10, 20, motor_msg);
+     
+    glcd_clear();
+    draw_bitmap(0, 0, mahsol_ra_bardarid, 128, 64);
+    delay_ms(500);
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -374,11 +415,11 @@ void handle_sms(void)
                 if (key_pressed == content_buffer[0])
                 {
                     glcd_clear();
-                    glcd_outtextxy(5, 25, "test 3!");
-                    delay_ms(300); 
+//                    glcd_outtextxy(5, 25, "test 3!");
+//                    delay_ms(300); 
                     product_id = content_buffer[0] - '0';
                     activate_motor(product_id);
-                    glcd_clear();
+//                    glcd_clear();
                     draw_bitmap(0, 32, mahsol_ra_bardarid, 128, 32);
                     send_data(server_url_post, phone, product_id, device_id);
                 }
@@ -457,7 +498,6 @@ void process_uart_data(void)
         }
     }
 }
-
 
 
 
@@ -570,7 +610,8 @@ void main(void)
 //    if (!check_signal_with_restart()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }    
 //    if (!init_sms()) { glcd_outtextxy(0, 10, "SMS Init Failed!"); while(1); }
     
-    while (1) {
+    while (1) { 
+//        full_check();
         sim800_restart();
         check_sim();
         check_signal_with_restart();

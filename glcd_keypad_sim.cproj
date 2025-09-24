@@ -45,9 +45,6 @@
     <Compile Include="keypad.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="motor.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="sim800.c">
       <SubType>compile</SubType>
     </Compile>
